@@ -60,6 +60,50 @@ public class Cache {
     public Cache(int i, int i1, int i2, String feira) {
     }
 
+    //GETTS PARA O CONTROLLER
+
+    public String getId(){
+        return idCache.toString();
+    }
+
+    public String getDific(){
+        return dificuldade.toString();
+    }
+
+    public String getTipo(){
+        if(this instanceof BasicCache)return "BasicCache";
+        if(this instanceof PremiumCache)return "PremiumCache";
+        return "Default";
+    }
+
+    public String getCriador(){
+        return aventureiro.getId().toString();
+    }
+
+    public String getObj(){
+        if(objeto != null){
+            return "O " + objeto.getIdObjeto().toString();
+        }
+        if(travelbug != null){
+            return "Tb " + travelbug.getIdObjeto().toString();
+        }
+        return "None";
+    }
+
+    public String getLoc(){
+        return local.getLocalizacao();
+    }
+
+    public String getNumAv(){
+        return "" + numAvent;
+    }
+
+    public String getUltimoAvent(){
+        if(numAvent > 0){
+            return histAventureiros.get(numAvent-1).getId().toString();
+        }
+        return "None";
+    }
 
     //GETTERS AND SETTERS
     public BST_AED2_2021<Integer, Aventureiro> getHistAventureiros() {

@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
+    //AVENTUREIROS
     public TableView<Aventureiro> aventTables;
     public TableColumn<Aventureiro, String> nomeCol;
     public TableColumn<Aventureiro, String> idCol;
@@ -23,8 +24,21 @@ public class LoginController implements Initializable {
     public TableColumn<Aventureiro, String> tipoCol;
     private ArrayList<Aventureiro> AventArrayList;
 
+    //CACHES
+    public TableView<Cache> cacheTables;
+    public TableColumn<Cache, String> idCCol;
+    public TableColumn<Cache, String> dificCol;
+    public TableColumn<Cache, String> tipoCCol;
+    public TableColumn<Cache, String> criadorCol;
+    public TableColumn<Cache, String> objetoCCol;
+    public TableColumn<Cache, String> localCCol;
+    public TableColumn<Cache, String> numACol;
+    public TableColumn<Cache, String> ultimoACol;
+    private ArrayList<Cache> CacheArrayList;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //AVENTUREIROS
         AventArrayList = new ArrayList<>();
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
@@ -51,87 +65,41 @@ public class LoginController implements Initializable {
         tipoCol.setCellValueFactory(new PropertyValueFactory<>("Tipo"));
         tipoCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        CacheArrayList = new ArrayList<>();
+
+        idCCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        idCCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        dificCol.setCellValueFactory(new PropertyValueFactory<>("Dific"));
+        dificCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        tipoCCol.setCellValueFactory(new PropertyValueFactory<>("Tipo"));
+        tipoCCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        criadorCol.setCellValueFactory(new PropertyValueFactory<>("Criador"));
+        criadorCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        objetoCCol.setCellValueFactory(new PropertyValueFactory<>("Obj"));
+        objetoCCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        localCCol.setCellValueFactory(new PropertyValueFactory<>("Loc"));
+        localCCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        numACol.setCellValueFactory(new PropertyValueFactory<>("NumAv"));
+        numACol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        ultimoACol.setCellValueFactory(new PropertyValueFactory<>("UltimoAvent"));
+        ultimoACol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        try {
+            carregarFicheiro();
+        } catch (AventureiroNaoHabilitado aventureiroNaoHabilitado) {
+            aventureiroNaoHabilitado.printStackTrace();
+        }
+
     }
 
-    public void handleAventureiros(ActionEvent actionEvent) {
-
-    }
-
-    public void carregarAvent(ActionEvent actionEvent) throws AventureiroNaoHabilitado {
-
-        /*
-        GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
-        Basic a1 = new Basic("fabio",1,2,  "porto");
-        Basic a2 = new Basic("fabiaso",3,4,  "asd");
-        Premium a3 = new Premium("asd", 5,6, "asdasd");
-        Basic a4 = new Basic("kinigay",1,3,  "asdsa");
-        Basic a5 = new Basic("213weqasd",4,5,  "asdasdsad");
-        Admin a6 = new Admin("asdasd", 4,6,"lisboa");
-        Objeto o1 = new Objeto("ola");
-
-        Objeto o2 = new Objeto("porta");
-        Objeto o3 = new Objeto("tele");
-        Objeto o4 = new Objeto("pistola");
-        Objeto o5 = new Objeto("cano");
-        Objeto o6 = new Objeto("carro");
-        GestaoAcessoObjeto go = new GestaoAcessoObjeto();
-        go.regista(o1);
-        go.regista(o2);
-        go.regista(o3);
-        go.regista(o4);
-        go.regista(o5);
-        go.regista(o6);
-
-        a1.getListObjetos().put(0,o1);
-        a2.getListObjetos().put(0,o2);
-        a3.getListObjetos().put(0,o3);
-        a4.getListObjetos().put(0,o4);
-        a5.getListObjetos().put(0,o5);
-
-        ga.regista(a1);
-        ga.regista(a2);
-        ga.regista(a3);
-        ga.regista(a4);
-        ga.regista(a5);
-        ga.regista(a6);
-
-        GestaoAcessoCache gc = new GestaoAcessoCache();
-        BasicCache c1 = new BasicCache(4,a6,o6,2,4,"porto");
-        BasicCache c2 = new BasicCache(4,a6,o6,2,4,"porto");
-        BasicCache c3 = new BasicCache(4,a6,o6,2,4,"porto");
-        BasicCache c4 = new BasicCache(4,a6,o6,2,4,"porto");
-        BasicCache c5 = new BasicCache(4,a6,o6,2,4,"porto");
-
-        gc.adicionaCache(c1);
-        gc.adicionaCache(c2);
-        gc.adicionaCache(c3);
-        gc.adicionaCache(c4);
-        gc.adicionaCache(c5);
-
-        a1.getListCacheVisit().put(0, c1);
-        a1.setNumCacheVis(1);
-        a2.getListCacheVisit().put(0, c2);
-        a2.setNumCacheVis(1);
-        a3.getListCacheVisit().put(0, c3);
-        a3.setNumCacheVis(1);
-        a4.getListCacheVisit().put(0, c4);
-        a4.setNumCacheVis(1);
-        a5.getListCacheVisit().put(0, c5);
-        a5.setNumCacheVis(1);
-
-        a1.setNumCacheEsc(5);
-        a2.setNumCacheEsc(3);
-        a3.setNumCacheEsc(4);
-        a4.setNumCacheEsc(15);
-        a5.setNumCacheEsc(2);
-
-        a1.setNumCacheVis(52);
-        a2.setNumCacheVis(144);
-        a3.setNumCacheVis(12);
-        a4.setNumCacheVis(15);
-        a5.setNumCacheVis(6);
-
-*/
+    public void carregarFicheiro() throws AventureiroNaoHabilitado {
         GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
         GestaoAcessoCache gc = new GestaoAcessoCache();
         GestaoAcessoObjeto go = new GestaoAcessoObjeto();
@@ -152,6 +120,24 @@ public class LoginController implements Initializable {
             aventTables.getItems().addAll(AventArrayList);
         }
 
+
+        x = 1;
+        if(cacheTables!=null)
+            cacheTables.getItems().clear();
+        if(gc.getCaches().size()>0){
+            while(x<=gc.getCaches().size()){
+                CacheArrayList.add(gc.getCaches().get(x));
+                x++;
+            }
+            cacheTables.getItems().addAll(CacheArrayList);
+        }
+    }
+
+    public void handleAventureiros(ActionEvent actionEvent) {
+
+    }
+
+    public void carregarAvent(ActionEvent actionEvent) throws AventureiroNaoHabilitado {
 
     }
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="559.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+<AnchorPane prefHeight="559.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <children>
       <TabPane prefHeight="559.0" prefWidth="859.0" style="-fx-background-color: #0d1a26;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -17,17 +17,15 @@
                         <TableView fx:id="aventTables" layoutX="22.0" layoutY="25.0" prefHeight="480.0" prefWidth="815.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
                           <columns>
                             <TableColumn fx:id="idCol" prefWidth="75.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
-                            <TableColumn fx:id="nomeCol" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
-                              <TableColumn fx:id="localCol" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
-                              <TableColumn fx:id="objetoCol" prefWidth="79.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Objeto" />
-                              <TableColumn fx:id="cacheCol" prefWidth="86.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Cache" />
-                              <TableColumn fx:id="cacheVisCol" prefWidth="81.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="CacheVis" />
-                              <TableColumn fx:id="cacheEscCol" prefWidth="98.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="CachesEsc" />
-                              <TableColumn fx:id="tipoCol" prefWidth="98.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Tipo" />
-                              <TableColumn prefWidth="134.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" />
+                            <TableColumn fx:id="nomeCol" prefWidth="96.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
+                              <TableColumn fx:id="localCol" prefWidth="89.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
+                              <TableColumn fx:id="objetoCol" prefWidth="83.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Objeto" />
+                              <TableColumn fx:id="cacheCol" prefWidth="109.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Cache" />
+                              <TableColumn fx:id="cacheVisCol" prefWidth="116.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="CacheVis" />
+                              <TableColumn fx:id="cacheEscCol" prefWidth="123.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="CachesEsc" />
+                              <TableColumn fx:id="tipoCol" prefWidth="120.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Tipo" />
                           </columns>
                         </TableView>
-                        <Button layoutX="22.0" layoutY="2.0" mnemonicParsing="false" onAction="#carregarAvent" text="Button" />
                      </children>
                   </AnchorPane>
             </content>
@@ -38,16 +36,31 @@
             </content>
           </Tab>
             <Tab text="Caches">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <TableView fx:id="cacheTables" layoutX="22.0" layoutY="25.0" prefHeight="480.0" prefWidth="815.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
+                                <columns>
+                                    <TableColumn fx:id="idCCol" prefWidth="68.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
+                                    <TableColumn fx:id="dificCol" prefWidth="121.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Dificuldade" />
+                                    <TableColumn fx:id="tipoCCol" prefWidth="98.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Tipo" />
+                                    <TableColumn fx:id="criadorCol" prefWidth="86.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Criador" />
+                                    <TableColumn fx:id="objetoCCol" prefWidth="97.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Objeto" />
+                                    <TableColumn fx:id="localCCol" prefWidth="96.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
+                                    <TableColumn fx:id="numACol" prefWidth="129.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="NºAvent" />
+                                    <TableColumn fx:id="ultimoACol" prefWidth="116.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Ultimo Avent" />
+                                </columns>
+                            </TableView>
+                        </children>
+                    </AnchorPane>
+                </content>
             </Tab>
             <Tab text="Mapa">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
             </Tab>
-            <Tab text="Defenicoes">
+            <Tab text="Definicoes">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
