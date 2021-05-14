@@ -1,0 +1,23 @@
+Foi removido o Aventureiro com id : 4e com o nome : antonio, na data de: 28/04/2021 08:49:37
+Foi removido o Aventureiro com id : 4 e com o nome : antonio, na data de: 28/04/2021 08:50:02
+Foi removido o Aventureiro com id : 4 e com o nome : antonio, na data de: 28/04/2021 08:54:25
+Foi removido o Aventureiro com id : 4 e com o nome : antonio, na data de: 28/04/2021 08:54:36
+Foi removido o Aventureiro com id : 4 e com o nome : antonio, na data de: 28/04/2021 08:58:02
+Foi removido o Aventureiro com id : 4 e com o nome : antonio, na data de: 28/04/2021 08:58:33
+Foi removido o Aventureiro com id : 4 e com o nome : antonio, na data de: 28/04/2021 08:59:52
+Foi removido o Aventureiro com id : 4 e com o nome : antonio, na data de: 28/04/2021 09:00:05
+Foi removido o Aventureiro com id : 4 e com o nome : antonio, na data de: 28/04/2021 09:00:53
+Foi removido o Aventureiro com id : 4 e com o nome : antonio, na data de: 28/04/2021 09:02:34
+Foi removido o Aventureiro com id : 4 e com o nome : antonio, na data de: 28/04/2021 09:11:36
+Removeu a cache com o ID 2, na data de: 28/04/2021 09:14:33
+Removeu a cache com o ID 2, na data de: 28/04/2021 09:36:00
+Removeu a cache com o ID 2, na data de: 28/04/2021 09:37:05
+Removeu a cache com o ID 2, na data de: 28/04/2021 09:38:16
+Removeu a cache com o ID 2, na data de: 28/04/2021 09:40:04
+Foi removido o Aventureiro com id : 1 e com o nome : jonas, na data de: 4/5/2021
+Foi removido o Aventureiro com id : 7 e com o nome : Ruben21, na data de: 4/5/2021
+Foi removido o Aventureiro com id : 7 e com o nome : Jon, na data de: 4/5/2021
+Foi removido o Aventureiro com id : 1 e com o nome : jonas, na data de: 4/5/2021
+Foi removido o Aventureiro com id : 1 e com o nome : jonas, na data de: 4/5/2021
+Foi removido o Aventureiro com id : 1 e com o nome : jonas, na data de: 4/5/2021
+Removeu a cache com o ID 10, na data de: 6/5/2021

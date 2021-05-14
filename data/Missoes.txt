@@ -1,0 +1,10 @@
+1-Leva o travel bug para a cache mais longe .
+2-Leva o travel bug para a cache mais proxima .
+3-Leva o travel bug para:(regiao) .
+4-Leva o travel bug para uma região sem ser na região: (região) .
+5-Leva o travel bug em menos de um dia para qualquer cache .
+6-Leva o travel bug em menos de um dia para a cache mais proxima .
+7-Leva o travel bug em menos de uma semana para a cache mais longe .
+8-Leva o travel bug para a ultima cache em que estiveste .
+9-Leva o travel bug para a primeira cache em que estiveste .
+10-Leva o travel bug para uma cache que ainda não estiveste .
