@@ -1,0 +1,7 @@
+data
+out
+src/projeto_LP2_AED2/Main.java
+*.xml
+*.class
+.idea/workspace.xml
+
