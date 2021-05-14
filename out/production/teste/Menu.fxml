@@ -42,9 +42,9 @@
                               <TableColumn fx:id="idOCol" prefWidth="107.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
                               <TableColumn fx:id="viajarOCol" prefWidth="142.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 0;" text="Viajar" />
                               <TableColumn fx:id="nomeOCol" prefWidth="134.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
-                              <TableColumn fx:id="cacheOCol" prefWidth="169.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Cache" />
-                              <TableColumn fx:id="aventOCol" prefWidth="163.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Aventureiro" />
-                              <TableColumn fx:id="localOCol" prefWidth="142.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
+                              <TableColumn fx:id="cacheOCol" prefWidth="154.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Cache" />
+                              <TableColumn fx:id="aventOCol" prefWidth="148.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Aventureiro" />
+                              <TableColumn fx:id="localOCol" prefWidth="123.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
                            </columns>
                         </TableView>
                      </children></AnchorPane>
