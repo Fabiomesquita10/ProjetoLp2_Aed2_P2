@@ -15,6 +15,35 @@ public class Objeto{
   private Aventureiro aventureiro;
   private Localizacao local;
 
+
+  //GETTERS PARA O CONTROLLER
+  public String getId(){
+    return idObjeto.toString();
+  }
+
+  public String getViajar(){
+    if(viajar){
+      return "V";
+    }
+    return "F";
+  }
+
+  public String getNomeO(){
+    return nome;
+  }
+
+  public String getCacheO(){
+    return cache.getId();
+  }
+
+  public String getAventO(){
+    return aventureiro.getNome();
+  }
+
+  public String getLocalO(){
+    return local.getLocalizacao();
+  }
+
   //GETTERS AND SETTERS
   public Objeto(String nome) {
     this.nome = nome;

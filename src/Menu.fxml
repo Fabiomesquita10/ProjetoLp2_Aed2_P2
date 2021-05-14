@@ -32,9 +32,41 @@
           </Tab>
           <Tab text="Objetos">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="objetoTables" prefHeight="533.0" prefWidth="859.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
+                           <columns>
+                              <TableColumn fx:id="idOCol" prefWidth="107.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
+                              <TableColumn fx:id="viajarOCol" prefWidth="142.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Viajar" />
+                              <TableColumn fx:id="nomeOCol" prefWidth="134.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
+                              <TableColumn fx:id="cacheOCol" prefWidth="169.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Cache" />
+                              <TableColumn fx:id="aventOCol" prefWidth="163.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Aventureiro" />
+                              <TableColumn fx:id="localOCol" prefWidth="142.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
             </content>
           </Tab>
+            <Tab text="TravelBugs">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="529.0" prefWidth="860.0">
+                     <children>
+                        <TableView fx:id="tbTables" prefHeight="533.0" prefWidth="859.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
+                           <columns>
+                              <TableColumn fx:id="idCCol1" prefWidth="68.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
+                              <TableColumn fx:id="dificCol1" prefWidth="121.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
+                              <TableColumn fx:id="tipoCCol1" prefWidth="98.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Cache" />
+                              <TableColumn fx:id="criadorCol1" prefWidth="86.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Aventureiro" />
+                              <TableColumn fx:id="objetoCCol1" prefWidth="97.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Objeto" />
+                              <TableColumn fx:id="localCCol1" prefWidth="96.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
+                              <TableColumn fx:id="numACol1" prefWidth="129.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="NºAvent" />
+                              <TableColumn fx:id="ultimoACol1" prefWidth="116.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Ultimo Avent" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
             <Tab text="Caches">
                 <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">

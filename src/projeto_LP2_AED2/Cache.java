@@ -60,8 +60,7 @@ public class Cache {
     public Cache(int i, int i1, int i2, String feira) {
     }
 
-    //GETTS PARA O CONTROLLER
-
+    //GETTERS PARA O CONTROLLER
     public String getId(){
         return idCache.toString();
     }

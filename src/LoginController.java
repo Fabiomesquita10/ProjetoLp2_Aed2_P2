@@ -36,6 +36,18 @@ public class LoginController implements Initializable {
     public TableColumn<Cache, String> ultimoACol;
     private ArrayList<Cache> CacheArrayList;
 
+    //OBJETOS
+    public TableView<Objeto> objetoTables;
+    public TableColumn<Objeto, String> idOCol;
+    public TableColumn<Objeto, String> viajarOCol;
+    public TableColumn<Objeto, String> nomeOCol;
+    public TableColumn<Objeto, String> cacheOCol;
+    public TableColumn<Objeto, String> aventOCol;
+    public TableColumn<Objeto, String> localOCol;
+    private ArrayList<Objeto> ObjetoArrayList;
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //AVENTUREIROS
@@ -65,6 +77,7 @@ public class LoginController implements Initializable {
         tipoCol.setCellValueFactory(new PropertyValueFactory<>("Tipo"));
         tipoCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        //CACHES
         CacheArrayList = new ArrayList<>();
 
         idCCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
@@ -91,6 +104,27 @@ public class LoginController implements Initializable {
         ultimoACol.setCellValueFactory(new PropertyValueFactory<>("UltimoAvent"));
         ultimoACol.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        //OBJETOS
+        ObjetoArrayList = new ArrayList<>();
+
+        idOCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        idOCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        viajarOCol.setCellValueFactory(new PropertyValueFactory<>("Viajar"));
+        viajarOCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        nomeOCol.setCellValueFactory(new PropertyValueFactory<>("NomeO"));
+        nomeOCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        cacheOCol.setCellValueFactory(new PropertyValueFactory<>("CacheO"));
+        cacheOCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        aventOCol.setCellValueFactory(new PropertyValueFactory<>("AventO"));
+        aventOCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        localOCol.setCellValueFactory(new PropertyValueFactory<>("LocalO"));
+        localOCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         try {
             carregarFicheiro();
         } catch (AventureiroNaoHabilitado aventureiroNaoHabilitado) {
@@ -109,6 +143,7 @@ public class LoginController implements Initializable {
         gc.lerCache(ga, go);
         go.lerTbHist(gc, ga);
         ga.lerAventureirosHist(gc, go);
+        //AVENTUREIROS
         int x = 1;
         if(aventTables!=null)
             aventTables.getItems().clear();
@@ -120,7 +155,7 @@ public class LoginController implements Initializable {
             aventTables.getItems().addAll(AventArrayList);
         }
 
-
+        //CACHES
         x = 1;
         if(cacheTables!=null)
             cacheTables.getItems().clear();
@@ -130,6 +165,18 @@ public class LoginController implements Initializable {
                 x++;
             }
             cacheTables.getItems().addAll(CacheArrayList);
+        }
+
+        //OBJETOS
+        x = 1;
+        if(objetoTables!=null)
+            objetoTables.getItems().clear();
+        if(go.getObjetos().size()>0){
+            while(x<=go.getObjetos().size()){
+                ObjetoArrayList.add(go.getObjetos().get(x));
+                x++;
+            }
+            objetoTables.getItems().addAll(ObjetoArrayList);
         }
     }
 
