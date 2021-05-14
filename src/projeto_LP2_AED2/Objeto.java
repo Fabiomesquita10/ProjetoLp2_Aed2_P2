@@ -33,15 +33,21 @@ public class Objeto{
   }
 
   public String getCacheO(){
-    return cache.getId();
+    if(cache!=null)
+      return cache.getId();
+    return "empty";
   }
 
   public String getAventO(){
-    return aventureiro.getNome();
+    if(aventureiro!=null)
+      return aventureiro.getNome();
+    return "empty";
   }
 
   public String getLocalO(){
-    return local.getLocalizacao();
+    if(local!=null)
+      return local.getLocalizacao();
+    return "none";
   }
 
   //GETTERS AND SETTERS

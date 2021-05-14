@@ -20,6 +20,21 @@ public class TravelBug extends Objeto {
     private int time;
     private int demorou;
 
+    //GETT CONTROLLER
+
+    public String getIdT(){return this.getId().toString();}
+    public String getMissaoT(){return missao.toString();}
+    public String getViajarT(){if(viajar)return "sim";
+    if(!viajar) return "nao";
+    return "none";}
+    public String getUltimaCT(){
+        return listaCachesPresente.get(numCachesPres-1).getId().toString();}
+    public String getUltimaAT(){return listaAventureiros.get(numAventureiros-1).getId().toString();}
+    public String getNumCT(){return ""+numCachesPres;}
+    public String getNumAT(){return ""+numAventureiros;}
+
+
+
     //GETTERS AND SETTERS
     public int getDemorou() {
         return demorou;

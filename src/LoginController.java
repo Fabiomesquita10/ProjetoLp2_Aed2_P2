@@ -46,7 +46,16 @@ public class LoginController implements Initializable {
     public TableColumn<Objeto, String> localOCol;
     private ArrayList<Objeto> ObjetoArrayList;
 
-
+    //TRAVELBUG
+    public TableView<TravelBug> tbTables;
+    public TableColumn<TravelBug, String> idTCol;
+    public TableColumn<TravelBug, String> viajarTCol;
+    public TableColumn<TravelBug, String> missaoCol;
+    public TableColumn<TravelBug, String> ultimaCCol;
+    public TableColumn<TravelBug, String> ultimoATCol;
+    public TableColumn<TravelBug, String> numCCol;
+    public TableColumn<TravelBug, String> numATCol;
+    private ArrayList<TravelBug> TbArrayList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -125,6 +134,30 @@ public class LoginController implements Initializable {
         localOCol.setCellValueFactory(new PropertyValueFactory<>("LocalO"));
         localOCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        //TRAVELBUG
+        TbArrayList = new ArrayList<>();
+
+        idTCol.setCellValueFactory(new PropertyValueFactory<>("IdT"));
+        idTCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        missaoCol.setCellValueFactory(new PropertyValueFactory<>("MissaoT"));
+        missaoCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        viajarTCol.setCellValueFactory(new PropertyValueFactory<>("ViajarT"));
+        viajarTCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        ultimaCCol.setCellValueFactory(new PropertyValueFactory<>("UltimaCT"));
+        ultimaCCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        ultimoATCol.setCellValueFactory(new PropertyValueFactory<>("UltimaAT"));
+        ultimoATCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        numCCol.setCellValueFactory(new PropertyValueFactory<>("NumCT"));
+        numCCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        numATCol.setCellValueFactory(new PropertyValueFactory<>("NumAT"));
+        numATCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         try {
             carregarFicheiro();
         } catch (AventureiroNaoHabilitado aventureiroNaoHabilitado) {
@@ -178,6 +211,19 @@ public class LoginController implements Initializable {
             }
             objetoTables.getItems().addAll(ObjetoArrayList);
         }
+
+        //TRAVELBUG
+        x = 1;
+        if(tbTables!=null)
+            tbTables.getItems().clear();
+        if(go.getTravelBug().size()>0){
+            while(x<=go.getTravelBug().size()){
+                TbArrayList.add(go.getTravelBug().get(x));
+                x++;
+            }
+            tbTables.getItems().addAll(TbArrayList);
+        }
+
     }
 
     public void handleAventureiros(ActionEvent actionEvent) {

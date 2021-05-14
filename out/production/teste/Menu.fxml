@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="559.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+<AnchorPane prefHeight="559.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <children>
       <TabPane prefHeight="559.0" prefWidth="859.0" style="-fx-background-color: #0d1a26;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -34,10 +37,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="objetoTables" prefHeight="533.0" prefWidth="859.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
+                        <TableView fx:id="objetoTables" layoutX="21.0" layoutY="26.0" prefHeight="479.0" prefWidth="811.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
                            <columns>
                               <TableColumn fx:id="idOCol" prefWidth="107.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
-                              <TableColumn fx:id="viajarOCol" prefWidth="142.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Viajar" />
+                              <TableColumn fx:id="viajarOCol" prefWidth="142.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 0;" text="Viajar" />
                               <TableColumn fx:id="nomeOCol" prefWidth="134.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
                               <TableColumn fx:id="cacheOCol" prefWidth="169.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Cache" />
                               <TableColumn fx:id="aventOCol" prefWidth="163.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Aventureiro" />
@@ -51,16 +54,15 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="529.0" prefWidth="860.0">
                      <children>
-                        <TableView fx:id="tbTables" prefHeight="533.0" prefWidth="859.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
+                        <TableView fx:id="tbTables" layoutX="22.0" layoutY="26.0" prefHeight="478.0" prefWidth="815.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
                            <columns>
-                              <TableColumn fx:id="idCCol1" prefWidth="68.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
-                              <TableColumn fx:id="dificCol1" prefWidth="121.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
-                              <TableColumn fx:id="tipoCCol1" prefWidth="98.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Cache" />
-                              <TableColumn fx:id="criadorCol1" prefWidth="86.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Aventureiro" />
-                              <TableColumn fx:id="objetoCCol1" prefWidth="97.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Objeto" />
-                              <TableColumn fx:id="localCCol1" prefWidth="96.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
-                              <TableColumn fx:id="numACol1" prefWidth="129.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="NºAvent" />
-                              <TableColumn fx:id="ultimoACol1" prefWidth="116.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Ultimo Avent" />
+                              <TableColumn fx:id="idTCol" prefWidth="87.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
+                              <TableColumn fx:id="missaoCol" prefWidth="98.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 0;" text="Missao" />
+                              <TableColumn fx:id="viajarTCol" prefWidth="119.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Viajar" />
+                              <TableColumn fx:id="ultimaCCol" prefWidth="132.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Ultima cache" />
+                              <TableColumn fx:id="ultimoATCol" prefWidth="125.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Ultimo Aventureiro" />
+                              <TableColumn fx:id="numCCol" prefWidth="120.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Num Caches" />
+                              <TableColumn fx:id="numATCol" prefWidth="132.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Num Aventureiros" />
                            </columns>
                         </TableView>
                      </children>
