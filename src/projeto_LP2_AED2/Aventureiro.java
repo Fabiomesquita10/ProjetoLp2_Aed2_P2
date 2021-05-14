@@ -14,7 +14,6 @@ public abstract class Aventureiro {
     private int numObj;
     private int numTb;
     private Date data = new Date();
-    private String loc;
 
     private BST_AED2_2021<Integer, Cache> listCacheVisit = new BST_AED2_2021<>(); //BST de Caches(lista de Caches Visitadas)
     private BST_AED2_2021<Integer, Date> datas = new BST_AED2_2021<>(); //BST de Datas(lista de Datas)
@@ -38,10 +37,6 @@ public abstract class Aventureiro {
         this.local = new Localizacao(x, y, l);
     }
 
-    public Aventureiro(String nome, String l) {
-        this.nome = nome;
-        this.loc = l;
-    }
 
     //GETTERS AND SETTERS
     public int getNumObj() {
@@ -52,15 +47,22 @@ public abstract class Aventureiro {
         this.numObj = numObj;
     }
 
-    public void setLoc(String loc) {
-        this.loc = loc;
+
+
+    public String getObjeto(){
+        if(numObj>0)
+            return this.listObjetos.get(0).getNome();
+        if(numTb>0)
+            return ""+this.listTravelBug.get(numTb-1).getIdObjeto();
+        System.out.println(numTb);
+        return "empty";
     }
 
-
-    public String getObjeto(){return this.listObjetos.get(0).getNome();}
-
     public String getCache(){
-        return this.listCacheVisit.get(0).getIdCache().toString();}
+        if(numCacheVis==0)
+            return "empty";
+        return this.listCacheVisit.get(0).getIdCache().toString();
+    }
 
     public String getCacheVis(){
         return ""+numCacheVis;
@@ -231,7 +233,7 @@ public abstract class Aventureiro {
         this.addCacheVis(c, d); //adiciono ao Aventureiro uma nova Cache visitada
         c.removeObjeto(c.getObjeto()); //remove o Objeto da Cache
         c.setObjeto(o); //Coloco o novo Objeto na Cache
-        numObj--; //decremento o número de objetos
+         //decremento o número de objetos
     }
 
     /**
@@ -279,7 +281,6 @@ public abstract class Aventureiro {
                 c.setNumAvent(c.getNumAvent() + 1);
                 c.removeObjeto(c.getObjeto());
                 c.setTravelbug(bg);
-                numTb--;
                 bg.getListaCachesPresente().put(bg.getNumCachesPres(), c);
                 bg.setNumCachesPres(bg.getNumCachesPres() + 1);
             }

@@ -14,12 +14,11 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("login_fxml.fxml"));
-        stage.initStyle(StageStyle.UNDECORATED);
+        //stage.initStyle(StageStyle.UNDECORATED);
         Scene scene = new Scene(root);
         stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
-        System.out.println("olsa");
     }
 
     public static void main(String[] args) {

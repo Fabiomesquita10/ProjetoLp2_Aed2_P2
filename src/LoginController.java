@@ -48,7 +48,7 @@ public class LoginController implements Initializable {
         cacheEscCol.setCellValueFactory(new PropertyValueFactory<>("CacheEsc"));
         cacheEscCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+        tipoCol.setCellValueFactory(new PropertyValueFactory<>("Tipo"));
         tipoCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
     }
@@ -58,6 +58,8 @@ public class LoginController implements Initializable {
     }
 
     public void carregarAvent(ActionEvent actionEvent) throws AventureiroNaoHabilitado {
+
+        /*
         GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
         Basic a1 = new Basic("fabio",1,2,  "porto");
         Basic a2 = new Basic("fabiaso",3,4,  "asd");
@@ -129,20 +131,31 @@ public class LoginController implements Initializable {
         a4.setNumCacheVis(15);
         a5.setNumCacheVis(6);
 
-
+*/
+        GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
+        GestaoAcessoCache gc = new GestaoAcessoCache();
+        GestaoAcessoObjeto go = new GestaoAcessoObjeto();
+        ga.lerAventureiros(); // mudar funcao de leitura e escrita para por o local
+        go.lerObjeto();
+        go.lerTb();
+        gc.lerCache(ga, go);
+        go.lerTbHist(gc, ga);
+        ga.lerAventureirosHist(gc, go);
         int x = 1;
         if(aventTables!=null)
             aventTables.getItems().clear();
         if(ga.getAventureiros().size()>0){
-            while(x<ga.getAventureiros().size()){
+            while(x<=ga.getAventureiros().size()){
                 AventArrayList.add(ga.getAventureiros().get(x));
                 x++;
             }
             aventTables.getItems().addAll(AventArrayList);
         }
+
+
     }
 
     public void carregarAvent2(ActionEvent actionEvent) {
-    }
 
+    }
 }

@@ -317,10 +317,14 @@ public class GestaoAcessoAventureiro implements GestaoAventureiro {
                 aventureiros.get(id).setNumCacheVis(aventureiros.get(id).getNumCacheVis()+1); //iterar o numero de caches visitadas
                 x++;
             }
-            if(tipoObjeto.equals("tb")) //se for TravelBug
+            if(tipoObjeto.equals("tb")){ //se for TravelBug
                 aventureiros.get(id).getListTravelBug().put(0, go.getTravelBug().get(idO));
-            if(tipoObjeto.equals("o")) //se for Objeto
+                aventureiros.get(id).setNumTb(1);
+            }
+            if(tipoObjeto.equals("o")){ //se for Objeto
                 aventureiros.get(id).getListObjetos().put(0, go.getObjetos().get(idO));
+                aventureiros.get(id).setNumObj(1);
+            }
             cEsc.removeAll(cEsc); //reset ao Array  de Caches escondidas
             cVis.removeAll(cVis); //reset ao Array  de Caches Visitadas
             data.removeAll(data); //reset ao Array  de Datas
@@ -350,7 +354,7 @@ public class GestaoAcessoAventureiro implements GestaoAventureiro {
                 aventureiros.put(numAventureiros, u); //adicionar à lista de Aventureiros
                 numAventureiros++; //iterar aventureiros
             }else if(part0.equals("premium")){ //Premium
-                Premium u = new Premium(part2, cX, cY, "asdasd"); //criar Aventureiro
+                Premium u = new Premium(part2, cX, cY, "porto"); //criar Aventureiro
                 u.setIdAventureiro(numAventureiros); //set ID consoante o numero de aventureiros já existentes
                 aventureiros.put(numAventureiros, u); //adicionar à lista de Aventureiros
                 numAventureiros++; //iterar aventureiros
