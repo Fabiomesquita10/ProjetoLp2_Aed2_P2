@@ -12,6 +12,7 @@
 package SearchProj;
 
 import edu.princeton.cs.algs4.*;
+import projeto_LP2_AED2.AventureiroNaoHabilitado;
 
 import java.util.NoSuchElementException;
 
@@ -286,7 +287,7 @@ public class EdgeWeightedDiGraph_AED2 {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AventureiroNaoHabilitado {
         In in = new In(args[0]);
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
         StdOut.println(G);

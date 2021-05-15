@@ -1,9 +1,17 @@
+import SearchProj.GeoDigraph;
+import SearchProj.GestaoAcessoCacheGraph;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 import projeto_LP2_AED2.*;
 
 import java.net.URL;
@@ -56,6 +64,8 @@ public class LoginController implements Initializable {
     public TableColumn<TravelBug, String> numCCol;
     public TableColumn<TravelBug, String> numATCol;
     private ArrayList<TravelBug> TbArrayList;
+
+    public Group graphGroup;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -164,12 +174,39 @@ public class LoginController implements Initializable {
             aventureiroNaoHabilitado.printStackTrace();
         }
 
+
+
+    }
+
+    public void creatGraphGroup(GestaoAcessoAventureiro ga, GestaoAcessoCacheGraph gcg, GestaoAcessoObjeto go){
+        int radius = 30;
+        for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
+            Circle c = new Circle(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY(), radius);
+            c.setFill(Color.LIGHTBLUE);
+
+            StackPane stack = new StackPane();
+            String txt = ""+gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY() + " " + gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX();
+            stack.setLayoutX(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX()-radius);
+            stack.setLayoutY(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY()-radius);
+            //stack.getChildren().addAll(c, new Text(gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao()));
+            stack.getChildren().addAll(c, new Text(txt));
+
+            graphGroup.getChildren().add(stack);
+            /*
+            if(gcg.getGrafo().E() > 0){
+                for(Integer adj: gcg.getGrafo().adj(i)){
+                    Line line = new Line(gcg.getGrafo().getVertexPosX(i), gc.getGrafo().getVertexPosY(i), gc.getGrafo().getVertexPosX(adj), gc.getGrafo().getVertexPosY(adj));
+                    graphGroup.getChildren().add(line);
+                }
+            }*/
+        }
     }
 
     public void carregarFicheiro() throws AventureiroNaoHabilitado {
         GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
         GestaoAcessoCache gc = new GestaoAcessoCache();
         GestaoAcessoObjeto go = new GestaoAcessoObjeto();
+        GestaoAcessoCacheGraph gcg = new GestaoAcessoCacheGraph();
         ga.lerAventureiros(); // mudar funcao de leitura e escrita para por o local
         go.lerObjeto();
         go.lerTb();
@@ -194,7 +231,9 @@ public class LoginController implements Initializable {
         if(cacheTables!=null)
             cacheTables.getItems().clear();
         if(gc.getCaches().size()>0){
+            gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
             while(x<=gc.getCaches().size()){
+                gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
                 CacheArrayList.add(gc.getCaches().get(x));
                 x++;
             }
@@ -224,6 +263,8 @@ public class LoginController implements Initializable {
             }
             tbTables.getItems().addAll(TbArrayList);
         }
+
+        creatGraphGroup(ga, gcg, go);
 
     }
 

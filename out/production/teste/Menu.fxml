@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.Group?>
 
 <AnchorPane prefHeight="559.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <children>
@@ -91,12 +93,19 @@
             </Tab>
             <Tab text="Mapa">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                          <Pane fx:id="pane" layoutX="14.0" layoutY="15.0" prefHeight="501.0" prefWidth="831.0" style="-fx-background-color: #FFF8DC;">
+                              <children>
+                                  <Group fx:id="graphGroup" layoutX="14.0" layoutY="14.0" />
+                              </children>
+                          </Pane>
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Definicoes">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane fx:id="fundoCaches" minHeight="0.0" minWidth="0.0" prefHeight="383.0" prefWidth="667.0" />
               </content>
             </Tab>
         </tabs>

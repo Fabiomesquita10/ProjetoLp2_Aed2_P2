@@ -7,7 +7,7 @@ import edu.princeton.cs.algs4.BellmanFordSP;
 import edu.princeton.cs.algs4.DirectedEdge;
 import edu.princeton.cs.algs4.EdgeWeightedDigraph;
 import edu.princeton.cs.algs4.TransitiveClosure;
-import projeto_LP2_AED2.Cache;
+import projeto_LP2_AED2.*;
 import Search.BST_AED2_2021;
 
 public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
@@ -85,12 +85,12 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
 
     //TransitiveClosure tc = new TransitiveClosure(grafo);
     //BellmanFordSP
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AventureiroNaoHabilitado {
         GeoDigraph go = new GeoDigraph(4);
-        Cache c1 = new Cache(4,4,4,"lisboa");
-        Cache c2 = new Cache(4,4,4,"cete");
-        Cache c3 = new Cache(4,4,4,"gaia");
-        Cache c4 = new Cache(4,4,4,"feira");
+        PremiumCache c1 = new PremiumCache(4,new Premium("favio",2,3,"porto"),new TravelBug("asdasd", "oirt"),4,4,"lisboa");
+        PremiumCache c2 = new PremiumCache(4,new Premium("daasd",2,3,"porto"),new TravelBug("asdasd", "oirt"),4,4,"lisboa");
+        PremiumCache c3 = new PremiumCache(4,new Premium("asdasdasd",2,3,"porto"),new TravelBug("asdasd", "oirt"),4,4,"lisboa");
+        PremiumCache c4 = new PremiumCache(4,new Premium("asdsad",2,3,"porto"),new TravelBug("asdasd", "oirt"),4,4,"lisboa");
         c1.setIdCache(0);
         c2.setIdCache(1);
         c3.setIdCache(2);
@@ -135,12 +135,9 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
             System.out.println(BSP.distTo(0));
         System.out.println(BSP.distTo(3));
 
-        if(BSP.hasPathTo(0)){
+        if(BSP.hasPathTo(0)) {
             System.out.println(BSP.distTo(0));
         }
-
-
-
     }
 }
 
