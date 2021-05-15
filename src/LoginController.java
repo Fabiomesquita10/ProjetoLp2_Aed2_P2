@@ -176,6 +176,7 @@ public class LoginController implements Initializable {
         gc.lerCache(ga, go);
         go.lerTbHist(gc, ga);
         ga.lerAventureirosHist(gc, go);
+        ga.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
         //AVENTUREIROS
         int x = 1;
         if(aventTables!=null)

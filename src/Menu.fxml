@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="559.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <children>
-      <TabPane prefHeight="559.0" prefWidth="859.0" style="-fx-background-color: #0d1a26;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="559.0" prefWidth="859.0" scaleShape="false" style="-fx-background-color: #0d1a26;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab style="background-color: #0d1a26;" text="Aventureiros">
             <content>
@@ -19,9 +19,9 @@
                      <children>
                         <TableView fx:id="aventTables" layoutX="22.0" layoutY="25.0" prefHeight="480.0" prefWidth="815.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
                           <columns>
-                            <TableColumn fx:id="idCol" prefWidth="75.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
-                            <TableColumn fx:id="nomeCol" prefWidth="96.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
-                              <TableColumn fx:id="localCol" prefWidth="89.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
+                            <TableColumn fx:id="idCol" prefWidth="75.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
+                            <TableColumn fx:id="nomeCol" prefWidth="96.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
+                              <TableColumn fx:id="localCol" prefWidth="89.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
                               <TableColumn fx:id="objetoCol" prefWidth="83.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Objeto" />
                               <TableColumn fx:id="cacheCol" prefWidth="109.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Cache" />
                               <TableColumn fx:id="cacheVisCol" prefWidth="116.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="CacheVis" />
@@ -39,9 +39,9 @@
                      <children>
                         <TableView fx:id="objetoTables" layoutX="21.0" layoutY="26.0" prefHeight="479.0" prefWidth="811.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
                            <columns>
-                              <TableColumn fx:id="idOCol" prefWidth="107.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
-                              <TableColumn fx:id="viajarOCol" prefWidth="142.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 0;" text="Viajar" />
-                              <TableColumn fx:id="nomeOCol" prefWidth="134.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
+                              <TableColumn fx:id="idOCol" prefWidth="107.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
+                              <TableColumn fx:id="viajarOCol" prefWidth="142.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 0;" text="Viajar" />
+                              <TableColumn fx:id="nomeOCol" prefWidth="134.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Nome" />
                               <TableColumn fx:id="cacheOCol" prefWidth="154.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Cache" />
                               <TableColumn fx:id="aventOCol" prefWidth="148.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Aventureiro" />
                               <TableColumn fx:id="localOCol" prefWidth="123.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />
@@ -56,9 +56,9 @@
                      <children>
                         <TableView fx:id="tbTables" layoutX="22.0" layoutY="26.0" prefHeight="478.0" prefWidth="815.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
                            <columns>
-                              <TableColumn fx:id="idTCol" prefWidth="87.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
-                              <TableColumn fx:id="missaoCol" prefWidth="98.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 0;" text="Missao" />
-                              <TableColumn fx:id="viajarTCol" prefWidth="119.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Viajar" />
+                              <TableColumn fx:id="idTCol" prefWidth="87.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
+                              <TableColumn fx:id="missaoCol" prefWidth="98.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 0;" text="Missao" />
+                              <TableColumn fx:id="viajarTCol" prefWidth="119.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Viajar" />
                               <TableColumn fx:id="ultimaCCol" prefWidth="132.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Ultima cache" />
                               <TableColumn fx:id="ultimoATCol" prefWidth="125.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Ultimo Aventureiro" />
                               <TableColumn fx:id="numCCol" prefWidth="120.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Num Caches" />
@@ -75,9 +75,9 @@
                         <children>
                             <TableView fx:id="cacheTables" layoutX="22.0" layoutY="25.0" prefHeight="480.0" prefWidth="815.0" style="-fx-highlight-text-fill: #0d1a26; -fx-background-color: #E0FFFF; -fx-border-radius: 0; -fx-border-color: #0d1a26;">
                                 <columns>
-                                    <TableColumn fx:id="idCCol" prefWidth="68.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
-                                    <TableColumn fx:id="dificCol" prefWidth="121.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Dificuldade" />
-                                    <TableColumn fx:id="tipoCCol" prefWidth="98.0" style="-fx-text-fill: 0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Tipo" />
+                                    <TableColumn fx:id="idCCol" prefWidth="68.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 1 1 1;" text="Id" />
+                                    <TableColumn fx:id="dificCol" prefWidth="121.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 0;" text="Dificuldade" />
+                                    <TableColumn fx:id="tipoCCol" prefWidth="98.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color: #0d1a26; -fx-border-width: 0 0 1 1;" text="Tipo" />
                                     <TableColumn fx:id="criadorCol" prefWidth="86.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Criador" />
                                     <TableColumn fx:id="objetoCCol" prefWidth="97.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Objeto" />
                                     <TableColumn fx:id="localCCol" prefWidth="96.0" style="-fx-text-fill: #0d1a26; -fx-font-size: 14; -fx-background-color: #E0FFFF; -fx-border-color:  #0d1a26; -fx-border-width: 0 0 1 1;" text="Local" />

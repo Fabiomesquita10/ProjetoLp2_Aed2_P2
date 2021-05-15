@@ -14,6 +14,7 @@ public abstract class Aventureiro {
     private int numObj;
     private int numTb;
     private Date data = new Date();
+    private String password;
 
     private BST_AED2_2021<Integer, Cache> listCacheVisit = new BST_AED2_2021<>(); //BST de Caches(lista de Caches Visitadas)
     private BST_AED2_2021<Integer, Date> datas = new BST_AED2_2021<>(); //BST de Datas(lista de Datas)
@@ -37,6 +38,12 @@ public abstract class Aventureiro {
         this.local = new Localizacao(x, y, l);
     }
 
+    public Aventureiro(String nome, int x, int y, String local, String pass) {
+        this.nome = nome;
+        this.local = new Localizacao(x, y, local);
+        this.password = pass;
+    }
+
 
     //GETTERS AND SETTERS
     public int getNumObj() {
@@ -47,7 +54,13 @@ public abstract class Aventureiro {
         this.numObj = numObj;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getObjeto(){
         if(numObj>0)

@@ -8,10 +8,12 @@ public class Admin extends Aventureiro {
      * @param y - localizacao y
      * @param lisboa
      */
-    public Admin(String nome, int x, int y, String lisboa) {
-        super(nome, x, y, lisboa);
+    public Admin(String nome, int x, int y, String local, String pass) {
+        super(nome, x, y, local, pass);
     }
-
+    public Admin(String nome, int x, int y, String local) {
+        super(nome, x, y, local);
+    }
     /**
      * Metodo em que o admin tem acesso a todas as caches
      * @param gc - acesso a todas as caches
