@@ -25,8 +25,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        //Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("login_fxml.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("login_fxml.fxml"));
         //stage.initStyle(StageStyle.UNDECORATED);
         Scene scene = new Scene(root);
         stage.setTitle("Login");

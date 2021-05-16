@@ -204,14 +204,15 @@ public class LoginController implements Initializable {
     }
 
     public void creatGraphGroup(GestaoAcessoAventureiro ga, GestaoAcessoCacheGraph gcg, GestaoAcessoObjeto go){
-        for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
-            criar_graph(i);
-        }
         if(gcg.getGrafo().E() > 0){
             for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
                 criar_direct_edge(k);
             }
         }
+        for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
+            criar_graph(i);
+        }
+
 
         graphGroup.addEventHandler(MouseEvent.MOUSE_RELEASED, evtScene -> {
             EventTarget evtCircleTarget=evtScene.getTarget();
@@ -255,13 +256,13 @@ public class LoginController implements Initializable {
             }
             else{
                 graphGroup.getChildren().clear();
-                for (int j = 0; j < gcg.getGrafo().getNumCache(); j++) {
-                    criar_graph(j);
-                }
                 if(gcg.getGrafo().E() > 0){
                     for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
                         criar_direct_edge(k);
                     }
+                }
+                for (int j = 0; j < gcg.getGrafo().getNumCache(); j++) {
+                    criar_graph(j);
                 }
             }
         });
@@ -270,8 +271,8 @@ public class LoginController implements Initializable {
     public void criar_direct_edge(int k){
         for(DirectedEdge_AED2 adj: gcg.getGrafo().adj(k)){
             Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
-                    gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 10);
-            a.setFill(Color.DARKBLUE);
+                    gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20);
+            a.setFill(Color.DARKRED);
             graphGroup.getChildren().add(a);
 
         }
