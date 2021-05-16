@@ -15,13 +15,10 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import projeto_LP2_AED2.*;
-import javafx.scene.shape.VLineTo;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -93,6 +90,7 @@ public class LoginController implements Initializable {
     public TextField cachePartida;
     public TextField cacheChegada;
     public TextArea consolaMapa;
+
 
 
     @Override
@@ -253,6 +251,12 @@ public class LoginController implements Initializable {
                 System.out.println(info);
                 temp = graphGroup;
                 graphGroup.getChildren().add(stack2);
+            }else if(evtCircleTarget instanceof Arrow){
+                System.out.println("seta fodida");
+                if(((Arrow) evtCircleTarget).getFill() == Color.WHITESMOKE)
+                    ((Arrow) evtCircleTarget).setFill(Color.DARKRED);
+                else
+                    ((Arrow) evtCircleTarget).setFill(Color.WHITESMOKE);
             }
             else{
                 graphGroup.getChildren().clear();
@@ -274,7 +278,6 @@ public class LoginController implements Initializable {
                     gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20);
             a.setFill(Color.DARKRED);
             graphGroup.getChildren().add(a);
-
         }
     }
 
@@ -368,10 +371,6 @@ public class LoginController implements Initializable {
     }
 
     public void carregarAvent(ActionEvent actionEvent) throws AventureiroNaoHabilitado {
-
-    }
-
-    public void carregarAvent2(ActionEvent actionEvent) {
 
     }
 
