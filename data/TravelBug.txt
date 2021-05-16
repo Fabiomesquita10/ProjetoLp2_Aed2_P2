@@ -4,7 +4,7 @@
 4 rato 1 4 1 1 true 3 Leva o travel bug para:(regiao) .
 5 radio 1 5 1 3 true 3 Leva o travel bug para:(regiao) .
 6 tele 2 6 9 1 1 false 3 Leva o travel bug para:(regiao) .
-7 pao 3 7 9 4 2 1 1 false 3 Leva o travel bug para:(regiao) .
+7 telemovel 3 7 9 4 2 1 1 false 3 Leva o travel bug para:(regiao) .
 8 pizza 3 8 2 3 2 5 6 false 3 Leva o travel bug para:(regiao) .
 9 mac 1 7 2 1 5 true 3 Leva o travel bug para:(regiao) .
 10 teste 2 9 6 2 1 4 true 3 Leva o travel bug para:(regiao) .

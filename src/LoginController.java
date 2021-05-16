@@ -8,6 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
@@ -74,12 +76,24 @@ public class LoginController implements Initializable {
 
     public Group graphGroup;
     public Group temp;
-    int radius = 30;
+    int radius = 10;
+    int radius2 = radius + 55;
 
     GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
     GestaoAcessoCache gc = new GestaoAcessoCache();
     GestaoAcessoObjeto go = new GestaoAcessoObjeto();
     GestaoAcessoCacheGraph gcg = new GestaoAcessoCacheGraph();
+
+
+    //HANDLERS PESQUISAS GRAFOS
+
+    public TextField tipoCache;
+    public TextField difiCache;
+    public TextField regiaoCache;
+    public TextField cachePartida;
+    public TextField cacheChegada;
+    public TextArea consolaMapa;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -214,13 +228,26 @@ public class LoginController implements Initializable {
                 }
                 id++;
                 Cache c1 = gc.getCaches().get(id);
-                String info = "  Id: "+c1.getId() + "\n  Local: " + c1.getLocal().getLocalizacao() + "\n  Criador: " + c1.getCriador() +
-                        "\n  Tipo: " + c1.getTipo() + "\n  Dific: " + c1.getDificuldade();
-                Circle r = new Circle(100, 100, radius+20);
-                r.setFill(Color.LIGHTBLUE);
+                String info = "  Id: "+c1.getId() + "\n  Local: " + c1.getLocal().getLocalizacao() + "\n  Criador: " + c1.getAventureiro().getNome() +
+                        "\n  Tipo: " + c1.getTipo();
+                if(c1.getObjeto() != null){
+                    info = info + "\n  Objeto: " + c1.getObjeto().getNome();
+                }
+                else if(c1.getTravelbug() != null){
+                    info = info + "\n  Objeto: " + c1.getTravelbug().getNome();
+                }
+                else{
+                    info = info + "\n  Objeto: Empty";
+                }
+                info = info + "\n  Dificuldade: " + c1.getDificuldade();
+                Circle r = new Circle(100, 100, radius2);
+                if(c1 instanceof BasicCache)
+                    r.setFill(Color.SILVER);
+                if(c1 instanceof PremiumCache)
+                    r.setFill(Color.GOLD);
                 StackPane stack2 = new StackPane();
-                stack2.setLayoutX(cX-50);
-                stack2.setLayoutY(cY-50);
+                stack2.setLayoutX(cX-radius2);
+                stack2.setLayoutY(cY-radius2);
                 stack2.getChildren().addAll(r, new Text(info));
                 System.out.println(info);
                 temp = graphGroup;
@@ -251,21 +278,19 @@ public class LoginController implements Initializable {
     }
 
     public void criar_graph(int i){
-        int radius = 30;
         Circle c = new Circle(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY(), radius);
-        c.setFill(Color.LIGHTBLUE);
         StackPane stack = new StackPane();
         String tipo = "";
-        if(gcg.getGrafo().getCaches().get(i) instanceof PremiumCache)
-            tipo = "premium";
         if(gcg.getGrafo().getCaches().get(i) instanceof BasicCache)
-            tipo = "basic";
+            c.setFill(Color.SILVER);
+        if(gcg.getGrafo().getCaches().get(i) instanceof PremiumCache)
+            c.setFill(Color.GOLD);
         String txt = ""+gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY() + " " + gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX();
         stack.setLayoutX(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX()-radius);
         stack.setLayoutY(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY()-radius);
         //stack.getChildren().addAll(c, new Text(gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao()));
         //stack.getChildren().addAll(c, new Text(txt));
-        stack.getChildren().addAll(c, new Text(tipo));
+        stack.getChildren().addAll(c);
 
         graphGroup.getChildren().add(stack);
     }
@@ -410,5 +435,63 @@ public class LoginController implements Initializable {
         CC_AED2 c = new CC_AED2(gcg.getGrafo());
         System.out.println(c.connected(0,9));
 
+    }
+
+    public void handlerPesquisaCache(ActionEvent actionEvent) {
+        consolaMapa.setText(consolaMapa.getText() +  "PESQUISA CACHE\n");
+    }
+
+    public void handlerExisteCaminho(ActionEvent actionEvent) {
+        //consolaMapa.setText(consolaMapa.getText() +  "EXISTE CAMINHO\n");
+        int cp = Integer.parseInt(cachePartida.getText());
+        int cc = Integer.parseInt(cacheChegada.getText());
+        BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), cp);
+        if (BSP.hasPathTo(cp)){
+            consolaMapa.setText(consolaMapa.getText() +  "EXISTE CAMINHO\n");
+        }else {
+            consolaMapa.setText(consolaMapa.getText() + "NÃO EXISTE CAMINHO\n");
+        };
+    }
+
+    public void handlerDistancia(ActionEvent actionEvent) {
+        //consolaMapa.setText(consolaMapa.getText() +  "DISTANCIA CACHE\n");
+        int cp = Integer.parseInt(cachePartida.getText());
+        int cc = Integer.parseInt(cacheChegada.getText());
+        BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), cp);
+        consolaMapa.setText(consolaMapa.getText() +  "DISTANCIA ENTRE CACHES: " + BSP.distTo2(cc) + " METROS\n");
+    }
+
+    public void handlerCachesPerc(ActionEvent actionEvent) {
+        //consolaMapa.setText(consolaMapa.getText() +  "CACHES A PERCORRER\n");
+        int cp = Integer.parseInt(cachePartida.getText());
+        int cc = Integer.parseInt(cacheChegada.getText());
+
+        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), cp);
+        consolaMapa.setText(consolaMapa.getText() +  "CAMINHO A PERCORRER: " + BFS.pathTo(cc) + "\n");
+
+    }
+
+    public void handlerPeso(ActionEvent actionEvent) {
+        //consolaMapa.setText(consolaMapa.getText() +  "PESO CACHE\n");
+        int cp = Integer.parseInt(cachePartida.getText());
+        int cc = Integer.parseInt(cacheChegada.getText());
+        BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), cp);
+        consolaMapa.setText(consolaMapa.getText() +  "PESO ENTRE CACHES: " + BSP.distTo(cc) + "\n");
+    }
+
+    public void handlerTempo(ActionEvent actionEvent) {
+        //consolaMapa.setText(consolaMapa.getText() +  "TEMPO CACHE\n");
+        int cp = Integer.parseInt(cachePartida.getText());
+        int cc = Integer.parseInt(cacheChegada.getText());
+        BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), cp);
+        consolaMapa.setText(consolaMapa.getText() +  "TEMPO ENTRE CACHES: " + BSP.tempoTo(cc) + " MINUTOS\n");
+    }
+
+    public void handlerElevacao(ActionEvent actionEvent) {
+        //consolaMapa.setText(consolaMapa.getText() +  "ELEVACAO CACHE\n");
+        int cp = Integer.parseInt(cachePartida.getText());
+        int cc = Integer.parseInt(cacheChegada.getText());
+        BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), cp);
+        consolaMapa.setText(consolaMapa.getText() +  "ELEVACAO ENTRE CACHES: " + BSP.elevTo(cc) + "\n");
     }
 }
