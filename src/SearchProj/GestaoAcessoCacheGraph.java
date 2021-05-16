@@ -1,6 +1,8 @@
 package SearchProj;
 
 import Search.RedBlack_AED2;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Out;
 
 
 public class GestaoAcessoCacheGraph {
@@ -11,7 +13,6 @@ public class GestaoAcessoCacheGraph {
 
     //TransitiveClosure tc = new TransitiveClosure(grafo);
     //BellmanFordSP
-
 
     //GETTERS AND SETTERS
     public int getNumCache() {
@@ -30,7 +31,26 @@ public class GestaoAcessoCacheGraph {
         this.grafo = grafo;
     }
 
+    public void lerCaminhos(){
+        In infile = new In("data/caminhos.txt");
+        String line = null;
+        while ((line = infile.readLine())!=null){
+            String parts[] = line.split(";");
+            int v = Integer.parseInt(parts[0]);
+            int e = Integer.parseInt(parts[1]);
+            int w = Integer.parseInt(parts[2]);
+            int t = Integer.parseInt(parts[3]);
+            int d = Integer.parseInt(parts[4]);
+            int p = Integer.parseInt(parts[5]);
+            DirectedEdge_AED2 de = new DirectedEdge_AED2(v,e,w,t,d,p);
+            grafo.addEdge(de);
+        }
+    }
 
+    public void guardarCaminhos(){
+        Out outfile = new Out("data/caminhos.txt");
+        //funcao para guardar os edges
+    }
 
     /*
     public void adicionarCaminhos(int id , int[] edges){

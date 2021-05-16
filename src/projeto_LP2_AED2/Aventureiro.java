@@ -67,7 +67,6 @@ public abstract class Aventureiro {
             return this.listObjetos.get(0).getNome();
         if(numTb>0)
             return ""+this.listTravelBug.get(numTb-1).getIdObjeto();
-        System.out.println(numTb);
         return "empty";
     }
 

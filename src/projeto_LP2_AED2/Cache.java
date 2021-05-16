@@ -70,8 +70,8 @@ public class Cache {
     }
 
     public String getTipo(){
-        if(this instanceof BasicCache)return "BasicCache";
-        if(this instanceof PremiumCache)return "PremiumCache";
+        if(this instanceof BasicCache)return "Basic";
+        if(this instanceof PremiumCache)return "Premium";
         return "Default";
     }
 

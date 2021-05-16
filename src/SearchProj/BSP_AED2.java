@@ -2,22 +2,31 @@ package SearchProj;
 
 import edu.princeton.cs.algs4.*;
 
+import java.util.ArrayList;
+
 public class BSP_AED2 {
     // for floating-point precision issues
     private static final double EPSILON = 1E-14;
 
     private double[] distTo;               // distTo[v] = distance  of shortest s->v path
+    private double[] distTo2;
+    private double[] tempoTo;
+    private double[] elevTo;
     private DirectedEdge_AED2[] edgeTo;         // edgeTo[v] = last edge on shortest s->v path
     private boolean[] onQueue;             // onQueue[v] = is v currently on the queue?
     private Queue<Integer> queue;          // queue of vertices to relax
     private int cost;                      // number of calls to relax()
     private Iterable<DirectedEdge_AED2> cycle;  // negative cycle (or null if no such cycle)
-
+    ArrayList<Integer> path = new ArrayList<Integer>();
 
     public BSP_AED2(EdgeWeightedDiGraph_AED2 G, int s) {
         distTo  = new double[G.V()];
+        distTo2  = new double[G.V()];
+        tempoTo  = new double[G.V()];
+        elevTo  = new double[G.V()];
         edgeTo  = new DirectedEdge_AED2[G.V()];
         onQueue = new boolean[G.V()];
+        path.add(s);
         for (int v = 0; v < G.V(); v++)
             distTo[v] = Double.POSITIVE_INFINITY;
         distTo[s] = 0.0;
@@ -39,9 +48,14 @@ public class BSP_AED2 {
     private void relax(EdgeWeightedDiGraph_AED2 G, int v) {
         for (DirectedEdge_AED2 e : G.adj(v)) {
             int w = e.to();
+
             if (distTo[w] > distTo[v] + e.weight() + EPSILON) {
                 distTo[w] = distTo[v] + e.weight();
+                distTo2[w] = distTo2[v] + e.distancia();
+                tempoTo[w] = tempoTo[v] + e.tempo();
+                elevTo[w] = elevTo[v] + e.elevacao();
                 edgeTo[w] = (DirectedEdge_AED2) e;
+                int t = path.size();
                 if (!onQueue[w]) {
                     queue.enqueue(w);
                     onQueue[w] = true;
@@ -74,12 +88,39 @@ public class BSP_AED2 {
         cycle = finder.cycle();
     }
 
+    public ArrayList<Integer> p(int v){
+        path.add(v);
+        return path;
+    }
+
     public double distTo(int v) {
         validateVertex(v);
         if (hasNegativeCycle())
             throw new UnsupportedOperationException("Negative cost cycle exists");
         return distTo[v];
     }
+
+    public double distTo2(int v) {
+        validateVertex(v);
+        if (hasNegativeCycle())
+            throw new UnsupportedOperationException("Negative cost cycle exists");
+        return distTo2[v];
+    }
+
+    public double tempoTo(int v) {
+        validateVertex(v);
+        if (hasNegativeCycle())
+            throw new UnsupportedOperationException("Negative cost cycle exists");
+        return tempoTo[v];
+    }
+
+    public double elevTo(int v) {
+        validateVertex(v);
+        if (hasNegativeCycle())
+            throw new UnsupportedOperationException("Negative cost cycle exists");
+        return elevTo[v];
+    }
+
 
     public boolean hasPathTo(int v) {
         validateVertex(v);

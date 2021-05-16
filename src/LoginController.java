@@ -1,18 +1,25 @@
-import SearchProj.GeoDigraph;
-import SearchProj.GestaoAcessoCacheGraph;
+import SearchProj.*;
+import edu.princeton.cs.algs4.CC;
 import javafx.event.ActionEvent;
+import javafx.event.EventTarget;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import projeto_LP2_AED2.*;
+import javafx.scene.shape.VLineTo;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -66,6 +73,13 @@ public class LoginController implements Initializable {
     private ArrayList<TravelBug> TbArrayList;
 
     public Group graphGroup;
+    public Group temp;
+    int radius = 30;
+
+    GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
+    GestaoAcessoCache gc = new GestaoAcessoCache();
+    GestaoAcessoObjeto go = new GestaoAcessoObjeto();
+    GestaoAcessoCacheGraph gcg = new GestaoAcessoCacheGraph();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -173,40 +187,91 @@ public class LoginController implements Initializable {
         } catch (AventureiroNaoHabilitado aventureiroNaoHabilitado) {
             aventureiroNaoHabilitado.printStackTrace();
         }
-
-
-
     }
 
     public void creatGraphGroup(GestaoAcessoAventureiro ga, GestaoAcessoCacheGraph gcg, GestaoAcessoObjeto go){
-        int radius = 30;
         for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
-            Circle c = new Circle(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY(), radius);
-            c.setFill(Color.LIGHTBLUE);
+            criar_graph(i);
+        }
+        if(gcg.getGrafo().E() > 0){
+            for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
+                criar_direct_edge(k);
+            }
+        }
 
-            StackPane stack = new StackPane();
-            String txt = ""+gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY() + " " + gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX();
-            stack.setLayoutX(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX()-radius);
-            stack.setLayoutY(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY()-radius);
-            //stack.getChildren().addAll(c, new Text(gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao()));
-            stack.getChildren().addAll(c, new Text(txt));
-
-            graphGroup.getChildren().add(stack);
-            /*
-            if(gcg.getGrafo().E() > 0){
-                for(Integer adj: gcg.getGrafo().adj(i)){
-                    Line line = new Line(gcg.getGrafo().getVertexPosX(i), gc.getGrafo().getVertexPosY(i), gc.getGrafo().getVertexPosX(adj), gc.getGrafo().getVertexPosY(adj));
-                    graphGroup.getChildren().add(line);
+        graphGroup.addEventHandler(MouseEvent.MOUSE_RELEASED, evtScene -> {
+            EventTarget evtCircleTarget=evtScene.getTarget();
+            if(evtCircleTarget instanceof Circle){
+                int x = 1;
+                int id = 0;
+                double cX = ((Circle) evtCircleTarget).getCenterX();
+                double cY = ((Circle) evtCircleTarget).getCenterY();
+                while(x<=gc.getCaches().size()){
+                    if(gc.getCaches().get(x).getLocal().getCoordenadaX() == cX)
+                        if(gc.getCaches().get(x).getLocal().getCoordenadaY() == cY)
+                            id = gc.getCaches().get(x).getIdCache();
+                    x++;
                 }
-            }*/
+                id++;
+                Cache c1 = gc.getCaches().get(id);
+                String info = "  Id: "+c1.getId() + "\n  Local: " + c1.getLocal().getLocalizacao() + "\n  Criador: " + c1.getCriador() +
+                        "\n  Tipo: " + c1.getTipo() + "\n  Dific: " + c1.getDificuldade();
+                Circle r = new Circle(100, 100, radius+20);
+                r.setFill(Color.LIGHTBLUE);
+                StackPane stack2 = new StackPane();
+                stack2.setLayoutX(cX-50);
+                stack2.setLayoutY(cY-50);
+                stack2.getChildren().addAll(r, new Text(info));
+                System.out.println(info);
+                temp = graphGroup;
+                graphGroup.getChildren().add(stack2);
+            }
+            else{
+                graphGroup.getChildren().clear();
+                for (int j = 0; j < gcg.getGrafo().getNumCache(); j++) {
+                    criar_graph(j);
+                }
+                if(gcg.getGrafo().E() > 0){
+                    for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
+                        criar_direct_edge(k);
+                    }
+                }
+            }
+        });
+    }
+
+    public void criar_direct_edge(int k){
+        for(DirectedEdge_AED2 adj: gcg.getGrafo().adj(k)){
+            Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
+                    gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 10);
+            a.setFill(Color.DARKBLUE);
+            graphGroup.getChildren().add(a);
+
         }
     }
 
+    public void criar_graph(int i){
+        int radius = 30;
+        Circle c = new Circle(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY(), radius);
+        c.setFill(Color.LIGHTBLUE);
+        StackPane stack = new StackPane();
+        String tipo = "";
+        if(gcg.getGrafo().getCaches().get(i) instanceof PremiumCache)
+            tipo = "premium";
+        if(gcg.getGrafo().getCaches().get(i) instanceof BasicCache)
+            tipo = "basic";
+        String txt = ""+gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY() + " " + gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX();
+        stack.setLayoutX(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX()-radius);
+        stack.setLayoutY(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY()-radius);
+        //stack.getChildren().addAll(c, new Text(gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao()));
+        //stack.getChildren().addAll(c, new Text(txt));
+        stack.getChildren().addAll(c, new Text(tipo));
+
+        graphGroup.getChildren().add(stack);
+    }
+
     public void carregarFicheiro() throws AventureiroNaoHabilitado {
-        GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
-        GestaoAcessoCache gc = new GestaoAcessoCache();
-        GestaoAcessoObjeto go = new GestaoAcessoObjeto();
-        GestaoAcessoCacheGraph gcg = new GestaoAcessoCacheGraph();
+
         ga.lerAventureiros(); // mudar funcao de leitura e escrita para por o local
         go.lerObjeto();
         go.lerTb();
@@ -214,6 +279,7 @@ public class LoginController implements Initializable {
         go.lerTbHist(gc, ga);
         ga.lerAventureirosHist(gc, go);
         ga.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
+
         //AVENTUREIROS
         int x = 1;
         if(aventTables!=null)
@@ -264,6 +330,9 @@ public class LoginController implements Initializable {
             tbTables.getItems().addAll(TbArrayList);
         }
 
+        //teste de directedEdge
+        gcg.lerCaminhos();
+
         creatGraphGroup(ga, gcg, go);
 
     }
@@ -277,6 +346,69 @@ public class LoginController implements Initializable {
     }
 
     public void carregarAvent2(ActionEvent actionEvent) {
+
+    }
+
+    public static void main(String[] args) throws AventureiroNaoHabilitado {
+        GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
+        GestaoAcessoCache gc = new GestaoAcessoCache();
+        GestaoAcessoObjeto go = new GestaoAcessoObjeto();
+        GestaoAcessoCacheGraph gcg = new GestaoAcessoCacheGraph();
+
+        ga.lerAventureiros(); // mudar funcao de leitura e escrita para por o local
+        go.lerObjeto();
+        go.lerTb();
+        gc.lerCache(ga, go);
+        go.lerTbHist(gc, ga);
+        ga.lerAventureirosHist(gc, go);
+        ga.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
+        int x = 1;
+        if(ga.getAventureiros().size()>0){
+            gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
+            while(x<=gc.getCaches().size()){
+                gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
+                x++;
+            }
+        }
+        gcg.lerCaminhos();
+        int from = 0;
+        int to = 5;
+        BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), from);
+        DFS_AED2 dfs = new DFS_AED2(gcg.getGrafo(), from);//inutil pode nao ser inutil
+        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), from);
+        System.out.println();
+
+        System.out.println("\nTeste de DFS e BSP:");
+        if(BSP.hasPathTo(to)) {
+            System.out.println("O caminho entre o vertice: " + from + " e o vertice: " + to +":");
+            System.out.println("Peso: "+BSP.distTo(to));
+            System.out.println("Distancia: "+BSP.distTo2(to));
+            System.out.println("Tempo: "+BSP.tempoTo(to));
+            System.out.println("Elevacao: "+BSP.elevTo(to));
+            System.out.println("Se tem caminho: "+dfs.hasPathTo(to));
+            System.out.println("Caminho DFS: "+dfs.pathTo(to));
+            System.out.println("Caminho BFS: "+BFS.pathTo(to));
+        }
+        System.out.println("\nTodos os edges: ");
+        for (DirectedEdge_AED2 d: gcg.getGrafo().edges()){
+            System.out.print(d);
+        }
+
+        if(BSP.distTo(0) == Double.POSITIVE_INFINITY){
+            System.out.println("impossivel, nao ha caminho");
+        }else
+            System.out.println(BSP.distTo(0));
+
+        System.out.println();
+        System.out.println("o vertice 0 tem caminho ate: ");
+        for (int v = 0; v<gcg.getGrafo().V(); v++){
+            BSP = new BSP_AED2(gcg.getGrafo(), 0);
+            if(BSP.hasPathTo(v))
+                System.out.println(v+" ");
+        }
+
+        CC_AED2 c = new CC_AED2(gcg.getGrafo());
+        System.out.println(c.connected(0,9));
 
     }
 }

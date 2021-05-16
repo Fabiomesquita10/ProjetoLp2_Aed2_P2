@@ -1,2 +1,10 @@
-1 mosca
-2 ola2
+1 bola
+2 rato
+3 teclado
+4 fones
+5 bicicleta
+6 monitor
+7 computador
+8 telemovel
+9 tapete
+10 PS5
