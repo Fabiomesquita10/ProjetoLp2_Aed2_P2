@@ -1,9 +1,10 @@
 package projeto_LP2_AED2;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class Date {
+public class Date implements Serializable {
 
     /**
      * Contrutor da Date par o current Time

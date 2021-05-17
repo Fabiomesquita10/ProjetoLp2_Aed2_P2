@@ -27,9 +27,10 @@ package Search;
 
 import edu.princeton.cs.algs4.*;
 
+import java.io.Serializable;
 import java.util.NoSuchElementException;
 
-public class BST_AED2_2021<Key extends Comparable<Key>, Value> {
+public class BST_AED2_2021<Key extends Comparable<Key>, Value> implements Serializable {
     private Value Node;
     private Node root;             // root of BST
 
@@ -37,7 +38,7 @@ public class BST_AED2_2021<Key extends Comparable<Key>, Value> {
         this.root = root;
     }
 
-    public class Node {
+    public class Node implements Serializable{
         private String name;
         private Key key;           // sorted by key
         private Value val;         // associated data
