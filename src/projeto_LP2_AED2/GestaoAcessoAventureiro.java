@@ -2,7 +2,6 @@ package projeto_LP2_AED2;
 
 import Search.BST_AED2_2021;
 import Search.RedBlack_AED2;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 

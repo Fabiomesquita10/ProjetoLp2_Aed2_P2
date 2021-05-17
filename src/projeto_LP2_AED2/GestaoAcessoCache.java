@@ -379,8 +379,8 @@ public class GestaoAcessoCache implements GestaoCache, Serializable{
             }
         }
     }
-    /*
-    public void guardarAventBin(){
+
+    public void guardarCachesBin(){
         String filename = "data/cachesBin.bin";
 
         //ObjectOutputStream oos = null;
@@ -391,6 +391,19 @@ public class GestaoAcessoCache implements GestaoCache, Serializable{
             System.out.println(e);
         }
     }
-    
-     */
+
+
+    public void lerCachesBin(){
+        String filename = "data/cachesBin.bin";
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
+            GestaoAcessoCache c = (GestaoAcessoCache) ois.readObject();
+            this.caches = c.caches;
+            this.numCache = c.numCache;
+            this.data = c.data;
+
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+    }
 }
