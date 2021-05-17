@@ -32,8 +32,22 @@ public class Main {
         gc.lerCache(ga, go);
         go.lerTbHist(gc, ga);
         ga.lerAventureirosHist(gc, go);
+        System.out.println("==============================================================================");
+        System.out.println("antes de ler em binario");
+        System.out.println("==============================================================================");
+        ga.getAventureiros().printInOrder(ga.getAventureiros().getRoot());
+        go.getObjetos().printInOrder(go.getObjetos().getRoot());
 
         ga.guardarAventBin();
+        go.guardarObjBin();
+        ga.lerAventBin();
+        go.lerObjectBin();
+
+        System.out.println("==============================================================================");
+        System.out.println("depois de ler em binario");
+        System.out.println("==============================================================================");
+        ga.getAventureiros().printInOrder(ga.getAventureiros().getRoot());
+        go.getObjetos().printInOrder(go.getObjetos().getRoot());
     }
 
     public static void clientTeste1(GestaoAcessoAventureiro ga, GestaoAcessoCache gc, GestaoAcessoObjeto go) throws AventureiroNaoExisteException, CacheNaoExisteException, AventureiroNaoHabilitado {

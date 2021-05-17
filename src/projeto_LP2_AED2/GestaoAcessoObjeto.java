@@ -4,12 +4,13 @@ import Search.BST_AED2_2021;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 
+import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class GestaoAcessoObjeto implements GestaoObjetos{
+public class GestaoAcessoObjeto implements GestaoObjetos, Serializable{
     //FIELDS/CAMPOS
     private int numObjeto = 1;
     private int numTb = 1;
@@ -523,6 +524,28 @@ public class GestaoAcessoObjeto implements GestaoObjetos{
         for (TravelBug t : temp){
             int i =t.getNumCachesPres()-1;
             System.out.println("Id Tb: " + t.getIdObjeto() + ", numero localizacoes: " + i);
+        }
+    }
+
+    public void guardarObjBin(){
+        String filename = "data/ObjetosBin.bin";
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))){
+            oos.writeObject(this);
+        }catch (IOException e){
+            System.out.println(e);
+        }
+    }
+
+    public void lerObjectBin(){
+        String filename = "data/ObjetosBin.bin";
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))){
+            GestaoAcessoObjeto o = (GestaoAcessoObjeto) ois.readObject();
+            this.objetos = o.objetos;
+            this.travelBug = o.travelBug;
+            this.numTb = o.numTb;
+            this.numObjeto = o.numObjeto;
+        }catch (IOException | ClassNotFoundException e){
+            System.out.println(e);
         }
     }
 
