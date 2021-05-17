@@ -439,6 +439,55 @@ public class LoginController implements Initializable {
 
     public void handlerPesquisaCache(ActionEvent actionEvent) {
         consolaMapa.setText(consolaMapa.getText() +  "PESQUISA CACHE\n");
+        String tipo = "", regiao = "";
+        int dif = 0;
+        if(!tipoCache.getText().equals(""))
+            tipo = tipoCache.getText();
+        if(!regiaoCache.getText().equals(""))
+            regiao = regiaoCache.getText();
+        if(!difiCache.getText().equals(""))
+            dif = Integer.parseInt(difiCache.getText());
+        //consolaMapa.setText(consolaMapa.getText() + tipo + " " + regiao + " " + dif);
+
+        graphGroup.getChildren().clear();
+        if(gcg.getGrafo().E() > 0){
+            for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
+                if(tipo.equals("premium")) {
+                    if (gcg.getGrafo().getCaches().get(k) instanceof PremiumCache && gcg.getGrafo().getCaches().get(k).getDificuldade().equals(dif) && gcg.getGrafo().getCaches().get(k).getLocal().getLocalizacao().equals(regiao)) {
+                        for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
+                            if (gcg.getGrafo().getCaches().get(adj.to()) instanceof PremiumCache && gcg.getGrafo().getCaches().get(adj.to()).getDificuldade().equals(dif) && gcg.getGrafo().getCaches().get(adj.to()).getLocal().getLocalizacao().equals(regiao)) {
+                                Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
+                                        gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20);
+                                a.setFill(Color.DARKRED);
+                                graphGroup.getChildren().add(a);
+                            }
+                        }
+                    }
+                }
+                else if(tipo.equals("basic")) {
+                    if (gcg.getGrafo().getCaches().get(k) instanceof BasicCache && gcg.getGrafo().getCaches().get(k).getDificuldade().equals(dif) && gcg.getGrafo().getCaches().get(k).getLocal().getLocalizacao().equals(regiao)) {
+                        for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
+                            if (gcg.getGrafo().getCaches().get(adj.to()) instanceof BasicCache && gcg.getGrafo().getCaches().get(adj.to()).getDificuldade().equals(dif) && gcg.getGrafo().getCaches().get(adj.to()).getLocal().getLocalizacao().equals(regiao)) {
+                                Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
+                                        gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20);
+                                a.setFill(Color.DARKRED);
+                                graphGroup.getChildren().add(a);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
+            if(tipo.equals("premium")){
+                if(gcg.getGrafo().getCaches().get(i) instanceof PremiumCache && gcg.getGrafo().getCaches().get(i).getDificuldade().equals(dif) && gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao().equals(regiao))
+                    criar_graph(i);
+            }else if(tipo.equals("basic")){
+                if(gcg.getGrafo().getCaches().get(i) instanceof BasicCache && gcg.getGrafo().getCaches().get(i).getDificuldade().equals(dif) && gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao().equals(regiao))
+                    criar_graph(i);
+            }
+        }
+
     }
 
     public void handlerExisteCaminho(ActionEvent actionEvent) {
