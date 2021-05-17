@@ -1,5 +1,8 @@
 import SearchProj.*;
 import edu.princeton.cs.algs4.CC;
+import edu.princeton.cs.algs4.DijkstraSP;
+import edu.princeton.cs.algs4.Topological;
+import edu.princeton.cs.algs4.TopologicalX;
 import javafx.event.ActionEvent;
 import javafx.event.EventTarget;
 import javafx.fxml.Initializable;
@@ -407,22 +410,15 @@ public class LoginController implements Initializable {
         gcg.lerCaminhos();
         int from = 0;
         int to = 5;
-        BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), from);
+        //TopologicalX
+        BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), from);// forma de sacar os menores valores de peso, distancia, etc
         DFS_AED2 dfs = new DFS_AED2(gcg.getGrafo(), from);//inutil pode nao ser inutil
-        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), from);
+        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), from);// saca o caminho com menos vertices
+        DSP_AED2 DSPW = new DSP_AED2(gcg.getGrafo(), from, 0);// saca o caminho com menor custo
+        DSP_AED2 DSPD = new DSP_AED2(gcg.getGrafo(), from, 1);// saca o caminho com menor custo
+        DSP_AED2 DSPT = new DSP_AED2(gcg.getGrafo(), from, 2);// saca o caminho com menor custo
         System.out.println();
 
-        System.out.println("\nTeste de DFS e BSP:");
-        if(BSP.hasPathTo(to)) {
-            System.out.println("O caminho entre o vertice: " + from + " e o vertice: " + to +":");
-            System.out.println("Peso: "+BSP.distTo(to));
-            System.out.println("Distancia: "+BSP.distTo2(to));
-            System.out.println("Tempo: "+BSP.tempoTo(to));
-            System.out.println("Elevacao: "+BSP.elevTo(to));
-            System.out.println("Se tem caminho: "+dfs.hasPathTo(to));
-            System.out.println("Caminho DFS: "+dfs.pathTo(to));
-            System.out.println("Caminho BFS: "+BFS.pathTo(to));
-        }
         System.out.println("\nTodos os edges: ");
         for (DirectedEdge_AED2 d: gcg.getGrafo().edges()){
             System.out.print(d);
@@ -444,6 +440,52 @@ public class LoginController implements Initializable {
         CC_AED2 c = new CC_AED2(gcg.getGrafo());
         System.out.println(c.connected(0,9));
 
+        System.out.println("\nTeste de DFS e BSP:");
+        if(BSP.hasPathTo(to)) {
+            System.out.println("\nBSP: ");
+            System.out.println("O caminho entre o vertice: " + from + " e o vertice: " + to +":");
+            System.out.println("Peso: "+BSP.distTo(to));
+            System.out.println("Tempo: "+BSP.tempoTo(to));
+            System.out.println("Elevacao: "+BSP.elevTo(to));
+            System.out.println("\nDFS: ");
+            System.out.println("Se tem caminho: "+dfs.hasPathTo(to));
+            System.out.println("Caminho DFS: "+dfs.pathTo(to));
+            System.out.println("\nBFS: ");
+            System.out.println("Caminho BFS: "+BFS.pathTo(to));
+            System.out.println("\nDSP ve o caminho menor a partir do peso:");
+            System.out.println("Caminho: "+DSPW.pathTo(to));
+            System.out.println("Tem caminho: "+DSPW.hasPathTo(to));
+            System.out.println("Custo minima: "+DSPW.distTo(to));
+            System.out.println("\nDSP ve o caminho menor a partir da distancia:");
+            System.out.println("Caminho: "+DSPD.pathTo(to));
+            System.out.println("Tem caminho: "+DSPD.hasPathTo(to));
+            System.out.println("Distancia minima: "+DSPD.distTo(to));
+            System.out.println("\nDSPT ve o caminho menor a partir do tempo:");
+            System.out.println("Caminho: "+DSPT.pathTo(to).toString());
+            System.out.println("Tem caminho: "+DSPT.hasPathTo(to));
+            System.out.println("Tempo minima: "+DSPT.distTo(to));
+            String distancia = DSPT.pathTo(to).toString();
+            String parts[] = distancia.split("\n");
+            System.out.println("\n\n");
+            for (int j = 1; j<=Integer.parseInt(parts[0]); j++){
+                if(j==1){
+                    String parts2[] = parts[j].split(" ");
+                    String w = parts2[1];
+                    String d = parts2[3];
+                    String t = parts2[5];
+                    String e = parts2[7];
+                    System.out.println("w= " +w+" d= "+d+" t= "+t+" e= "+e);
+                }else{
+                    String parts2[] = parts[j].split(" ");
+                    String w = parts2[2];
+                    String d = parts2[4];
+                    String t = parts2[6];
+                    String e = parts2[8];
+                    System.out.println("w= " +w+" d= "+d+" t= "+t+" e= "+e);
+                }
+            }
+
+        }
     }
 
     public void handlerPesquisaCache(ActionEvent actionEvent) {
