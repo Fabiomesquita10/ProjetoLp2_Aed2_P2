@@ -4,9 +4,9 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 
 import java.io.Serializable;
-import java.util.List;
 
-public class Objeto implements Serializable {
+
+public class Objeto implements Serializable{
 
   //FIELDS/CAMPOS
   private boolean viajar;

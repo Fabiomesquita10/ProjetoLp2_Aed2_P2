@@ -37,17 +37,28 @@ public class Main {
         System.out.println("==============================================================================");
         ga.getAventureiros().printInOrder(ga.getAventureiros().getRoot());
         go.getObjetos().printInOrder(go.getObjetos().getRoot());
+        go.getTravelBug().printInOrder(go.getTravelBug().getRoot());
+        gc.getCaches().printInOrder(gc.getCaches().getRoot());
+
+        GestaoAcessoAventureiro ga2 = new GestaoAcessoAventureiro();
+        GestaoAcessoObjeto go2 = new GestaoAcessoObjeto();
+        GestaoAcessoCache gc2 =  new GestaoAcessoCache();
 
         ga.guardarAventBin();
         go.guardarObjBin();
-        ga.lerAventBin();
-        go.lerObjectBin();
+        gc.guardarCachesBin();
+        ga2.lerAventBin();
+        go2.lerObjectBin();
+        gc2.lerCachesBin();
+
 
         System.out.println("==============================================================================");
         System.out.println("depois de ler em binario");
         System.out.println("==============================================================================");
-        ga.getAventureiros().printInOrder(ga.getAventureiros().getRoot());
-        go.getObjetos().printInOrder(go.getObjetos().getRoot());
+        ga2.getAventureiros().printInOrder(ga2.getAventureiros().getRoot());
+        go2.getObjetos().printInOrder(go2.getObjetos().getRoot());
+        go2.getTravelBug().printInOrder(go2.getTravelBug().getRoot());
+        gc2.getCaches().printInOrder(gc2.getCaches().getRoot());
     }
 
     public static void clientTeste1(GestaoAcessoAventureiro ga, GestaoAcessoCache gc, GestaoAcessoObjeto go) throws AventureiroNaoExisteException, CacheNaoExisteException, AventureiroNaoHabilitado {
