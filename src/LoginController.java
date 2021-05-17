@@ -256,15 +256,15 @@ public class LoginController implements Initializable {
                 graphGroup.getChildren().add(stack2);
             }else if(evtCircleTarget instanceof Arrow){
                 System.out.println("seta fodida");
-                if(((Arrow) evtCircleTarget).getFill() == Color.WHITESMOKE){
+                if(((Arrow) evtCircleTarget).getFill() == Color.WHITESMOKE)
                     ((Arrow) evtCircleTarget).setFill(Color.DARKRED);
+                else{
                     String infoArrow = "Info da seta selecionada: \n" + "Peso: " + ((Arrow) evtCircleTarget).getW() +
                             "\nDistancia: " + ((Arrow) evtCircleTarget).getD() + "\nTempo: " + ((Arrow) evtCircleTarget).getT() +
                             "\nElevacao: " + ((Arrow) evtCircleTarget).getE();
                     consolaMapa.setText(consolaMapa.getText() + "\n" + infoArrow);
-                }
-                else
                     ((Arrow) evtCircleTarget).setFill(Color.WHITESMOKE);
+                }
             }
             else{
                 graphGroup.getChildren().clear();
