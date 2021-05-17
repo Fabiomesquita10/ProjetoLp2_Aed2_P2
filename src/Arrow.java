@@ -9,9 +9,49 @@ import javafx.scene.shape.Path;
  */
 public class Arrow extends Path{
     private static final double defaultArrowHeadSize = 5.0;
+    private int w;
+    private int d;
+    private int t;
+    private int e;
 
-    public Arrow(double startX, double startY, double endX, double endY, double arrowHeadSize){
+    public int getW() {
+        return w;
+    }
+
+    public void setW(int w) {
+        this.w = w;
+    }
+
+    public int getD() {
+        return d;
+    }
+
+    public void setD(int d) {
+        this.d = d;
+    }
+
+    public int getT() {
+        return t;
+    }
+
+    public void setT(int t) {
+        this.t = t;
+    }
+
+    public int getE() {
+        return e;
+    }
+
+    public void setE(int e) {
+        this.e = e;
+    }
+
+    public Arrow(double startX, double startY, double endX, double endY, double arrowHeadSize, int w1, int d1, int t1, int e1){
         super();
+        w = w1;
+        d = d1;
+        t = t1;
+        e = e1;
         strokeProperty().bind(fillProperty());
         setFill(Color.BLACK);
 
@@ -35,7 +75,7 @@ public class Arrow extends Path{
         getElements().add(new LineTo(endX, endY));
     }
 
-    public Arrow(double startX, double startY, double endX, double endY){
-        this(startX, startY, endX, endY, defaultArrowHeadSize);
+    public Arrow(double startX, double startY, double endX, double endY, int w1, int d1, int t1, int e1){
+        this(startX, startY, endX, endY, defaultArrowHeadSize, w1, d1, t1, e1);
     }
 }
