@@ -36,12 +36,16 @@ public class Main extends Application {
         GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
         GestaoAcessoCache gc = new GestaoAcessoCache();
         GestaoAcessoObjeto go = new GestaoAcessoObjeto();
+        /*
         ga.lerAventureiros(); // mudar funcao de leitura e escrita para por o local
         go.lerObjeto();
         go.lerTb();
         gc.lerCache(ga, go);
         go.lerTbHist(gc, ga);
-        ga.lerAventureirosHist(gc, go);
+        ga.lerAventureirosHist(gc, go);*/
+        ga.lerAventBin();
+        go.lerObjectBin();
+        gc.lerCachesBin();
         ga.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
     }
 
