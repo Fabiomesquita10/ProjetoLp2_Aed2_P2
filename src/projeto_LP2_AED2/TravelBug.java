@@ -4,10 +4,11 @@ import Search.BST_AED2_2021;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class TravelBug extends Objeto {
+public class TravelBug extends Objeto implements Serializable {
     //FIELDS/CAMPOS
     private boolean viajar;
     public String missao;

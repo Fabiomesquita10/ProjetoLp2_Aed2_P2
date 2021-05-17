@@ -3,9 +3,10 @@ package projeto_LP2_AED2;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Objeto{
+public class Objeto implements Serializable {
 
   //FIELDS/CAMPOS
   private boolean viajar;
