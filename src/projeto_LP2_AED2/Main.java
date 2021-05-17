@@ -21,8 +21,21 @@ public class Main {
         //clientTeste10(ga, gc, go);
         //clientTeste11(ga, gc, go);
         //clientTeste12(ga, gc, go);
-        clientTeste13(ga, gc, go, 1);
+        //clientTeste13(ga, gc, go, 1);
+        clientTeste14(ga, gc, go);
     }
+
+    private static void clientTeste14(GestaoAcessoAventureiro ga, GestaoAcessoCache gc, GestaoAcessoObjeto go) throws AventureiroNaoHabilitado {
+        ga.lerAventureiros();
+        go.lerObjeto();
+        go.lerTb();
+        gc.lerCache(ga, go);
+        go.lerTbHist(gc, ga);
+        ga.lerAventureirosHist(gc, go);
+
+        ga.guardarAventBin();
+    }
+
     public static void clientTeste1(GestaoAcessoAventureiro ga, GestaoAcessoCache gc, GestaoAcessoObjeto go) throws AventureiroNaoExisteException, CacheNaoExisteException, AventureiroNaoHabilitado {
 
         Premium a1 = new Premium("jonas", 1, 2, "asdasd");

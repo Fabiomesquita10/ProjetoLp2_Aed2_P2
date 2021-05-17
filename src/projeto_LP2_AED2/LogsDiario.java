@@ -2,7 +2,9 @@ package projeto_LP2_AED2;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 
-public class LogsDiario implements GestaoLogs {
+import java.io.Serializable;
+
+public class LogsDiario implements GestaoLogs, Serializable {
 
     //FIELDS/CAMPOS
     public String mensagem;

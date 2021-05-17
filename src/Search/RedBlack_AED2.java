@@ -30,6 +30,7 @@
 package Search;
 import edu.princeton.cs.algs4.*;
 
+import java.io.Serializable;
 import java.util.NoSuchElementException;
 
 /**
@@ -77,7 +78,7 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 
-public class RedBlack_AED2<Key extends Comparable<Key>, Value> {
+public class RedBlack_AED2<Key extends Comparable<Key>, Value> implements Serializable {
 
     private static final boolean RED   = true;
     private static final boolean BLACK = false;
@@ -85,7 +86,7 @@ public class RedBlack_AED2<Key extends Comparable<Key>, Value> {
     private Node root;     // root of the BST
 
     // BST helper node data type
-    private class Node {
+    private class Node implements Serializable {
         private Key key;           // key
         private Value val;         // associated data
         private Node left, right;  // links to left and right subtrees

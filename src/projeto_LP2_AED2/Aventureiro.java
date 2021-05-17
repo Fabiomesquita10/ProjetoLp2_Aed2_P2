@@ -2,7 +2,9 @@ package projeto_LP2_AED2;
 
 import Search.BST_AED2_2021;
 
-public abstract class Aventureiro {
+import java.io.Serializable;
+
+public abstract class Aventureiro implements Serializable {
 
     //FIELDS/CAMPOS
     private Integer idAventureiro;
