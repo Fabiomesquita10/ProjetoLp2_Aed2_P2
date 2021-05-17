@@ -6,12 +6,16 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.StdOut;
 
+import java.awt.*;
+import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-public class GestaoAcessoCache implements GestaoCache{
+public class GestaoAcessoCache implements GestaoCache, Serializable{
 
     //FIELDS/CAMPOS
     private RedBlack_AED2<Integer, Cache> caches = new RedBlack_AED2<>(); //RedBlack de caches
@@ -375,4 +379,18 @@ public class GestaoAcessoCache implements GestaoCache{
             }
         }
     }
+    /*
+    public void guardarAventBin(){
+        String filename = "data/cachesBin.bin";
+
+        //ObjectOutputStream oos = null;
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+            oos.writeObject(this);
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+    
+     */
 }

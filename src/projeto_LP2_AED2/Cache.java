@@ -3,7 +3,9 @@ package projeto_LP2_AED2;
 import Search.BST_AED2_2021;
 import edu.princeton.cs.algs4.BST;
 
-public class Cache {
+import java.io.Serializable;
+
+public class Cache implements Serializable {
     //FIELDS/CAMPOS
     public Integer idCache;
     private Integer dificuldade;
