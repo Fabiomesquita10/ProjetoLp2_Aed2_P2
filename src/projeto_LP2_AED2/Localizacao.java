@@ -1,6 +1,8 @@
 package projeto_LP2_AED2;
 
-public class Localizacao {
+import java.io.Serializable;
+
+public class Localizacao implements Serializable {
     //FIELDS/CAMPOS
     private Integer coordenadaX;
     private Integer coordenadaY;
