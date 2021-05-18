@@ -86,7 +86,6 @@ public class LoginController implements Initializable {
     GestaoAcessoObjeto go = new GestaoAcessoObjeto();
     GestaoAcessoCacheGraph gcg = new GestaoAcessoCacheGraph();
 
-
     //HANDLERS PESQUISAS GRAFOS
 
     public TextField tipoCache;
@@ -401,7 +400,7 @@ public class LoginController implements Initializable {
     }
 
     public void handlerPesquisaCache(ActionEvent actionEvent) throws InterruptedException {
-        consolaMapa.setText(consolaMapa.getText() +  "PESQUISA CACHE\n");
+        //consolaMapa.setText(consolaMapa.getText() +  "PESQUISA CACHE\n");
         String tipo = "", regiao = "";
         int dif = 0, idTb = 0;
         if(!tipoCache.getText().equals(""))
@@ -562,17 +561,16 @@ public class LoginController implements Initializable {
                 graphGroup.getChildren().clear();
                 if(gcg.getGrafo().E() > 0){
                     for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
-                        if (contain(go.getTravelBug(), idTb, gcg.getGrafo(), k)) {
-                            System.out.println("id: "+gcg.getGrafo().getCaches().get(k).getIdCache());
+                        if (contain(go.getTravelBug(), idTb, k)) {
                             for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
-                                if (go.getTravelBug().get(idTb).getListaCachesPresente().contains(gcg.getGrafo().getCaches().get(adj.to()).getIdCache())) {
+                                if (contain(go.getTravelBug(), idTb, adj.to())) {
                                     int w = (int)adj.weight();
                                     int d = adj.distancia();
                                     int t = adj.tempo();
                                     int e = adj.elevacao();
                                     Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
                                             gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20,w,d,t,e);
-                                    a.setFill(Color.PINK);
+                                    a.setFill(Color.PURPLE);
                                     graphGroup.getChildren().add(a);
                                 }
                             }
@@ -580,7 +578,9 @@ public class LoginController implements Initializable {
                     }
                 }
                 for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
-                    if(contain(go.getTravelBug(), idTb, gcg.getGrafo(), i))
+                    System.out.println(gcg.getGrafo().getCaches().get(i).getIdCache());
+                    int id = gcg.getGrafo().getCaches().get(i).getIdCache();
+                    if(contain(go.getTravelBug(), idTb, id))
                         criar_graph(i);
                 }
             }
@@ -588,18 +588,14 @@ public class LoginController implements Initializable {
 
     }
 
-    public boolean contain(BST_AED2_2021<Integer, TravelBug> t, int id, GeoDigraph gcg ,int k){
+    public boolean contain(BST_AED2_2021<Integer, TravelBug> t, int id, int k){
         int x = 1, count = 0;
         while(t.get(id).getListaCachesPresente().size()>=x){
-            if(t.get(id).getListaCachesPresente().size()>0){
-                if(t.get(id).getListaCachesPresente().get(x).getIdCache().equals(gcg.getCaches().get(k).getIdCache()))
-                    count++;
-            }
+            if(t.get(id).getListaCachesPresente().get(x).getIdCache() ==  k)
+                count++;
             x++;
         }
-        if(count!=0)
-            return true;
-        return false;
+        return count != 0;
     }
 
     public void handlerExisteCaminho(ActionEvent actionEvent) {
@@ -669,42 +665,42 @@ public class LoginController implements Initializable {
     }
 
     public static String formatarString(String s, int x){
-        String parts[] = s.split("\n");
-        String f = "";
+        String[] parts = s.split("\n");
+        StringBuilder f = new StringBuilder();
         int p1 = 0;
         int valorFinal = 0;
         System.out.println("\n\n");
         for (int j = 1; j<=Integer.parseInt(parts[0]); j++){
             if(j==1){
-                String parts2[] = parts[j].split(" ");
+                String[] parts2 = parts[j].split(" ");
                 String p = parts2[x];
                 p = p.substring(0, p.length()-1);
                 p1 = Integer.parseInt(p);
                 valorFinal+=p1;
-                f = f +parts2[0] + ", ";
+                f.append(parts2[0]).append(", ");
             }else{
-                String parts2[] = parts[j].split(" ");
+                String[] parts2 = parts[j].split(" ");
                 String p = parts2[x+1];
                 p = p.substring(0, p.length()-1);
                 p1 = Integer.parseInt(p);
                 valorFinal+=p1;
-                f = f + parts2[1] + ", ";
+                f.append(parts2[1]).append(", ");
             }
         }
         if(x == 1){
-            f = f.substring(0, f.length()-2);
-            f = f + "\nPeso: " + valorFinal;
+            f = new StringBuilder(f.substring(0, f.length() - 2));
+            f.append("\nPeso: ").append(valorFinal);
         }else if(x == 3){
-            f = f.substring(0, f.length()-2);
-            f = f + "\nDistancia: " + valorFinal;
+            f = new StringBuilder(f.substring(0, f.length() - 2));
+            f.append("\nDistancia: ").append(valorFinal);
         }else if(x == 5){
-            f = f.substring(0, f.length()-2);
-            f = f + "\nTempo: " + valorFinal;
+            f = new StringBuilder(f.substring(0, f.length() - 2));
+            f.append("\nTempo: ").append(valorFinal);
         }else if(x == 7){
-            f = f.substring(0, f.length()-2);
-            f = f + "\nElevacao: " + valorFinal;
+            f = new StringBuilder(f.substring(0, f.length() - 2));
+            f.append("\nElevacao: ").append(valorFinal);
         }
-        return f;
+        return f.toString();
     }
 
     public void handlerPeso(ActionEvent actionEvent) {
