@@ -177,6 +177,28 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
         }else
             System.out.println(BSP.distTo(0));
     }
+
+    public int[][] graphToMatrix(){
+        int[][] matrix = new int[this.V()-1][this.V()-1];
+        for (int i = 0; i < this.V(); i++) {
+            for (DirectedEdge_AED2 adj : adj(i)){
+                System.out.println(i + "->" + adj.to());
+                matrix[i][adj.to()] = adj.distancia();
+            }
+        }
+        printMatrix(matrix);
+        return matrix;
+    }
+
+    public void printMatrix(int[][]matrix){
+        for (int i = 0; i < matrix.length; i++) {
+            System.out.print("|");
+            for (int j = 0; j < matrix.length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println("|");
+        }
+    }
 }
 
 

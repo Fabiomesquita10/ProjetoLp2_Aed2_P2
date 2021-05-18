@@ -10,13 +10,14 @@ public class DirectedEdge_AED2 extends DirectedEdge {
     private final int elevacao;
 
 
+
+
     public DirectedEdge_AED2(int v, int w, double weight, int t, int d, int e) {
         super(v, w, weight);
         this.tempo = t;
         this.distancia = d;
         this.elevacao = e;
     }
-
 
     public int distancia(){return  distancia;}
     public int elevacao(){return  elevacao;}

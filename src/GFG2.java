@@ -42,7 +42,6 @@ class GFG2{
             min_path = Math.min(min_path, current_pathweight);
 
         } while (findNextPermutation(vertex));
-        System.out.println(paths);
         return min_path;
     }
 

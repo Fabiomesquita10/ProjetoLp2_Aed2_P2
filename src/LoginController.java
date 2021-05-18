@@ -750,13 +750,21 @@ public class LoginController implements Initializable {
         GestaoAcessoObjeto go = new GestaoAcessoObjeto();
         GestaoAcessoCacheGraph gcg = new GestaoAcessoCacheGraph();
 
-        ga.lerAventureiros(); // mudar funcao de leitura e escrita para por o local
-        go.lerObjeto();
-        go.lerTb();
-        gc.lerCache(ga, go);
-        go.lerTbHist(gc, ga);
-        ga.lerAventureirosHist(gc, go);
+        ga.lerAventBin();
+        go.lerObjectBin();
+        gc.lerCachesBin();
         ga.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
+        int x = 1;
+        if(gc.getCaches().size()>0){
+            gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
+            while(x<=gc.getCaches().size()){
+                gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
+                x++;
+            }
+        }
+        gcg.lerCaminhos();
+        /**
+         * parte1
         int x = 1;
         if(ga.getAventureiros().size()>0){
             gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
@@ -826,7 +834,24 @@ public class LoginController implements Initializable {
             String ola = LoginController.formatarString(DSPD.pathTo(to), 3);
             System.out.println(ola);
 
+        }*/
+        GFG gfg = new GFG();
+        int[][] matrix = gcg.getGrafo().graphToMatrix();
+        for (int i = 0; i < matrix.length; i++) {
+            System.out.print("|");
+            for (int j = 0; j < matrix.length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println("|");
         }
+        boolean[] v = new boolean[gcg.getGrafo().V()-1];
+        v[0] = true;
+        int dist = 120;
+        int ans = Integer.MAX_VALUE;
+        //ans = gfg.tsp(matrix, v, 0, gcg.getGrafo().V()-1, 1, 0, ans, dist);
+        String ola = gfg.retStrin(matrix, v, 0, gcg.getGrafo().V()-1, 1, 0, ans, dist);
+        System.out.println(ola);
+        //System.out.println(ans);
     }
 
 }
