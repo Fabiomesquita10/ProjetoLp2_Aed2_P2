@@ -1,3 +1,4 @@
+import Search.BST_AED2_2021;
 import SearchProj.*;
 import edu.princeton.cs.algs4.CC;
 import edu.princeton.cs.algs4.DijkstraSP;
@@ -26,6 +27,7 @@ import projeto_LP2_AED2.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class LoginController implements Initializable {
 
@@ -90,11 +92,12 @@ public class LoginController implements Initializable {
     public TextField tipoCache;
     public TextField difiCache;
     public TextField regiaoCache;
+    public TextField PercTb;
     public TextField cachePartida;
     public TextField cacheChegada;
     public TextArea consolaMapa;
 
-
+    private String tipoPesquisa;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -330,6 +333,8 @@ public class LoginController implements Initializable {
         gc.lerCachesBin();
         ga.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
 
+
+
         //AVENTUREIROS
         int x = 1;
         if(aventTables!=null)
@@ -395,16 +400,18 @@ public class LoginController implements Initializable {
 
     }
 
-    public void handlerPesquisaCache(ActionEvent actionEvent) {
+    public void handlerPesquisaCache(ActionEvent actionEvent) throws InterruptedException {
         consolaMapa.setText(consolaMapa.getText() +  "PESQUISA CACHE\n");
         String tipo = "", regiao = "";
-        int dif = 0;
+        int dif = 0, idTb = 0;
         if(!tipoCache.getText().equals(""))
             tipo = tipoCache.getText();
         if(!regiaoCache.getText().equals(""))
             regiao = regiaoCache.getText();
         if(!difiCache.getText().equals(""))
             dif = Integer.parseInt(difiCache.getText());
+        if(!PercTb.getText().equals(""))
+            idTb = Integer.parseInt(PercTb.getText());
         //consolaMapa.setText(consolaMapa.getText() + tipo + " " + regiao + " " + dif);
 
         if(!tipo.equals("") && !regiao.equals("") && dif!=0){
@@ -550,8 +557,49 @@ public class LoginController implements Initializable {
                 if(gcg.getGrafo().getCaches().get(i).getDificuldade() == dif)
                     criar_graph(i);
             }
+        }else if(idTb != 0){
+            if(go.getTravelBug().contains(idTb)){
+                graphGroup.getChildren().clear();
+                if(gcg.getGrafo().E() > 0){
+                    for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
+                        if (contain(go.getTravelBug(), idTb, gcg.getGrafo(), k)) {
+                            System.out.println("id: "+gcg.getGrafo().getCaches().get(k).getIdCache());
+                            for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
+                                if (go.getTravelBug().get(idTb).getListaCachesPresente().contains(gcg.getGrafo().getCaches().get(adj.to()).getIdCache())) {
+                                    int w = (int)adj.weight();
+                                    int d = adj.distancia();
+                                    int t = adj.tempo();
+                                    int e = adj.elevacao();
+                                    Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
+                                            gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20,w,d,t,e);
+                                    a.setFill(Color.PINK);
+                                    graphGroup.getChildren().add(a);
+                                }
+                            }
+                        }
+                    }
+                }
+                for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
+                    if(contain(go.getTravelBug(), idTb, gcg.getGrafo(), i))
+                        criar_graph(i);
+                }
+            }
         }
 
+    }
+
+    public boolean contain(BST_AED2_2021<Integer, TravelBug> t, int id, GeoDigraph gcg ,int k){
+        int x = 1, count = 0;
+        while(t.get(id).getListaCachesPresente().size()>=x){
+            if(t.get(id).getListaCachesPresente().size()>0){
+                if(t.get(id).getListaCachesPresente().get(x).getIdCache().equals(gcg.getCaches().get(k).getIdCache()))
+                    count++;
+            }
+            x++;
+        }
+        if(count!=0)
+            return true;
+        return false;
     }
 
     public void handlerExisteCaminho(ActionEvent actionEvent) {
@@ -568,45 +616,132 @@ public class LoginController implements Initializable {
 
     public void handlerDistancia(ActionEvent actionEvent) {
         //consolaMapa.setText(consolaMapa.getText() +  "DISTANCIA CACHE\n");
+        /*
         int cp = Integer.parseInt(cachePartida.getText());
         int cc = Integer.parseInt(cacheChegada.getText());
         BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), cp);
         consolaMapa.setText(consolaMapa.getText() +  "DISTANCIA ENTRE CACHES: " + BSP.distTo2(cc) + " METROS\n");
+        */
+        tipoPesquisa = "distancia";
+        consolaMapa.setText(consolaMapa.getText() +  "PARAMETRO DE PESQUISA: DISTANCIA");
+
     }
 
     public void handlerCachesPerc(ActionEvent actionEvent) {
         //consolaMapa.setText(consolaMapa.getText() +  "CACHES A PERCORRER\n");
+
         int cp = Integer.parseInt(cachePartida.getText());
         int cc = Integer.parseInt(cacheChegada.getText());
         BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), cp);
+
+        /*
         if(BFS.pathTo(cc)!=null)
             consolaMapa.setText(consolaMapa.getText() +  "CAMINHO A PERCORRER: " + BFS.pathTo(cc) + "\n");
         else
             consolaMapa.setText(consolaMapa.getText() +  "NAO HA CAMINHO ENTRE A CACHE " + cp + " E " + cc);
+        */
+        switch (tipoPesquisa){
+            case "distancia":
+                DSP_AED2 DSPD = new DSP_AED2(gcg.getGrafo(), cp, 1);// saca o caminho com menor custo
+                if(DSPD.hasPathTo(cc)){
+                    String s = formatarString(DSPD.pathTo(cc), 3);
+                    System.out.println(s);
+                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + s + "\n");
+                }
+                break;
+            case "tempo":
+                DSP_AED2 DSPT = new DSP_AED2(gcg.getGrafo(), cp, 2);// saca o caminho com menor custo
+                if(DSPT.hasPathTo(cc)){
+                    System.out.println(DSPT.pathTo(cc));
+                    String s = formatarString(DSPT.pathTo(cc), 5);
+                    System.out.println(s);
+                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + s + "\n");
+                }
+                break;
+            case "peso":
+                // fazer de outra maneira porque pode ter valores negativos
+                break;
+            case "elevacao":
+                // igual ao de cima
+                break;
+        }
+
+    }
+
+    public static String formatarString(String s, int x){
+        String parts[] = s.split("\n");
+        String f = "";
+        int p1 = 0;
+        int valorFinal = 0;
+        System.out.println("\n\n");
+        for (int j = 1; j<=Integer.parseInt(parts[0]); j++){
+            if(j==1){
+                String parts2[] = parts[j].split(" ");
+                String p = parts2[x];
+                p = p.substring(0, p.length()-1);
+                p1 = Integer.parseInt(p);
+                valorFinal+=p1;
+                f = f +parts2[0] + ", ";
+            }else{
+                String parts2[] = parts[j].split(" ");
+                String p = parts2[x+1];
+                p = p.substring(0, p.length()-1);
+                p1 = Integer.parseInt(p);
+                valorFinal+=p1;
+                f = f + parts2[1] + ", ";
+            }
+        }
+        if(x == 1){
+            f = f.substring(0, f.length()-2);
+            f = f + "\nPeso: " + valorFinal;
+        }else if(x == 3){
+            f = f.substring(0, f.length()-2);
+            f = f + "\nDistancia: " + valorFinal;
+        }else if(x == 5){
+            f = f.substring(0, f.length()-2);
+            f = f + "\nTempo: " + valorFinal;
+        }else if(x == 7){
+            f = f.substring(0, f.length()-2);
+            f = f + "\nElevacao: " + valorFinal;
+        }
+        return f;
     }
 
     public void handlerPeso(ActionEvent actionEvent) {
         //consolaMapa.setText(consolaMapa.getText() +  "PESO CACHE\n");
+        /*
         int cp = Integer.parseInt(cachePartida.getText());
         int cc = Integer.parseInt(cacheChegada.getText());
         BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), cp);
         consolaMapa.setText(consolaMapa.getText() +  "PESO ENTRE CACHES: " + BSP.distTo(cc) + "\n");
+        */
+        tipoPesquisa = "peso";
+        consolaMapa.setText(consolaMapa.getText() +  "PARAMETRO DE PESQUISA: PESO");
     }
 
     public void handlerTempo(ActionEvent actionEvent) {
         //consolaMapa.setText(consolaMapa.getText() +  "TEMPO CACHE\n");
+        /*
         int cp = Integer.parseInt(cachePartida.getText());
         int cc = Integer.parseInt(cacheChegada.getText());
         BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), cp);
         consolaMapa.setText(consolaMapa.getText() +  "TEMPO ENTRE CACHES: " + BSP.tempoTo(cc) + " MINUTOS\n");
+        */
+        tipoPesquisa = "tempo";
+        consolaMapa.setText(consolaMapa.getText() +  "PARAMETRO DE PESQUISA: TEMPO");
     }
 
     public void handlerElevacao(ActionEvent actionEvent) {
         //consolaMapa.setText(consolaMapa.getText() +  "ELEVACAO CACHE\n");
+        /*
         int cp = Integer.parseInt(cachePartida.getText());
         int cc = Integer.parseInt(cacheChegada.getText());
         BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), cp);
         consolaMapa.setText(consolaMapa.getText() +  "ELEVACAO ENTRE CACHES: " + BSP.elevTo(cc) + "\n");
+        */
+        tipoPesquisa = "elevacao";
+        consolaMapa.setText(consolaMapa.getText() +  "PARAMETRO DE PESQUISA: ELEVACAO");
+
     }
 
     public void handlerApagarConsola(ActionEvent actionEvent) {
@@ -644,6 +779,7 @@ public class LoginController implements Initializable {
         DSP_AED2 DSPW = new DSP_AED2(gcg.getGrafo(), from, 0);// saca o caminho com menor custo
         DSP_AED2 DSPD = new DSP_AED2(gcg.getGrafo(), from, 1);// saca o caminho com menor custo
         DSP_AED2 DSPT = new DSP_AED2(gcg.getGrafo(), from, 2);// saca o caminho com menor custo
+
         System.out.println();
 
         System.out.println("\nTodos os edges: ");
@@ -691,29 +827,10 @@ public class LoginController implements Initializable {
             System.out.println("Caminho: "+DSPT.pathTo(to).toString());
             System.out.println("Tem caminho: "+DSPT.hasPathTo(to));
             System.out.println("Tempo minima: "+DSPT.distTo(to));
-            String distancia = DSPT.pathTo(to).toString();
-            String parts[] = distancia.split("\n");
-            System.out.println("\n\n");
-            for (int j = 1; j<=Integer.parseInt(parts[0]); j++){
-                if(j==1){
-                    String parts2[] = parts[j].split(" ");
-                    String w = parts2[1];
-                    String d = parts2[3];
-                    String t = parts2[5];
-                    String e = parts2[7];
-                    System.out.println("w= " +w+" d= "+d+" t= "+t+" e= "+e);
-                }else{
-                    String parts2[] = parts[j].split(" ");
-                    String w = parts2[2];
-                    String d = parts2[4];
-                    String t = parts2[6];
-                    String e = parts2[8];
-                    System.out.println("w= " +w+" d= "+d+" t= "+t+" e= "+e);
-                }
-            }
+            String ola = LoginController.formatarString(DSPD.pathTo(to), 3);
+            System.out.println(ola);
 
         }
     }
-
 
 }

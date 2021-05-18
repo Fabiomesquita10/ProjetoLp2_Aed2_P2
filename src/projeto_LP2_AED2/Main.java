@@ -20,9 +20,9 @@ public class Main {
         //clientTeste9(ga, gc, go);
         //clientTeste10(ga, gc, go);
         //clientTeste11(ga, gc, go);
-        //clientTeste12(ga, gc, go);
+        clientTeste12(ga, gc, go);
         //clientTeste13(ga, gc, go, 1);
-        clientTeste14(ga, gc, go);
+        //clientTeste14(ga, gc, go);
     }
 
     private static void clientTeste14(GestaoAcessoAventureiro ga, GestaoAcessoCache gc, GestaoAcessoObjeto go) throws AventureiroNaoHabilitado {
@@ -576,16 +576,16 @@ public class Main {
         a6.getListTravelBug().get(0).setNumAventureiros(a6.getListTravelBug().get(0).getNumAventureiros()+1);
 
         a1.encontrouCache(c7, mac, new Date(20, 12, 2020));
-        a1.encontrouCache(c9, pao, new Date(23,1,2021));
-        a1.encontrouCache(c6, teste, new Date(24, 1, 2021));
-        a1.encontrouCache(c9, tele, new Date(25, 1 , 2021));
+        a1.encontrouCache(c8, pao, new Date(23,1,2021));
+        a1.encontrouCache(c9, teste, new Date(24, 1, 2021));
+        a1.encontrouCache(c3, tele, new Date(25, 1 , 2021));
         a1.encontrouCache(c4, pao, new Date(3,2,2021));
         a2.encontrouCache(c1, teste2, new Date(12,1,2021));
-        a2.encontrouCache(c3, cartas, new Date(24,1,2021));
-        a3.encontrouCache(c5, teste3, new Date(24,1,2021));
-        a4.encontrouCache(c6, teste4, new Date(24,1,2021));
+        a2.encontrouCache(c2, cartas, new Date(24,1,2021));
+        a3.encontrouCache(c4, teste3, new Date(24,1,2021));
+        a4.encontrouCache(c5, teste4, new Date(24,1,2021));
         a5.encontrouCache(c8, teste5, new Date(24,1,2021));
-        a5.encontrouCache(c2, pizza, new Date(24,1,2021));
+        a5.encontrouCache(c4, pizza, new Date(24,1,2021));
         a6.encontrouCache(c2, teste6, new Date(24,1,2021));
         a6.encontrouCache(c3, pizza, new Date(25,1,2021));
         a6.encontrouCache(c6, cartas, new Date(26,1,2021));

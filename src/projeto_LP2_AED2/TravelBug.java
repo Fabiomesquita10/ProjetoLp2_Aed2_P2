@@ -30,9 +30,12 @@ public class TravelBug extends Objeto implements Serializable {
     return "none";}
     public String getUltimaCT(){
         return listaCachesPresente.get(numCachesPres-1).getId().toString();}
-    public String getUltimaAT(){return listaAventureiros.get(numAventureiros-1).getId().toString();}
-    public String getNumCT(){return ""+numCachesPres;}
-    public String getNumAT(){return ""+numAventureiros;}
+    public String getUltimaAT(){
+        if(listaAventureiros.size() > 0)
+            return listaAventureiros.get(numAventureiros-1).getId().toString();
+    return "empty";}
+    public String getNumCT(){return ""+(numCachesPres-1);}
+    public String getNumAT(){return ""+(numAventureiros-1);}
 
 
 
@@ -125,7 +128,7 @@ public class TravelBug extends Objeto implements Serializable {
         super(nome);
         Random num = new Random();
         int posicao = num.nextInt(9);
-        lerMissao(3);
+        lerMissao(posicao+1);
     }
 
     /**
