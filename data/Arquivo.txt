@@ -29,3 +29,4 @@ Foi removido o Aventureiro com id : 5 e com o nome : joao, na data de: 18/5/2021
 Foi removido o Aventureiro com id : 6 e com o nome : jorge, na data de: 18/5/2021
 Foi removido o Aventureiro com id : 3 e com o nome : Ricardo, na data de: 18/5/2021
 Foi removido o Aventureiro com id : 6 e com o nome : pote, na data de: 20/5/2021
+Foi removido o Aventureiro com id : 17 e com o nome : fabio, na data de: 20/5/2021

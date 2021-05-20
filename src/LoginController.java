@@ -870,23 +870,23 @@ public class LoginController implements Initializable {
 
 
         GFG gfg = new GFG();
-        int linha = 7;
+        int linha = 6;
         int[][] matrix = gcg.getGrafo().graphToMatrix();
         matrix = gfg.exchangeAnyTwoRows(matrix, 1, linha+1);
         gfg.printMatrix(matrix);
         boolean[] v = new boolean[gcg.getGrafo().V()-1];
-        int tempo = 100;
+        int tempo = 200;
         int currPos = 0;
         int ans = Integer.MAX_VALUE;
         int count = 0, pos = 0;
         v[currPos] = true;
         //ans = gfg.tsp(matrix, v, 0, gcg.getGrafo().V()-1, 1, 0, ans, dist);
-        String cachesPerc = gfg.retStrin(matrix, v, currPos, gcg.getGrafo().V()-1, 1, 0, ans, tempo);
+        String cachesPerc = gfg.retStrin(matrix, v, currPos, gcg.getGrafo().V()-1, 1, 0, ans, tempo, linha);
         //System.out.println(cachesPerc);
         //System.out.println("tamanho: "+cachesPerc.length());
         String []parts = cachesPerc.split("\n");
-        //System.out.println(cachesPerc);
-        //System.out.println("numero de linhas: "+parts.length);
+        System.out.println(cachesPerc);
+        System.out.println("numero de linhas: "+parts.length);
         for (int i = 0; i < parts.length; i++) {
             String []parts2 = parts[i].split(" ");
             //System.out.println("numero de caches percorridas: "+parts2.length);
@@ -1001,7 +1001,7 @@ public class LoginController implements Initializable {
         int ans = Integer.MAX_VALUE;
         int count = 0, pos = 0;
         v[currPos] = true;
-        String cachesPerc = gfg.retStrin(matrix, v, currPos, gcg.getGrafo().V()-1, 1, 0, ans, tempo);
+        String cachesPerc = gfg.retStrin(matrix, v, currPos, gcg.getGrafo().V()-1, 1, 0, ans, tempo, linha);
         String []parts = cachesPerc.split("\n");
 
         for (int i = 0; i < parts.length; i++) {

@@ -6,8 +6,8 @@ class GFG
     public static Stack<Integer> paths = new Stack<>();
     public static String stringCaches = new String();
 
-    public String retStrin(int[][] graph, boolean[] v, int currPos, int n, int count, int cost, int ans, int dist){
-        ans = tsp(graph, v, 0, n, 1, 0, ans, dist);
+    public String retStrin(int[][] graph, boolean[] v, int currPos, int n, int count, int cost, int ans, int dist, int l){
+        ans = tsp(graph, v, 0, n, 1, 0, ans, dist, l);
         return stringCaches;
     }
 
@@ -21,7 +21,7 @@ class GFG
 
     // Function to find the minimum weight
     // Hamiltonian Cycle
-    public static int tsp(int[][] graph, boolean[] v, int currPos, int n, int count, int cost, int ans, int dist)
+    public static int tsp(int[][] graph, boolean[] v, int currPos, int n, int count, int cost, int ans, int dist, int l)
     {
         // If last node is reached and it has a link
         // to the starting node i.e the source then
@@ -41,17 +41,29 @@ class GFG
         // by 1 and cost by graph[currPos,i] value
         for (int i = 0; i < n; i++)
         {
-            if (v[i] == false && graph[currPos][i] > 0)
+            if (!v[i] && graph[currPos][i] > 0)
             {
-
                 // Mark as visited
-                v[i] = true;
-                paths.push(i);
-                ans = tsp(graph, v, i, n, count + 1, cost + graph[currPos][i], ans, dist);
+                if(i == l) {
+                    i = 0;
+                    v[i] = true;
+                    paths.push(i);
+                    ans = tsp(graph, v, i, n, count + 1, cost + graph[currPos][i], ans, dist, l);
 
-                // Mark ith node as unvisited
-                v[i] = false;
-                paths.pop();
+                    // Mark ith node as unvisited
+                    v[i] = false;
+                    paths.pop();
+                    i = l;
+
+                }else{
+                    v[i] = true;
+                    paths.push(i);
+                    ans = tsp(graph, v, i, n, count + 1, cost + graph[currPos][i], ans, dist, l);
+
+                    // Mark ith node as unvisited
+                    v[i] = false;
+                    paths.pop();
+                }
             }
         }
         return ans;
@@ -91,34 +103,6 @@ class GFG
             }
             System.out.println("\n ==================================================================");
         }
-    }
-
-    // Driver code
-    public static void main(String[] args)
-    {
-
-        // n is the number of nodes i.e. V
-        int n = 4;
-        //                a  b   c   d
-        int[][] graph = {{0, 10, 15, 20},//a
-                        {10, 0, 35, 25}, //b
-                        {15, 35, 0, 30}, //c
-                        {20, 25, 30, 0}};//d
-
-
-        // Boolean array to check if a node
-        // has been visited or not
-        boolean[] v = new boolean[n];
-
-        // Mark 0th node as visited
-        v[0] = true;
-        int ans = Integer.MAX_VALUE;
-        int dist = 10000;
-        // Find the minimum weight Hamiltonian Cycle
-        ans = tsp(graph, v, 0, n, 1, 0, ans, dist);
-
-        // ans is the minimum weight Hamiltonian Cycle
-        System.out.println(ans);
     }
 }
 
