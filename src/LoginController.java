@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
@@ -84,7 +81,6 @@ public class LoginController implements Initializable {
     GestaoAcessoCacheGraph gcg = new GestaoAcessoCacheGraph();
 
     //HANDLERS PESQUISAS GRAFOS
-
     public TextField tipoCache;
     public TextField difiCache;
     public TextField regiaoCache;
@@ -95,8 +91,28 @@ public class LoginController implements Initializable {
 
     private String tipoPesquisa;
 
+    //AVENTUREIROS
+    //adicionar
+    public ComboBox<String> comboBoxAv;
+    public TextField nomeAvent;
+    public TextField localAvent;
+    public TextField PassAvent;
+    //remover
+    public TextField remIdAvent;
+    //editar
+    public TextField idEdit;
+    public TextField nomeEdit;
+    public TextField localEdit;
+    //caxeiro-viajante
+    public TextField tempoL;
+    public TextField cacheP;
+    public TextArea textCaixeiro;
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         //AVENTUREIROS
         AventArrayList = new ArrayList<>();
 
@@ -196,11 +212,23 @@ public class LoginController implements Initializable {
         numATCol.setCellValueFactory(new PropertyValueFactory<>("NumAT"));
         numATCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        String p = "Premium";
+        String b = "Basic";
+        String a = "Admin";
+
+        comboBoxAv.getItems().addAll(p,b,a);
+
         try {
             carregarFicheiro();
         } catch (AventureiroNaoHabilitado aventureiroNaoHabilitado) {
             aventureiroNaoHabilitado.printStackTrace();
+        } catch (CacheNaoExisteException e) {
+            e.printStackTrace();
+        } catch (AventureiroNaoExisteException e) {
+            e.printStackTrace();
         }
+
+
     }
 
     public void creatGraphGroup(GestaoAcessoAventureiro ga, GestaoAcessoCacheGraph gcg, GestaoAcessoObjeto go){
@@ -310,7 +338,7 @@ public class LoginController implements Initializable {
         graphGroup.getChildren().add(stack);
     }
 
-    public void carregarFicheiro() throws AventureiroNaoHabilitado {
+    public void carregarFicheiro() throws AventureiroNaoHabilitado, AventureiroNaoExisteException, CacheNaoExisteException {
 
         /*
         ga.lerAventureiros(); // mudar funcao de leitura e escrita para por o local
@@ -328,6 +356,11 @@ public class LoginController implements Initializable {
         go.lerObjectBin();
         gc.lerCachesBin();
         ga.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
+        /*
+        ga.guardarAventureiros(gc,go);
+        go.guardarObjeto(gc,ga);
+        gc.guardarCache(ga,go);
+         */
 
 
 
@@ -337,7 +370,9 @@ public class LoginController implements Initializable {
             aventTables.getItems().clear();
         if(ga.getAventureiros().size()>0){
             while(x<=ga.getAventureiros().size()){
-                AventArrayList.add(ga.getAventureiros().get(x));
+                if(ga.getAventureiros().get(x) != null){
+                    AventArrayList.add(ga.getAventureiros().get(x));
+                }
                 x++;
             }
             aventTables.getItems().addAll(AventArrayList);
@@ -894,4 +929,119 @@ public class LoginController implements Initializable {
         }
     }
 
+    public void handlerAddAvent(ActionEvent actionEvent) {
+        int x = 230, y=459;
+        if(comboBoxAv.getValue().compareTo("Premium") == 0){
+            Premium p = new Premium(nomeAvent.getText(),x,y,localAvent.getText());
+            ga.regista(p);
+        }
+
+        if(comboBoxAv.getValue().compareTo("Basic") == 0){
+            Basic b = new Basic(nomeAvent.getText(),x,y,localAvent.getText());
+            ga.regista(b);
+        }
+
+        if(comboBoxAv.getValue().compareTo("Admin") == 0){
+            Admin a = new Admin(nomeAvent.getText(),x,y,localAvent.getText(),PassAvent.getText());
+            ga.regista(a);
+        }
+
+        int av = 1;
+        if(aventTables!=null)
+            aventTables.getItems().clear();
+            AventArrayList.clear();
+        if(ga.getAventureiros().size()>0){
+            while(av<=ga.getAventureiros().size()){
+                if(ga.getAventureiros().get(av) != null){
+                    AventArrayList.add(ga.getAventureiros().get(av));
+                }
+                av++;
+            }
+            aventTables.getItems().addAll(AventArrayList);
+        }
+
+    }
+
+    public void handlerRemoverAvent(ActionEvent actionEvent) throws AventureiroNaoExisteException {
+        int id = Integer.parseInt(remIdAvent.getText());
+        ga.remove(id);
+
+        int av = 1;
+        if(aventTables!=null)
+            aventTables.getItems().clear();
+            AventArrayList.clear();
+        if(ga.getAventureiros().size()>0){
+            while(av<=ga.getAventureiros().size()){
+                if(ga.getAventureiros().get(av) != null){
+                    AventArrayList.add(ga.getAventureiros().get(av));
+                }
+                av++;
+            }
+            aventTables.getItems().addAll(AventArrayList);
+        }
+
+
+    }
+
+
+    public void handlerEditAv(ActionEvent actionEvent) {
+
+        int id = Integer.parseInt(idEdit.getText());
+
+        ga.editarTab(id,nomeEdit.getText(),localEdit.getText());
+
+        int av = 1;
+        if(aventTables!=null)
+            aventTables.getItems().clear();
+        AventArrayList.clear();
+        if(ga.getAventureiros().size()>0){
+            while(av<=ga.getAventureiros().size()){
+                if(ga.getAventureiros().get(av) != null){
+                    AventArrayList.add(ga.getAventureiros().get(av));
+                }
+                av++;
+            }
+            aventTables.getItems().addAll(AventArrayList);
+        }
+
+
+    }
+
+
+    public void handlerCalcular(ActionEvent actionEvent) {
+        int tempo = Integer.parseInt(tempoL.getText());
+        int currPos = Integer.parseInt(cacheP.getText());
+
+        GFG gfg = new GFG();
+        int[][] matrix = gcg.getGrafo().graphToMatrix();
+        boolean[] v = new boolean[gcg.getGrafo().V()-1];
+        int ans = Integer.MAX_VALUE;
+        int count = 0, pos = 0;
+        v[currPos] = true;
+        String cachesPerc = gfg.retStrin(matrix, v, currPos, gcg.getGrafo().V()-1, 1, 0, ans, tempo);
+        String []parts = cachesPerc.split("\n");
+
+        for (int i = 0; i < parts.length; i++) {
+            String []parts2 = parts[i].split(" ");
+            if(parts2.length>count) {
+                count = parts2.length;
+                pos = i;
+            }
+        }
+        parts[pos] = parts[pos].substring(2,parts[pos].length());
+        parts[pos] = parts[pos] + currPos;
+        int i = (parts[pos].length()-1)/2;
+
+        //if(textCaixeiro.getText() != null){
+            textCaixeiro.setText(textCaixeiro.getText() + "\n" + "O caixeiro viajante para percorrer o maximo de caixas num\ntempo limite de: " + tempo + " min, tera de percorrer:\n");
+        //}
+        //else textCaixeiro.setText("O caixeiro viajante para percorrer o maximo de caixas num\ntempo limite de: " + tempo + " min, tera de percorrer:\n");
+        for (; i>=0; i--) {
+            String []parts3 = parts[pos].split(" ");
+            if(i!=0)
+                textCaixeiro.setText(textCaixeiro.getText() + parts3[i] + "->");
+            else
+                textCaixeiro.setText(textCaixeiro.getText() + parts3[i]);
+        }
+    }
 }

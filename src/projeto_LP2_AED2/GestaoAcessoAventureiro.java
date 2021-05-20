@@ -198,6 +198,15 @@ public class GestaoAcessoAventureiro implements GestaoAventureiro, Serializable 
         return false;
     }
 
+    public boolean editarTab(Integer idAventureiro, String nome, String local) {
+        if(aventureiros.get(idAventureiro)!=null){ //se existir
+            aventureiros.get(idAventureiro).setNome(nome); //altero-lhe o nome antigo para o novo
+            aventureiros.get(idAventureiro).getLocal().setLocalizacao(local);
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Método para guardar todos os Aventureiros em ficheiro
      * @param gc - Acesso a todas as Caches

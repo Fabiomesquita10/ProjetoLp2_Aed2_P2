@@ -3,14 +3,15 @@ premium 2 fabio 1 2 2 1 12/1/2021 3 24/1/2021 2 2 7 tb 3
 premium 3 Ricardo 1 2 1 5 24/1/2021 2 3 8 tb 5
 premium 4 kinito 1 2 1 6 24/1/2021 2 4 9 tb 10
 admin 5 joao 1 2 4 8 24/1/2021 2 24/1/2021 6 25/1/2021 7 27/1/2021 1 5 tb 9
-premium 6 jorge 1 2 3 2 24/1/2021 3 25/1/2021 6 26/1/2021 0 tb 13
+premium 6 jorge 1 2 3 2 24/1/2021 3 25/1/2021 6 26/1/2021 4 10 11 12 13 tb 13
 basic 7 carlos 3 4 0 0 none
-basic 9 carlitos 3 4 0 0 none
-admin 10 antonio 3 4 0 0 none
-premium 11 manuel 3 4 0 0 none
-basic 12 Riqui 3 4 0 0 none
-admin 13 rita 3 4 0 0 none
-premium 14 ana 3 4 0 0 none
-admin 15 daniel 3 4 0 0 none
-basic 16 goncalo 3 4 0 0 none
-admin 17 rita 3 4 0 0 none
+basic 8 carlitos 3 4 0 0 none
+admin 9 antonio 3 4 0 0 none
+premium 10 manuel 3 4 0 0 none
+basic 11 Riqui 3 4 0 0 none
+admin 12 rita 3 4 0 0 none
+premium 13 ana 3 4 0 0 none
+admin 14 daniel 3 4 0 0 none
+basic 15 goncalo 3 4 0 0 none
+admin 16 rita 3 4 0 0 none
+admin 17 fabio 15 61 0 0 none
