@@ -869,31 +869,11 @@ public class LoginController implements Initializable {
         }*/
         GFG gfg = new GFG();
         int[][] matrix = gcg.getGrafo().graphToMatrix();
-        System.out.println("Matriz de adjacencias do grafo: ");
-        for (int i = 0; i < matrix.length; i++) {
-            if(i<=10)
-                System.out.print(" " + i + "   ");
-            if(i>10)
-                System.out.print(i + "   ");
-        }
-        System.out.println("\n  ==================================================================");
-        for (int i = 0; i < matrix.length; i++) {
-            System.out.print(i + "|");
-            for (int j = 0; j < matrix.length; j++) {
-                if(matrix[i][j]<10)
-                    System.out.print(matrix[i][j] + "   |");
-                else if(matrix[i][j]>=10 && matrix[i][j]<100)
-                    System.out.print(matrix[i][j] + "  |");
-                else if(matrix[i][j]>=100 && matrix[i][j]<1000)
-                    System.out.print(matrix[i][j] + " |");
-                else if(matrix[i][j]>=1000 && matrix[i][j]<10000)
-                    System.out.print(matrix[i][j] + "|");
-            }
-            System.out.println("\n  ==================================================================");
-        }
+        gfg.exchangeAnyTwoRows(matrix, 1, 10);
+        gfg.printMatrix(matrix);
         boolean[] v = new boolean[gcg.getGrafo().V()-1];
         int tempo = 200;
-        int currPos = 4;
+        int currPos = 0;
         int ans = Integer.MAX_VALUE;
         int count = 0, pos = 0;
         v[currPos] = true;
@@ -1010,10 +990,12 @@ public class LoginController implements Initializable {
 
     public void handlerCalcular(ActionEvent actionEvent) {
         int tempo = Integer.parseInt(tempoL.getText());
-        int currPos = Integer.parseInt(cacheP.getText());
+        int currPos = 0;
+        int linha = Integer.parseInt(cacheP.getText());
 
         GFG gfg = new GFG();
         int[][] matrix = gcg.getGrafo().graphToMatrix();
+        gfg.exchangeAnyTwoRows(matrix, 1, linha + 1);
         boolean[] v = new boolean[gcg.getGrafo().V()-1];
         int ans = Integer.MAX_VALUE;
         int count = 0, pos = 0;
@@ -1029,7 +1011,7 @@ public class LoginController implements Initializable {
             }
         }
         parts[pos] = parts[pos].substring(2,parts[pos].length());
-        parts[pos] = parts[pos] + currPos;
+        parts[pos] = parts[pos] + linha;
         int i = (parts[pos].length()-1)/2;
 
         //if(textCaixeiro.getText() != null){
@@ -1043,5 +1025,29 @@ public class LoginController implements Initializable {
             else
                 textCaixeiro.setText(textCaixeiro.getText() + parts3[i]);
         }
+    }
+
+    public void handlerAddObjeto(ActionEvent actionEvent) {
+    }
+
+    public void handlerRemObjeto(ActionEvent actionEvent) {
+    }
+
+    public void handlerEditObjeto(ActionEvent actionEvent) {
+    }
+
+    public void handlerAddTb(ActionEvent actionEvent) {
+    }
+
+    public void handlerRemTb(ActionEvent actionEvent) {
+    }
+
+    public void handlerEditTb(ActionEvent actionEvent) {
+    }
+
+    public void handlerAddCache(ActionEvent actionEvent) {
+    }
+
+    public void handlerRemCache(ActionEvent actionEvent) {
     }
 }

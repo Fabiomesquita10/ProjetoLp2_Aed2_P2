@@ -57,6 +57,41 @@ class GFG
         return ans;
     }
 
+    public void exchangeAnyTwoRows(int[][] matrix, int K, int L)
+    {
+        for (int i = 0; i < matrix[0].length; i++) {
+            // Swap two numbers
+            int temp = matrix[K - 1][i];
+            matrix[K - 1][i] = matrix[L - 1][i];
+            matrix[L - 1][i] = temp;
+        }
+    }
+
+    public void printMatrix(int[][]matrix){
+        System.out.println("Matriz de adjacencias do grafo: ");
+        for (int i = 0; i < matrix.length; i++) {
+            if(i<=10)
+                System.out.print(" " + i + "   ");
+            if(i>10)
+                System.out.print(i + "   ");
+        }
+        System.out.println("\n ==================================================================");
+        for (int i = 0; i < matrix.length; i++) {
+            System.out.print(i + "|");
+            for (int j = 0; j < matrix.length; j++) {
+                if(matrix[i][j]<10)
+                    System.out.print(matrix[i][j] + "   |");
+                else if(matrix[i][j]>=10 && matrix[i][j]<100)
+                    System.out.print(matrix[i][j] + "  |");
+                else if(matrix[i][j]>=100 && matrix[i][j]<1000)
+                    System.out.print(matrix[i][j] + " |");
+                else if(matrix[i][j]>=1000 && matrix[i][j]<10000)
+                    System.out.print(matrix[i][j] + "|");
+            }
+            System.out.println("\n ==================================================================");
+        }
+    }
+
     // Driver code
     public static void main(String[] args)
     {
