@@ -571,9 +571,37 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Definicoes">
+            <Tab text="Jogo">
               <content>
-                  <AnchorPane fx:id="fundoCaches" minHeight="0.0" minWidth="0.0" prefHeight="383.0" prefWidth="667.0" />
+                  <AnchorPane fx:id="fundoCaches" minHeight="0.0" minWidth="0.0" prefHeight="383.0" prefWidth="667.0">
+                     <children>
+                        <TabPane layoutY="-1.0" prefHeight="772.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Logs">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea layoutX="146.0" layoutY="69.0" prefHeight="606.0" prefWidth="909.0" stylesheets="@mapa_logs.css" text="Boas a todos">
+                                             <font>
+                                                <Font name="Serif Italic" size="27.0" />
+                                             </font></TextArea>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Jogo">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </Tab>
+                              <Tab text="Sobre">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>
