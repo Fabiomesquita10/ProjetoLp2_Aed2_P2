@@ -12,6 +12,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -96,7 +98,11 @@
                               </Tab>
                           </tabs>
                         </TabPane>
-                        <TextArea layoutX="869.0" layoutY="64.0" prefHeight="679.0" prefWidth="306.0" stylesheets="@caixeiro.css" />
+                        <ImageView disable="true" fitHeight="661.0" fitWidth="288.0" layoutX="877.0" layoutY="83.0" pickOnBounds="true" smooth="false">
+                           <image>
+                              <Image url="@caxeiro.jpg" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
             </content>
@@ -262,14 +268,11 @@
                                        <children>
                                           <ComboBox fx:id="comboBoxAv121" layoutX="40.0" layoutY="28.0" prefWidth="150.0" promptText="Tipo" />
                                           <TextField fx:id="remIdCacheC" layoutX="41.0" layoutY="76.0" promptText="IdCache" />
-                                          <TextField fx:id="localAvent121" layoutX="249.0" layoutY="28.0" promptText="Local" />
-                                          <TextField fx:id="remIdAventC" layoutX="41.0" layoutY="127.0" promptText="IdAventureiro" />
-                                          <Button layoutX="537.0" layoutY="106.0" mnemonicParsing="false" onAction="#handlerRemCache" prefHeight="42.0" prefWidth="100.0" text="Remover">
+                                          <Button layoutX="356.0" layoutY="41.0" mnemonicParsing="false" onAction="#handlerRemCache" prefHeight="42.0" prefWidth="100.0" text="Remover">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Button>
-                                          <TextField fx:id="remIdObjetoC" layoutX="249.0" layoutY="76.0" promptText="idObjeto" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -279,21 +282,26 @@
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <ComboBox fx:id="comboBoxAv1211" layoutX="40.0" layoutY="28.0" prefWidth="150.0" promptText="Tipo" />
-                                          <TextField fx:id="nomeAvent1211" layoutX="41.0" layoutY="76.0" promptText="IdCache" />
-                                          <TextField fx:id="localAvent1211" layoutX="249.0" layoutY="28.0" promptText="Local" />
-                                          <TextField fx:id="PassAvent1211" layoutX="41.0" layoutY="127.0" promptText="IdAventureiro" />
+                                          <TextField fx:id="editIdCacheC" layoutX="41.0" layoutY="76.0" promptText="IdCache" />
+                                          <TextField fx:id="editLocalC" layoutX="249.0" layoutY="28.0" promptText="Local" />
+                                          <TextField fx:id="editIdAventC" layoutX="41.0" layoutY="127.0" promptText="IdAventureiro" />
                                           <Button layoutX="537.0" layoutY="106.0" mnemonicParsing="false" onAction="#handlerAddAvent" prefHeight="42.0" prefWidth="100.0" text="Editar">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Button>
-                                          <TextField fx:id="localAvent12111" layoutX="249.0" layoutY="76.0" promptText="idObjeto" />
+                                          <TextField fx:id="editIdObjetoC" layoutX="249.0" layoutY="76.0" promptText="idObjeto" />
                                        </children>
                                     </AnchorPane>
                                  </content>
                               </Tab>
                            </tabs>
                         </TabPane>
+                        <ImageView fitHeight="198.0" fitWidth="278.0" layoutX="887.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@cofre.png" />
+                           </image>
+                        </ImageView>
                         </children>
                     </AnchorPane>
                 </content>
