@@ -867,12 +867,15 @@ public class LoginController implements Initializable {
             System.out.println(ola);
 
         }*/
+
+
         GFG gfg = new GFG();
+        int linha = 7;
         int[][] matrix = gcg.getGrafo().graphToMatrix();
-        gfg.exchangeAnyTwoRows(matrix, 1, 10);
+        matrix = gfg.exchangeAnyTwoRows(matrix, 1, linha+1);
         gfg.printMatrix(matrix);
         boolean[] v = new boolean[gcg.getGrafo().V()-1];
-        int tempo = 200;
+        int tempo = 100;
         int currPos = 0;
         int ans = Integer.MAX_VALUE;
         int count = 0, pos = 0;
@@ -895,7 +898,7 @@ public class LoginController implements Initializable {
         }
         //System.out.println(pos + " " + count);
         parts[pos] = parts[pos].substring(2,parts[pos].length());
-        parts[pos] = parts[pos] + currPos;
+        parts[pos] = parts[pos] + linha;
         //System.out.println(parts[pos]);
         //System.out.println(parts[pos].length());
         int i = (parts[pos].length()-1)/2;
@@ -963,7 +966,6 @@ public class LoginController implements Initializable {
 
     }
 
-
     public void handlerEditAv(ActionEvent actionEvent) {
 
         int id = Integer.parseInt(idEdit.getText());
@@ -987,7 +989,6 @@ public class LoginController implements Initializable {
 
     }
 
-
     public void handlerCalcular(ActionEvent actionEvent) {
         int tempo = Integer.parseInt(tempoL.getText());
         int currPos = 0;
@@ -995,7 +996,7 @@ public class LoginController implements Initializable {
 
         GFG gfg = new GFG();
         int[][] matrix = gcg.getGrafo().graphToMatrix();
-        gfg.exchangeAnyTwoRows(matrix, 1, linha + 1);
+        matrix = gfg.exchangeAnyTwoRows(matrix, 1, linha + 1);
         boolean[] v = new boolean[gcg.getGrafo().V()-1];
         int ans = Integer.MAX_VALUE;
         int count = 0, pos = 0;
@@ -1025,6 +1026,7 @@ public class LoginController implements Initializable {
             else
                 textCaixeiro.setText(textCaixeiro.getText() + parts3[i]);
         }
+        matrix = gfg.exchangeAnyTwoRows(matrix, linha+1, 1);
     }
 
     public void handlerAddObjeto(ActionEvent actionEvent) {

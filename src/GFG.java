@@ -57,7 +57,7 @@ class GFG
         return ans;
     }
 
-    public void exchangeAnyTwoRows(int[][] matrix, int K, int L)
+    public int[][] exchangeAnyTwoRows(int[][] matrix, int K, int L)
     {
         for (int i = 0; i < matrix[0].length; i++) {
             // Swap two numbers
@@ -65,6 +65,7 @@ class GFG
             matrix[K - 1][i] = matrix[L - 1][i];
             matrix[L - 1][i] = temp;
         }
+        return matrix;
     }
 
     public void printMatrix(int[][]matrix){
