@@ -1,9 +1,6 @@
 import Search.BST_AED2_2021;
 import SearchProj.*;
-import edu.princeton.cs.algs4.CC;
-import edu.princeton.cs.algs4.DijkstraSP;
-import edu.princeton.cs.algs4.Topological;
-import edu.princeton.cs.algs4.TopologicalX;
+import edu.princeton.cs.algs4.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventTarget;
 import javafx.fxml.Initializable;
@@ -837,21 +834,64 @@ public class LoginController implements Initializable {
         }*/
         GFG gfg = new GFG();
         int[][] matrix = gcg.getGrafo().graphToMatrix();
+        System.out.println("Matriz de adjacencias do grafo: ");
         for (int i = 0; i < matrix.length; i++) {
-            System.out.print("|");
+            if(i<=10)
+                System.out.print(" " + i + "   ");
+            if(i>10)
+                System.out.print(i + "   ");
+        }
+        System.out.println("\n  ==================================================================");
+        for (int i = 0; i < matrix.length; i++) {
+            System.out.print(i + "|");
             for (int j = 0; j < matrix.length; j++) {
-                System.out.print(matrix[i][j] + " ");
+                if(matrix[i][j]<10)
+                    System.out.print(matrix[i][j] + "   |");
+                else if(matrix[i][j]>=10 && matrix[i][j]<100)
+                    System.out.print(matrix[i][j] + "  |");
+                else if(matrix[i][j]>=100 && matrix[i][j]<1000)
+                    System.out.print(matrix[i][j] + " |");
+                else if(matrix[i][j]>=1000 && matrix[i][j]<10000)
+                    System.out.print(matrix[i][j] + "|");
             }
-            System.out.println("|");
+            System.out.println("\n  ==================================================================");
         }
         boolean[] v = new boolean[gcg.getGrafo().V()-1];
-        v[0] = true;
-        int dist = 120;
+        int tempo = 200;
+        int currPos = 4;
         int ans = Integer.MAX_VALUE;
+        int count = 0, pos = 0;
+        v[currPos] = true;
         //ans = gfg.tsp(matrix, v, 0, gcg.getGrafo().V()-1, 1, 0, ans, dist);
-        String ola = gfg.retStrin(matrix, v, 0, gcg.getGrafo().V()-1, 1, 0, ans, dist);
-        System.out.println(ola);
-        //System.out.println(ans);
+        String cachesPerc = gfg.retStrin(matrix, v, currPos, gcg.getGrafo().V()-1, 1, 0, ans, tempo);
+        //System.out.println(cachesPerc);
+        //System.out.println("tamanho: "+cachesPerc.length());
+        String []parts = cachesPerc.split("\n");
+        //System.out.println(cachesPerc);
+        //System.out.println("numero de linhas: "+parts.length);
+        for (int i = 0; i < parts.length; i++) {
+            String []parts2 = parts[i].split(" ");
+            //System.out.println("numero de caches percorridas: "+parts2.length);
+            if(parts2.length>count) {
+                count = parts2.length;
+                pos = i;
+            }
+            //System.out.println(parts[i]);
+        }
+        //System.out.println(pos + " " + count);
+        parts[pos] = parts[pos].substring(2,parts[pos].length());
+        parts[pos] = parts[pos] + currPos;
+        //System.out.println(parts[pos]);
+        //System.out.println(parts[pos].length());
+        int i = (parts[pos].length()-1)/2;
+        System.out.println("o caixeiro viajante para percorrer o maximo de caixas num tempo limite de: " + tempo +" min, tera de percorrer: ");
+        for (; i>=0; i--) {
+            String []parts3 = parts[pos].split(" ");
+            if(i!=0)
+                System.out.print(parts3[i] + "->");
+            else
+                System.out.print(parts3[i]);
+        }
     }
 
 }

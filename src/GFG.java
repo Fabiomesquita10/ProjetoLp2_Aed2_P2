@@ -4,19 +4,19 @@ import edu.princeton.cs.algs4.Stack;
 class GFG
 {
     public static Stack<Integer> paths = new Stack<>();
-    public static String ola = new String();
+    public static String stringCaches = new String();
 
     public String retStrin(int[][] graph, boolean[] v, int currPos, int n, int count, int cost, int ans, int dist){
         ans = tsp(graph, v, 0, n, 1, 0, ans, dist);
-        return ola;
+        return stringCaches;
     }
 
-    public static String getOla() {
-        return ola;
+    public static String getStringCaches() {
+        return stringCaches;
     }
 
-    public static void setOla(String ola) {
-        GFG.ola = ola;
+    public static void setStringCaches(String stringCaches) {
+        GFG.stringCaches = stringCaches;
     }
 
     // Function to find the minimum weight
@@ -31,9 +31,7 @@ class GFG
         if (count == n && graph[currPos][0] > 0 || dist<cost)
         {
             ans = Math.min(ans, cost + graph[currPos][0]);
-            System.out.println(paths);
-            ola = ola + "\n" + paths.toString();
-            System.out.println(ola);
+            stringCaches = stringCaches + "\n" + paths.toString();
             return ans;
         }
 

@@ -182,11 +182,9 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
         int[][] matrix = new int[this.V()-1][this.V()-1];
         for (int i = 0; i < this.V(); i++) {
             for (DirectedEdge_AED2 adj : adj(i)){
-                System.out.println(i + "->" + adj.to());
-                matrix[i][adj.to()] = adj.distancia();
+                matrix[i][adj.to()] = adj.tempo();
             }
         }
-        printMatrix(matrix);
         return matrix;
     }
 
