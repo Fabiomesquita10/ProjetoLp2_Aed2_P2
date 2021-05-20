@@ -797,85 +797,85 @@ public class LoginController implements Initializable {
         gcg.lerCaminhos();
         /**
          * parte1
-        int x = 1;
-        if(ga.getAventureiros().size()>0){
-            gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
-            while(x<=gc.getCaches().size()){
-                gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
-                x++;
-            }
-        }
-        gcg.lerCaminhos();
-        int from = 0;
-        int to = 5;
-        //TopologicalX
-        BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), from);// forma de sacar os menores valores de peso, distancia, etc
-        DFS_AED2 dfs = new DFS_AED2(gcg.getGrafo(), from);//inutil pode nao ser inutil
-        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), from);// saca o caminho com menos vertices
-        DSP_AED2 DSPW = new DSP_AED2(gcg.getGrafo(), from, 0);// saca o caminho com menor custo
-        DSP_AED2 DSPD = new DSP_AED2(gcg.getGrafo(), from, 1);// saca o caminho com menor custo
-        DSP_AED2 DSPT = new DSP_AED2(gcg.getGrafo(), from, 2);// saca o caminho com menor custo
+         int x = 1;
+         if(ga.getAventureiros().size()>0){
+         gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
+         while(x<=gc.getCaches().size()){
+         gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
+         x++;
+         }
+         }
+         gcg.lerCaminhos();
+         int from = 0;
+         int to = 5;
+         //TopologicalX
+         BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), from);// forma de sacar os menores valores de peso, distancia, etc
+         DFS_AED2 dfs = new DFS_AED2(gcg.getGrafo(), from);//inutil pode nao ser inutil
+         BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), from);// saca o caminho com menos vertices
+         DSP_AED2 DSPW = new DSP_AED2(gcg.getGrafo(), from, 0);// saca o caminho com menor custo
+         DSP_AED2 DSPD = new DSP_AED2(gcg.getGrafo(), from, 1);// saca o caminho com menor custo
+         DSP_AED2 DSPT = new DSP_AED2(gcg.getGrafo(), from, 2);// saca o caminho com menor custo
 
-        System.out.println();
+         System.out.println();
 
-        System.out.println("\nTodos os edges: ");
-        for (DirectedEdge_AED2 d: gcg.getGrafo().edges()){
-            System.out.print(d);
-        }
+         System.out.println("\nTodos os edges: ");
+         for (DirectedEdge_AED2 d: gcg.getGrafo().edges()){
+         System.out.print(d);
+         }
 
-        if(BSP.distTo(0) == Double.POSITIVE_INFINITY){
-            System.out.println("impossivel, nao ha caminho");
-        }else
-            System.out.println(BSP.distTo(0));
+         if(BSP.distTo(0) == Double.POSITIVE_INFINITY){
+         System.out.println("impossivel, nao ha caminho");
+         }else
+         System.out.println(BSP.distTo(0));
 
-        System.out.println();
-        System.out.println("o vertice 0 tem caminho ate: ");
-        for (int v = 0; v<gcg.getGrafo().V(); v++){
-            BSP = new BSP_AED2(gcg.getGrafo(), 0);
-            if(BSP.hasPathTo(v))
-                System.out.println(v+" ");
-        }
+         System.out.println();
+         System.out.println("o vertice 0 tem caminho ate: ");
+         for (int v = 0; v<gcg.getGrafo().V(); v++){
+         BSP = new BSP_AED2(gcg.getGrafo(), 0);
+         if(BSP.hasPathTo(v))
+         System.out.println(v+" ");
+         }
 
-        CC_AED2 c = new CC_AED2(gcg.getGrafo());
-        System.out.println(c.connected(0,9));
+         CC_AED2 c = new CC_AED2(gcg.getGrafo());
+         System.out.println(c.connected(0,9));
 
-        System.out.println("\nTeste de DFS e BSP:");
-        if(BSP.hasPathTo(to)) {
-            System.out.println("\nBSP: ");
-            System.out.println("O caminho entre o vertice: " + from + " e o vertice: " + to +":");
-            System.out.println("Peso: "+BSP.distTo(to));
-            System.out.println("Tempo: "+BSP.tempoTo(to));
-            System.out.println("Elevacao: "+BSP.elevTo(to));
-            System.out.println("\nDFS: ");
-            System.out.println("Se tem caminho: "+dfs.hasPathTo(to));
-            System.out.println("Caminho DFS: "+dfs.pathTo(to));
-            System.out.println("\nBFS: ");
-            System.out.println("Caminho BFS: "+BFS.pathTo(to));
-            System.out.println("\nDSP ve o caminho menor a partir do peso:");
-            System.out.println("Caminho: "+DSPW.pathTo(to));
-            System.out.println("Tem caminho: "+DSPW.hasPathTo(to));
-            System.out.println("Custo minima: "+DSPW.distTo(to));
-            System.out.println("\nDSP ve o caminho menor a partir da distancia:");
-            System.out.println("Caminho: "+DSPD.pathTo(to));
-            System.out.println("Tem caminho: "+DSPD.hasPathTo(to));
-            System.out.println("Distancia minima: "+DSPD.distTo(to));
-            System.out.println("\nDSPT ve o caminho menor a partir do tempo:");
-            System.out.println("Caminho: "+DSPT.pathTo(to).toString());
-            System.out.println("Tem caminho: "+DSPT.hasPathTo(to));
-            System.out.println("Tempo minima: "+DSPT.distTo(to));
-            String ola = LoginController.formatarString(DSPD.pathTo(to), 3);
-            System.out.println(ola);
+         System.out.println("\nTeste de DFS e BSP:");
+         if(BSP.hasPathTo(to)) {
+         System.out.println("\nBSP: ");
+         System.out.println("O caminho entre o vertice: " + from + " e o vertice: " + to +":");
+         System.out.println("Peso: "+BSP.distTo(to));
+         System.out.println("Tempo: "+BSP.tempoTo(to));
+         System.out.println("Elevacao: "+BSP.elevTo(to));
+         System.out.println("\nDFS: ");
+         System.out.println("Se tem caminho: "+dfs.hasPathTo(to));
+         System.out.println("Caminho DFS: "+dfs.pathTo(to));
+         System.out.println("\nBFS: ");
+         System.out.println("Caminho BFS: "+BFS.pathTo(to));
+         System.out.println("\nDSP ve o caminho menor a partir do peso:");
+         System.out.println("Caminho: "+DSPW.pathTo(to));
+         System.out.println("Tem caminho: "+DSPW.hasPathTo(to));
+         System.out.println("Custo minima: "+DSPW.distTo(to));
+         System.out.println("\nDSP ve o caminho menor a partir da distancia:");
+         System.out.println("Caminho: "+DSPD.pathTo(to));
+         System.out.println("Tem caminho: "+DSPD.hasPathTo(to));
+         System.out.println("Distancia minima: "+DSPD.distTo(to));
+         System.out.println("\nDSPT ve o caminho menor a partir do tempo:");
+         System.out.println("Caminho: "+DSPT.pathTo(to).toString());
+         System.out.println("Tem caminho: "+DSPT.hasPathTo(to));
+         System.out.println("Tempo minima: "+DSPT.distTo(to));
+         String ola = LoginController.formatarString(DSPD.pathTo(to), 3);
+         System.out.println(ola);
 
-        }*/
+         }*/
 
 
         GFG gfg = new GFG();
-        int linha = 6;
+        int linha = 7;
         int[][] matrix = gcg.getGrafo().graphToMatrix();
         matrix = gfg.exchangeAnyTwoRows(matrix, 1, linha+1);
         gfg.printMatrix(matrix);
         boolean[] v = new boolean[gcg.getGrafo().V()-1];
-        int tempo = 200;
+        int tempo = 300;
         int currPos = 0;
         int ans = Integer.MAX_VALUE;
         int count = 0, pos = 0;
@@ -901,10 +901,12 @@ public class LoginController implements Initializable {
         parts[pos] = parts[pos] + linha;
         //System.out.println(parts[pos]);
         //System.out.println(parts[pos].length());
-        int i = (parts[pos].length()-1)/2;
+        int i = 100;
+        String []parts3 = parts[pos].split(" ");
+        i = parts3.length-1;
         System.out.println("o caixeiro viajante para percorrer o maximo de caixas num tempo limite de: " + tempo +" min, tera de percorrer: ");
         for (; i>=0; i--) {
-            String []parts3 = parts[pos].split(" ");
+
             if(i!=0)
                 System.out.print(parts3[i] + "->");
             else
@@ -1013,14 +1015,10 @@ public class LoginController implements Initializable {
         }
         parts[pos] = parts[pos].substring(2,parts[pos].length());
         parts[pos] = parts[pos] + linha;
-        int i = (parts[pos].length()-1)/2;
-
-        //if(textCaixeiro.getText() != null){
-            textCaixeiro.setText(textCaixeiro.getText() + "\n" + "O caixeiro viajante para percorrer o maximo de caixas num\ntempo limite de: " + tempo + " min, tera de percorrer:\n");
-        //}
-        //else textCaixeiro.setText("O caixeiro viajante para percorrer o maximo de caixas num\ntempo limite de: " + tempo + " min, tera de percorrer:\n");
+        String []parts3 = parts[pos].split(" ");
+        int i = (parts3.length-1);
+        textCaixeiro.setText(textCaixeiro.getText() + "\n" + "O caixeiro viajante para percorrer o maximo de caixas num\ntempo limite de: " + tempo + " min, tera de percorrer:\n");
         for (; i>=0; i--) {
-            String []parts3 = parts[pos].split(" ");
             if(i!=0)
                 textCaixeiro.setText(textCaixeiro.getText() + parts3[i] + "->");
             else

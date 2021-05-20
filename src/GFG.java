@@ -41,21 +41,38 @@ class GFG
         // by 1 and cost by graph[currPos,i] value
         for (int i = 0; i < n; i++)
         {
+
             if (!v[i] && graph[currPos][i] > 0)
             {
                 // Mark as visited
                 if(i == l) {
                     i = 0;
-                    v[i] = true;
-                    paths.push(i);
-                    ans = tsp(graph, v, i, n, count + 1, cost + graph[currPos][i], ans, dist, l);
+                    if (!v[i] && graph[currPos][i] > 0) {
+                        System.out.println("l" + i);
+                        v[i] = true;
+                        paths.push(0);
+                        ans = tsp(graph, v, 0, n, count + 1, cost + graph[currPos][i], ans, dist, l);
 
-                    // Mark ith node as unvisited
-                    v[i] = false;
-                    paths.pop();
+                        // Mark ith node as unvisited
+                        v[i] = false;
+                        paths.pop();
+                    }
                     i = l;
+                }else if(i == 0){
+                    i = l;
+                    if (!v[i] && graph[currPos][i] > 0) {
+                        System.out.println("0" + i);
+                        v[i] = true;
+                        paths.push(l);
+                        ans = tsp(graph, v, l, n, count + 1, cost + graph[currPos][i], ans, dist, l);
 
+                        // Mark ith node as unvisited
+                        v[i] = false;
+                        paths.pop();
+                    }
+                    i = 0;
                 }else{
+                    //System.out.println("mirosvaldo");
                     v[i] = true;
                     paths.push(i);
                     ans = tsp(graph, v, i, n, count + 1, cost + graph[currPos][i], ans, dist, l);
