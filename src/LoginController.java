@@ -133,8 +133,10 @@ public class LoginController implements Initializable {
     public TextField remIdCacheC;
     //adiciao
     public ComboBox<String> comboBoxTipoCache;
-    public TextField addIdCacheC;
-    //public TextField editDificC;
+    public TextField addLocalC;
+    public TextField addIdAventC;
+    public TextField addIdObjetoC;
+    public TextField addDificC;
     //edicao
     public TextField editIdCacheC;
     public TextField editLocalC;
@@ -258,6 +260,7 @@ public class LoginController implements Initializable {
         String a = "Admin";
 
         comboBoxAv.getItems().addAll(p,b,a);
+        comboBoxTipoCache.getItems().addAll(p,b);
 
         try {
             carregarFicheiro();
@@ -1388,7 +1391,24 @@ public class LoginController implements Initializable {
         gcg.getGrafo().getCaches().get(4);
     }
 
-    public void handlerAddCache(ActionEvent actionEvent) {
+    public void handlerAddCache(ActionEvent actionEvent) throws AventureiroNaoHabilitado {
+        int idA = Integer.parseInt(addIdAventC.getText());
+        int idO = Integer.parseInt(addIdObjetoC.getText());
+        int dif = Integer.parseInt(addDificC.getText());
+        String l = addLocalC.getText();
+        String[] parts = l.split(";");
+        String local = parts[2];
+        int x = Integer.parseInt(parts[0]);
+        int y = Integer.parseInt(parts[1]);
+
+        if(comboBoxTipoCache.getValue().compareTo("Premium") == 0) {
+            PremiumCache c = new PremiumCache(dif, ga.getAventureiros().get(idA), go.getTravelBug().get(idO),x, y, local);
+            gc.adicionaCache(c);
+        }else if(comboBoxTipoCache.getValue().compareTo("Basic") == 0){
+            BasicCache c = new BasicCache(dif, ga.getAventureiros().get(idA), go.getObjetos().get(idO),x, y, local);
+            gc.adicionaCache(c);
+        }
+        atualizarCaches();
     }
 
     public void handlerEditCache(ActionEvent actionEvent) {

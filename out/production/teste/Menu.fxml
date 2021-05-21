@@ -53,7 +53,7 @@
                                        <children>
                                           <ComboBox fx:id="comboBoxAv" layoutX="33.0" layoutY="80.0" prefHeight="26.0" prefWidth="159.0" promptText="Tipo" style="-fx-border-width: 0 0 1 0; -fx-border-color: yellow; -fx-border-radius: 10;" stylesheets="@combobox.css" visibleRowCount="14">
                                              <cursor>
-                                                <Cursor fx:constant="CROSSHAIR" />
+                                                <Cursor fx:constant="HAND" />
                                              </cursor></ComboBox>
                                           <TextField fx:id="nomeAvent" layoutX="215.0" layoutY="80.0" promptText="Nome" stylesheets="@grafosCss.css">
                                              <cursor>
@@ -76,7 +76,7 @@
                                                 <URL value="@butao.css" />
                                              </stylesheets>
                                              <cursor>
-                                                <Cursor fx:constant="CROSSHAIR" />
+                                                <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </Button>
                                           <ImageView fitHeight="85.0" fitWidth="83.0" layoutX="261.0" pickOnBounds="true" preserveRatio="true">
@@ -113,7 +113,7 @@
                                              </cursor></TextField>
                                           <Button layoutX="340.0" layoutY="76.0" mnemonicParsing="false" onAction="#handlerRemoverAvent" prefHeight="41.0" prefWidth="132.0" stylesheets="@butao.css" text="Remover">
                                              <cursor>
-                                                <Cursor fx:constant="CROSSHAIR" />
+                                                <Cursor fx:constant="HAND" />
                                              </cursor>
                                              <font>
                                                 <Font size="18.0" />
@@ -179,7 +179,7 @@
                               </Tab>
                           </tabs>
                         </TabPane>
-                        <ImageView disable="true" fitHeight="573.0" fitWidth="320.0" layoutX="866.0" layoutY="184.0" pickOnBounds="true" smooth="false" style="fx-border-color: yellow; fx-border-radius: 4;">
+                        <ImageView disable="true" fitHeight="611.0" fitWidth="341.0" layoutX="860.0" layoutY="146.0" pickOnBounds="true" smooth="false" style="fx-border-color: yellow; fx-border-radius: 4;">
                            <image>
                               <Image url="@explorer.png" />
                            </image>
@@ -209,9 +209,9 @@
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TextField fx:id="addNomeO" layoutX="156.0" layoutY="63.0" promptText="Nome" style="-fx-background-color: #0d1a26; -fx-border-color: yellow; -fx-border-width: 0 0 1 0;" stylesheets="@grafosCss.css" />
-                                          <Button layoutX="406.0" layoutY="55.0" mnemonicParsing="false" onAction="#handlerAddObjeto" prefHeight="42.0" prefWidth="114.0" stylesheets="@butao.css" text="Adicionar">
+                                          <Button layoutX="406.0" layoutY="55.0" mnemonicParsing="false" onAction="#handlerAddObjeto" prefHeight="42.0" prefWidth="114.0" stylesheets="@butao.css" text="ADICIONAR">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font size="14.0" />
                                              </font>
                                           </Button>
                                           <ImageView fitHeight="85.0" fitWidth="86.0" layoutX="36.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
@@ -228,7 +228,10 @@
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TextField fx:id="remIdO" layoutX="156.0" layoutY="74.0" promptText="Id" stylesheets="@grafosCss.css" />
-                                          <Button layoutX="413.0" layoutY="64.0" mnemonicParsing="false" onAction="#handlerRemObjeto" prefHeight="45.0" prefWidth="100.0" stylesheets="@butao.css" text="REMOVER" />
+                                          <Button layoutX="413.0" layoutY="64.0" mnemonicParsing="false" onAction="#handlerRemObjeto" prefHeight="45.0" prefWidth="100.0" stylesheets="@butao.css" text="REMOVER">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font></Button>
                                           <ImageView fitHeight="86.0" fitWidth="83.0" layoutX="32.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@id.png" />
@@ -242,18 +245,18 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="editNomeO" layoutX="332.0" layoutY="97.0" promptText="Nome" />
-                                          <Button layoutX="657.0" layoutY="77.0" mnemonicParsing="false" onAction="#handlerEditObjeto" prefHeight="41.0" prefWidth="98.0" text="Editar">
+                                          <TextField fx:id="editNomeO" layoutX="332.0" layoutY="97.0" promptText="Nome" stylesheets="@grafosCss.css" />
+                                          <Button layoutX="652.0" layoutY="73.0" mnemonicParsing="false" onAction="#handlerEditObjeto" prefHeight="49.0" prefWidth="107.0" stylesheets="@butao.css" text="EDITAR">
                                              <font>
-                                                <Font size="14.0" />
+                                                <Font size="15.0" />
                                              </font></Button>
-                                          <ImageView fitHeight="74.0" fitWidth="72.0" layoutX="371.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="74.0" fitWidth="72.0" layoutX="384.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@profile.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField fx:id="editIdO" layoutX="86.0" layoutY="97.0" promptText="Id" />
-                                          <ImageView fitHeight="76.0" fitWidth="72.0" layoutX="125.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                          <TextField fx:id="editIdO" layoutX="86.0" layoutY="97.0" promptText="Id" stylesheets="@grafosCss.css" />
+                                          <ImageView fitHeight="76.0" fitWidth="72.0" layoutX="138.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@id.png" />
                                              </image>
@@ -295,10 +298,10 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="addNomeTb" layoutX="178.0" layoutY="84.0" promptText="Nome" />
-                                          <Button layoutX="437.0" layoutY="76.0" mnemonicParsing="false" onAction="#handlerAddTb" prefHeight="42.0" prefWidth="100.0" text="Adicionar">
+                                          <TextField fx:id="addNomeTb" layoutX="178.0" layoutY="84.0" promptText="Nome" stylesheets="@grafosCss.css" />
+                                          <Button layoutX="437.0" layoutY="76.0" mnemonicParsing="false" onAction="#handlerAddTb" prefHeight="42.0" prefWidth="125.0" stylesheets="@butao.css" text="ADICIONAR">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font size="14.0" />
                                              </font>
                                           </Button>
                                           <ImageView fitHeight="103.0" fitWidth="81.0" layoutX="45.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
@@ -314,8 +317,8 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="remIdTb" layoutX="177.0" layoutY="84.0" promptText="Id" />
-                                          <Button layoutX="433.0" layoutY="74.0" mnemonicParsing="false" onAction="#handlerRemTb" prefHeight="45.0" prefWidth="100.0" text="REMOVER">
+                                          <TextField fx:id="remIdTb" layoutX="177.0" layoutY="84.0" promptText="Id" stylesheets="@grafosCss.css" />
+                                          <Button layoutX="433.0" layoutY="74.0" mnemonicParsing="false" onAction="#handlerRemTb" prefHeight="45.0" prefWidth="100.0" stylesheets="@butao.css" text="REMOVER">
                                              <font>
                                                 <Font size="14.0" />
                                              </font></Button>
@@ -332,8 +335,8 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="editNomeTb" layoutX="332.0" layoutY="85.0" promptText="Nome" />
-                                          <Button layoutX="587.0" layoutY="77.0" mnemonicParsing="false" onAction="#handlerEditTb" prefHeight="41.0" prefWidth="98.0" text="EDITAR">
+                                          <TextField fx:id="editNomeTb" layoutX="319.0" layoutY="85.0" promptText="Nome" stylesheets="@grafosCss.css" />
+                                          <Button layoutX="587.0" layoutY="77.0" mnemonicParsing="false" onAction="#handlerEditTb" prefHeight="41.0" prefWidth="98.0" stylesheets="@butao.css" text="EDITAR">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -343,7 +346,7 @@
                                                 <Image url="@profile.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField fx:id="editIdTb" layoutX="106.0" layoutY="84.0" promptText="Id" />
+                                          <TextField fx:id="editIdTb" layoutX="86.0" layoutY="85.0" promptText="Id" stylesheets="@grafosCss.css" />
                                           <ImageView fitHeight="67.0" fitWidth="68.0" layoutX="147.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@id.png" />
@@ -386,29 +389,34 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ComboBox fx:id="comboBoxTipoCache" layoutX="40.0" layoutY="84.0" prefWidth="150.0" promptText="Tipo" />
-                                          <TextField fx:id="addIdCacheC" layoutX="226.0" layoutY="84.0" promptText="IdCache" />
-                                          <TextField fx:id="addLocalC" layoutX="430.0" layoutY="84.0" promptText="Local" />
-                                          <TextField fx:id="addIdAventC" layoutX="227.0" layoutY="114.0" promptText="IdAventureiro" />
-                                          <Button layoutX="667.0" layoutY="63.0" mnemonicParsing="false" onAction="#handlerAddCache" prefHeight="42.0" prefWidth="100.0" text="Adicionar">
+                                          <ComboBox fx:id="comboBoxTipoCache" layoutX="40.0" layoutY="84.0" prefWidth="150.0" promptText="Tipo" stylesheets="@combobox.css" />
+                                          <TextField fx:id="addLocalC" layoutX="431.0" layoutY="131.0" promptText="Local" stylesheets="@grafosCss.css" />
+                                          <TextField fx:id="addIdAventC" layoutX="227.0" layoutY="99.0" promptText="IdAventureiro" stylesheets="@grafosCss.css" />
+                                          <Button layoutX="52.0" layoutY="141.0" mnemonicParsing="false" onAction="#handlerAddCache" prefHeight="42.0" prefWidth="126.0" stylesheets="@butao.css" text="ADICIONAR">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font size="14.0" />
                                              </font>
                                           </Button>
-                                          <TextField fx:id="addIdObjetoC" layoutX="226.0" layoutY="146.0" promptText="idObjeto" />
-                                          <ImageView fitHeight="62.0" fitWidth="68.0" layoutX="271.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                          <TextField fx:id="addIdObjetoC" layoutX="227.0" layoutY="131.0" promptText="idObjeto" stylesheets="@grafosCss.css" />
+                                          <ImageView fitHeight="62.0" fitWidth="68.0" layoutX="284.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@id.png" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="60.0" fitWidth="58.0" layoutX="86.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="60.0" fitWidth="58.0" layoutX="86.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@admin.png" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="473.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="487.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@local.png" />
+                                             </image>
+                                          </ImageView>
+                                          <TextField fx:id="addDificC" layoutX="620.0" layoutY="131.0" promptText="Dificuldade" stylesheets="@grafosCss.css" />
+                                          <ImageView fitHeight="68.0" fitWidth="68.0" layoutX="674.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@dificuldade.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -419,19 +427,13 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ComboBox fx:id="comboBoxAv121" layoutX="37.0" layoutY="84.0" prefWidth="150.0" promptText="Tipo" stylesheets="@combobox.css" />
-                                          <TextField fx:id="remIdCacheC" layoutX="257.0" layoutY="84.0" promptText="IdCache" stylesheets="@grafosCss.css" />
-                                          <Button layoutX="502.0" layoutY="63.0" mnemonicParsing="false" onAction="#handlerRemCache" prefHeight="42.0" prefWidth="100.0" stylesheets="@butao.css" text="Remover">
+                                          <TextField fx:id="remIdCacheC" layoutX="75.0" layoutY="91.0" promptText="IdCache" stylesheets="@grafosCss.css" />
+                                          <Button layoutX="341.0" layoutY="76.0" mnemonicParsing="false" onAction="#handlerRemCache" prefHeight="42.0" prefWidth="100.0" stylesheets="@butao.css" text="REMOVER">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font size="14.0" />
                                              </font>
                                           </Button>
-                                          <ImageView fitHeight="63.0" fitWidth="74.0" layoutX="84.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@admin.png" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="82.0" fitWidth="65.0" layoutX="299.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="82.0" fitWidth="65.0" layoutX="130.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@id.png" />
                                              </image>
@@ -444,23 +446,27 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="editIdCacheC" layoutX="48.0" layoutY="81.0" promptText="IdCache" stylesheets="@grafosCss.css" />
-                                          <TextField fx:id="editLocalC" layoutX="285.0" layoutY="86.0" promptText="Local" stylesheets="@grafosCss.css" />
-                                          <TextField fx:id="editIdAventC" layoutX="49.0" layoutY="148.0" promptText="IdAventureiro" stylesheets="@grafosCss.css" />
-                                          <Button layoutX="572.0" layoutY="90.0" mnemonicParsing="false" onAction="#handlerAddAvent" prefHeight="42.0" prefWidth="100.0" stylesheets="@butao.css" text="Editar">
+                                          <TextField fx:id="editIdCacheC" layoutX="49.0" layoutY="102.0" promptText="IdCache" stylesheets="@grafosCss.css" />
+                                          <TextField fx:id="editLocalC" layoutX="254.0" layoutY="102.0" promptText="Local" stylesheets="@grafosCss.css" />
+                                          <Button layoutX="707.0" layoutY="81.0" mnemonicParsing="false" onAction="#handlerEditCache" prefHeight="42.0" prefWidth="100.0" stylesheets="@butao.css" text="EDITAR">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font size="14.0" />
                                              </font>
                                           </Button>
-                                          <TextField fx:id="editIdObjetoC" layoutX="48.0" layoutY="117.0" promptText="idObjeto" stylesheets="@grafosCss.css" />
                                           <ImageView fitHeight="78.0" fitWidth="64.0" layoutX="104.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@id.png" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="82.0" fitWidth="64.0" layoutX="328.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="82.0" fitWidth="64.0" layoutX="310.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@local.png" />
+                                             </image>
+                                          </ImageView>
+                                          <TextField fx:id="editDificC" layoutX="471.0" layoutY="102.0" promptText="Dificuldade" stylesheets="@grafosCss.css" />
+                                          <ImageView fitHeight="75.0" fitWidth="76.0" layoutX="521.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@dificuldade.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -471,26 +477,36 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="editIdCacheC1" layoutX="21.0" layoutY="64.0" promptText="Cache Partida" stylesheets="@grafosCss.css" />
-                                          <TextField fx:id="editLocalC1" layoutX="215.0" layoutY="109.0" promptText="Distancia" stylesheets="@grafosCss.css" />
-                                          <TextField fx:id="editIdAventC1" layoutX="621.0" layoutY="109.0" promptText="Tempo" stylesheets="@grafosCss.css" />
-                                          <Button layoutX="698.0" layoutY="11.0" mnemonicParsing="false" onAction="#handlerAddAvent" prefHeight="42.0" prefWidth="115.0" stylesheets="@butao.css" text="Adicionar">
+                                          <TextField fx:id="cachePartidaAC" layoutX="21.0" layoutY="90.0" promptText="Cache Partida" stylesheets="@grafosCss.css" />
+                                          <TextField fx:id="distanciaAC" layoutX="216.0" layoutY="125.0" promptText="Distancia" stylesheets="@grafosCss.css" />
+                                          <TextField fx:id="tempoAC" layoutX="621.0" layoutY="125.0" promptText="Tempo" stylesheets="@grafosCss.css" />
+                                          <Button layoutX="698.0" layoutY="2.0" mnemonicParsing="false" onAction="#handlerAddCaminho" prefHeight="42.0" prefWidth="115.0" stylesheets="@butao.css" text="Adicionar">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Button>
-                                          <TextField fx:id="editIdObjetoC1" layoutX="21.0" layoutY="108.0" promptText="Cache Chegada" stylesheets="@grafosCss.css" />
-                                          <ImageView fitHeight="78.0" fitWidth="64.0" layoutX="482.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                                          <TextField fx:id="cacheChegadaAC" layoutX="21.0" layoutY="125.0" promptText="Cache Chegada" stylesheets="@grafosCss.css" />
+                                          <ImageView fitHeight="78.0" fitWidth="64.0" layoutX="483.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@id.png" />
+                                                <Image url="@elevacao.png" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="82.0" fitWidth="64.0" layoutX="271.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="82.0" fitWidth="64.0" layoutX="272.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@local.png" />
+                                                <Image url="@distancia.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField fx:id="editLocalC11" layoutX="426.0" layoutY="109.0" promptText="Elevação" stylesheets="@grafosCss.css" />
+                                          <TextField fx:id="elevacaoAC" layoutX="427.0" layoutY="125.0" promptText="Elevação" stylesheets="@grafosCss.css" />
+                                          <ImageView fitHeight="81.0" fitWidth="64.0" layoutX="77.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@cache.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="59.0" fitWidth="59.0" layoutX="679.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@tempo.png" />
+                                             </image>
+                                          </ImageView>
                                        </children>
                                     </AnchorPane>
                                  </content>
