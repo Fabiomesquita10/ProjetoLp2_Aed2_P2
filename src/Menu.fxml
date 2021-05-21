@@ -274,15 +274,16 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="529.0" prefWidth="860.0">
                      <children>
-                        <TableView fx:id="tbTables" layoutX="22.0" layoutY="26.0" prefHeight="478.0" prefWidth="835.0" stylesheets="@tableView.css">
+                        <TableView fx:id="tbTables" layoutX="22.0" layoutY="26.0" prefHeight="478.0" prefWidth="1152.0" stylesheets="@tableView.css">
                            <columns>
-                              <TableColumn fx:id="idTCol" prefWidth="87.0" text="Id" />
-                              <TableColumn fx:id="missaoCol" prefWidth="98.0" text="Missao" />
-                              <TableColumn fx:id="viajarTCol" prefWidth="119.0" text="Viajar" />
-                              <TableColumn fx:id="ultimaCCol" prefWidth="132.0" text="Ultima cache" />
-                              <TableColumn fx:id="ultimoATCol" prefWidth="125.0" text="Ultimo Aventureiro" />
-                              <TableColumn fx:id="numCCol" prefWidth="120.0" text="Num Caches" />
-                              <TableColumn fx:id="numATCol" prefWidth="145.0" text="Num Aventureiros" />
+                              <TableColumn fx:id="idTCol" prefWidth="72.0" text="Id" />
+                              <TableColumn fx:id="nomeTCol" prefWidth="104.0" text="Nome" />
+                              <TableColumn fx:id="missaoCol" prefWidth="414.0" text="Missao" />
+                              <TableColumn fx:id="viajarTCol" minWidth="0.0" prefWidth="94.0" text="Viajar" />
+                              <TableColumn fx:id="ultimaCCol" prefWidth="112.0" text="Ultima cache" />
+                              <TableColumn fx:id="ultimoATCol" prefWidth="135.0" text="Ultimo Aventureiro" />
+                              <TableColumn fx:id="numCCol" prefWidth="98.0" text="Num Caches" />
+                              <TableColumn fx:id="numATCol" prefWidth="120.0" text="Num Aventureiros" />
                            </columns>
                         </TableView>
                         <TabPane layoutX="22.0" layoutY="517.0" prefHeight="226.0" prefWidth="837.0" style="-fx-border-color: yellow; -fx-border-width: 2;" tabClosingPolicy="UNAVAILABLE">
@@ -339,7 +340,7 @@
                                                 <Image url="@profile.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField fx:id="editIdTb1" layoutX="106.0" layoutY="84.0" promptText="Id" />
+                                          <TextField fx:id="editIdTb" layoutX="106.0" layoutY="84.0" promptText="Id" />
                                           <ImageView fitHeight="67.0" fitWidth="68.0" layoutX="147.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@id.png" />
@@ -356,7 +357,6 @@
                               <Image url="@diamante.png" />
                            </image>
                         </ImageView>
-                        <TextArea layoutX="892.0" layoutY="26.0" prefHeight="479.0" prefWidth="279.0" stylesheets="@grafosCss.css" />
                      </children>
                   </AnchorPane>
                </content>

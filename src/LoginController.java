@@ -62,6 +62,7 @@ public class LoginController implements Initializable {
     //TRAVELBUG
     public TableView<TravelBug> tbTables;
     public TableColumn<TravelBug, String> idTCol;
+    public TableColumn<TravelBug, String> nomeTCol;
     public TableColumn<TravelBug, String> viajarTCol;
     public TableColumn<TravelBug, String> missaoCol;
     public TableColumn<TravelBug, String> ultimaCCol;
@@ -123,6 +124,7 @@ public class LoginController implements Initializable {
     //remove
     public TextField remIdTb;
     //edit
+    public TextField editIdTb;
     public TextField editNomeTb;
 
     //CACHE
@@ -213,6 +215,9 @@ public class LoginController implements Initializable {
 
         idTCol.setCellValueFactory(new PropertyValueFactory<>("IdT"));
         idTCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        nomeTCol.setCellValueFactory(new PropertyValueFactory<>("NomeT"));
+        nomeTCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
         missaoCol.setCellValueFactory(new PropertyValueFactory<>("MissaoT"));
         missaoCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -396,7 +401,8 @@ public class LoginController implements Initializable {
         ga.guardarAventBin();
         gc.guardarCachesBin();
         go.guardarObjBin();
-        */
+         */
+
 
         ga.lerAventBin();
         go.lerObjectBin();
@@ -1158,7 +1164,7 @@ public class LoginController implements Initializable {
         int k = 1;
         if(tbTables!=null)
             tbTables.getItems().clear();
-        TbArrayList.clear();
+            TbArrayList.clear();
         if(go.getTravelBug().size()>0){
             while(k<=go.getTravelBug().size()){
                 if(go.getTravelBug().get(x) != null) {
@@ -1179,7 +1185,7 @@ public class LoginController implements Initializable {
         int k = 1;
         if(tbTables!=null)
             tbTables.getItems().clear();
-        TbArrayList.clear();
+            TbArrayList.clear();
         if(go.getTravelBug().size()>0){
             while(k<=go.getTravelBug().size()){
                 if(go.getTravelBug().get(x) != null) {
@@ -1193,6 +1199,26 @@ public class LoginController implements Initializable {
     }
 
     public void handlerEditTb(ActionEvent actionEvent) {
+        String nome = editNomeTb.getText();
+        int id = Integer.parseInt(editIdTb.getText());
+        go.editarTb(id,nome);
+
+        int x = 1;
+        int k = 1;
+        if(tbTables!=null)
+            tbTables.getItems().clear();
+            TbArrayList.clear();
+        if(go.getTravelBug().size()>0){
+            while(k<=go.getTravelBug().size()){
+                if(go.getTravelBug().get(x) != null) {
+                    TbArrayList.add(go.getTravelBug().get(x));
+                    k++;
+                }
+                x++;
+            }
+            tbTables.getItems().addAll(TbArrayList);
+        }
+
     }
 
     public void handlerAddCache(ActionEvent actionEvent) {

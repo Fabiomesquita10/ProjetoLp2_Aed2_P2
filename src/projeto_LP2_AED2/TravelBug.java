@@ -24,18 +24,24 @@ public class TravelBug extends Objeto implements Serializable {
     //GETT CONTROLLER
 
     public String getIdT(){return this.getId().toString();}
+    public String getNomeT(){return this.getNome();}
     public String getMissaoT(){return missao.toString();}
     public String getViajarT(){if(viajar)return "sim";
     if(!viajar) return "nao";
     return "none";}
     public String getUltimaCT(){
+        if(numCachesPres == 1){
+            return "none";
+        }
         return listaCachesPresente.get(numCachesPres-1).getId().toString();}
     public String getUltimaAT(){
         if(listaAventureiros.size() > 0)
             return listaAventureiros.get(numAventureiros-1).getId().toString();
     return "empty";}
     public String getNumCT(){return ""+(numCachesPres-1);}
-    public String getNumAT(){return ""+(numAventureiros-1);}
+    public String getNumAT(){
+        return ""+(numAventureiros);
+    }
 
 
 
