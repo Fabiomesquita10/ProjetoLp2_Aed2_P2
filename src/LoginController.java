@@ -71,6 +71,7 @@ public class LoginController implements Initializable {
     public TableColumn<TravelBug, String> numATCol;
     private ArrayList<TravelBug> TbArrayList;
 
+    int setas = 1;
     public Group graphGroup;
     public Group temp;
     int radius = 10;
@@ -130,6 +131,8 @@ public class LoginController implements Initializable {
     //CACHE
     //remocao
     public TextField remIdCacheC;
+
+    public TextArea consolaCaminhos;
 
 
     @Override
@@ -257,7 +260,7 @@ public class LoginController implements Initializable {
     }
 
     public void creatGraphGroup(GestaoAcessoAventureiro ga, GestaoAcessoCacheGraph gcg, GestaoAcessoObjeto go){
-        if(gcg.getGrafo().E() > 0){
+        if(gcg.getGrafo().E() > 0 && setas == 1) {
             int w = 1, z = 1;
             while(z<gcg.getGrafo().getNumCache()){
                 if(gcg.getGrafo().getCaches().contains(w)){
@@ -331,7 +334,7 @@ public class LoginController implements Initializable {
             }
             else{
                 graphGroup.getChildren().clear();
-                if(gcg.getGrafo().E() > 0){
+                if(gcg.getGrafo().E() > 0 && setas == 1){
                     int a = 1;
                     int b = 1;
                     while(b<gcg.getGrafo().getNumCache()){
@@ -511,7 +514,7 @@ public class LoginController implements Initializable {
 
         if(!tipo.equals("") && !regiao.equals("") && dif!=0){
             graphGroup.getChildren().clear();
-            if(gcg.getGrafo().E() > 0){
+            if(gcg.getGrafo().E() > 0 && setas == 1){
                 for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
                     if(tipo.equals("premium")) {
                         if (gcg.getGrafo().getCaches().get(k) instanceof PremiumCache && gcg.getGrafo().getCaches().get(k).getDificuldade().equals(dif) && gcg.getGrafo().getCaches().get(k).getLocal().getLocalizacao().equals(regiao)) {
@@ -558,7 +561,7 @@ public class LoginController implements Initializable {
             }
         }else if(!regiao.equals("")){
             graphGroup.getChildren().clear();
-            if(gcg.getGrafo().E() > 0){
+            if(gcg.getGrafo().E() > 0 && setas == 1){
                 for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
                     if (gcg.getGrafo().getCaches().get(k).getLocal().getLocalizacao().equals(regiao)) {
                         for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
@@ -583,7 +586,7 @@ public class LoginController implements Initializable {
             }
         }else if(!tipo.equals("")){
             graphGroup.getChildren().clear();
-            if(gcg.getGrafo().E() > 0){
+            if(gcg.getGrafo().E() > 0 && setas == 1){
                 for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
                     if(tipo.equals("premium")) {
                         if (gcg.getGrafo().getCaches().get(k) instanceof PremiumCache) {
@@ -630,7 +633,7 @@ public class LoginController implements Initializable {
             }
         }else if(dif != 0){
             graphGroup.getChildren().clear();
-            if(gcg.getGrafo().E() > 0){
+            if(gcg.getGrafo().E() > 0 && setas == 1){
                 for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
                     if (gcg.getGrafo().getCaches().get(k).getDificuldade() == dif) {
                         for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
@@ -655,7 +658,7 @@ public class LoginController implements Initializable {
         }else if(idTb != 0){
             if(go.getTravelBug().contains(idTb)){
                 graphGroup.getChildren().clear();
-                if(gcg.getGrafo().E() > 0){
+                if(gcg.getGrafo().E() > 0 && setas == 1){
                     for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
                         if (contain(go.getTravelBug(), idTb, k)) {
                             for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
@@ -1245,6 +1248,7 @@ public class LoginController implements Initializable {
         int x = 1, k = 1;
         if(cacheTables!=null)
             cacheTables.getItems().clear();
+            CacheArrayList.clear();
         if(gc.getCaches().size()>0){
             gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
             while(k<=gc.getCaches().size()){
@@ -1266,8 +1270,54 @@ public class LoginController implements Initializable {
     }
 
     public void handlerVerCaminhos(ActionEvent actionEvent) {
+        consolaCaminhos.setText("");
+        StringBuilder caminhos = new StringBuilder();
+        for (int i = 1; i < gcg.getGrafo().V(); i++) {
+            for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(i)){
+                caminhos.append("De: ").append(i).append(", para: ").append(adj.to());
+                caminhos.append("\nDistancia: ").append(adj.distancia());
+                caminhos.append(", Tempo: ").append(adj.tempo());
+                caminhos.append(", Elevacao: ").append(adj.elevacao()).append("\n");
+            }
+        }
+        consolaCaminhos.setText(caminhos.toString());
     }
 
     public void handlerSetasMapa(ActionEvent actionEvent) {
+        if(setas == 0)
+            setas = 1;
+        else
+            setas = 0;
+        graphGroup.getChildren().clear();
+        if(setas == 1){
+            if(gcg.getGrafo().E() > 0 && setas == 1) {
+                int w = 1, z = 1;
+                while(z<gcg.getGrafo().getNumCache()){
+                    if(gcg.getGrafo().getCaches().contains(w)){
+                        criar_direct_edge(w);
+                        z++;
+                    }
+                    w++;
+                }
+            }
+            int w = 1, z = 1;
+            while(z<gcg.getGrafo().getNumCache()){
+                if(gcg.getGrafo().getCaches().contains(w)){
+                    criar_graph(w);
+                    z++;
+                }
+                w++;
+            }
+        }if(setas == 0){
+            int w = 1, z = 1;
+            while(z<gcg.getGrafo().getNumCache()){
+                if(gcg.getGrafo().getCaches().contains(w)){
+                    criar_graph(w);
+                    z++;
+                }
+                w++;
+            }
+        }
+
     }
 }

@@ -108,7 +108,7 @@
                                              <cursor>
                                                 <Cursor fx:constant="TEXT" />
                                              </cursor></TextField>
-                                          <Button layoutX="340.0" layoutY="76.0" mnemonicParsing="false" onAction="#handlerRemoverAvent" prefHeight="41.0" prefWidth="132.0" stylesheets="@butao.css" text="REMOVER">
+                                          <Button layoutX="340.0" layoutY="76.0" mnemonicParsing="false" onAction="#handlerRemoverAvent" prefHeight="41.0" prefWidth="132.0" stylesheets="@butao.css" text="Remover">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -205,8 +205,8 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="addNomeO" layoutX="156.0" layoutY="63.0" promptText="Nome" style="-fx-background-color: #0d1a26; -fx-border-color: yellow; -fx-border-width: 0 0 1 0;" />
-                                          <Button layoutX="406.0" layoutY="55.0" mnemonicParsing="false" onAction="#handlerAddObjeto" prefHeight="42.0" prefWidth="100.0" text="Adicionar">
+                                          <TextField fx:id="addNomeO" layoutX="156.0" layoutY="63.0" promptText="Nome" style="-fx-background-color: #0d1a26; -fx-border-color: yellow; -fx-border-width: 0 0 1 0;" stylesheets="@grafosCss.css" />
+                                          <Button layoutX="406.0" layoutY="55.0" mnemonicParsing="false" onAction="#handlerAddObjeto" prefHeight="42.0" prefWidth="114.0" stylesheets="@butao.css" text="Adicionar">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -224,9 +224,9 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="remIdO" layoutX="156.0" layoutY="74.0" promptText="Id" />
-                                          <Button layoutX="413.0" layoutY="64.0" mnemonicParsing="false" onAction="#handlerRemObjeto" prefHeight="45.0" prefWidth="100.0" text="REMOVER" />
-                                          <ImageView fitHeight="92.0" fitWidth="90.0" layoutX="32.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                                          <TextField fx:id="remIdO" layoutX="156.0" layoutY="74.0" promptText="Id" stylesheets="@grafosCss.css" />
+                                          <Button layoutX="413.0" layoutY="64.0" mnemonicParsing="false" onAction="#handlerRemObjeto" prefHeight="45.0" prefWidth="100.0" stylesheets="@butao.css" text="REMOVER" />
+                                          <ImageView fitHeight="86.0" fitWidth="83.0" layoutX="32.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@id.png" />
                                              </image>
@@ -499,7 +499,7 @@
                               <Image url="@bau-de-tesouro.png" />
                            </image>
                         </ImageView>
-                        <TextArea layoutX="891.0" layoutY="26.0" prefHeight="479.0" prefWidth="280.0" stylesheets="@grafosCss.css" />
+                        <TextArea fx:id="consolaCaminhos" layoutX="891.0" layoutY="26.0" prefHeight="479.0" prefWidth="280.0" stylesheets="@grafosCss.css" />
                         <Button layoutX="1058.0" layoutY="460.0" mnemonicParsing="false" onAction="#handlerVerCaminhos" prefHeight="32.0" prefWidth="102.0" stylesheets="@butao.css" text="Ver Caminhos" />
                         </children>
                     </AnchorPane>

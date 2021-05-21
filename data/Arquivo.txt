@@ -86,3 +86,6 @@ Foi removido o Aventureiro com id : 19 e com o nome : qewewq, na data de: 20/5/2
 Foi removido o Aventureiro com id : 19 e com o nome : dsq, na data de: 20/5/2021
 Foi removido o Aventureiro com id : 17 e com o nome : fabio, na data de: 20/5/2021
 >>>>>>> 2bd06e208240f1d7d78f45333687f948dae9ad41
+Removeu a cache com o ID 1, na data de: 21/5/2021
+Removeu a cache com o ID 1, na data de: 21/5/2021
+Removeu a cache com o ID 1, na data de: 21/5/2021
