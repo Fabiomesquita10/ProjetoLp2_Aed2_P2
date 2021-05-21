@@ -131,6 +131,14 @@ public class LoginController implements Initializable {
     //CACHE
     //remocao
     public TextField remIdCacheC;
+    //adiciao
+    public ComboBox<String> comboBoxTipoCache;
+    public TextField addIdCacheC;
+    //public TextField editDificC;
+    //edicao
+    public TextField editIdCacheC;
+    public TextField editLocalC;
+    public TextField editDificC;
     //Caminhos
     public TextArea consolaCaminhos;
     public TextField cachePartidaAC;
@@ -138,8 +146,6 @@ public class LoginController implements Initializable {
     public TextField tempoAC;
     public TextField cacheChegadaAC;
     public TextField elevacaoAC;
-
-    public TextArea consolaCaminhos;
 
 
     @Override
@@ -1231,9 +1237,6 @@ public class LoginController implements Initializable {
 
     }
 
-    public void handlerAddCache(ActionEvent actionEvent) {
-    }
-
     public void handlerRemCache(ActionEvent actionEvent) throws CacheNaoExisteException {
         System.out.println("GC: ");
         gc.getCaches().printInOrder(gc.getCaches().getRoot());
@@ -1359,6 +1362,45 @@ public class LoginController implements Initializable {
                 z++;
             }
             w++;
+        }
+    }
+
+    public void atualizarCaches(){
+        int x = 1, k = 1;
+        if(cacheTables!=null)
+            cacheTables.getItems().clear();
+        CacheArrayList.clear();
+        if(gc.getCaches().size()>0){
+            gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
+            while(k<=gc.getCaches().size()){
+                if(gc.getCaches().contains(x)){
+                    gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
+                    CacheArrayList.add(gc.getCaches().get(x));
+                    k++;
+                }
+                x++;
+            }
+            cacheTables.getItems().addAll(CacheArrayList);
+        }
+        gcg.lerCaminhos();
+        gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
+        creatGraphGroup(ga, gcg, go);
+        gcg.getGrafo().getCaches().get(4);
+    }
+
+    public void handlerAddCache(ActionEvent actionEvent) {
+    }
+
+    public void handlerEditCache(ActionEvent actionEvent) {
+        int id = Integer.parseInt(editIdCacheC.getText());
+        int dif = Integer.parseInt(editDificC.getText());
+        String local = editLocalC.getText();
+        if(gcg.getGrafo().getCaches().contains(id)){
+            gcg.getGrafo().getCaches().get(id).getLocal().setLocalizacao(local);
+            gcg.getGrafo().getCaches().get(id).setDificuldade(dif);
+            gc.getCaches().get(id).getLocal().setLocalizacao(local);
+            gc.getCaches().get(id).setDificuldade(dif);
+            atualizarCaches();
         }
     }
 }
