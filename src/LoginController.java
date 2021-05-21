@@ -139,6 +139,8 @@ public class LoginController implements Initializable {
     public TextField cacheChegadaAC;
     public TextField elevacaoAC;
 
+    public TextArea consolaCaminhos;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
