@@ -53,7 +53,7 @@
                                        <children>
                                           <ComboBox fx:id="comboBoxAv" layoutX="33.0" layoutY="80.0" prefHeight="26.0" prefWidth="159.0" promptText="Tipo" style="-fx-border-width: 0 0 1 0; -fx-border-color: yellow; -fx-border-radius: 10;" stylesheets="@combobox.css" visibleRowCount="14">
                                              <cursor>
-                                                <Cursor fx:constant="HAND" />
+                                                <Cursor fx:constant="CROSSHAIR" />
                                              </cursor></ComboBox>
                                           <TextField fx:id="nomeAvent" layoutX="215.0" layoutY="80.0" promptText="Nome" stylesheets="@grafosCss.css">
                                              <cursor>
@@ -75,6 +75,9 @@
                                                 <URL value="@styles.css" />
                                                 <URL value="@butao.css" />
                                              </stylesheets>
+                                             <cursor>
+                                                <Cursor fx:constant="CROSSHAIR" />
+                                             </cursor>
                                           </Button>
                                           <ImageView fitHeight="85.0" fitWidth="83.0" layoutX="261.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -110,7 +113,7 @@
                                              </cursor></TextField>
                                           <Button layoutX="340.0" layoutY="76.0" mnemonicParsing="false" onAction="#handlerRemoverAvent" prefHeight="41.0" prefWidth="132.0" stylesheets="@butao.css" text="Remover">
                                              <cursor>
-                                                <Cursor fx:constant="HAND" />
+                                                <Cursor fx:constant="CROSSHAIR" />
                                              </cursor>
                                              <font>
                                                 <Font size="18.0" />

@@ -1320,4 +1320,7 @@ public class LoginController implements Initializable {
         }
 
     }
+
+    public void handlerAddCaminho(ActionEvent actionEvent) {
+    }
 }
