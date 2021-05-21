@@ -3,6 +3,7 @@ package SearchProj;
 import Search.RedBlack_AED2;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
+import projeto_LP2_AED2.CacheNaoExisteException;
 
 
 public class GestaoAcessoCacheGraph {
@@ -42,14 +43,26 @@ public class GestaoAcessoCacheGraph {
             int t = Integer.parseInt(parts[3]);
             int d = Integer.parseInt(parts[4]);
             int p = Integer.parseInt(parts[5]);
-            DirectedEdge_AED2 de = new DirectedEdge_AED2(v,e,w,t,d,p);
-            grafo.addEdge(de);
+            if(this.getGrafo().getCaches().contains(v) && this.getGrafo().getCaches().contains(e)){
+                DirectedEdge_AED2 de = new DirectedEdge_AED2(v,e,w,t,d,p);
+                grafo.addEdge(de);
+            }
         }
     }
 
     public void guardarCaminhos(){
         Out outfile = new Out("data/caminhos.txt");
         //funcao para guardar os edges
+    }
+
+    public boolean removeCache(Integer idCache) throws CacheNaoExisteException {
+        if(grafo.getCaches().contains(idCache)){ //verificamos se a mesma existe na RedBlack de caches
+            grafo.getCaches().delete(idCache); //removemos a cache especifica
+            String toDiario = "Removeu a cache com o ID " + idCache; //Mensagem a escrever no ficheiro(Remoção de uma cache)
+            //System.out.println(toDiario);
+            return true;
+        }
+        throw new CacheNaoExisteException("Cache a remover não existe!!");
     }
 
     /*

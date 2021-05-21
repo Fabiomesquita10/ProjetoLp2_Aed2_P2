@@ -108,6 +108,7 @@ public class LoginController implements Initializable {
     public TextField cacheP;
     public TextArea textCaixeiro;
 
+<<<<<<< HEAD
     //OBJETOS
     //add
     public TextField addNomeO;
@@ -130,6 +131,11 @@ public class LoginController implements Initializable {
 
 
 
+=======
+    //Caches
+    //Remocao
+    public TextField remIdCacheC;
+>>>>>>> 2bd06e208240f1d7d78f45333687f948dae9ad41
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -554,7 +560,7 @@ public class LoginController implements Initializable {
         }else if(!regiao.equals("")){
             graphGroup.getChildren().clear();
             if(gcg.getGrafo().E() > 0){
-                for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
+                for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
                     if (gcg.getGrafo().getCaches().get(k).getLocal().getLocalizacao().equals(regiao)) {
                         for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
                             if (gcg.getGrafo().getCaches().get(adj.to()).getLocal().getLocalizacao().equals(regiao)) {
@@ -579,7 +585,7 @@ public class LoginController implements Initializable {
         }else if(!tipo.equals("")){
             graphGroup.getChildren().clear();
             if(gcg.getGrafo().E() > 0){
-                for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
+                for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
                     if(tipo.equals("premium")) {
                         if (gcg.getGrafo().getCaches().get(k) instanceof PremiumCache) {
                             for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
@@ -626,7 +632,7 @@ public class LoginController implements Initializable {
         }else if(dif != 0){
             graphGroup.getChildren().clear();
             if(gcg.getGrafo().E() > 0){
-                for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
+                for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
                     if (gcg.getGrafo().getCaches().get(k).getDificuldade() == dif) {
                         for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
                             if (gcg.getGrafo().getCaches().get(adj.to()).getDificuldade() == dif) {
