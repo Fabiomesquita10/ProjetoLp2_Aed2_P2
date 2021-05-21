@@ -7,6 +7,7 @@ class GFG
     public static String stringCaches = new String();
 
     public String retStrin(int[][] graph, boolean[] v, int currPos, int n, int count, int cost, int ans, int dist, int l){
+        stringCaches = "";
         ans = tsp(graph, v, 0, n, 1, 0, ans, dist, l);
         return stringCaches;
     }

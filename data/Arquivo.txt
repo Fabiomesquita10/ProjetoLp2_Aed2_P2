@@ -89,3 +89,4 @@ Foi removido o Aventureiro com id : 17 e com o nome : fabio, na data de: 20/5/20
 Removeu a cache com o ID 1, na data de: 21/5/2021
 Removeu a cache com o ID 1, na data de: 21/5/2021
 Removeu a cache com o ID 1, na data de: 21/5/2021
+Removeu a cache com o ID 1, na data de: 21/5/2021
