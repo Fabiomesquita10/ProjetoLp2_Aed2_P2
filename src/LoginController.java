@@ -1270,4 +1270,7 @@ public class LoginController implements Initializable {
 
     public void handlerSetasMapa(ActionEvent actionEvent) {
     }
+
+    public void handlerAddCaminho(ActionEvent actionEvent) {
+    }
 }
