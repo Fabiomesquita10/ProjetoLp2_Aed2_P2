@@ -108,7 +108,6 @@ public class LoginController implements Initializable {
     public TextField cacheP;
     public TextArea textCaixeiro;
 
-<<<<<<< HEAD
     //OBJETOS
     //add
     public TextField addNomeO;
@@ -127,15 +126,9 @@ public class LoginController implements Initializable {
     public TextField editNomeTb;
 
     //CACHE
+    //remocao
     public TextField remIdCacheC;
 
-
-
-=======
-    //Caches
-    //Remocao
-    public TextField remIdCacheC;
->>>>>>> 2bd06e208240f1d7d78f45333687f948dae9ad41
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
