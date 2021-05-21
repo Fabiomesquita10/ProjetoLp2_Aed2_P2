@@ -233,11 +233,11 @@ public class LoginController implements Initializable {
 
     public void creatGraphGroup(GestaoAcessoAventureiro ga, GestaoAcessoCacheGraph gcg, GestaoAcessoObjeto go){
         if(gcg.getGrafo().E() > 0){
-            for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
+            for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
                 criar_direct_edge(k);
             }
         }
-        for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
+        for(int i=1; i<gcg.getGrafo().getNumCache(); i++){
             criar_graph(i);
         }
 
@@ -255,7 +255,7 @@ public class LoginController implements Initializable {
                             id = gc.getCaches().get(x).getIdCache();
                     x++;
                 }
-                id++;
+                //id++;
                 Cache c1 = gc.getCaches().get(id);
                 String info = "  Id: "+c1.getId() + "\n  Local: " + c1.getLocal().getLocalizacao() + "\n  Criador: " + c1.getAventureiro().getNome() +
                         "\n  Tipo: " + c1.getTipo();
@@ -296,11 +296,11 @@ public class LoginController implements Initializable {
             else{
                 graphGroup.getChildren().clear();
                 if(gcg.getGrafo().E() > 0){
-                    for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
+                    for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
                         criar_direct_edge(k);
                     }
                 }
-                for (int j = 0; j < gcg.getGrafo().getNumCache(); j++) {
+                for (int j = 1; j < gcg.getGrafo().getNumCache(); j++) {
                     criar_graph(j);
                 }
             }
@@ -483,7 +483,7 @@ public class LoginController implements Initializable {
                     }
                 }
             }
-            for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
+            for(int i=1; i<gcg.getGrafo().getNumCache(); i++){
                 if(tipo.equals("premium")){
                     if(gcg.getGrafo().getCaches().get(i) instanceof PremiumCache && gcg.getGrafo().getCaches().get(i).getDificuldade().equals(dif) && gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao().equals(regiao))
                         criar_graph(i);
@@ -512,7 +512,7 @@ public class LoginController implements Initializable {
                     }
                 }
             }
-            for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
+            for(int i=1; i<gcg.getGrafo().getNumCache(); i++){
                 if(gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao().equals(regiao))
                     criar_graph(i);
 
@@ -555,7 +555,7 @@ public class LoginController implements Initializable {
                     }
                 }
             }
-            for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
+            for(int i=1; i<gcg.getGrafo().getNumCache(); i++){
                 if(tipo.equals("premium")){
                     if(gcg.getGrafo().getCaches().get(i) instanceof PremiumCache)
                         criar_graph(i);
@@ -584,7 +584,7 @@ public class LoginController implements Initializable {
                     }
                 }
             }
-            for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
+            for(int i=1; i<gcg.getGrafo().getNumCache(); i++){
                 if(gcg.getGrafo().getCaches().get(i).getDificuldade() == dif)
                     criar_graph(i);
             }
@@ -592,7 +592,7 @@ public class LoginController implements Initializable {
             if(go.getTravelBug().contains(idTb)){
                 graphGroup.getChildren().clear();
                 if(gcg.getGrafo().E() > 0){
-                    for (int k = 0; k < gcg.getGrafo().getNumCache(); k++) {
+                    for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
                         if (contain(go.getTravelBug(), idTb, k)) {
                             for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
                                 if (contain(go.getTravelBug(), idTb, adj.to())) {
@@ -609,7 +609,7 @@ public class LoginController implements Initializable {
                         }
                     }
                 }
-                for(int i=0; i<gcg.getGrafo().getNumCache(); i++){
+                for(int i=1; i<gcg.getGrafo().getNumCache(); i++){
                     System.out.println(gcg.getGrafo().getCaches().get(i).getIdCache());
                     int id = gcg.getGrafo().getCaches().get(i).getIdCache();
                     if(contain(go.getTravelBug(), idTb, id))
@@ -1049,5 +1049,6 @@ public class LoginController implements Initializable {
     }
 
     public void handlerRemCache(ActionEvent actionEvent) {
+
     }
 }

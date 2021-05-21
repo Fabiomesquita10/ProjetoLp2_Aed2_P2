@@ -9,7 +9,7 @@ import Search.BST_AED2_2021;
 
 public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
 
-    private int numCache;
+    private int numCache = 1;
     public BST_AED2_2021<Integer, Cache> caches = new BST_AED2_2021<>();
 
 
@@ -179,8 +179,8 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
     }
 
     public int[][] graphToMatrix(){
-        int[][] matrix = new int[this.V()-1][this.V()-1];
-        for (int i = 0; i < this.V(); i++) {
+        int[][] matrix = new int[this.V()][this.V()];
+        for (int i = 1; i < this.V(); i++) {
             for (DirectedEdge_AED2 adj : adj(i)){
                 matrix[i][adj.to()] = adj.tempo();
             }
