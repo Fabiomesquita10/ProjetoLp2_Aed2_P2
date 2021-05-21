@@ -1264,4 +1264,10 @@ public class LoginController implements Initializable {
         gcg.getGrafo().getCaches().get(4);
         System.out.println();
     }
+
+    public void handlerVerCaminhos(ActionEvent actionEvent) {
+    }
+
+    public void handlerSetasMapa(ActionEvent actionEvent) {
+    }
 }
