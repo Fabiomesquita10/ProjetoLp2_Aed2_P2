@@ -477,7 +477,7 @@
                                           <TextField fx:id="cachePartidaAC" layoutX="21.0" layoutY="90.0" promptText="Cache Partida" stylesheets="@grafosCss.css" />
                                           <TextField fx:id="distanciaAC" layoutX="216.0" layoutY="125.0" promptText="Distancia" stylesheets="@grafosCss.css" />
                                           <TextField fx:id="tempoAC" layoutX="621.0" layoutY="125.0" promptText="Tempo" stylesheets="@grafosCss.css" />
-                                          <Button layoutX="698.0" layoutY="11.0" mnemonicParsing="false" onAction="#handlerAddCaminho" prefHeight="42.0" prefWidth="115.0" stylesheets="@butao.css" text="Adicionar">
+                                          <Button layoutX="698.0" layoutY="2.0" mnemonicParsing="false" onAction="#handlerAddCaminho" prefHeight="42.0" prefWidth="115.0" stylesheets="@butao.css" text="Adicionar">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
