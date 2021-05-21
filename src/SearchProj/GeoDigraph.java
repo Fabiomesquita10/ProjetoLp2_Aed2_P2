@@ -54,9 +54,9 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
     }
 
     public boolean adicionaCache(Cache cache) {
-        getCaches().put(numCache, cache);
-        cache.setIdCache(numCache); //set ID(ID criado/adicionado consoante a variável numCache)
-        caches.put(numCache,cache); //adicionar a nova cache na RedBlack de Caches
+        getCaches().put(cache.getIdCache(), cache);
+        //cache.setIdCache(numCache); //set ID(ID criado/adicionado consoante a variável numCache)
+        caches.put(cache.getIdCache(),cache); //adicionar a nova cache na RedBlack de Caches
         numCache++;
         //iteramos a cada nova adição de uma cache(essencial para a criação dos ID´s)
         // codigo novo
