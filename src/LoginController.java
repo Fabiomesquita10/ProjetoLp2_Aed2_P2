@@ -131,8 +131,13 @@ public class LoginController implements Initializable {
     //CACHE
     //remocao
     public TextField remIdCacheC;
-
+    //Caminhos
     public TextArea consolaCaminhos;
+    public TextField cachePartidaAC;
+    public TextField distanciaAC;
+    public TextField tempoAC;
+    public TextField cacheChegadaAC;
+    public TextField elevacaoAC;
 
 
     @Override
@@ -1322,5 +1327,36 @@ public class LoginController implements Initializable {
     }
 
     public void handlerAddCaminho(ActionEvent actionEvent) {
+        int idP = Integer.parseInt(cachePartidaAC.getText());
+        int idC = Integer.parseInt(cacheChegadaAC.getText());
+        int dist = Integer.parseInt(distanciaAC.getText());
+        int temp = Integer.parseInt(tempoAC.getText());
+        int elevacao = Integer.parseInt(elevacaoAC.getText());
+        if(gcg.getGrafo().getCaches().contains(idP) && gcg.getGrafo().getCaches().contains(idC)){
+            DirectedEdge_AED2 d = new DirectedEdge_AED2(idP, idC, 0, temp, dist, elevacao);
+            gcg.getGrafo().addEdge(d);
+            atualizarGraph();
+        }
+    }
+
+    public void atualizarGraph(){
+        if(gcg.getGrafo().E() > 0 && setas == 1) {
+            int w = 1, z = 1;
+            while(z<gcg.getGrafo().getNumCache()){
+                if(gcg.getGrafo().getCaches().contains(w)){
+                    criar_direct_edge(w);
+                    z++;
+                }
+                w++;
+            }
+        }
+        int w = 1, z = 1;
+        while(z<gcg.getGrafo().getNumCache()){
+            if(gcg.getGrafo().getCaches().contains(w)){
+                criar_graph(w);
+                z++;
+            }
+            w++;
+        }
     }
 }
