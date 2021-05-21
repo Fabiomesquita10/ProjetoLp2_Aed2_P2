@@ -45,7 +45,7 @@
                               <TableColumn fx:id="tipoCol" prefWidth="135.0" text="Tipo" />
                           </columns>
                         </TableView>
-                        <TabPane layoutX="29.0" layoutY="518.0" prefHeight="240.0" prefWidth="831.0" style="-fx-border-color: yellow; -fx-border-width: 2;" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane layoutX="29.0" layoutY="518.0" prefHeight="240.0" prefWidth="831.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="Adicionar ">
                               <content>
@@ -202,7 +202,7 @@
                               <TableColumn fx:id="localOCol" prefWidth="143.0" text="Local" />
                            </columns>
                         </TableView>
-                        <TabPane layoutX="21.0" layoutY="519.0" prefHeight="226.0" prefWidth="836.0" style="-fx-border-color: yellow; -fx-border-width: 2;" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane layoutX="21.0" layoutY="519.0" prefHeight="226.0" prefWidth="836.0" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
                               <Tab text="Adicionar ">
                                  <content>
@@ -292,7 +292,7 @@
                               <TableColumn fx:id="numATCol" prefWidth="120.0" text="Num Aventureiros" />
                            </columns>
                         </TableView>
-                        <TabPane layoutX="22.0" layoutY="517.0" prefHeight="226.0" prefWidth="837.0" style="-fx-border-color: yellow; -fx-border-width: 2;" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane layoutX="22.0" layoutY="517.0" prefHeight="226.0" prefWidth="837.0" style=": 2;" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
                               <Tab text="Adicionar ">
                                  <content>
@@ -383,7 +383,7 @@
                                     <TableColumn fx:id="ultimoACol" prefWidth="131.0" text="Ultimo Avent" />
                                 </columns>
                             </TableView>
-                        <TabPane layoutX="22.0" layoutY="518.0" prefHeight="226.0" prefWidth="831.0" style="-fx-border-color: yellow; -fx-border-width: 2;" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane layoutX="22.0" layoutY="518.0" prefHeight="226.0" prefWidth="831.0" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
                               <Tab text="Adicionar ">
                                  <content>
@@ -594,7 +594,7 @@
                               <Image url="@cofre.png" />
                            </image>
                         </ImageView>
-                        <TabPane layoutX="14.0" layoutY="565.0" prefHeight="187.0" prefWidth="833.0" style="-fx-border-color: yellow; -fx-border-width: 4;" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane layoutX="14.0" layoutY="565.0" prefHeight="187.0" prefWidth="833.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="Pesquisa">
                               <content>
