@@ -108,6 +108,27 @@ public class LoginController implements Initializable {
     public TextField cacheP;
     public TextArea textCaixeiro;
 
+    //OBJETOS
+    //add
+    public TextField addNomeO;
+    //remove
+    public TextField remIdO;
+    //edit
+    public TextField editIdO;
+    public TextField editNomeO;
+
+    //TRAVELBUGS
+    //add
+    public TextField addNomeTb;
+    //remove
+    public TextField remIdTb;
+    //edit
+    public TextField editNomeTb;
+
+    //CACHE
+    public TextField remIdCacheC;
+
+
 
 
     @Override
@@ -233,26 +254,38 @@ public class LoginController implements Initializable {
 
     public void creatGraphGroup(GestaoAcessoAventureiro ga, GestaoAcessoCacheGraph gcg, GestaoAcessoObjeto go){
         if(gcg.getGrafo().E() > 0){
-            for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
-                criar_direct_edge(k);
+            int w = 1, z = 1;
+            while(z<gcg.getGrafo().getNumCache()){
+                if(gcg.getGrafo().getCaches().contains(w)){
+                    criar_direct_edge(w);
+                    z++;
+                }
+                w++;
             }
         }
-        for(int i=1; i<gcg.getGrafo().getNumCache(); i++){
-            criar_graph(i);
+        int w = 1, z = 1;
+        while(z<gcg.getGrafo().getNumCache()){
+            if(gcg.getGrafo().getCaches().contains(w)){
+                criar_graph(w);
+                z++;
+            }
+            w++;
         }
-
 
         graphGroup.addEventHandler(MouseEvent.MOUSE_RELEASED, evtScene -> {
             EventTarget evtCircleTarget=evtScene.getTarget();
             if(evtCircleTarget instanceof Circle){
-                int x = 1;
+                int x = 1, k = 1;
                 int id = 0;
                 double cX = ((Circle) evtCircleTarget).getCenterX();
                 double cY = ((Circle) evtCircleTarget).getCenterY();
-                while(x<=gc.getCaches().size()){
-                    if(gc.getCaches().get(x).getLocal().getCoordenadaX() == cX)
-                        if(gc.getCaches().get(x).getLocal().getCoordenadaY() == cY)
-                            id = gc.getCaches().get(x).getIdCache();
+                while(k<=gc.getCaches().size()){
+                    if(gc.getCaches().contains(x)){
+                        if(gc.getCaches().get(x).getLocal().getCoordenadaX() == cX)
+                            if(gc.getCaches().get(x).getLocal().getCoordenadaY() == cY)
+                                id = gc.getCaches().get(x).getIdCache();
+                        k++;
+                    }
                     x++;
                 }
                 //id++;
@@ -282,7 +315,6 @@ public class LoginController implements Initializable {
                 temp = graphGroup;
                 graphGroup.getChildren().add(stack2);
             }else if(evtCircleTarget instanceof Arrow){
-                System.out.println("seta fodida");
                 if(((Arrow) evtCircleTarget).getFill() == Color.WHITESMOKE)
                     ((Arrow) evtCircleTarget).setFill(Color.DARKRED);
                 else{
@@ -296,12 +328,23 @@ public class LoginController implements Initializable {
             else{
                 graphGroup.getChildren().clear();
                 if(gcg.getGrafo().E() > 0){
-                    for (int k = 1; k < gcg.getGrafo().getNumCache(); k++) {
-                        criar_direct_edge(k);
+                    int a = 1;
+                    int b = 1;
+                    while(b<gcg.getGrafo().getNumCache()){
+                        if(gcg.getGrafo().getCaches().contains(a)){
+                            criar_direct_edge(a);
+                            b++;
+                        }
+                        a++;
                     }
                 }
-                for (int j = 1; j < gcg.getGrafo().getNumCache(); j++) {
-                    criar_graph(j);
+                int a = 1, b = 1;
+                while(b<gcg.getGrafo().getNumCache()){
+                    if(gcg.getGrafo().getCaches().contains(a)){
+                        criar_graph(a);
+                        b++;
+                    }
+                    a++;
                 }
             }
         });
@@ -313,29 +356,33 @@ public class LoginController implements Initializable {
             int d = adj.distancia();
             int t = adj.tempo();
             int e = adj.elevacao();
-            Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
-                    gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20, w,d,t,e);
-            a.setFill(Color.DARKRED);
-            graphGroup.getChildren().add(a);
+            Arrow a;
+            if(gcg.getGrafo().getCaches().contains(k) && gcg.getGrafo().getCaches().contains(adj.to())){
+                a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20, w,d,t,e);
+                a.setFill(Color.DARKRED);
+                graphGroup.getChildren().add(a);
+            }
         }
     }
 
     public void criar_graph(int i){
-        Circle c = new Circle(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY(), radius);
-        StackPane stack = new StackPane();
-        String tipo = "";
-        if(gcg.getGrafo().getCaches().get(i) instanceof BasicCache)
-            c.setFill(Color.SILVER);
-        if(gcg.getGrafo().getCaches().get(i) instanceof PremiumCache)
-            c.setFill(Color.GOLD);
-        String txt = ""+gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY() + " " + gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX();
-        stack.setLayoutX(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX()-radius);
-        stack.setLayoutY(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY()-radius);
-        //stack.getChildren().addAll(c, new Text(gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao()));
-        //stack.getChildren().addAll(c, new Text(txt));
-        stack.getChildren().addAll(c);
+        if(gcg.getGrafo().getCaches().contains(i)){
+            Circle c = new Circle(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY(), radius);
+            StackPane stack = new StackPane();
+            String tipo = "";
+            if(gcg.getGrafo().getCaches().get(i) instanceof BasicCache)
+                c.setFill(Color.SILVER);
+            if(gcg.getGrafo().getCaches().get(i) instanceof PremiumCache)
+                c.setFill(Color.GOLD);
+            String txt = ""+gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY() + " " + gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX();
+            stack.setLayoutX(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaX()-radius);
+            stack.setLayoutY(gcg.getGrafo().getCaches().get(i).getLocal().getCoordenadaY()-radius);
+            //stack.getChildren().addAll(c, new Text(gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao()));
+            //stack.getChildren().addAll(c, new Text(txt));
+            stack.getChildren().addAll(c);
 
-        graphGroup.getChildren().add(stack);
+            graphGroup.getChildren().add(stack);
+        }
     }
 
     public void carregarFicheiro() throws AventureiroNaoHabilitado, AventureiroNaoExisteException, CacheNaoExisteException {
@@ -365,13 +412,15 @@ public class LoginController implements Initializable {
 
 
         //AVENTUREIROS
-        int x = 1;
+        int x = 1, k= 1;
         if(aventTables!=null)
             aventTables.getItems().clear();
+        AventArrayList.clear();
         if(ga.getAventureiros().size()>0){
-            while(x<=ga.getAventureiros().size()){
+            while(k<=ga.getAventureiros().size()){
                 if(ga.getAventureiros().get(x) != null){
                     AventArrayList.add(ga.getAventureiros().get(x));
+                    k++;
                 }
                 x++;
             }
@@ -394,11 +443,16 @@ public class LoginController implements Initializable {
 
         //OBJETOS
         x = 1;
+        k = 1;
         if(objetoTables!=null)
             objetoTables.getItems().clear();
+            ObjetoArrayList.clear();
         if(go.getObjetos().size()>0){
-            while(x<=go.getObjetos().size()){
-                ObjetoArrayList.add(go.getObjetos().get(x));
+            while(k<=go.getObjetos().size()){
+                if(go.getObjetos().get(x) != null){
+                    ObjetoArrayList.add(go.getObjetos().get(x));
+                    k++;
+                }
                 x++;
             }
             objetoTables.getItems().addAll(ObjetoArrayList);
@@ -406,11 +460,16 @@ public class LoginController implements Initializable {
 
         //TRAVELBUG
         x = 1;
+        k = 1;
         if(tbTables!=null)
             tbTables.getItems().clear();
+            TbArrayList.clear();
         if(go.getTravelBug().size()>0){
-            while(x<=go.getTravelBug().size()){
-                TbArrayList.add(go.getTravelBug().get(x));
+            while(k<=go.getTravelBug().size()){
+                if(go.getTravelBug().get(x) != null) {
+                    TbArrayList.add(go.getTravelBug().get(x));
+                    k++;
+                }
                 x++;
             }
             tbTables.getItems().addAll(TbArrayList);
@@ -931,14 +990,15 @@ public class LoginController implements Initializable {
             ga.regista(a);
         }
 
-        int av = 1;
+        int av = 1, k= 1;
         if(aventTables!=null)
             aventTables.getItems().clear();
             AventArrayList.clear();
         if(ga.getAventureiros().size()>0){
-            while(av<=ga.getAventureiros().size()){
+            while(k<=ga.getAventureiros().size()){
                 if(ga.getAventureiros().get(av) != null){
                     AventArrayList.add(ga.getAventureiros().get(av));
+                    k++;
                 }
                 av++;
             }
@@ -951,21 +1011,20 @@ public class LoginController implements Initializable {
         int id = Integer.parseInt(remIdAvent.getText());
         ga.remove(id);
 
-        int av = 1;
+        int av = 1, k= 1;
         if(aventTables!=null)
             aventTables.getItems().clear();
-            AventArrayList.clear();
+        AventArrayList.clear();
         if(ga.getAventureiros().size()>0){
-            while(av<=ga.getAventureiros().size()){
+            while(k<=ga.getAventureiros().size()){
                 if(ga.getAventureiros().get(av) != null){
                     AventArrayList.add(ga.getAventureiros().get(av));
+                    k++;
                 }
                 av++;
             }
             aventTables.getItems().addAll(AventArrayList);
         }
-
-
     }
 
     public void handlerEditAv(ActionEvent actionEvent) {
@@ -974,14 +1033,15 @@ public class LoginController implements Initializable {
 
         ga.editarTab(id,nomeEdit.getText(),localEdit.getText());
 
-        int av = 1;
+        int av = 1, k= 1;
         if(aventTables!=null)
             aventTables.getItems().clear();
         AventArrayList.clear();
         if(ga.getAventureiros().size()>0){
-            while(av<=ga.getAventureiros().size()){
+            while(k<=ga.getAventureiros().size()){
                 if(ga.getAventureiros().get(av) != null){
                     AventArrayList.add(ga.getAventureiros().get(av));
+                    k++;
                 }
                 av++;
             }
@@ -1028,18 +1088,109 @@ public class LoginController implements Initializable {
     }
 
     public void handlerAddObjeto(ActionEvent actionEvent) {
+        String nome = addNomeO.getText();
+        Objeto o = new Objeto(nome);
+        go.regista(o);
+
+        int x = 1, k = 1;
+        if(objetoTables!=null)
+            objetoTables.getItems().clear();
+        ObjetoArrayList.clear();
+        if(go.getObjetos().size()>0){
+            while(k<=go.getObjetos().size()){
+                if(go.getObjetos().get(x) != null){
+                    ObjetoArrayList.add(go.getObjetos().get(x));
+                    k++;
+                }
+                x++;
+            }
+            objetoTables.getItems().addAll(ObjetoArrayList);
+        }
     }
 
     public void handlerRemObjeto(ActionEvent actionEvent) {
+        int id = Integer.parseInt(remIdO.getText());
+        go.removeO(id);
+
+        int x = 1, k = 1;
+        if(objetoTables!=null)
+            objetoTables.getItems().clear();
+        ObjetoArrayList.clear();
+        if(go.getObjetos().size()>0){
+            while(k<=go.getObjetos().size()){
+                if(go.getObjetos().get(x) != null){
+                    ObjetoArrayList.add(go.getObjetos().get(x));
+                    k++;
+                }
+                x++;
+            }
+            objetoTables.getItems().addAll(ObjetoArrayList);
+        }
+
     }
 
     public void handlerEditObjeto(ActionEvent actionEvent) {
+        int id = Integer.parseInt(editIdO.getText());
+        String nome = editNomeO.getText();
+        go.editarO(id,nome);
+
+        int x = 1, k = 1;
+        if(objetoTables!=null)
+            objetoTables.getItems().clear();
+        ObjetoArrayList.clear();
+        if(go.getObjetos().size()>0){
+            while(k<=go.getObjetos().size()){
+                if(go.getObjetos().get(x) != null){
+                    ObjetoArrayList.add(go.getObjetos().get(x));
+                    k++;
+                }
+                x++;
+            }
+            objetoTables.getItems().addAll(ObjetoArrayList);
+        }
     }
 
     public void handlerAddTb(ActionEvent actionEvent) {
+        String nome = addNomeTb.getText();
+        TravelBug tb = new TravelBug(nome);
+        go.regista(tb);
+
+        int x = 1;
+        int k = 1;
+        if(tbTables!=null)
+            tbTables.getItems().clear();
+        TbArrayList.clear();
+        if(go.getTravelBug().size()>0){
+            while(k<=go.getTravelBug().size()){
+                if(go.getTravelBug().get(x) != null) {
+                    TbArrayList.add(go.getTravelBug().get(x));
+                    k++;
+                }
+                x++;
+            }
+            tbTables.getItems().addAll(TbArrayList);
+        }
     }
 
     public void handlerRemTb(ActionEvent actionEvent) {
+        int id = Integer.parseInt(remIdTb.getText());
+        go.removeTb(id);
+
+        int x = 1;
+        int k = 1;
+        if(tbTables!=null)
+            tbTables.getItems().clear();
+        TbArrayList.clear();
+        if(go.getTravelBug().size()>0){
+            while(k<=go.getTravelBug().size()){
+                if(go.getTravelBug().get(x) != null) {
+                    TbArrayList.add(go.getTravelBug().get(x));
+                    k++;
+                }
+                x++;
+            }
+            tbTables.getItems().addAll(TbArrayList);
+        }
     }
 
     public void handlerEditTb(ActionEvent actionEvent) {
@@ -1048,7 +1199,44 @@ public class LoginController implements Initializable {
     public void handlerAddCache(ActionEvent actionEvent) {
     }
 
-    public void handlerRemCache(ActionEvent actionEvent) {
+    public void handlerRemCache(ActionEvent actionEvent) throws CacheNaoExisteException {
+        System.out.println("GC: ");
+        gc.getCaches().printInOrder(gc.getCaches().getRoot());
+        System.out.println("GCG: ");
+        gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
+        System.out.println("\n\n\n");
+        int id = Integer.parseInt(remIdCacheC.getText());
+        gc.removeCache(id);
+        gcg.removeCache(id);
+        System.out.println("GC: ");
+        gc.getCaches().printInOrder(gc.getCaches().getRoot());
+        System.out.println("GCG: ");
+        gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
+        graphGroup.getChildren().clear();
+        gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
+        System.out.println("\n\n\nCRIEI NOVO GRAPH");
+        gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
 
+        int x = 1, k = 1;
+        if(cacheTables!=null)
+            cacheTables.getItems().clear();
+        if(gc.getCaches().size()>0){
+            gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
+            while(k<=gc.getCaches().size()){
+                if(gc.getCaches().contains(x)){
+                    gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
+                    CacheArrayList.add(gc.getCaches().get(x));
+                    k++;
+                }
+                x++;
+            }
+            cacheTables.getItems().addAll(CacheArrayList);
+        }
+        gcg.lerCaminhos();
+        System.out.println("\n\n\nCARREGUEI DE NOVO GRAPH");
+        gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
+        creatGraphGroup(ga, gcg, go);
+        gcg.getGrafo().getCaches().get(4);
+        System.out.println();
     }
 }

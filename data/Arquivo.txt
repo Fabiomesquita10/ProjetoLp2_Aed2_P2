@@ -37,3 +37,4 @@ Foi removido o Aventureiro com id : 19 e com o nome : fabio, na data de: 20/5/20
 Foi removido o Aventureiro com id : 21 e com o nome : fabio, na data de: 20/5/2021
 Foi removido o Aventureiro com id : 20 e com o nome : fabio, na data de: 20/5/2021
 Foi removido o Aventureiro com id : 22 e com o nome : fabio, na data de: 20/5/2021
+Foi removido o Aventureiro com id : 13 e com o nome : ana, na data de: 20/5/2021
