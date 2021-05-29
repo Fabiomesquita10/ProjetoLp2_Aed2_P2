@@ -59,6 +59,13 @@ public class Cache implements Serializable {
         aventureiro.addCacheEsc(this);
     }
 
+    public Cache(Integer dificuldade, Aventureiro aventureiro, int x, int y, String local) throws AventureiroNaoHabilitado {
+        this.dificuldade = dificuldade;
+        this.aventureiro = aventureiro;
+        this.local = new Localizacao(x, y, local);
+        aventureiro.addCacheEsc(this);
+    }
+
     public Cache(int i, int i1, int i2, String feira) {
     }
 
@@ -223,4 +230,9 @@ public class Cache implements Serializable {
             histAventureiros.printInOrder(histAventureiros.getRoot());
     }
 
+    public TravelBug removeTravelBug() {
+        TravelBug b = this.travelbug;
+        this.travelbug = null;
+        return b;
+    }
 }

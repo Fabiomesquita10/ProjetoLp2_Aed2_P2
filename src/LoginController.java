@@ -18,6 +18,7 @@ import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import projeto_LP2_AED2.*;
+import projeto_LP2_AED2.Date;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -150,6 +151,12 @@ public class LoginController implements Initializable {
     public TextField tempoAC;
     public TextField cacheChegadaAC;
     public TextField elevacaoAC;
+
+    //Mapa Jogar
+    public TextField cacheEncJ;
+    public TextField idAventJ;
+    public TextField cacheDepJ;
+    ArrayList<Integer> ids = new ArrayList<>();
 
 
     @Override
@@ -1413,7 +1420,6 @@ public class LoginController implements Initializable {
             cacheTables.getItems().addAll(CacheArrayList);
         }
         gcg.lerCaminhos();
-        gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
         creatGraphGroup(ga, gcg, go);
         gcg.getGrafo().getCaches().get(4);
     }
@@ -1473,7 +1479,9 @@ public class LoginController implements Initializable {
 
     public void handlerAddCache(ActionEvent actionEvent) throws AventureiroNaoHabilitado {
         int idA = Integer.parseInt(addIdAventC.getText());
-        int idO = Integer.parseInt(addIdObjetoC.getText());
+        int idO = 0;
+        if(!addIdObjetoC.getText().isEmpty())
+             idO = Integer.parseInt(addIdObjetoC.getText());
         int dif = Integer.parseInt(addDificC.getText());
         String l = addLocalC.getText();
         String[] parts = l.split(";");
@@ -1482,10 +1490,20 @@ public class LoginController implements Initializable {
         int y = Integer.parseInt(parts[1]);
 
         if(comboBoxTipoCache.getValue().compareTo("Premium") == 0) {
-            PremiumCache c = new PremiumCache(dif, ga.getAventureiros().get(idA), go.getTravelBug().get(idO),x, y, local);
+            PremiumCache c = null;
+            if(idO != 0)
+                c = new PremiumCache(dif, ga.getAventureiros().get(idA), go.getTravelBug().get(idO),x, y, local);
+            else{
+                c = c = new PremiumCache(dif, ga.getAventureiros().get(idA),x, y, local);
+            }
             gc.adicionaCache(c);
         }else if(comboBoxTipoCache.getValue().compareTo("Basic") == 0){
-            BasicCache c = new BasicCache(dif, ga.getAventureiros().get(idA), go.getObjetos().get(idO),x, y, local);
+            BasicCache c = null;
+            if(idO != 0) {
+                c = new BasicCache(dif, ga.getAventureiros().get(idA), go.getObjetos().get(idO), x, y, local);
+            }else{
+                c = new BasicCache(dif, ga.getAventureiros().get(idA), x, y, local);
+            }
             gc.adicionaCache(c);
         }
         atualizarCaches();
@@ -1508,8 +1526,47 @@ public class LoginController implements Initializable {
     }
 
     public void handlerEncontrouCacheJ(ActionEvent actionEvent) {
+        int id = Integer.parseInt(idAventJ.getText());
+        int idC = Integer.parseInt(cacheEncJ.getText());
+        ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date());
+        consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um travel bug: \n");
+        consolaMapa.setText(consolaMapa.getText() + "\n" +ga.getAventureiros().get(id).getListTravelBug().get(0).getMissao());
+        ArrayList<Cache> cachesRet = ga.getAventureiros().get(id).getListTravelBug().get(0).interpetarMissao(gc, ga);
+        if (cachesRet.size() > 0){
+            if (cachesRet.size() == 1){
+                for (Cache c : cachesRet){
+                    consolaMapa.setText(consolaMapa.getText() + "\n" + "Pode levar para a cache com o ID: " + c.getIdCache());
+                }
+            }
+            else{
+                consolaMapa.setText(consolaMapa.getText() + "\n" + "Pode levar para as caches com o ID: ");
+                ids.clear();
+                for (Cache c : cachesRet){
+                    ids.add(c.getIdCache());
+                    BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), idC);
+                    DSP_AED2 DSP = new DSP_AED2(gcg.getGrafo(), idC, 1);
+                    consolaMapa.setText(consolaMapa.getText()+ "\nCache id: " + c.getIdCache());
+                    System.out.println(BFS.pathTo(9));
+                    //consolaMapa.setText(consolaMapa.getText()+ "\nDSP Caminho mais curto: " + DSP.pathTo(c.getIdCache()));
+                    consolaMapa.setText(consolaMapa.getText()+ "\nBFS Caminho mais curto: " + BFS.pathTo(c.getIdCache()));
+                    String s = formatarString(DSP.pathTo(c.getIdCache()),3);
+                    System.out.println(s);
+                    consolaMapa.setText(consolaMapa.getText()+ "\nDistancia: " + DSP.distTo(c.getIdCache()));
+                }
+            }
+        }
+        atualizarCaches();
+        atualizarObjeto();
+        atualizarAvent();
     }
 
-    public void handlerDepositouCacheJ(ActionEvent actionEvent) {
+    public void handlerDepositouCacheJ(ActionEvent actionEvent) throws MissaoNaoCompletadaComExitoException {
+        go.getTravelBug().get(12).getListaCachesPresente().printInOrder(go.getTravelBug().get(12).getListaCachesPresente().getRoot());
+        int idC = Integer.parseInt(cacheDepJ.getText());
+        int id = Integer.parseInt(idAventJ.getText());
+        ga.getAventureiros().get(id).encontrouCache((PremiumCache) gc.getCaches().get(idC), ga.getAventureiros().get(id).getListTravelBug().get(0), new Date(20, 03, 2021));
+        atualizarCaches();
+        atualizarObjeto();
+        atualizarAvent();
     }
 }

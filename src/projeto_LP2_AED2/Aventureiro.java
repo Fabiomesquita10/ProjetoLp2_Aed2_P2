@@ -66,7 +66,7 @@ public abstract class Aventureiro implements Serializable {
 
     public String getObjeto(){
         if(numObj>0)
-            return this.listObjetos.get(0).getNome();
+            return ""+this.listObjetos.get(0).getNome();
         if(numTb>0)
             return ""+this.listTravelBug.get(numTb-1).getIdObjeto();
         return "empty";
@@ -256,13 +256,23 @@ public abstract class Aventureiro implements Serializable {
      * @param d - Data
      */
     public void encontrouCache(Cache c, Date d){
-        this.listObjetos.put(numObj, c.getObjeto()); //coloco na minha lista de Objetos o Objeto que estava na cache
-        numObj++; //itero o número de Objetos
-        c.getObjeto().setAventureiro(this); //dar set do Aventureiro no Objeto
-        c.getObjeto().setViajar(true); //Objeto que estava na Cache e passou para o Aventureiro passa a estar em "viagem"
+        if(c.getObjeto()!=null){
+            c.getObjeto().setAventureiro(this); //dar set do Aventureiro no Objeto
+            c.getObjeto().setViajar(true); //Objeto que estava na Cache e passou para o Aventureiro passa a estar em "viagem"
+            this.listObjetos.put(numObj, c.getObjeto()); //coloco na minha lista de Objetos o Objeto que estava na cache
+            numObj++; //itero o número de Objetos
+            c.removeObjeto(c.getObjeto()); //remove o Objeto da Cache
+        }
+        else if(c.getTravelbug() != null){
+            c.getTravelbug().setAventureiro(this);
+            c.getTravelbug().setViajar(true);
+            this.listTravelBug.put(numTb, c.getTravelbug());
+            numTb++;
+            c.removeTravelBug();
+        }
+
         c.getHistAventureiros().put(c.getNumAvent(), this); //coloco no histórico de Aventureiros da cache o Aventureiro que a visitou
         c.setNumAvent(c.getNumAvent()+1); //itera o número de Aventureiros que ja la passaram
-        c.removeObjeto(c.getObjeto()); //remove o Objeto da Cache
         this.addCacheVis(c, d); //adiciono ao Aventureiro uma nova Cache visitada
         c.removeObjeto(c.getObjeto()); //remove o Objeto da Cache
     }
@@ -277,6 +287,16 @@ public abstract class Aventureiro implements Serializable {
      */
     public void encontrouCache(PremiumCache c, TravelBug bg, Date d) throws MissaoNaoCompletadaComExitoException {
         int count = 0, j = 0;
+        bg.setViajar(false);
+        bg.getListaCachesPresente().put(bg.getNumCachesPres(), c);
+
+        System.out.println("\n\n\n");
+        System.out.println(bg.getNumCachesPres()-1);
+        bg.setNumCachesPres(bg.getNumCachesPres()+1);
+        System.out.println(bg.getNumCachesPres()-1);
+        for (int i = 1; i < bg.getNumCachesPres(); i++) {
+            System.out.println(bg.getListaCachesPresente().get(i).getIdCache());
+        }
         while(bg.getTbMission().size() > j){
             if(bg.getTbMission().get(j).getIdCache().equals(c.getIdCache()))
                 count++;
