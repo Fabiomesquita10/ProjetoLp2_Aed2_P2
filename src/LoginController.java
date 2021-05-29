@@ -2,6 +2,7 @@ import Search.BST_AED2_2021;
 import SearchProj.*;
 import edu.princeton.cs.algs4.*;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -299,7 +300,7 @@ public class LoginController implements Initializable {
         graphGroup.addEventHandler(MouseEvent.MOUSE_RELEASED, evtScene -> {
             EventTarget evtCircleTarget=evtScene.getTarget();
             if(evtCircleTarget instanceof Circle){
-                int x = 1, k = 1;
+                 int x = 1, k = 1;
                 int id = 0;
                 double cX = ((Circle) evtCircleTarget).getCenterX();
                 double cY = ((Circle) evtCircleTarget).getCenterY();
@@ -339,7 +340,7 @@ public class LoginController implements Initializable {
                 temp = graphGroup;
                 graphGroup.getChildren().add(stack2);
             }else if(evtCircleTarget instanceof Arrow){
-                if(((Arrow) evtCircleTarget).getFill() == Color.WHITESMOKE)
+                if(((Arrow) evtCircleTarget).getFill() != Color.DARKRED)
                     ((Arrow) evtCircleTarget).setFill(Color.DARKRED);
                 else{
                     String infoArrow = "Info da seta selecionada: \n" + "Peso: " + ((Arrow) evtCircleTarget).getW() +
@@ -375,6 +376,7 @@ public class LoginController implements Initializable {
     }
 
     public void criar_direct_edge(int k){
+        //por handler em cada seta
         for(DirectedEdge_AED2 adj: gcg.getGrafo().adj(k)){
             int w = (int)adj.weight();
             int d = adj.distancia();
@@ -404,6 +406,8 @@ public class LoginController implements Initializable {
             //stack.getChildren().addAll(c, new Text(gcg.getGrafo().getCaches().get(i).getLocal().getLocalizacao()));
             //stack.getChildren().addAll(c, new Text(txt));
             stack.getChildren().addAll(c);
+
+            //por handler em cada cache
 
             graphGroup.getChildren().add(stack);
         }
@@ -453,6 +457,7 @@ public class LoginController implements Initializable {
         }
 
         //CACHES
+        /*
         x = 1;
         if(cacheTables!=null)
             cacheTables.getItems().clear();
@@ -464,7 +469,8 @@ public class LoginController implements Initializable {
                 x++;
             }
             cacheTables.getItems().addAll(CacheArrayList);
-        }
+        }*/
+        atualizarCaches();
 
         //OBJETOS
         x = 1;
@@ -694,8 +700,20 @@ public class LoginController implements Initializable {
                 if(gcg.getGrafo().E() > 0 && setas == 1){
                     for (int k = 1; k <= gcg.getGrafo().getNumCache(); k++) {
                         if(gcg.getGrafo().getCaches().contains(k)){
-                            if (contain(go.getTravelBug(), idTb, k)) {
-                                criar_direct_edge(k);
+                            int id = gcg.getGrafo().getCaches().get(k).getIdCache();
+                            if (contain(go.getTravelBug(), idTb, id)) {
+                                for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
+                                    if (contain(go.getTravelBug(), idTb, adj.to())) {
+                                        int w = (int)adj.weight();
+                                        int d = adj.distancia();
+                                        int t = adj.tempo();
+                                        int e = adj.elevacao();
+                                        Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
+                                                gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20,w,d,t,e);
+                                        a.setFill(Color.PURPLE);
+                                        graphGroup.getChildren().add(a);
+                                    }
+                                }
                             }
                         }
                     }
@@ -1040,24 +1058,28 @@ public class LoginController implements Initializable {
 
     }
 
-    public void handlerRemoverAvent(ActionEvent actionEvent) throws AventureiroNaoExisteException {
+    public void handlerRemoverAvent(ActionEvent actionEvent) throws AventureiroNaoExisteException, CacheNaoExisteException {
         int id = Integer.parseInt(remIdAvent.getText());
         ga.remove(id);
 
-        int av = 1, k= 1;
-        if(aventTables!=null)
-            aventTables.getItems().clear();
-        AventArrayList.clear();
-        if(ga.getAventureiros().size()>0){
-            while(k<=ga.getAventureiros().size()){
-                if(ga.getAventureiros().get(av) != null){
-                    AventArrayList.add(ga.getAventureiros().get(av));
-                    k++;
+        int x = 1, k = 1;
+        while (k<=gc.getCaches().size()){
+            if(gc.getCaches().get(x) != null){
+                if(Integer.parseInt(gc.getCaches().get(k).getCriador()) == id){
+                    if(gc.getCaches().get(k).getTravelbug()!=null)
+                        go.removeTb(gc.getCaches().get(k).getTravelbug().getIdObjeto());
+                    if(gc.getCaches().get(k).getObjeto()!=null)
+                        go.removeTb(gc.getCaches().get(k).getObjeto().getIdObjeto());
+                    remCache(gc.getCaches().get(k).getIdCache());
+                    atualizarObjeto();
                 }
-                av++;
+                k++;
             }
-            aventTables.getItems().addAll(AventArrayList);
+            x++;
         }
+
+        atualizarAvent();
+
     }
 
     public void handlerEditAv(ActionEvent actionEvent) {
@@ -1250,27 +1272,25 @@ public class LoginController implements Initializable {
     }
 
     public void handlerRemCache(ActionEvent actionEvent) throws CacheNaoExisteException {
-        System.out.println("GC: ");
         gc.getCaches().printInOrder(gc.getCaches().getRoot());
-        System.out.println("GCG: ");
         gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
-        System.out.println("\n\n\n");
         int id = Integer.parseInt(remIdCacheC.getText());
+        remCache(id);
+    }
+
+    public void remCache(int id) throws CacheNaoExisteException {
         gc.removeCache(id);
         gcg.removeCache(id);
-        System.out.println("GC: ");
         gc.getCaches().printInOrder(gc.getCaches().getRoot());
-        System.out.println("GCG: ");
         gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
         graphGroup.getChildren().clear();
         gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
-        System.out.println("\n\n\nCRIEI NOVO GRAPH");
         gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
 
         int x = 1, k = 1;
         if(cacheTables!=null)
             cacheTables.getItems().clear();
-            CacheArrayList.clear();
+        CacheArrayList.clear();
         if(gc.getCaches().size()>0){
             gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
             while(k<=gc.getCaches().size()){
@@ -1284,11 +1304,9 @@ public class LoginController implements Initializable {
             cacheTables.getItems().addAll(CacheArrayList);
         }
         gcg.lerCaminhos();
-        System.out.println("\n\n\nCARREGUEI DE NOVO GRAPH");
         gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
         creatGraphGroup(ga, gcg, go);
         gcg.getGrafo().getCaches().get(4);
-        System.out.println();
     }
 
     public void handlerVerCaminhos(ActionEvent actionEvent) {
@@ -1398,6 +1416,59 @@ public class LoginController implements Initializable {
         gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
         creatGraphGroup(ga, gcg, go);
         gcg.getGrafo().getCaches().get(4);
+    }
+
+    public void atualizarAvent(){
+        int av = 1, k= 1;
+        if(aventTables!=null)
+            aventTables.getItems().clear();
+        AventArrayList.clear();
+        if(ga.getAventureiros().size()>0){
+            while(k<=ga.getAventureiros().size()){
+                if(ga.getAventureiros().get(av) != null){
+                    AventArrayList.add(ga.getAventureiros().get(av));
+                    k++;
+                }
+                av++;
+            }
+            aventTables.getItems().addAll(AventArrayList);
+        }
+    }
+
+    public void atualizarObjeto(){
+        //OBJETOS
+        int x = 1;
+        int k = 1;
+        if(objetoTables!=null)
+            objetoTables.getItems().clear();
+        ObjetoArrayList.clear();
+        if(go.getObjetos().size()>0){
+            while(k<=go.getObjetos().size()){
+                if(go.getObjetos().get(x) != null){
+                    ObjetoArrayList.add(go.getObjetos().get(x));
+                    k++;
+                }
+                x++;
+            }
+            objetoTables.getItems().addAll(ObjetoArrayList);
+        }
+
+        //TRAVELBUG
+        x = 1;
+        k = 1;
+        if(tbTables!=null)
+            tbTables.getItems().clear();
+        TbArrayList.clear();
+        if(go.getTravelBug().size()>0){
+            while(k<=go.getTravelBug().size()){
+                if(go.getTravelBug().get(x) != null) {
+                    TbArrayList.add(go.getTravelBug().get(x));
+                    k++;
+                }
+                x++;
+            }
+            tbTables.getItems().addAll(TbArrayList);
+        }
     }
 
     public void handlerAddCache(ActionEvent actionEvent) throws AventureiroNaoHabilitado {
