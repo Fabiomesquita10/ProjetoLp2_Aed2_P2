@@ -1503,4 +1503,13 @@ public class LoginController implements Initializable {
             atualizarCaches();
         }
     }
+
+    public void handlerPesquisaAventPA(ActionEvent actionEvent) {
+    }
+
+    public void handlerEncontrouCacheJ(ActionEvent actionEvent) {
+    }
+
+    public void handlerDepositouCacheJ(ActionEvent actionEvent) {
+    }
 }
