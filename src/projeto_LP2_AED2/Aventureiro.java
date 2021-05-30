@@ -264,8 +264,9 @@ public abstract class Aventureiro implements Serializable {
             c.removeObjeto(c.getObjeto()); //remove o Objeto da Cache
         }
         else if(c.getTravelbug() != null){
-            go.getTravelBug().get(c.getTravelbug().getIdObjeto()).setAventureiro(this);
-            go.getTravelBug().get(c.getTravelbug().getIdObjeto()).setViajar(true);;
+            int id = c.getTravelbug().getIdObjeto();
+            go.getTravelBug().get(id).setAventureiro(this);
+            go.getTravelBug().get(id).setViajar(true);
             this.listTravelBug.put(numTb, c.getTravelbug());
             numTb++;
             c.removeTravelBug();

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
@@ -20,7 +28,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <children>
       <TabPane prefHeight="800.0" prefWidth="1200.0" scaleShape="false" style="-fx-background-color: #0d1a26;" tabClosingPolicy="UNAVAILABLE">
       <stylesheets>
@@ -824,173 +832,13 @@
                      <children>
                         <TabPane layoutY="-1.0" prefHeight="772.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
-                            <Tab text="Jogo">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1210.0" />
-                              </content>
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="mapa.css">
-                                       <children>
-                                          <Pane fx:id="pane1" layoutX="14.0" layoutY="15.0" prefHeight="538.0" prefWidth="831.0" style="-fx-border-color: yellow; -fx-border-width: 5;" stylesheets="@mapa.css">
-                                             <children>
-                                                <Group fx:id="graphGroup1" layoutX="14.0" layoutY="14.0" />
-                                                <ImageView fitHeight="68.0" fitWidth="65.0" layoutX="752.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@percurso.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlerSetasMapa" prefHeight="40.0" prefWidth="65.0" style="-fx-background-color: #A5D1DC; -fx-text-fill: Black; -fx-border-width: 3;" stylesheets="@butao.css" text="setas">
-                                                   <textFill>
-                                                      <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                                                         <stops>
-                                                            <Stop color="BLACK" />
-                                                            <Stop color="WHITE" offset="1.0" />
-                                                         </stops>
-                                                      </RadialGradient>
-                                                   </textFill>
-                                                   <font>
-                                                      <Font name="System Bold Italic" size="14.0" />
-                                                   </font>
-                                                </Button>
-                                             </children>
-                                          </Pane>
-                                          <TextArea fx:id="consolaMapa1" layoutX="884.0" layoutY="57.0" prefHeight="495.0" prefWidth="279.0" stylesheets="@grafosCss.css" />
-                                          <Label alignment="CENTER" layoutX="975.0" layoutY="14.0" prefHeight="32.0" prefWidth="98.0" stylesheets="@grafosCss.css" text="GRAFOS" textFill="WHITE">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="cachePartida1" layoutX="1072.0" layoutY="559.0" prefHeight="25.0" prefWidth="94.0" stylesheets="@grafosCss.css">
-                                             <cursor>
-                                                <Cursor fx:constant="TEXT" />
-                                             </cursor>
-                                          </TextField>
-                                          <TextField fx:id="cacheChegada1" layoutX="1071.0" layoutY="595.0" prefHeight="25.0" prefWidth="95.0" stylesheets="@grafosCss.css">
-                                             <cursor>
-                                                <Cursor fx:constant="TEXT" />
-                                             </cursor>
-                                          </TextField>
-                                          <Label layoutX="886.0" layoutY="565.0" stylesheets="@grafosCss.css" text="CACHE DE PARTIDA" textFill="WHITE">
-                                             <font>
-                                                <Font size="13.0" />
-                                             </font>
-                                          </Label>
-                                          <Label layoutX="882.0" layoutY="608.0" stylesheets="@grafosCss.css" text="CACHE DE CHEGADA" textFill="WHITE">
-                                             <font>
-                                                <Font size="13.0" />
-                                             </font>
-                                          </Label>
-                                          <Button layoutX="1053.0" layoutY="701.0" mnemonicParsing="false" onAction="#handlerExisteCaminho" style="-fx-background-color: #0d1a26; -fx-border-color: yellow; -fx-border-radius: 20; -fx-text-fill: white;" stylesheets="@styles.css" text="EXISTE CAMINHO?">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button layoutX="1093.0" layoutY="654.0" mnemonicParsing="false" onAction="#handlerDistancia" style="-fx-background-color: #0d1a26; -fx-border-color: yellow; -fx-border-radius: 20; -fx-text-fill: white;" stylesheets="@styles.css" text="DISTÂNCIA">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button layoutX="884.0" layoutY="701.0" mnemonicParsing="false" onAction="#handlerCachesPerc" style="-fx-background-color: #0d1a26; -fx-border-color: yellow; -fx-border-radius: 20; -fx-text-fill: white;" stylesheets="@styles.css" text="CACHES PERCORRIDAS">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button layoutX="996.0" layoutY="654.0" mnemonicParsing="false" onAction="#handlerTempo" prefHeight="27.0" prefWidth="87.0" style="-fx-background-color: #0d1a26; -fx-border-color: yellow; -fx-border-radius: 20; -fx-text-fill: white;" stylesheets="@styles.css" text="TEMPO">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button layoutX="884.0" layoutY="654.0" mnemonicParsing="false" onAction="#handlerElevacao" prefHeight="27.0" prefWidth="97.0" style="-fx-background-color: #0d1a26; -fx-border-color: yellow; -fx-border-radius: 20; -fx-text-fill: white;" stylesheets="@styles.css" text="ELEVAÇÃO">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button alignment="CENTER" layoutX="1119.0" layoutY="67.0" mnemonicParsing="false" onAction="#handlerApagarConsola" style="-fx-background-color: #A5D1DC; -fx-text-fill: Yellow; -fx-border-radius: 20; -fx-border-color: yellow; -fx-border-width: 3;" stylesheets="@styles.css" text="C" textOverrun="WORD_ELLIPSIS">
-                                             <font>
-                                                <Font name="Arial Nova Cond Light Italic" size="12.0" />
-                                             </font>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <ImageView fitHeight="49.0" fitWidth="74.0" layoutX="1083.0" layoutY="493.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@cofre.png" />
-                                             </image>
-                                          </ImageView>
-                                          <TabPane layoutX="14.0" layoutY="565.0" prefHeight="187.0" prefWidth="833.0" tabClosingPolicy="UNAVAILABLE">
-                                             <tabs>
-                                                <Tab text="Pesquisa">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                         <children>
-                                                            <TextField fx:id="tipoCache1" layoutX="8.0" layoutY="79.0" promptText="IdAventureiro" stylesheets="@grafosCss.css">
-                                                               <cursor>
-                                                                  <Cursor fx:constant="TEXT" />
-                                                               </cursor>
-                                                            </TextField>
-                                                            <TextField fx:id="difiCache1" layoutX="183.0" layoutY="79.0" promptText="Dificuldade" stylesheets="@grafosCss.css">
-                                                               <cursor>
-                                                                  <Cursor fx:constant="TEXT" />
-                                                               </cursor>
-                                                            </TextField>
-                                                            <TextField fx:id="PercTb1" layoutX="636.0" layoutY="79.0" promptText="Percurso TravelBug" stylesheets="@grafosCss.css">
-                                                               <cursor>
-                                                                  <Cursor fx:constant="TEXT" />
-                                                               </cursor>
-                                                            </TextField>
-                                                            <TextField fx:id="regiaoCache1" layoutX="452.0" layoutY="79.0" promptText="Regiao" stylesheets="@grafosCss.css">
-                                                               <cursor>
-                                                                  <Cursor fx:constant="TEXT" />
-                                                               </cursor>
-                                                            </TextField>
-                                                            <Button layoutX="358.0" layoutY="110.0" mnemonicParsing="false" onAction="#handlerPesquisaCache" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #0d1a26; -fx-border-color: yellow; -fx-border-radius: 20; -fx-text-fill: white;" stylesheets="@styles.css" text="PESQUISA">
-                                                               <cursor>
-                                                                  <Cursor fx:constant="HAND" />
-                                                               </cursor>
-                                                            </Button>
-                                                            <ImageView fitHeight="66.0" fitWidth="67.0" layoutX="63.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@profile.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <ImageView fitHeight="113.0" fitWidth="63.0" layoutX="239.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@dificuldade.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <ImageView fitHeight="66.0" fitWidth="65.0" layoutX="507.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@local.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <ImageView fitHeight="73.0" fitWidth="76.0" layoutX="694.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@mapa-do-tesouro.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Untitled Tab 2">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                             </tabs>
-                                          </TabPane>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                            </Tab>
                             <Tab text="Logs">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextArea layoutX="146.0" layoutY="69.0" prefHeight="606.0" prefWidth="909.0" stylesheets="@mapa_logs.css" text="Colocar Logs&#10;">
+                                          <TextArea fx:id="consolaAplicacao" editable="false" layoutX="146.0" layoutY="69.0" prefHeight="606.0" prefWidth="909.0" stylesheets="@mapa_logs.css" text="LOGS SISTEMA&#10;">
                                              <font>
-                                                <Font name="Serif Italic" size="27.0" />
+                                                <Font name="Serif Bold Italic" size="27.0" />
                                              </font></TextArea>
                                        </children>
                                     </AnchorPane>

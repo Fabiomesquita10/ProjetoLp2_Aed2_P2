@@ -1,4 +1,5 @@
 import Search.BST_AED2_2021;
+import Search.RedBlack_AED2;
 import SearchProj.*;
 import edu.princeton.cs.algs4.*;
 import javafx.event.ActionEvent;
@@ -74,9 +75,12 @@ public class LoginController implements Initializable {
     public TableColumn<TravelBug, String> numATCol;
     private ArrayList<TravelBug> TbArrayList;
 
+    //vairavel para saber se aparecem as setas ou nao
     int setas = 1;
+
     public Group graphGroup;
     public Group temp;
+    //tamanho dos circulos das caches
     int radius = 10;
     int radius2 = radius + 55;
 
@@ -153,13 +157,20 @@ public class LoginController implements Initializable {
     public TextField elevacaoAC;
 
     //Mapa Jogar
+    public TextField idAventPA;
     public TextField cacheEncJ;
     public TextField idAventJ;
     public TextField cacheDepJ;
     ArrayList<Integer> ids = new ArrayList<>();
 
+    //consola do jogo
+    public TextArea consolaAplicacao;
+
 
     @Override
+    /**
+     *
+     */
     public void initialize(URL location, ResourceBundle resources) {
 
         //AVENTUREIROS
@@ -1036,16 +1047,19 @@ public class LoginController implements Initializable {
         if(comboBoxAv.getValue().compareTo("Premium") == 0){
             Premium p = new Premium(nomeAvent.getText(),x,y,localAvent.getText());
             ga.regista(p);
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + p.getNome() + ", Nome: " + p.getNome());
         }
 
         if(comboBoxAv.getValue().compareTo("Basic") == 0){
             Basic b = new Basic(nomeAvent.getText(),x,y,localAvent.getText());
             ga.regista(b);
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + b.getNome() + ", Nome: " + b.getNome());
         }
 
         if(comboBoxAv.getValue().compareTo("Admin") == 0){
             Admin a = new Admin(nomeAvent.getText(),x,y,localAvent.getText(),PassAvent.getText());
             ga.regista(a);
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + a.getNome() + ", Nome: " + a.getNome());
         }
 
         int av = 1, k= 1;
@@ -1067,17 +1081,17 @@ public class LoginController implements Initializable {
 
     public void handlerRemoverAvent(ActionEvent actionEvent) throws AventureiroNaoExisteException, CacheNaoExisteException {
         int id = Integer.parseInt(remIdAvent.getText());
+        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removido o aventureiro: Id: " + ga.getAventureiros().get(id).getId() + ", Nome: " + ga.getAventureiros().get(id).getNome());
         ga.remove(id);
-
         int x = 1, k = 1;
         while (k<=gc.getCaches().size()){
             if(gc.getCaches().get(x) != null){
-                if(Integer.parseInt(gc.getCaches().get(k).getCriador()) == id){
-                    if(gc.getCaches().get(k).getTravelbug()!=null)
-                        go.removeTb(gc.getCaches().get(k).getTravelbug().getIdObjeto());
-                    if(gc.getCaches().get(k).getObjeto()!=null)
-                        go.removeTb(gc.getCaches().get(k).getObjeto().getIdObjeto());
-                    remCache(gc.getCaches().get(k).getIdCache());
+                if(Integer.parseInt(gc.getCaches().get(x).getCriador()) == id){
+                    if(gc.getCaches().get(x).getTravelbug()!=null)
+                        go.removeTb(gc.getCaches().get(x).getTravelbug().getIdObjeto());
+                    if(gc.getCaches().get(x).getObjeto()!=null)
+                        go.removeTb(gc.getCaches().get(x).getObjeto().getIdObjeto());
+                    remCache(gc.getCaches().get(x).getIdCache());
                     atualizarObjeto();
                 }
                 k++;
@@ -1153,6 +1167,7 @@ public class LoginController implements Initializable {
         String nome = addNomeO.getText();
         Objeto o = new Objeto(nome);
         go.regista(o);
+        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um objeto: Id: " + o.getId() + ", Nome: " + o.getNome());
 
         int x = 1, k = 1;
         if(objetoTables!=null)
@@ -1172,8 +1187,8 @@ public class LoginController implements Initializable {
 
     public void handlerRemObjeto(ActionEvent actionEvent) {
         int id = Integer.parseInt(remIdO.getText());
+        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removido um objeto: Id: " + go.getObjetos().get(id).getId() + ", Nome: " + go.getObjetos().get(id).getNome());
         go.removeO(id);
-
         int x = 1, k = 1;
         if(objetoTables!=null)
             objetoTables.getItems().clear();
@@ -1216,7 +1231,7 @@ public class LoginController implements Initializable {
         String nome = addNomeTb.getText();
         TravelBug tb = new TravelBug(nome);
         go.regista(tb);
-
+        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um TravelBug: Id: " + tb.getId() + ", Nome: " + tb.getNome());
         int x = 1;
         int k = 1;
         if(tbTables!=null)
@@ -1236,8 +1251,8 @@ public class LoginController implements Initializable {
 
     public void handlerRemTb(ActionEvent actionEvent) {
         int id = Integer.parseInt(remIdTb.getText());
+        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removido um TravelBug: Id: " + go.getTravelBug().get(id).getId() + ", Nome: " + go.getTravelBug().get(id).getNome());
         go.removeTb(id);
-
         int x = 1;
         int k = 1;
         if(tbTables!=null)
@@ -1279,9 +1294,10 @@ public class LoginController implements Initializable {
     }
 
     public void handlerRemCache(ActionEvent actionEvent) throws CacheNaoExisteException {
-        gc.getCaches().printInOrder(gc.getCaches().getRoot());
-        gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
+        //gc.getCaches().printInOrder(gc.getCaches().getRoot());
+        //gcg.getGrafo().getCaches().printInOrder(gcg.getGrafo().getCaches().getRoot());
         int id = Integer.parseInt(remIdCacheC.getText());
+        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removida uma cache: Id: " + gc.getCaches().get(id).getId() + ", Local: " + gc.getCaches().get(id).getLocal().getLocalizacao());
         remCache(id);
     }
 
@@ -1497,6 +1513,7 @@ public class LoginController implements Initializable {
                 c = c = new PremiumCache(dif, ga.getAventureiros().get(idA),x, y, local);
             }
             gc.adicionaCache(c);
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionada uma cache: Id: " + c.getId() + ", Local: " + c.getLocal().getLocalizacao());
         }else if(comboBoxTipoCache.getValue().compareTo("Basic") == 0){
             BasicCache c = null;
             if(idO != 0) {
@@ -1505,6 +1522,7 @@ public class LoginController implements Initializable {
                 c = new BasicCache(dif, ga.getAventureiros().get(idA), x, y, local);
             }
             gc.adicionaCache(c);
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionada uma cache: Id: " + c.getId() + ", Local: " + c.getLocal().getLocalizacao());
         }
         atualizarCaches();
     }
@@ -1523,12 +1541,57 @@ public class LoginController implements Initializable {
     }
 
     public void handlerPesquisaAventPA(ActionEvent actionEvent) {
+        int idA = Integer.parseInt(idAventPA.getText());
+        if(idA != 0){
+            if(ga.getAventureiros().contains(idA)){
+                graphGroup.getChildren().clear();
+                if(gcg.getGrafo().E() > 0 && setas == 1){
+                    for (int k = 1; k <= gcg.getGrafo().getNumCache(); k++) {
+                        if(gcg.getGrafo().getCaches().contains(k)){
+                            int id = gcg.getGrafo().getCaches().get(k).getIdCache();
+                            if (contains(ga.getAventureiros(), idA, id)) {
+                                for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
+                                    if (contains(ga.getAventureiros(), idA, adj.to())) {
+                                        int w = (int)adj.weight();
+                                        int d = adj.distancia();
+                                        int t = adj.tempo();
+                                        int e = adj.elevacao();
+                                        Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
+                                                gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20,w,d,t,e);
+                                        a.setFill(Color.PURPLE);
+                                        graphGroup.getChildren().add(a);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                for(int i=1; i<=gcg.getGrafo().getNumCache(); i++){
+                    if(gcg.getGrafo().getCaches().contains(i)){
+                        int id = gcg.getGrafo().getCaches().get(i).getIdCache();
+                        if (contains(ga.getAventureiros(), idA, id))
+                            criar_graph(i);
+                    }
+                }
+            }
+        }
+    }
+
+    public boolean contains(RedBlack_AED2<Integer, Aventureiro> a, int idA, int idC){
+        int x = 0, count = 0;
+        while(a.get(idA).getListCacheVisit().size()>x){
+            if(a.get(idA).getListCacheVisit().get(x).getIdCache() == idC)
+                count++;
+            x++;
+        }
+        return count != 0;
     }
 
     public void handlerEncontrouCacheJ(ActionEvent actionEvent) {
         int id = Integer.parseInt(idAventJ.getText());
         int idC = Integer.parseInt(cacheEncJ.getText());
         ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
+
         consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um travel bug: \n");
         consolaMapa.setText(consolaMapa.getText() + "\n" +ga.getAventureiros().get(id).getListTravelBug().get(0).getMissao());
         ArrayList<Cache> cachesRet = ga.getAventureiros().get(id).getListTravelBug().get(0).interpetarMissao(gc, ga);
@@ -1568,6 +1631,7 @@ public class LoginController implements Initializable {
         go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getListaCachesPresente().put(go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getNumCachesPres(), (PremiumCache) gc.getCaches().get(idC));
         go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).setNumCachesPres(go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getNumCachesPres()+1);
         go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).setViajar(false);
+        go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getListaAventureiros().put(go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getNumAventureiros()-1, ga.getAventureiros().get(id));
         atualizarCaches();
         atualizarObjeto();
         atualizarAvent();
