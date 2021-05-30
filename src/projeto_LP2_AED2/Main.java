@@ -97,9 +97,9 @@ public class Main {
         System.out.println("====================Estado das caches==============================");
         gc.getCaches().printInOrder(gc.getCaches().getRoot());
         System.out.println("===================================================================");
-        a2.encontrouCache(c1, new Date());
-        a2.encontrouCache(c2, new Date());
-        a2.encontrouCache(c3, new Date());
+        //a2.encontrouCache(c1, new Date());
+        //a2.encontrouCache(c2, new Date());
+        //a2.encontrouCache(c3, new Date());
         System.out.println("=====================Lista objetos no a2===========================");
         a2.getListObjetos().printInOrder(a2.getListObjetos().getRoot());
         System.out.println("===================================================================");

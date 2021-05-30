@@ -1528,7 +1528,7 @@ public class LoginController implements Initializable {
     public void handlerEncontrouCacheJ(ActionEvent actionEvent) {
         int id = Integer.parseInt(idAventJ.getText());
         int idC = Integer.parseInt(cacheEncJ.getText());
-        ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date());
+        ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
         consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um travel bug: \n");
         consolaMapa.setText(consolaMapa.getText() + "\n" +ga.getAventureiros().get(id).getListTravelBug().get(0).getMissao());
         ArrayList<Cache> cachesRet = ga.getAventureiros().get(id).getListTravelBug().get(0).interpetarMissao(gc, ga);
@@ -1565,6 +1565,9 @@ public class LoginController implements Initializable {
         int idC = Integer.parseInt(cacheDepJ.getText());
         int id = Integer.parseInt(idAventJ.getText());
         ga.getAventureiros().get(id).encontrouCache((PremiumCache) gc.getCaches().get(idC), ga.getAventureiros().get(id).getListTravelBug().get(0), new Date(20, 03, 2021));
+        go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getListaCachesPresente().put(go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getNumCachesPres(), (PremiumCache) gc.getCaches().get(idC));
+        go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).setNumCachesPres(go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getNumCachesPres()+1);
+        go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).setViajar(false);
         atualizarCaches();
         atualizarObjeto();
         atualizarAvent();
