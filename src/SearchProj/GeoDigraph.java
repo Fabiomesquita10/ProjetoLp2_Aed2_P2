@@ -46,6 +46,12 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
         }
     }
 
+    /**
+     * verificar se tem uma ligacao entre duas caches
+     * @param v vertice inicial
+     * @param a vertice final
+     * @return true se tiver
+     */
     public boolean containsEdge(int v, int a){
         for(DirectedEdge_AED2 adj2: this.adj(v))
             if(adj2.to() == a) return true;
@@ -53,6 +59,11 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
         return false;
     }
 
+    /**
+     * adiconar uma cache ao grafo
+     * @param cache cache que vamos adidionar
+     * @return true se conseguir
+     */
     public boolean adicionaCache(Cache cache) {
         getCaches().put(cache.getIdCache(), cache);
         //cache.setIdCache(numCache); //set ID(ID criado/adicionado consoante a variável numCache)
@@ -64,24 +75,6 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
         return true;
     }
 
-    //ainda temos de pensar melhor nisto, ou falar com os stores
-    /*
-    public boolean removeCache(Integer idCache){
-        if(caches.contains(idCache)){ //verificamos se a mesma existe na RedBlack de caches
-            caches.delete(idCache); //removemos a cache especifica
-            numCache--;
-            for(int i=0; i<this.V(); i++){
-
-            }
-            return true;
-        }
-        return false;
-    }*/
-
-
-
-    //TransitiveClosure tc = new TransitiveClosure(grafo);
-    //BellmanFordSP
     public static void main(String[] args) throws AventureiroNaoHabilitado {
         GeoDigraph go = new GeoDigraph(7);
         PremiumCache c1 = new PremiumCache(4,new Premium("favio",2,3,"porto"),new TravelBug("asdasd", "oirt"),4,4,"lisboa");
@@ -178,6 +171,10 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
             System.out.println(BSP.distTo(0));
     }
 
+    /**
+     * transformar o grafo numa matriz
+     * @return da return da matriz
+     */
     public int[][] graphToMatrix(){
         int[][] matrix = new int[this.V()][this.V()];
         for (int i = 1; i < this.V(); i++) {
@@ -186,16 +183,6 @@ public class GeoDigraph extends EdgeWeightedDiGraph_AED2 {
             }
         }
         return matrix;
-    }
-
-    public void printMatrix(int[][]matrix){
-        for (int i = 0; i < matrix.length; i++) {
-            System.out.print("|");
-            for (int j = 0; j < matrix.length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println("|");
-        }
     }
 }
 
