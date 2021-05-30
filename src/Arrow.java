@@ -46,6 +46,18 @@ public class Arrow extends Path{
         this.e = e;
     }
 
+    /**
+     * metodo para criar uma seta para mostrar as direcoes entre duas caches
+     * @param startX x incial
+     * @param startY y inicial
+     * @param endX x final
+     * @param endY y final
+     * @param arrowHeadSize tamanha do cabeca da seta
+     * @param w1
+     * @param d1
+     * @param t1
+     * @param e1
+     */
     public Arrow(double startX, double startY, double endX, double endY, double arrowHeadSize, int w1, int d1, int t1, int e1){
         super();
         w = w1;
