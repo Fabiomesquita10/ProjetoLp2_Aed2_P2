@@ -489,6 +489,7 @@ public class LoginController implements Initializable {
         creatGraphGroup(ga, gcg, go);
 
     }
+
     /**
      * Handler para Pesquisar determinada cache consoate x campos inseridos
      * @param actionEvent - Ao clicarmos no botao
@@ -847,10 +848,12 @@ public class LoginController implements Initializable {
         tipoPesquisa = "peso";
         consolaMapa.setText(consolaMapa.getText() +  "PARAMETRO DE PESQUISA: PESO");
     }
+
     /**
      * Handler para o tempo
      * @param actionEvent - ao clicar no botao
      */
+
     public void handlerTempo(ActionEvent actionEvent) {
         tipoPesquisa = "tempo";
         consolaMapa.setText(consolaMapa.getText() +  "PARAMETRO DE PESQUISA: TEMPO");
@@ -1296,6 +1299,8 @@ public class LoginController implements Initializable {
         int elevacao = Integer.parseInt(elevacaoAC.getText());
         if(gcg.getGrafo().getCaches().contains(idP) && gcg.getGrafo().getCaches().contains(idC)){
             DirectedEdge_AED2 d = new DirectedEdge_AED2(idP, idC, 0, temp, dist, elevacao);
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um caminho: Cache inicial: " + idP + ", Cache Final: " + idC +
+                    "\nDistancia: " + dist + " metros, Tempo: " + temp + " minutos, Elevacao: " + elevacao);
             gcg.getGrafo().addEdge(d);
             atualizarGraph();
         }
@@ -1568,6 +1573,7 @@ public class LoginController implements Initializable {
         atualizarCaches();
         atualizarObjeto();
         atualizarAvent();
+        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "O Aventureiro: " + id + " encontrou a cache: " + idC);
     }
 
     /**
@@ -1588,6 +1594,7 @@ public class LoginController implements Initializable {
         atualizarCaches();
         atualizarObjeto();
         atualizarAvent();
+        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "O Aventureiro: " + id + " encontrou a cache: " + idC);
     }
 }
 
