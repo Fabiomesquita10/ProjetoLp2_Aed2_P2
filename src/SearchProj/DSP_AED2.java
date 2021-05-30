@@ -2,6 +2,7 @@ package SearchProj;
 import edu.princeton.cs.algs4.IndexMinPQ;
 import edu.princeton.cs.algs4.Stack;
 
+//Dijsktra
 public class DSP_AED2 {
     private double[] distTo;          // distTo[v] = distance  of shortest s->v path
     private DirectedEdge_AED2[] edgeTo;    // edgeTo[v] = last edge on shortest s->v path
