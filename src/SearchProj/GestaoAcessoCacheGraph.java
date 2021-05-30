@@ -32,17 +32,20 @@ public class GestaoAcessoCacheGraph {
         this.grafo = grafo;
     }
 
+    /**
+     * funcao que le caminhos entre grafos de um txt
+     */
     public void lerCaminhos(){
         In infile = new In("data/caminhos.txt");
         String line = null;
         while ((line = infile.readLine())!=null){
             String parts[] = line.split(";");
-            int v = Integer.parseInt(parts[0]);
-            int e = Integer.parseInt(parts[1]);
-            int w = Integer.parseInt(parts[2]);
-            int t = Integer.parseInt(parts[3]);
-            int d = Integer.parseInt(parts[4]);
-            int p = Integer.parseInt(parts[5]);
+            int v = Integer.parseInt(parts[0]);//v
+            int e = Integer.parseInt(parts[1]);//edge
+            int w = Integer.parseInt(parts[2]);//weight
+            int t = Integer.parseInt(parts[3]);//tempo
+            int d = Integer.parseInt(parts[4]);//distancia
+            int p = Integer.parseInt(parts[5]);//peso
             if(this.getGrafo().getCaches().contains(v) && this.getGrafo().getCaches().contains(e)){
                 DirectedEdge_AED2 de = new DirectedEdge_AED2(v,e,w,t,d,p);
                 grafo.addEdge(de);
@@ -50,11 +53,20 @@ public class GestaoAcessoCacheGraph {
         }
     }
 
+    /**
+     * funcao que guardar caminhos
+     */
     public void guardarCaminhos(){
         Out outfile = new Out("data/caminhos.txt");
         //funcao para guardar os edges
     }
 
+    /**
+     * funcao que remove uma cache
+     * @param idCache da cache a ser removida
+     * @return true se conseguir eliminar
+     * @throws CacheNaoExisteException
+     */
     public boolean removeCache(Integer idCache) throws CacheNaoExisteException {
         if(grafo.getCaches().contains(idCache)){ //verificamos se a mesma existe na RedBlack de caches
             grafo.getCaches().delete(idCache); //removemos a cache especifica
