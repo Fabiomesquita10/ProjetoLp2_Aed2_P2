@@ -149,3 +149,5 @@ Foi removido o Aventureiro com id : 4 e com o nome : kinito, na data de: 29/5/20
 Removeu a cache com o ID 4, na data de: 29/5/2021
 Removeu a cache com o ID 9, na data de: 29/5/2021
 Foi removido o Aventureiro com id : 17 e com o nome : fabio, na data de: 29/5/2021
+Removeu a cache com o ID 2, na data de: 29/5/2021
+Removeu a cache com o ID 1, na data de: 29/5/2021

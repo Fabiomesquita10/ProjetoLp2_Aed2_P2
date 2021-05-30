@@ -6,6 +6,19 @@ class GFG
     public static Stack<Integer> paths = new Stack<>();
     public static String stringCaches = new String();
 
+    /**
+     * funcao que retorna uma string com as caches que vamos ter de precorrer, retorna o menos caminho
+     * @param graph o grafo onde se vai fazer a pesquisa
+     * @param v array de booleans para ter marcado as posicoes ja percorridas
+     * @param currPos posicao atual na pesquisa
+     * @param n
+     * @param count caches que ja esteve
+     * @param cost costo da viagem
+     * @param ans
+     * @param dist distancia maxima que ele pode precorrer
+     * @param l linha que vamos comecar a procurar
+     * @return da return das caches que ele vai passar
+     */
     public String retStrin(int[][] graph, boolean[] v, int currPos, int n, int count, int cost, int ans, int dist, int l){
         stringCaches = "";
         ans = tsp(graph, v, 0, n, 1, 0, ans, dist, l);
@@ -20,15 +33,24 @@ class GFG
         GFG.stringCaches = stringCaches;
     }
 
-    // Function to find the minimum weight
-    // Hamiltonian Cycle
+    /**
+     * funcao que calcula o distancia minima
+     * @param graph o grafo onde se vai fazer a pesquisa
+     * @param v array de booleans para ter marcado as posicoes ja percorridas
+     * @param currPos posicao atual na pesquisa
+     * @param n de iteracoes
+     * @param count caches que ja esteve
+     * @param cost costo da viagem
+     * @param ans valor de returno que vai aumentando
+     * @param dist distancia maxima que ele pode precorrer
+     * @param l linha que vamos comecar a procurar
+     * @return peso
+     */
     public static int tsp(int[][] graph, boolean[] v, int currPos, int n, int count, int cost, int ans, int dist, int l)
     {
-        // If last node is reached and it has a link
-        // to the starting node i.e the source then
-        // keep the minimum value out of the total cost
-        // of traversal and "ans"
-        // Finally return to check for more possible values
+
+        //se tivermos chegado a ultima linha
+        //ou se a distancia ja for menor que o custo, a funcao acaba
         if (count == n && graph[currPos][0] > 0 || dist<cost)
         {
             ans = Math.min(ans, cost + graph[currPos][0]);
@@ -36,49 +58,39 @@ class GFG
             return ans;
         }
 
-        // BACKTRACKING STEP
-        // Loop to traverse the adjacency list
-        // of currPos node and increasing the count
-        // by 1 and cost by graph[currPos,i] value
+        // vai iterando a matriz, pelo caminho mais curto de forma iterativa
         for (int i = 0; i < n; i++)
         {
 
             if (!v[i] && graph[currPos][i] > 0)
             {
                 // Mark as visited
-                if(i == l) {
+                if(i == l) { // se for a linha que trocamos , temos de a trocar para a que era
                     i = 0;
                     if (!v[i] && graph[currPos][i] > 0) {
                         System.out.println("l" + i);
                         v[i] = true;
                         paths.push(0);
                         ans = tsp(graph, v, 0, n, count + 1, cost + graph[currPos][i], ans, dist, l);
-
-                        // Mark ith node as unvisited
                         v[i] = false;
                         paths.pop();
                     }
                     i = l;
-                }else if(i == 0){
+                }else if(i == 0){ // se for a linha 0 troca para a linha que tamnos a iniciar
                     i = l;
                     if (!v[i] && graph[currPos][i] > 0) {
                         System.out.println("0" + i);
                         v[i] = true;
                         paths.push(l);
                         ans = tsp(graph, v, l, n, count + 1, cost + graph[currPos][i], ans, dist, l);
-
-                        // Mark ith node as unvisited
                         v[i] = false;
                         paths.pop();
                     }
                     i = 0;
                 }else{
-                    //System.out.println("mirosvaldo");
                     v[i] = true;
                     paths.push(i);
                     ans = tsp(graph, v, i, n, count + 1, cost + graph[currPos][i], ans, dist, l);
-
-                    // Mark ith node as unvisited
                     v[i] = false;
                     paths.pop();
                 }
@@ -87,6 +99,13 @@ class GFG
         return ans;
     }
 
+    /**
+     * funcao para trocar duas linhas da matriz
+     * @param matrix a matriz
+     * @param K
+     * @param L
+     * @return a matriz qcom as linhas trocadas
+     */
     public int[][] exchangeAnyTwoRows(int[][] matrix, int K, int L)
     {
         for (int i = 0; i < matrix[0].length; i++) {
@@ -98,6 +117,10 @@ class GFG
         return matrix;
     }
 
+    /**
+     * funcao para printar a matriz
+     * @param matrix
+     */
     public void printMatrix(int[][]matrix){
         System.out.println("Matriz de adjacencias do grafo: ");
         for (int i = 0; i < matrix.length; i++) {
@@ -123,5 +146,3 @@ class GFG
         }
     }
 }
-
-// This code is contributed by Rajput-Ji
