@@ -53,6 +53,19 @@ public class BFS_AED2 {
         bfs(G, s);
     }
 
+    public BFS_AED2(GeoDigraph G, int s, int x) {
+        marked = new boolean[G.V()];
+        distTo = new int[G.V()];
+        edgeTo = new int[G.V()];
+        for (int v = 0; v < G.V(); v++)
+            distTo[v] = INFINITY;
+        validateVertex(s);
+        if(x == 0)
+            bfs(G, s);
+        if(x == 1)
+            bfsE(G, s);
+    }
+
     /**
      * Computes the shortest path from any one of the source vertices in {@code sources}
      * to every other vertex in graph {@code G}.
@@ -74,6 +87,25 @@ public class BFS_AED2 {
 
     // BFS from single source
     private void bfs(GeoDigraph G, int s) {
+        Queue<Integer> q = new Queue<Integer>();
+        marked[s] = true;
+        distTo[s] = 0;
+        q.enqueue(s);
+        while (!q.isEmpty()) {
+            int v = q.dequeue();
+            for (DirectedEdge_AED2 w : G.adj(v)) {
+                if (!marked[w.to()]) {
+                    edgeTo[w.to()] = v;
+                    distTo[w.to()] = distTo[v] + 1;
+                    marked[w.to()] = true;
+                    q.enqueue(w.to());
+                }
+            }
+        }
+    }
+
+    // BFS from single source
+    private void bfsE(GeoDigraph G, int s) {
         Queue<Integer> q = new Queue<Integer>();
         marked[s] = true;
         distTo[s] = 0;

@@ -286,17 +286,15 @@ public abstract class Aventureiro implements Serializable {
      * @param d - Data
      * @throws MissaoNaoCompletadaComExitoException
      */
-    public void encontrouCache(PremiumCache c, TravelBug bg, Date d) throws MissaoNaoCompletadaComExitoException {
+    public void encontrouCache(PremiumCache c, TravelBug bg, Date d, int pos) throws MissaoNaoCompletadaComExitoException {
         int count = 0, j = 0;
-        for (int i = 1; i < bg.getNumCachesPres(); i++) {
-            System.out.println(bg.getListaCachesPresente().get(i).getIdCache());
-        }
         while(bg.getTbMission().size() > j){
             if(bg.getTbMission().get(j).getIdCache().equals(c.getIdCache()))
                 count++;
             j++;
         }
         if(count != 0 || bg.getTbMission().size()==0) {
+            bg.lerMissao(pos);
             if (this.getListTravelBug().get(0).getIdObjeto().equals(bg.getIdObjeto())) {
                 c.getTravelbug().getListaAventureiros().put(c.getTravelbug().getNumAventureiros(), this);
                 c.getTravelbug().setNumAventureiros(c.getTravelbug().getNumAventureiros() + 1);

@@ -28,7 +28,34 @@ public class LogCont implements Initializable {
     }
 
     public void handlerLogin(ActionEvent actionEvent) throws IOException, AventureiroNaoHabilitado {
-        if(verificarLogIn()){
+        verificarLogIn();
+    }
+
+    public void verificarLogIn() throws AventureiroNaoHabilitado, IOException {
+        GestaoAcessoAventureiro tempA = new GestaoAcessoAventureiro();
+        GestaoAcessoCache tempC = new GestaoAcessoCache();
+        GestaoAcessoObjeto tempO = new GestaoAcessoObjeto();
+        tempA.lerAventBin();
+        tempO.lerObjectBin();
+        tempC.lerCachesBin();
+        gerarpass(tempA);
+        String nome = usernameField.getText();
+        usernameField.setText("");
+        String pass = passwordField.getText();
+        passwordField.setText("");
+        int count = 0, x = 1;
+        boolean admin = false;
+        while(x<=tempA.getAventureiros().size()){
+            if(nome.equals(tempA.getAventureiros().get(x).getNome())) {
+                if (pass.equals(tempA.getAventureiros().get(x).getPassword())){
+                    count++;
+                    if(tempA.getAventureiros().get(x) instanceof Admin)
+                        admin = true;
+                }
+            }
+            x++;
+        }
+        if(count>0 && admin) {
             Stage stage = (Stage) btnLogin.getScene().getWindow();
             stage.close();
             Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
@@ -36,40 +63,31 @@ public class LogCont implements Initializable {
             stage.setTitle("Menu");
             stage.setScene(scene);
             stage.show();
-        }else
-            System.out.println("ola");
-    }
-
-    public boolean verificarLogIn() throws AventureiroNaoHabilitado {
-        GestaoAcessoAventureiro tempA = new GestaoAcessoAventureiro();
-        GestaoAcessoCache tempC = new GestaoAcessoCache();
-        GestaoAcessoObjeto tempO = new GestaoAcessoObjeto();
-        tempA.lerAventureiros(); // mudar funcao de leitura e escrita para por o local
-        tempO.lerObjeto();
-        tempO.lerTb();
-        tempC.lerCache(tempA, tempO);
-        tempO.lerTbHist(tempC, tempA);
-        tempA.lerAventureirosHist(tempC, tempO);
-        tempA.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
-        tempA.getAventureiros().get(5).setPassword("1234");
-        String nome = usernameField.getText();
-        usernameField.setText("");
-        String pass = passwordField.getText();
-        passwordField.setText("");
-        int count = 0, x = 1;
-        while(x<=tempA.getAventureiros().size()){
-            if(nome.equals(tempA.getAventureiros().get(x).getNome()) && tempA.getAventureiros().get(x) instanceof Admin){
-                if(pass.equals(tempA.getAventureiros().get(x).getPassword()))
-                    count++;
-            }
-            x++;
+        }else if(count>0 && !admin){
+            Stage stage = (Stage) btnLogin.getScene().getWindow();
+            stage.close();
+            Parent root = FXMLLoader.load(getClass().getResource("MenuN.fxml"));
+            Scene scene = new Scene(root);
+            stage.setTitle("Menu");
+            stage.setScene(scene);
+            stage.show();
         }
-        if(count>0)
-            return true;
         else{
             usernameField.setText("CAMPOS ERRADOS");
             passwordField.setText("CAMPOS ERRADOS");
-            return false;
+        }
+    }
+
+    public void gerarpass(GestaoAcessoAventureiro ga){
+        int x = 1, k = 1;
+        if(ga.getAventureiros().size()>0){
+            while(k<=ga.getAventureiros().size()){
+                if(ga.getAventureiros().get(x) != null){
+                    ga.getAventureiros().get(x).setPassword("1234");
+                    k++;
+                }
+                x++;
+            }
         }
     }
 

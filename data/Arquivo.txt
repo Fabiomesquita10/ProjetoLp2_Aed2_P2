@@ -154,3 +154,13 @@ Removeu a cache com o ID 1, na data de: 29/5/2021
 Foi removido o Aventureiro com id : 5 e com o nome : joao, na data de: 29/5/2021
 Removeu a cache com o ID 5, na data de: 29/5/2021
 Removeu a cache com o ID 2, na data de: 29/5/2021
+Removeu a cache com o ID 1, na data de: 29/5/2021
+Foi removido o Aventureiro com id : 1 e com o nome : jonas, na data de: 29/5/2021
+Removeu a cache com o ID 1, na data de: 29/5/2021
+Removeu a cache com o ID 6, na data de: 29/5/2021
+Foi removido o Aventureiro com id : 1 e com o nome : jonas, na data de: 7/6/2021
+Removeu a cache com o ID 1, na data de: 7/6/2021
+Removeu a cache com o ID 6, na data de: 7/6/2021
+Foi removido o Aventureiro com id : 2 e com o nome : fabio, na data de: 7/6/2021
+Removeu a cache com o ID 2, na data de: 7/6/2021
+Removeu a cache com o ID 7, na data de: 7/6/2021

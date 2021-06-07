@@ -1,85 +1,25 @@
 import Search.BST_AED2_2021;
 import Search.RedBlack_AED2;
 import SearchProj.*;
-import edu.princeton.cs.algs4.*;
-import figGeo.Point;
-import figGeo.Rectangle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import projeto_LP2_AED2.*;
-import projeto_LP2_AED2.Date;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
-public class LoginController implements Initializable {
-
-    /**
-     * Variáveis identificadoras de cada tabela e coluna
-     */
-    //AVENTUREIROS
-    public TableView<Aventureiro> aventTables;
-    public TableColumn<Aventureiro, String> nomeCol;
-    public TableColumn<Aventureiro, String> idCol;
-    public TableColumn<Aventureiro, String> localCol;
-    public TableColumn<Aventureiro, String> objetoCol;
-    public TableColumn<Aventureiro, String> cacheCol;
-    public TableColumn<Aventureiro, String> cacheVisCol;
-    public TableColumn<Aventureiro, String> cacheEscCol;
-    public TableColumn<Aventureiro, String> tipoCol;
-    private ArrayList<Aventureiro> AventArrayList;
-
-    //CACHES
-    public TableView<Cache> cacheTables;
-    public TableColumn<Cache, String> idCCol;
-    public TableColumn<Cache, String> dificCol;
-    public TableColumn<Cache, String> tipoCCol;
-    public TableColumn<Cache, String> criadorCol;
-    public TableColumn<Cache, String> objetoCCol;
-    public TableColumn<Cache, String> localCCol;
-    public TableColumn<Cache, String> numACol;
-    public TableColumn<Cache, String> ultimoACol;
-    private ArrayList<Cache> CacheArrayList;
-
-    //OBJETOS
-    public TableView<Objeto> objetoTables;
-    public TableColumn<Objeto, String> idOCol;
-    public TableColumn<Objeto, String> viajarOCol;
-    public TableColumn<Objeto, String> nomeOCol;
-    public TableColumn<Objeto, String> cacheOCol;
-    public TableColumn<Objeto, String> aventOCol;
-    public TableColumn<Objeto, String> localOCol;
-    private ArrayList<Objeto> ObjetoArrayList;
-
-    //TRAVELBUG
-    public TableView<TravelBug> tbTables;
-    public TableColumn<TravelBug, String> idTCol;
-    public TableColumn<TravelBug, String> nomeTCol;
-    public TableColumn<TravelBug, String> viajarTCol;
-    public TableColumn<TravelBug, String> missaoCol;
-    public TableColumn<TravelBug, String> ultimaCCol;
-    public TableColumn<TravelBug, String> ultimoATCol;
-    public TableColumn<TravelBug, String> numCCol;
-    public TableColumn<TravelBug, String> numATCol;
-    private ArrayList<TravelBug> TbArrayList;
+public class LoginControllerN implements Initializable {
 
     //vairavel para saber se aparecem as setas ou nao
     int setas = 1;
@@ -105,45 +45,10 @@ public class LoginController implements Initializable {
     public TextArea consolaMapa;
 
     private String tipoPesquisa;
-
-    //AVENTUREIROS
-    //adicionar
-    public ComboBox<String> comboBoxAv;
-    public TextField nomeAvent;
-    public TextField localAvent;
-    public TextField PassAvent;
-    //remover
-    public TextField remIdAvent;
-    //editar
-    public TextField idEdit;
-    public TextField nomeEdit;
-    public TextField localEdit;
     //caxeiro-viajante
     public TextField tempoL;
     public TextField cacheP;
     public TextArea textCaixeiro;
-
-    //OBJETOS
-    //add
-    public TextField addNomeO;
-    //remove
-    public TextField remIdO;
-    //edit
-    public TextField editIdO;
-    public TextField editNomeO;
-
-    //TRAVELBUGS
-    //add
-    public TextField addNomeTb;
-    //remove
-    public TextField remIdTb;
-    //edit
-    public TextField editIdTb;
-    public TextField editNomeTb;
-
-    //CACHE
-    //remocao
-    public TextField remIdCacheC;
     //adiciao
     public ComboBox<String> comboBoxTipoCache;
     public TextField addLocalC;
@@ -172,126 +77,12 @@ public class LoginController implements Initializable {
     //consola do jogo
     public TextArea consolaAplicacao;
 
-    //limites mapa
-    public final int xleftLimit = 100;
-    public final int xRightLimit = 500;
-    public final int yUpperLimit = 100;
-    public final int yLowerLimit = 400;
 
     @Override
     /**
      *
      */
     public void initialize(URL location, ResourceBundle resources) {
-
-        //AVENTUREIROS
-        AventArrayList = new ArrayList<>();
-
-        idCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
-        idCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        nomeCol.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-        nomeCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        localCol.setCellValueFactory(new PropertyValueFactory<>("Loc"));
-        localCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        objetoCol.setCellValueFactory(new PropertyValueFactory<>("Objeto"));
-        objetoCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        cacheCol.setCellValueFactory(new PropertyValueFactory<>("Cache"));
-        cacheCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        cacheVisCol.setCellValueFactory(new PropertyValueFactory<>("CacheVis"));
-        cacheVisCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        cacheEscCol.setCellValueFactory(new PropertyValueFactory<>("CacheEsc"));
-        cacheEscCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        tipoCol.setCellValueFactory(new PropertyValueFactory<>("Tipo"));
-        tipoCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        //CACHES
-        CacheArrayList = new ArrayList<>();
-
-        idCCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
-        idCCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        dificCol.setCellValueFactory(new PropertyValueFactory<>("Dific"));
-        dificCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        tipoCCol.setCellValueFactory(new PropertyValueFactory<>("Tipo"));
-        tipoCCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        criadorCol.setCellValueFactory(new PropertyValueFactory<>("Criador"));
-        criadorCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        objetoCCol.setCellValueFactory(new PropertyValueFactory<>("Obj"));
-        objetoCCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        localCCol.setCellValueFactory(new PropertyValueFactory<>("Loc"));
-        localCCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        numACol.setCellValueFactory(new PropertyValueFactory<>("NumAv"));
-        numACol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        ultimoACol.setCellValueFactory(new PropertyValueFactory<>("UltimoAvent"));
-        ultimoACol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        //OBJETOS
-        ObjetoArrayList = new ArrayList<>();
-
-        idOCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
-        idOCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        viajarOCol.setCellValueFactory(new PropertyValueFactory<>("Viajar"));
-        viajarOCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        nomeOCol.setCellValueFactory(new PropertyValueFactory<>("NomeO"));
-        nomeOCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        cacheOCol.setCellValueFactory(new PropertyValueFactory<>("CacheO"));
-        cacheOCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        aventOCol.setCellValueFactory(new PropertyValueFactory<>("AventO"));
-        aventOCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        localOCol.setCellValueFactory(new PropertyValueFactory<>("LocalO"));
-        localOCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        //TRAVELBUG
-        TbArrayList = new ArrayList<>();
-
-        idTCol.setCellValueFactory(new PropertyValueFactory<>("IdT"));
-        idTCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        nomeTCol.setCellValueFactory(new PropertyValueFactory<>("NomeT"));
-        nomeTCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        missaoCol.setCellValueFactory(new PropertyValueFactory<>("MissaoT"));
-        missaoCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        viajarTCol.setCellValueFactory(new PropertyValueFactory<>("ViajarT"));
-        viajarTCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        ultimaCCol.setCellValueFactory(new PropertyValueFactory<>("UltimaCT"));
-        ultimaCCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        ultimoATCol.setCellValueFactory(new PropertyValueFactory<>("UltimaAT"));
-        ultimoATCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        numCCol.setCellValueFactory(new PropertyValueFactory<>("NumCT"));
-        numCCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        numATCol.setCellValueFactory(new PropertyValueFactory<>("NumAT"));
-        numATCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        String p = "Premium";
-        String b = "Basic";
-        String a = "Admin";
-
-        comboBoxAv.getItems().addAll(p,b,a);
-        comboBoxTipoCache.getItems().addAll(p,b);
 
         try {
             carregarFicheiro();
@@ -302,7 +93,6 @@ public class LoginController implements Initializable {
         } catch (AventureiroNaoExisteException e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -487,9 +277,7 @@ public class LoginController implements Initializable {
         go.guardarObjeto(gc,ga);
         gc.guardarCache(ga,go);
         */
-        atualizarAvent();
         atualizarCaches();
-        atualizarObjeto();
 
         //teste de directedEdge
         gcg.lerCaminhos();
@@ -890,71 +678,6 @@ public class LoginController implements Initializable {
     }
 
     /**
-     * handler para adicionar aventureiro
-     * @param actionEvent
-     */
-    public void handlerAddAvent(ActionEvent actionEvent) {
-        int x = 230, y=459;
-        //se for selecionado na combobox premium
-        if(comboBoxAv.getValue().compareTo("Premium") == 0){
-            Premium p = new Premium(nomeAvent.getText(),x,y,localAvent.getText());
-            ga.regista(p);
-            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + p.getNome() + ", Nome: " + p.getNome());
-        }
-        if(comboBoxAv.getValue().compareTo("Basic") == 0){
-            Basic b = new Basic(nomeAvent.getText(),x,y,localAvent.getText());
-            ga.regista(b);
-            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + b.getNome() + ", Nome: " + b.getNome());
-        }
-
-        if(comboBoxAv.getValue().compareTo("Admin") == 0){
-            Admin a = new Admin(nomeAvent.getText(),x,y,localAvent.getText(),PassAvent.getText());
-            ga.regista(a);
-            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + a.getNome() + ", Nome: " + a.getNome());
-        }
-        atualizarAvent();
-    }
-
-    /**
-     * handler para remover um aventureiro, e todas as suas caches e objetos
-     * @param actionEvent
-     * @throws AventureiroNaoExisteException
-     * @throws CacheNaoExisteException
-     */
-    public void handlerRemoverAvent(ActionEvent actionEvent) throws AventureiroNaoExisteException, CacheNaoExisteException {
-        int id = Integer.parseInt(remIdAvent.getText());
-        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removido o aventureiro: Id: " + ga.getAventureiros().get(id).getId() + ", Nome: " + ga.getAventureiros().get(id).getNome());
-        ga.remove(id);
-        int x = 1, k = 1;
-        // ao remover um aventureiro, vamos remover tambem as suas caches e objetos
-        while (k<=gc.getCaches().size()){
-            if(gc.getCaches().get(x) != null){
-                if(Integer.parseInt(gc.getCaches().get(x).getCriador()) == id){
-                    if(gc.getCaches().get(x).getTravelbug()!=null)
-                        go.removeTb(gc.getCaches().get(x).getTravelbug().getIdObjeto());
-                    if(gc.getCaches().get(x).getObjeto()!=null)
-                        go.removeTb(gc.getCaches().get(x).getObjeto().getIdObjeto());
-                    remCache(gc.getCaches().get(x).getIdCache());
-                    atualizarObjeto();
-                }
-                k++;
-            }
-            x++;
-        }
-        atualizarAvent();
-    }
-
-    /**
-     * handler para editar um aventureiro
-     * @param actionEvent
-     */
-    public void handlerEditAv(ActionEvent actionEvent) {
-        int id = Integer.parseInt(idEdit.getText());
-        ga.editarTab(id,nomeEdit.getText(),localEdit.getText());
-        atualizarAvent();
-    }
-
-    /**
      * handler para calcular o caminho que o caixeiro viajante vai procorrer em X tempo
      * @param actionEvent
      */
@@ -991,115 +714,6 @@ public class LoginController implements Initializable {
             else
                 textCaixeiro.setText(textCaixeiro.getText() + parts3[i]);
         }
-    }
-
-    /**
-     * handler para adicionar um objeto
-     * @param actionEvent
-     */
-    public void handlerAddObjeto(ActionEvent actionEvent) {
-        String nome = addNomeO.getText();
-        Objeto o = new Objeto(nome);
-        go.regista(o);
-        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um objeto: Id: " + o.getId() + ", Nome: " + o.getNome());
-        atualizarObjeto();
-    }
-
-    /**
-     * handler para remover um objeto
-     * @param actionEvent
-     */
-    public void handlerRemObjeto(ActionEvent actionEvent) {
-        int id = Integer.parseInt(remIdO.getText());
-        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removido um objeto: Id: " + go.getObjetos().get(id).getId() + ", Nome: " + go.getObjetos().get(id).getNome());
-        go.removeO(id);
-        atualizarObjeto();
-    }
-
-    /**
-     * handler para editar um objeto
-     * @param actionEvent
-     */
-    public void handlerEditObjeto(ActionEvent actionEvent) {
-        int id = Integer.parseInt(editIdO.getText());
-        String nome = editNomeO.getText();
-        go.editarO(id,nome);
-        atualizarObjeto();
-    }
-
-    /**
-     * handler para adiconar um travelBug
-     * @param actionEvent
-     */
-    public void handlerAddTb(ActionEvent actionEvent) {
-        String nome = addNomeTb.getText();
-        TravelBug tb = new TravelBug(nome);
-        go.regista(tb);
-        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um TravelBug: Id: " + tb.getId() + ", Nome: " + tb.getNome());
-        int x = 1;
-        int k = 1;
-        if(tbTables!=null)
-            tbTables.getItems().clear();
-        TbArrayList.clear();
-        if(go.getTravelBug().size()>0){
-            while(k<=go.getTravelBug().size()){
-                if(go.getTravelBug().get(x) != null) {
-                    TbArrayList.add(go.getTravelBug().get(x));
-                    k++;
-                }
-                x++;
-            }
-            tbTables.getItems().addAll(TbArrayList);
-        }
-    }
-
-    /**
-     * handler para remover um travelBug
-     * @param actionEvent
-     */
-    public void handlerRemTb(ActionEvent actionEvent) {
-        int id = Integer.parseInt(remIdTb.getText());
-        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removido um TravelBug: Id: " + go.getTravelBug().get(id).getId() + ", Nome: " + go.getTravelBug().get(id).getNome());
-        go.removeTb(id);
-        atualizarObjeto();
-    }
-
-    /**
-     * handler para editar TravelBug
-     * @param actionEvent
-     */
-    public void handlerEditTb(ActionEvent actionEvent) {
-        String nome = editNomeTb.getText();
-        int id = Integer.parseInt(editIdTb.getText());
-        go.editarTb(id,nome);
-        atualizarObjeto();
-    }
-
-    /**
-     * handler para remover cache
-     * @param actionEvent
-     * @throws CacheNaoExisteException
-     */
-    public void handlerRemCache(ActionEvent actionEvent) throws CacheNaoExisteException {
-        int id = Integer.parseInt(remIdCacheC.getText());
-        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removida uma cache: Id: " + gc.getCaches().get(id).getId() + ", Local: " + gc.getCaches().get(id).getLocal().getLocalizacao());
-        remCache(id);
-    }
-
-    /**
-     * funcao qeu remove uma cache
-     * @param id da cahce a ser removida
-     * @throws CacheNaoExisteException se a cache nao existir
-     */
-    public void remCache(int id) throws CacheNaoExisteException {
-        gc.removeCache(id);
-        gcg.removeCache(id);
-        graphGroup.getChildren().clear();
-        gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
-        atualizarCaches();
-        gcg.lerCaminhos();
-        creatGraphGroup(ga, gcg, go);
-        gcg.getGrafo().getCaches().get(4);
     }
 
     /**
@@ -1210,20 +824,15 @@ public class LoginController implements Initializable {
      */
     public void atualizarCaches(){
         int x = 1, k = 1;
-        if(cacheTables!=null)
-            cacheTables.getItems().clear();
-        CacheArrayList.clear();
         if(gc.getCaches().size()>0){
             gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
             while(k<=gc.getCaches().size()){
                 if(gc.getCaches().contains(x)){
                     gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
-                    CacheArrayList.add(gc.getCaches().get(x));
                     k++;
                 }
                 x++;
             }
-            cacheTables.getItems().addAll(CacheArrayList);
         }
         gcg.lerCaminhos();
         creatGraphGroup(ga, gcg, go);
@@ -1231,70 +840,11 @@ public class LoginController implements Initializable {
     }
 
     /**
-     * metodo para atualizar as informacoes que estao na tabelas dos aventureiros, apartir da gestaAventureiros
-     */
-    public void atualizarAvent(){
-        int av = 1, k= 1;
-        if(aventTables!=null)
-            aventTables.getItems().clear();
-        AventArrayList.clear();
-        if(ga.getAventureiros().size()>0){
-            while(k<=ga.getAventureiros().size()){
-                if(ga.getAventureiros().get(av) != null){
-                    AventArrayList.add(ga.getAventureiros().get(av));
-                    k++;
-                }
-                av++;
-            }
-            aventTables.getItems().addAll(AventArrayList);
-        }
-    }
-
-    /**
-     * metodo para atualizar as informacoes que estao na tabelas dos objetos, apartir da gestaObjetos
-     */
-    public void atualizarObjeto(){
-        //OBJETOS
-        int x = 1;
-        int k = 1;
-        if(objetoTables!=null)
-            objetoTables.getItems().clear();
-        ObjetoArrayList.clear();
-        if(go.getObjetos().size()>0){
-            while(k<=go.getObjetos().size()){
-                if(go.getObjetos().get(x) != null){
-                    ObjetoArrayList.add(go.getObjetos().get(x));
-                    k++;
-                }
-                x++;
-            }
-            objetoTables.getItems().addAll(ObjetoArrayList);
-        }
-
-        //TRAVELBUG
-        x = 1;
-        k = 1;
-        if(tbTables!=null)
-            tbTables.getItems().clear();
-        TbArrayList.clear();
-        if(go.getTravelBug().size()>0){
-            while(k<=go.getTravelBug().size()){
-                if(go.getTravelBug().get(x) != null) {
-                    TbArrayList.add(go.getTravelBug().get(x));
-                    k++;
-                }
-                x++;
-            }
-            tbTables.getItems().addAll(TbArrayList);
-        }
-    }
-
-    /**
      * handler para adicionar uma caches ao grafo
      * @param actionEvent
      * @throws AventureiroNaoHabilitado se o aventureiro na for premium nao pode criar cache
      */
-    public void handlerAddCache(ActionEvent actionEvent) throws AventureiroNaoHabilitado, ForaDaRegiaoException {
+    public void handlerAddCache(ActionEvent actionEvent) throws AventureiroNaoHabilitado {
         //toda a informacao da cache nova
         int idA = Integer.parseInt(addIdAventC.getText());
         int idO = 0;
@@ -1306,185 +856,28 @@ public class LoginController implements Initializable {
         String local = parts[2];
         int x = Integer.parseInt(parts[0]);
         int y = Integer.parseInt(parts[1]);
-        if(verificarLimitesRegiao(x,y)){
-            //verificacao se a cache e premium ou nao
-            if(comboBoxTipoCache.getValue().compareTo("Premium") == 0) {
-                PremiumCache c = null;
-                if(idO != 0)
-                    c = new PremiumCache(dif, ga.getAventureiros().get(idA), go.getTravelBug().get(idO),x, y, local);
-                else{
-                    c = c = new PremiumCache(dif, ga.getAventureiros().get(idA),x, y, local);
-                }
-                gc.adicionaCache(c);
-                consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionada uma cache: Id: " + c.getId() + ", Local: " + c.getLocal().getLocalizacao());
-            }else if(comboBoxTipoCache.getValue().compareTo("Basic") == 0){
-                BasicCache c = null;
-                if(idO != 0) {
-                    c = new BasicCache(dif, ga.getAventureiros().get(idA), go.getObjetos().get(idO), x, y, local);
-                }else{
-                    c = new BasicCache(dif, ga.getAventureiros().get(idA), x, y, local);
-                }
-                gc.adicionaCache(c);
-                consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionada uma cache: Id: " + c.getId() + ", Local: " + c.getLocal().getLocalizacao());
+
+        //verificacao se a cache e premium ou nao
+        if(comboBoxTipoCache.getValue().compareTo("Premium") == 0) {
+            PremiumCache c = null;
+            if(idO != 0)
+                c = new PremiumCache(dif, ga.getAventureiros().get(idA), go.getTravelBug().get(idO),x, y, local);
+            else{
+                c = c = new PremiumCache(dif, ga.getAventureiros().get(idA),x, y, local);
             }
-            atualizarCaches();
-        }else
-            throw new ForaDaRegiaoException("Coordenadas fora do nosso alcance");
-    }
-
-    public boolean verificarLimitesRegiao(int x, int y){
-        Point p1 = new Point(xleftLimit, yUpperLimit);
-        Point p2 = new Point(xRightLimit, yLowerLimit);
-        Rectangle r = new Rectangle(p1, p2, null);
-        Point p3 = new Point(x, y);
-        return r.isInside(p3);
-    }
-
-    public static void main(String[] args) throws AventureiroNaoHabilitado {
-        GestaoAcessoAventureiro ga = new GestaoAcessoAventureiro();
-        GestaoAcessoCache gc = new GestaoAcessoCache();
-        GestaoAcessoObjeto go = new GestaoAcessoObjeto();
-        GestaoAcessoCacheGraph gcg = new GestaoAcessoCacheGraph();
-
-        ga.lerAventBin();
-        go.lerObjectBin();
-        gc.lerCachesBin();
-        ga.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
-        int x = 1;
-        if(gc.getCaches().size()>0){
-            gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
-            while(x<=gc.getCaches().size()){
-                gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
-                x++;
+            gc.adicionaCache(c);
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionada uma cache: Id: " + c.getId() + ", Local: " + c.getLocal().getLocalizacao());
+        }else if(comboBoxTipoCache.getValue().compareTo("Basic") == 0){
+            BasicCache c = null;
+            if(idO != 0) {
+                c = new BasicCache(dif, ga.getAventureiros().get(idA), go.getObjetos().get(idO), x, y, local);
+            }else{
+                c = new BasicCache(dif, ga.getAventureiros().get(idA), x, y, local);
             }
+            gc.adicionaCache(c);
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionada uma cache: Id: " + c.getId() + ", Local: " + c.getLocal().getLocalizacao());
         }
-        gcg.lerCaminhos();
-
-        /**
-         * parte1
-         int x = 1;
-         if(ga.getAventureiros().size()>0){
-         gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
-         while(x<=gc.getCaches().size()){
-         gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
-         x++;
-         }
-         }
-         gcg.lerCaminhos();
-         int from = 0;
-         int to = 5;
-         //TopologicalX
-         BSP_AED2 BSP = new BSP_AED2(gcg.getGrafo(), from);// forma de sacar os menores valores de peso, distancia, etc
-         DFS_AED2 dfs = new DFS_AED2(gcg.getGrafo(), from);//inutil pode nao ser inutil
-         BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), from);// saca o caminho com menos vertices
-         DSP_AED2 DSPW = new DSP_AED2(gcg.getGrafo(), from, 0);// saca o caminho com menor custo
-         DSP_AED2 DSPD = new DSP_AED2(gcg.getGrafo(), from, 1);// saca o caminho com menor custo
-         DSP_AED2 DSPT = new DSP_AED2(gcg.getGrafo(), from, 2);// saca o caminho com menor custo
-
-         System.out.println();
-
-         System.out.println("\nTodos os edges: ");
-         for (DirectedEdge_AED2 d: gcg.getGrafo().edges()){
-         System.out.print(d);
-         }
-
-         if(BSP.distTo(0) == Double.POSITIVE_INFINITY){
-         System.out.println("impossivel, nao ha caminho");
-         }else
-         System.out.println(BSP.distTo(0));
-
-         System.out.println();
-         System.out.println("o vertice 0 tem caminho ate: ");
-         for (int v = 0; v<gcg.getGrafo().V(); v++){
-         BSP = new BSP_AED2(gcg.getGrafo(), 0);
-         if(BSP.hasPathTo(v))
-         System.out.println(v+" ");
-         }
-
-         CC_AED2 c = new CC_AED2(gcg.getGrafo());
-         System.out.println(c.connected(0,9));
-
-         System.out.println("\nTeste de DFS e BSP:");
-         if(BSP.hasPathTo(to)) {
-         System.out.println("\nBSP: ");
-         System.out.println("O caminho entre o vertice: " + from + " e o vertice: " + to +":");
-         System.out.println("Peso: "+BSP.distTo(to));
-         System.out.println("Tempo: "+BSP.tempoTo(to));
-         System.out.println("Elevacao: "+BSP.elevTo(to));
-         System.out.println("\nDFS: ");
-         System.out.println("Se tem caminho: "+dfs.hasPathTo(to));
-         System.out.println("Caminho DFS: "+dfs.pathTo(to));
-         System.out.println("\nBFS: ");
-         System.out.println("Caminho BFS: "+BFS.pathTo(to));
-         System.out.println("\nDSP ve o caminho menor a partir do peso:");
-         System.out.println("Caminho: "+DSPW.pathTo(to));
-         System.out.println("Tem caminho: "+DSPW.hasPathTo(to));
-         System.out.println("Custo minima: "+DSPW.distTo(to));
-         System.out.println("\nDSP ve o caminho menor a partir da distancia:");
-         System.out.println("Caminho: "+DSPD.pathTo(to));
-         System.out.println("Tem caminho: "+DSPD.hasPathTo(to));
-         System.out.println("Distancia minima: "+DSPD.distTo(to));
-         System.out.println("\nDSPT ve o caminho menor a partir do tempo:");
-         System.out.println("Caminho: "+DSPT.pathTo(to).toString());
-         System.out.println("Tem caminho: "+DSPT.hasPathTo(to));
-         System.out.println("Tempo minima: "+DSPT.distTo(to));
-         String ola = LoginController.formatarString(DSPD.pathTo(to), 3);
-         System.out.println(ola);
-
-         }*/
-
-        /**
-         * parte2
-        GFG gfg = new GFG();
-        int linha = 7;
-        int[][] matrix = gcg.getGrafo().graphToMatrix();
-        matrix = gfg.exchangeAnyTwoRows(matrix, 1, linha+1);
-        gfg.printMatrix(matrix);
-        boolean[] v = new boolean[gcg.getGrafo().V()-1];
-        int tempo = 300;
-        int currPos = 0;
-        int ans = Integer.MAX_VALUE;
-        int count = 0, pos = 0;
-        v[currPos] = true;
-        //ans = gfg.tsp(matrix, v, 0, gcg.getGrafo().V()-1, 1, 0, ans, dist);
-        String cachesPerc = gfg.retStrin(matrix, v, currPos, gcg.getGrafo().V()-1, 1, 0, ans, tempo, linha);
-        //System.out.println(cachesPerc);
-        //System.out.println("tamanho: "+cachesPerc.length());
-        String []parts = cachesPerc.split("\n");
-        System.out.println(cachesPerc);
-        System.out.println("numero de linhas: "+parts.length);
-        for (int i = 0; i < parts.length; i++) {
-            String []parts2 = parts[i].split(" ");
-            //System.out.println("numero de caches percorridas: "+parts2.length);
-            if(parts2.length>count) {
-                count = parts2.length;
-                pos = i;
-            }
-            //System.out.println(parts[i]);
-        }
-        //System.out.println(pos + " " + count);
-        parts[pos] = parts[pos].substring(2,parts[pos].length());
-        parts[pos] = parts[pos] + linha;
-        //System.out.println(parts[pos]);
-        //System.out.println(parts[pos].length());
-        int i = 100;
-        String []parts3 = parts[pos].split(" ");
-        i = parts3.length-1;
-        System.out.println("o caixeiro viajante para percorrer o maximo de caixas num tempo limite de: " + tempo +" min, tera de percorrer: ");
-        for (; i>=0; i--) {
-
-            if(i!=0)
-                System.out.print(parts3[i] + "->");
-            else
-                System.out.print(parts3[i]);
-        }*/
-
-        /**
-         * parte3
-        LoginController l = new LoginController();
-        int o = 120, u = 4007;
-        System.out.println(l.verificarLimitesRegiao(o, u));
-         */
+        atualizarCaches();
     }
 
     /**
@@ -1573,8 +966,8 @@ public class LoginController implements Initializable {
         ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
 
         consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um travel bug: \n");
-        consolaMapa.setText(consolaMapa.getText() + "\n" +ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getMissao());
-        ArrayList<Cache> cachesRet = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).interpetarMissao(gc, ga); // caches que podemos levar o tb, por causa da sua missao
+        consolaMapa.setText(consolaMapa.getText() + "\n" +ga.getAventureiros().get(id).getListTravelBug().get(0).getMissao());
+        ArrayList<Cache> cachesRet = ga.getAventureiros().get(id).getListTravelBug().get(0).interpetarMissao(gc, ga); // caches que podemos levar o tb, por causa da sua missao
         if (cachesRet.size() > 0){
             if (cachesRet.size() == 1){
                 for (Cache c : cachesRet){
@@ -1603,8 +996,6 @@ public class LoginController implements Initializable {
             }
         }
         atualizarCaches();
-        atualizarObjeto();
-        atualizarAvent();
         consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "O Aventureiro: " + id + " encontrou a cache: " + idC);
     }
 
@@ -1614,36 +1005,16 @@ public class LoginController implements Initializable {
      * @throws MissaoNaoCompletadaComExitoException verifica se for um tb se a missa foi completada
      */
     public void handlerDepositouCacheJ(ActionEvent actionEvent) throws MissaoNaoCompletadaComExitoException {
+        go.getTravelBug().get(12).getListaCachesPresente().printInOrder(go.getTravelBug().get(12).getListaCachesPresente().getRoot());
         int idC = Integer.parseInt(cacheDepJ.getText());
         int id = Integer.parseInt(idAventJ.getText());
         // mudar as informacoes do tb
-        Random num = new Random();
-        int posicao = -1;
-        while(posicao == -1 || posicao == 5 || posicao == 6 || posicao == 7){
-            posicao = num.nextInt(9);
-        }
-        System.out.println(posicao);
-        int idTb = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getIdObjeto();
-        String nome = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getNome();
-        ga.getAventureiros().get(id).encontrouCache((PremiumCache) gc.getCaches().get(idC), ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1), new Date(20, 03, 2021), posicao);
-        int x = 1, j = 1;
-        while(j<=go.getTravelBug().size()){
-            if(go.getTravelBug().get(x) != null){
-                if(go.getTravelBug().get(x).getNome().equals(nome)){
-                    go.getTravelBug().get(x).getListaCachesPresente().put(go.getTravelBug().get(x).getNumCachesPres(), (PremiumCache) gc.getCaches().get(idC));
-                    go.getTravelBug().get(x).setNumCachesPres(go.getTravelBug().get(x).getNumCachesPres()+1);
-                    go.getTravelBug().get(x).setViajar(false);
-                    go.getTravelBug().get(x).getListaAventureiros().put(go.getTravelBug().get(x).getNumAventureiros(), ga.getAventureiros().get(id));
-                    go.getTravelBug().get(x).setNumAventureiros(go.getTravelBug().get(x).getNumAventureiros()+1);
-                    go.getTravelBug().get(x).lerMissao(posicao);
-                }
-                j++;
-            }
-            x++;
-        }
+        ga.getAventureiros().get(id).encontrouCache((PremiumCache) gc.getCaches().get(idC), ga.getAventureiros().get(id).getListTravelBug().get(0), new Date(20, 03, 2021));
+        go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getListaCachesPresente().put(go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getNumCachesPres(), (PremiumCache) gc.getCaches().get(idC));
+        go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).setNumCachesPres(go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getNumCachesPres()+1);
+        go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).setViajar(false);
+        go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getListaAventureiros().put(go.getTravelBug().get(ga.getAventureiros().get(id).getListTravelBug().get(0).getIdObjeto()).getNumAventureiros()-1, ga.getAventureiros().get(id));
         atualizarCaches();
-        atualizarObjeto();
-        atualizarAvent();
         consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "O Aventureiro: " + id + " encontrou a cache: " + idC);
     }
 }

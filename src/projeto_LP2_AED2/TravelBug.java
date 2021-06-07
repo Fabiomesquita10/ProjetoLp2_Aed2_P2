@@ -133,7 +133,10 @@ public class TravelBug extends Objeto implements Serializable {
     public TravelBug(String nome) {
         super(nome);
         Random num = new Random();
-        int posicao = num.nextInt(9);
+        int posicao = -1;
+        while(posicao == -1 || posicao == 5 || posicao == 6 || posicao == 7){
+            posicao = num.nextInt(9);
+        }
         lerMissao(posicao+1);
     }
 
