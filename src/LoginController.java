@@ -173,10 +173,10 @@ public class LoginController implements Initializable {
     public TextArea consolaAplicacao;
 
     //limites mapa
-    public final int xleftLimit = 100;
-    public final int xRightLimit = 500;
-    public final int yUpperLimit = 100;
-    public final int yLowerLimit = 400;
+    public final int xleftLimit = 150;
+    public final int xRightLimit = 550;
+    public final int yUpperLimit = 50;
+    public final int yLowerLimit = 450;
 
     @Override
     /**
@@ -493,7 +493,7 @@ public class LoginController implements Initializable {
 
         //teste de directedEdge
         gcg.lerCaminhos();
-
+        //gcg.guardarCaminhos();
         creatGraphGroup(ga, gcg, go);
 
     }
@@ -771,6 +771,8 @@ public class LoginController implements Initializable {
     public void handlerCachesPerc(ActionEvent actionEvent) {
         //consolaMapa.setText(consolaMapa.getText() +  "CACHES A PERCORRER\n");
 
+        LogsDiario diario = new LogsDiario();
+
         int cp = Integer.parseInt(cachePartida.getText());  //cache de partida
         int cc = Integer.parseInt(cacheChegada.getText());  //cache de chegada
 
@@ -779,17 +781,22 @@ public class LoginController implements Initializable {
                 DSP_AED2 DSPD = new DSP_AED2(gcg.getGrafo(), cp, 1);// saca o caminho com menor custo(Dijkstra)
                 if(DSPD.hasPathTo(cc)){
                     String s = formatarString(DSPD.pathTo(cc), 3);
-                    System.out.println(s);
+                    String Pesq = "Menor caminho a percorrer em termos de distancia entre a cache " + cp + " e a cache " + cc + ":";
+                    Pesq = Pesq + "\n" + s;
+                    diario.adicionaLog(Pesq, new Date(), "data/Pesquisas.txt");
                     consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + s + "\n");
                 }
+
                 break;
             case "tempo":
                 DSP_AED2 DSPT = new DSP_AED2(gcg.getGrafo(), cp, 2);// saca o caminho com menor custo(Dijkstra)
                 if(DSPT.hasPathTo(cc)){
-                    System.out.println(DSPT.pathTo(cc));
                     String s = formatarString(DSPT.pathTo(cc), 5);
-                    System.out.println(s);
+                    String Pesq = "Menor caminho a percorrer em termos de tempo entre a cache " + cp + " e a cache " + cc + ":";
+                    Pesq = Pesq + "\n" + s;
                     consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + s + "\n");
+                    //s = s.substring(0,s.length()-2);
+                    diario.adicionaLog(Pesq, new Date(), "data/Pesquisas.txt");
                 }
                 break;
             case "peso":
@@ -798,14 +805,13 @@ public class LoginController implements Initializable {
             case "elevacao":
                 BSP_AED2 BFS = new BSP_AED2(gcg.getGrafo(), cp, 1);
                 if(BFS.hasPathTo(cc)){
-                    System.out.println(BFS.pathTo(cc).toString());
-                    //String s = formatarString(BFS.pathTo(cc).toString(),7);
-                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + BFS.pathTo(cc) + "\n");
+                    String s = "CAMINHO A PERCORRER: \n" + BFS.pathTo(cc) + "Elevacao: \n" + BFS.distTo(cc);
+                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + BFS.pathTo(cc));
                     consolaMapa.setText(consolaMapa.getText() + "\n" +  "Elevacao: \n" + BFS.distTo(cc) + "\n");
+                    diario.adicionaLog(s,new Date(), "data/Pesquisas.txt");
                 }
                 break;
         }
-
     }
 
     /**
@@ -815,11 +821,11 @@ public class LoginController implements Initializable {
      * @return
      */
     public static String formatarString(String s, int x){
+        System.out.println(s);
         String[] parts = s.split("\n");
         StringBuilder f = new StringBuilder();
         int p1 = 0;
         int valorFinal = 0;
-        System.out.println("\n\n");
         for (int j = 1; j<=Integer.parseInt(parts[0]); j++){
             if(j==1){
                 String[] parts2 = parts[j].split(" ");
@@ -847,7 +853,8 @@ public class LoginController implements Initializable {
             f = new StringBuilder(f.substring(0, f.length() - 2));
             f.append("\nTempo: ").append(valorFinal);
         }else if(x == 7){
-            f = new StringBuilder(f.substring(0, f.length() - 2));
+            System.out.println(f);
+            //f = new StringBuilder(f.substring(0, f.length() - 2));
             f.append("\nElevacao: ").append(valorFinal);
         }
         return f.toString();
@@ -899,18 +906,18 @@ public class LoginController implements Initializable {
         if(comboBoxAv.getValue().compareTo("Premium") == 0){
             Premium p = new Premium(nomeAvent.getText(),x,y,localAvent.getText());
             ga.regista(p);
-            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + p.getNome() + ", Nome: " + p.getNome());
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + p.getId() + ", Nome: " + p.getNome());
         }
         if(comboBoxAv.getValue().compareTo("Basic") == 0){
             Basic b = new Basic(nomeAvent.getText(),x,y,localAvent.getText());
             ga.regista(b);
-            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + b.getNome() + ", Nome: " + b.getNome());
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + b.getId() + ", Nome: " + b.getNome());
         }
 
         if(comboBoxAv.getValue().compareTo("Admin") == 0){
             Admin a = new Admin(nomeAvent.getText(),x,y,localAvent.getText(),PassAvent.getText());
             ga.regista(a);
-            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + a.getNome() + ", Nome: " + a.getNome());
+            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um aventureiro: Id: " + a.getId() + ", Nome: " + a.getNome());
         }
         atualizarAvent();
     }
@@ -984,13 +991,21 @@ public class LoginController implements Initializable {
         parts[pos] = parts[pos] + linha;
         String []parts3 = parts[pos].split(" ");
         int i = (parts3.length-1);
+        StringBuilder message = new StringBuilder();
+        message.append("O caixeiro viajante para percorrer o maximo de caixas num\ntempo limite de: ").append(tempo).append(" min, tera de percorrer:\n");
         textCaixeiro.setText(textCaixeiro.getText() + "\n" + "O caixeiro viajante para percorrer o maximo de caixas num\ntempo limite de: " + tempo + " min, tera de percorrer:\n");
         for (; i>=0; i--) {
-            if(i!=0)
+            if(i!=0) {
+                message.append(parts3[i]).append("->");
                 textCaixeiro.setText(textCaixeiro.getText() + parts3[i] + "->");
-            else
+            }else{
+                message.append(parts3[i]);
                 textCaixeiro.setText(textCaixeiro.getText() + parts3[i]);
+            }
         }
+        LogsDiario diario = new LogsDiario();
+
+        diario.adicionaLog(message.toString(), new Date(), "data/Pesquisas.txt");
     }
 
     /**
@@ -1011,9 +1026,27 @@ public class LoginController implements Initializable {
      */
     public void handlerRemObjeto(ActionEvent actionEvent) {
         int id = Integer.parseInt(remIdO.getText());
+        if(go.getObjetos().get(id).isViajar()){
+            int idA = go.getObjetos().get(id).getAventureiro().getIdAventureiro();
+            int j = 0, x = 0;
+            while (j<=ga.getAventureiros().get(idA).getListObjetos().size()){
+                if(ga.getAventureiros().get(idA).getListObjetos().get(x)!=null){
+                    if(ga.getAventureiros().get(idA).getListObjetos().get(x).getIdObjeto() == id)
+                        ga.getAventureiros().get(idA).getListObjetos().delete(x);
+                    j++;
+                }
+                x++;
+            }
+        }
+        else{
+            int idC = go.getObjetos().get(id).getCache().getIdCache();
+            gc.getCaches().get(idC).setObjeto(null);
+        }
         consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removido um objeto: Id: " + go.getObjetos().get(id).getId() + ", Nome: " + go.getObjetos().get(id).getNome());
         go.removeO(id);
+        atualizarAvent();
         atualizarObjeto();
+        atualizarCaches();
     }
 
     /**
@@ -1059,8 +1092,26 @@ public class LoginController implements Initializable {
      */
     public void handlerRemTb(ActionEvent actionEvent) {
         int id = Integer.parseInt(remIdTb.getText());
+        if(go.getTravelBug().get(id).isViajar()){
+            int idA = go.getTravelBug().get(id).getAventureiro().getIdAventureiro();
+            int j = 0, x = 0;
+            while (j<=ga.getAventureiros().get(idA).getListTravelBug().size()){
+                if(ga.getAventureiros().get(idA).getListTravelBug().get(x)!=null){
+                    if(ga.getAventureiros().get(idA).getListTravelBug().get(x).getIdObjeto() == id)
+                        ga.getAventureiros().get(idA).getListTravelBug().delete(x);
+                    j++;
+                }
+                x++;
+            }
+        }
+        else{
+            int idC = go.getTravelBug().get(id).getCache().getIdCache();
+            gc.getCaches().get(idC).setTravelbug(null);
+        }
         consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removido um TravelBug: Id: " + go.getTravelBug().get(id).getId() + ", Nome: " + go.getTravelBug().get(id).getNome());
         go.removeTb(id);
+        atualizarAvent();
+        atualizarCaches();
         atualizarObjeto();
     }
 
@@ -1092,11 +1143,20 @@ public class LoginController implements Initializable {
      * @throws CacheNaoExisteException se a cache nao existir
      */
     public void remCache(int id) throws CacheNaoExisteException {
+        if(gc.getCaches().get(id).getObjeto() != null){
+            int idO = gc.getCaches().get(id).getObjeto().getIdObjeto();
+            go.removeO(idO);
+        }
+        if(gc.getCaches().get(id).getTravelbug() != null){
+            int idTb = gc.getCaches().get(id).getTravelbug().getIdObjeto();
+            go.removeTb(idTb);
+        }
         gc.removeCache(id);
         gcg.removeCache(id);
         graphGroup.getChildren().clear();
         gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
         atualizarCaches();
+        atualizarObjeto();
         gcg.lerCaminhos();
         creatGraphGroup(ga, gcg, go);
         gcg.getGrafo().getCaches().get(4);
@@ -1327,6 +1387,7 @@ public class LoginController implements Initializable {
                 gc.adicionaCache(c);
                 consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionada uma cache: Id: " + c.getId() + ", Local: " + c.getLocal().getLocalizacao());
             }
+            atualizarAvent();
             atualizarCaches();
         }else
             throw new ForaDaRegiaoException("Coordenadas fora do nosso alcance");

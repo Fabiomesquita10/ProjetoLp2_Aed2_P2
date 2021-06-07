@@ -164,3 +164,81 @@ Removeu a cache com o ID 6, na data de: 7/6/2021
 Foi removido o Aventureiro com id : 2 e com o nome : fabio, na data de: 7/6/2021
 Removeu a cache com o ID 2, na data de: 7/6/2021
 Removeu a cache com o ID 7, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 4, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 1, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 1 e com o nome : jonas, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 6, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 1, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 1 e com o nome : jonas, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 1, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 6, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 2 e com o nome : fabio, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 2, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 7, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 3 e com o nome : Ricardo, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 3, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 8, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 4 e com o nome : kinito, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 4, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 9, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 5 e com o nome : joao, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 5, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 6 e com o nome : jorge, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 10, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 11, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 7 e com o nome : carlos, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 8 e com o nome : carlitos, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 9 e com o nome : antonio, na data de: 7/6/2021
+
+===========================================================
+Removeu a cache com o ID 12, na data de: 7/6/2021

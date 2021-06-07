@@ -26,6 +26,7 @@ public class LogsDiario implements GestaoLogs, Serializable {
             outfile.println(allLines[k]);
             k++;
         }
+        outfile.println("\n===========================================================");
         outfile.println(mensagem + ", na data de: " + data);
     }
 }

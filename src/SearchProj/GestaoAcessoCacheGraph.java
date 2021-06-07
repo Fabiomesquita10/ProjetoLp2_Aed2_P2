@@ -58,7 +58,17 @@ public class GestaoAcessoCacheGraph {
      */
     public void guardarCaminhos(){
         Out outfile = new Out("data/caminhos.txt");
-        //funcao para guardar os edges
+        for (int i = 0; i < grafo.V(); i++) {
+            for (DirectedEdge_AED2 de : grafo.adj(i)){
+                StringBuilder s = new StringBuilder();
+                s.append(de.from()).append(";").append(de.to());
+                s.append(";").append((int)de.weight());
+                s.append(";").append(de.tempo());
+                s.append(";").append(de.distancia());
+                s.append(";").append(de.elevacao());
+                outfile.println(s);
+            }
+        }
     }
 
     /**

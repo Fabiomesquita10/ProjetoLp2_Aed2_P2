@@ -642,15 +642,6 @@ public class LoginControllerN implements Initializable {
     }
 
     /**
-     * Handler para o peso
-     * @param actionEvent - ao clicar no botao
-     */
-    public void handlerPeso(ActionEvent actionEvent) {
-        tipoPesquisa = "peso";
-        consolaMapa.setText(consolaMapa.getText() +  "PARAMETRO DE PESQUISA: PESO");
-    }
-
-    /**
      * Handler para o tempo
      * @param actionEvent - ao clicar no botao
      */
@@ -717,24 +708,6 @@ public class LoginControllerN implements Initializable {
     }
 
     /**
-     * handler para printar todos os caminhos, numa consola da aplicacao
-     * @param actionEvent
-     */
-    public void handlerVerCaminhos(ActionEvent actionEvent) {
-        consolaCaminhos.setText("");
-        StringBuilder caminhos = new StringBuilder();
-        for (int i = 1; i < gcg.getGrafo().V(); i++) {
-            for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(i)){ // percorre todos os caminhos e printa os
-                caminhos.append("De: ").append(i).append(", para: ").append(adj.to());
-                caminhos.append("\nDistancia: ").append(adj.distancia());
-                caminhos.append(", Tempo: ").append(adj.tempo());
-                caminhos.append(", Elevacao: ").append(adj.elevacao()).append("\n");
-            }
-        }
-        consolaCaminhos.setText(caminhos.toString());
-    }
-
-    /**
      * handler para por ou tirar as setas(caminhos) do mapa
      * @param actionEvent
      */
@@ -774,25 +747,6 @@ public class LoginControllerN implements Initializable {
             }
         }
 
-    }
-
-    /**
-     * handler para adicionar caminhos entre duas caches
-     * @param actionEvent
-     */
-    public void handlerAddCaminho(ActionEvent actionEvent) {
-        int idP = Integer.parseInt(cachePartidaAC.getText());
-        int idC = Integer.parseInt(cacheChegadaAC.getText());
-        int dist = Integer.parseInt(distanciaAC.getText());
-        int temp = Integer.parseInt(tempoAC.getText());
-        int elevacao = Integer.parseInt(elevacaoAC.getText());
-        if(gcg.getGrafo().getCaches().contains(idP) && gcg.getGrafo().getCaches().contains(idC)){
-            DirectedEdge_AED2 d = new DirectedEdge_AED2(idP, idC, 0, temp, dist, elevacao);
-            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um caminho: Cache inicial: " + idP + ", Cache Final: " + idC +
-                    "\nDistancia: " + dist + " metros, Tempo: " + temp + " minutos, Elevacao: " + elevacao);
-            gcg.getGrafo().addEdge(d);
-            atualizarGraph();
-        }
     }
 
     /**
@@ -837,64 +791,6 @@ public class LoginControllerN implements Initializable {
         gcg.lerCaminhos();
         creatGraphGroup(ga, gcg, go);
         gcg.getGrafo().getCaches().get(4);
-    }
-
-    /**
-     * handler para adicionar uma caches ao grafo
-     * @param actionEvent
-     * @throws AventureiroNaoHabilitado se o aventureiro na for premium nao pode criar cache
-     */
-    public void handlerAddCache(ActionEvent actionEvent) throws AventureiroNaoHabilitado {
-        //toda a informacao da cache nova
-        int idA = Integer.parseInt(addIdAventC.getText());
-        int idO = 0;
-        if(!addIdObjetoC.getText().isEmpty())
-            idO = Integer.parseInt(addIdObjetoC.getText());
-        int dif = Integer.parseInt(addDificC.getText());
-        String l = addLocalC.getText();
-        String[] parts = l.split(";");
-        String local = parts[2];
-        int x = Integer.parseInt(parts[0]);
-        int y = Integer.parseInt(parts[1]);
-
-        //verificacao se a cache e premium ou nao
-        if(comboBoxTipoCache.getValue().compareTo("Premium") == 0) {
-            PremiumCache c = null;
-            if(idO != 0)
-                c = new PremiumCache(dif, ga.getAventureiros().get(idA), go.getTravelBug().get(idO),x, y, local);
-            else{
-                c = c = new PremiumCache(dif, ga.getAventureiros().get(idA),x, y, local);
-            }
-            gc.adicionaCache(c);
-            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionada uma cache: Id: " + c.getId() + ", Local: " + c.getLocal().getLocalizacao());
-        }else if(comboBoxTipoCache.getValue().compareTo("Basic") == 0){
-            BasicCache c = null;
-            if(idO != 0) {
-                c = new BasicCache(dif, ga.getAventureiros().get(idA), go.getObjetos().get(idO), x, y, local);
-            }else{
-                c = new BasicCache(dif, ga.getAventureiros().get(idA), x, y, local);
-            }
-            gc.adicionaCache(c);
-            consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionada uma cache: Id: " + c.getId() + ", Local: " + c.getLocal().getLocalizacao());
-        }
-        atualizarCaches();
-    }
-
-    /**
-     * handler para editar informaçao de uma cache
-     * @param actionEvent
-     */
-    public void handlerEditCache(ActionEvent actionEvent) {
-        int id = Integer.parseInt(editIdCacheC.getText());
-        int dif = Integer.parseInt(editDificC.getText());
-        String local = editLocalC.getText();
-        if(gcg.getGrafo().getCaches().contains(id)){
-            gcg.getGrafo().getCaches().get(id).getLocal().setLocalizacao(local);
-            gcg.getGrafo().getCaches().get(id).setDificuldade(dif);
-            gc.getCaches().get(id).getLocal().setLocalizacao(local);
-            gc.getCaches().get(id).setDificuldade(dif);
-            atualizarCaches();
-        }
     }
 
     /**
