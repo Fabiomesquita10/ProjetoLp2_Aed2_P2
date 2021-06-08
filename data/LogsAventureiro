@@ -1641,3 +1641,633 @@ O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 4, D
 
 ===========================================================
 Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 3, Dono da Cache: Andre, TravelBug: lapis, Localização: 150,50->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Fabio, TravelBug: colar, Localização: 150,200->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Ricardo, TravelBug: garrafa, Localização: 250,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 2, Dono da Cache: Daniel, TravelBug: pulseira, Localização: 400,416->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Joao criou e escondeu esta cache: idCache: null, dificuldade: 7, Dono da Cache: Joao, TravelBug: pente, Localização: 500,250->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 5, nome: Joao, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 400,270->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 6, Dono da Cache: Fabio, TravelBug: lanterna, Localização: 450,150->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Ricardo, TravelBug: chapeu, Localização: 220,157->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Daniel, TravelBug: corda, Localização: 550,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 8, Dono da Cache: Jorge, objeto: tesoura, Localização: 555,350 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Jorge, objeto: rato, Localização: 400,200 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Jorge, objeto: lapis, Localização: 100,400 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Jorge, objeto: caneta, Localização: 100,300 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 3, Dono da Cache: Andre, TravelBug: lapis, Localização: 150,50->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Fabio, TravelBug: colar, Localização: 150,200->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Ricardo, TravelBug: garrafa, Localização: 250,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 2, Dono da Cache: Daniel, TravelBug: pulseira, Localização: 400,416->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Joao criou e escondeu esta cache: idCache: null, dificuldade: 7, Dono da Cache: Joao, TravelBug: pente, Localização: 500,250->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 5, nome: Joao, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 400,270->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 6, Dono da Cache: Fabio, TravelBug: lanterna, Localização: 450,150->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Ricardo, TravelBug: chapeu, Localização: 220,157->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Daniel, TravelBug: corda, Localização: 550,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 8, Dono da Cache: Jorge, objeto: tesoura, Localização: 555,350 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Jorge, objeto: rato, Localização: 400,200 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Jorge, objeto: lapis, Localização: 100,400 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Jorge, objeto: caneta, Localização: 100,300 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 3, Dono da Cache: Andre, TravelBug: lapis, Localização: 150,50->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Fabio, TravelBug: colar, Localização: 150,200->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Ricardo, TravelBug: garrafa, Localização: 250,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 2, Dono da Cache: Daniel, TravelBug: pulseira, Localização: 400,416->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Joao criou e escondeu esta cache: idCache: null, dificuldade: 7, Dono da Cache: Joao, TravelBug: pente, Localização: 500,250->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 5, nome: Joao, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 400,270->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 6, Dono da Cache: Fabio, TravelBug: lanterna, Localização: 450,150->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Ricardo, TravelBug: chapeu, Localização: 220,157->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Daniel, TravelBug: corda, Localização: 550,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 8, Dono da Cache: Jorge, objeto: tesoura, Localização: 555,350 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Jorge, objeto: rato, Localização: 400,200 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Jorge, objeto: lapis, Localização: 100,400 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Jorge, objeto: caneta, Localização: 100,300 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 3, Dono da Cache: Andre, TravelBug: lapis, Localização: 150,50->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Fabio, TravelBug: colar, Localização: 150,200->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Ricardo, TravelBug: garrafa, Localização: 250,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 2, Dono da Cache: Daniel, TravelBug: pulseira, Localização: 400,416->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Joao criou e escondeu esta cache: idCache: null, dificuldade: 7, Dono da Cache: Joao, TravelBug: pente, Localização: 500,250->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 5, nome: Joao, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 400,270->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 6, Dono da Cache: Fabio, TravelBug: lanterna, Localização: 450,150->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Ricardo, TravelBug: chapeu, Localização: 220,157->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Daniel, TravelBug: corda, Localização: 550,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 8, Dono da Cache: Jorge, objeto: tesoura, Localização: 555,350 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Jorge, objeto: rato, Localização: 400,200 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Jorge, objeto: lapis, Localização: 100,400 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Jorge, objeto: caneta, Localização: 100,300 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 3, Dono da Cache: Andre, TravelBug: lapis, Localização: 150,50->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Fabio, TravelBug: colar, Localização: 150,200->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Ricardo, TravelBug: garrafa, Localização: 250,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 2, Dono da Cache: Daniel, TravelBug: pulseira, Localização: 400,416->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Joao criou e escondeu esta cache: idCache: null, dificuldade: 7, Dono da Cache: Joao, TravelBug: pente, Localização: 500,250->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 5, nome: Joao, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 400,270->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 6, Dono da Cache: Fabio, TravelBug: lanterna, Localização: 450,150->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Ricardo, TravelBug: chapeu, Localização: 220,157->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Daniel, TravelBug: corda, Localização: 550,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 8, Dono da Cache: Jorge, objeto: tesoura, Localização: 555,350 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Jorge, objeto: rato, Localização: 400,200 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Jorge, objeto: lapis, Localização: 100,400 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Jorge, objeto: caneta, Localização: 100,300 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 3, Dono da Cache: Andre, TravelBug: lapis, Localização: 150,50->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Fabio, TravelBug: colar, Localização: 150,200->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Ricardo, TravelBug: garrafa, Localização: 250,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 2, Dono da Cache: Daniel, TravelBug: pulseira, Localização: 400,416->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Joao criou e escondeu esta cache: idCache: null, dificuldade: 7, Dono da Cache: Joao, TravelBug: pente, Localização: 500,250->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 5, nome: Joao, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 400,270->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 6, Dono da Cache: Fabio, TravelBug: lanterna, Localização: 450,150->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Ricardo, TravelBug: chapeu, Localização: 220,157->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Daniel, TravelBug: corda, Localização: 550,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 8, Dono da Cache: Jorge, objeto: tesoura, Localização: 555,350 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Jorge, objeto: rato, Localização: 400,200 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Jorge, objeto: lapis, Localização: 100,400 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Jorge, objeto: caneta, Localização: 100,300 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 3, Dono da Cache: Andre, TravelBug: lapis, Localização: 150,50->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Fabio, TravelBug: colar, Localização: 150,200->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Ricardo, TravelBug: garrafa, Localização: 250,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 2, Dono da Cache: Daniel, TravelBug: pulseira, Localização: 400,416->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Joao criou e escondeu esta cache: idCache: null, dificuldade: 7, Dono da Cache: Joao, TravelBug: pente, Localização: 500,250->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 5, nome: Joao, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 400,270->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 6, Dono da Cache: Fabio, TravelBug: lanterna, Localização: 450,150->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Ricardo, TravelBug: chapeu, Localização: 220,157->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Daniel, TravelBug: corda, Localização: 550,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 8, Dono da Cache: Jorge, objeto: tesoura, Localização: 555,350 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Jorge, objeto: rato, Localização: 400,200 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Jorge, objeto: lapis, Localização: 100,400 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Jorge, objeto: caneta, Localização: 100,300 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+Adicionou: Id: 10, nome: fdg, local: X = 230, Y = 459, numCacheVis: 0, numCacheEsc: 0, na data de: 8/6/2021
+
+===========================================================
+Removeu o Aventureiro com id: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 3, Dono da Cache: Andre, TravelBug: lapis, Localização: 150,50->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Fabio, TravelBug: colar, Localização: 150,200->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Ricardo, TravelBug: garrafa, Localização: 250,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 2, Dono da Cache: Daniel, TravelBug: pulseira, Localização: 400,416->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Joao criou e escondeu esta cache: idCache: null, dificuldade: 7, Dono da Cache: Joao, TravelBug: pente, Localização: 500,250->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 5, nome: Joao, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 400,270->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Fabio criou e escondeu esta cache: idCache: null, dificuldade: 6, Dono da Cache: Fabio, TravelBug: lanterna, Localização: 450,150->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 2, nome: Fabio, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Ricardo criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Ricardo, TravelBug: chapeu, Localização: 220,157->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 3, nome: Ricardo, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Daniel criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Daniel, TravelBug: corda, Localização: 550,450->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 4, nome: Daniel, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 8, Dono da Cache: Jorge, objeto: tesoura, Localização: 555,350 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 1, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Jorge, objeto: rato, Localização: 400,200 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 9, Dono da Cache: Jorge, objeto: lapis, Localização: 100,400 -> Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 4, Dono da Cache: Jorge, objeto: caneta, Localização: 100,300 -> Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 4, na data de: 8/6/2021

@@ -1,6 +1,8 @@
 import Search.BST_AED2_2021;
 import Search.RedBlack_AED2;
 import SearchProj.*;
+import edu.princeton.cs.algs4.AcyclicLP;
+import edu.princeton.cs.algs4.AcyclicSP;
 import figGeo.Arrow;
 import figGeo.Point;
 import figGeo.Rectangle;
@@ -462,7 +464,7 @@ public class LoginController implements Initializable {
      */
     public void carregarFicheiro() throws AventureiroNaoHabilitado, AventureiroNaoExisteException, CacheNaoExisteException {
 
-
+/*
         ga.lerAventureiros(); // mudar funcao de leitura e escrita para por o local
         go.lerObjeto();
         go.lerTb();
@@ -472,7 +474,7 @@ public class LoginController implements Initializable {
         ga.guardarAventBin();
         gc.guardarCachesBin();
         go.guardarObjBin();
-         /*
+         */
         ga.lerAventBin();
         go.lerObjectBin();
         gc.lerCachesBin();
@@ -793,13 +795,13 @@ public class LoginController implements Initializable {
                 // fazer de outra maneira porque pode ter valores negativos
                 break;
             case "elevacao":
+                DSP_AED2 DSPE = new DSP_AED2(gcg.getGrafo(), cp, 1);// saca o caminho com menor custo(Dijkstra)
                 BSP_AED2 BFS = new BSP_AED2(gcg.getGrafo(), cp, 1);
                 if(BFS.hasPathTo(cc)){
-                    System.out.println(BFS.pathTo(cc));
-                    String caminho = formatarString(BFS.pathTo(cc).toString());
-                    //String s = "Menos caminho a percorrer em termos de elevaçao entre a cache: " + cp + " e a cache " + cc + ":\n" + BFS.pathTo(cc) + "Elevacao: " + BFS.distTo(cc);
-                    String s = "Menos caminho a percorrer em termos de elevaçao entre a cache: " + cp + " e a cache " + cc + ":\n" + caminho;
-                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + caminho + "\n\n");
+                    String caminho = formatarString(DSPE.pathTo(cc), 3);
+                    String s = "A variacao da elevacao e o caminho a percorrer entre a cache: " + cp + " e a cache " + cc + ":\n" + caminho + "Elevacao: " + BFS.elevTo(cc);
+                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + caminho );
+                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "Variacao da elevacao: \n" + BFS.elevTo(cc) + "\n\n");
                     diario.adicionaLog(s,new Date(), "data/Pesquisas.txt");
                 }
                 break;

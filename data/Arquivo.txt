@@ -245,3 +245,12 @@ Removeu a cache com o ID 12, na data de: 7/6/2021
 
 ===========================================================
 Removeu a cache com o ID 1, na data de: 7/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 3 e com o nome : Ricardo, na data de: 8/6/2021
+
+===========================================================
+Removeu a cache com o ID 3, na data de: 8/6/2021
+
+===========================================================
+Removeu a cache com o ID 8, na data de: 8/6/2021

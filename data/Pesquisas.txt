@@ -293,3 +293,104 @@ Distancia: 40, na data de: 8/6/2021
 Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 9:
 1->8, 8->13, 13->3, 3->9
 Tempo: 120, na data de: 8/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 11 e a cache 8:
+11->1 1->8 
+Elevaçao: 15, na data de: 8/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 11 e a cache 8:
+11->1 1->8 
+Elevaçao: 5, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 11 e a cache 8:
+11->1, 1->8
+Tempo: 50, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 11 e a cache 8:
+11->1, 1->8
+Distancia: 100, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 8:
+1->8
+Distancia: 20, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 2 e a cache 8:
+2->6, 6->11, 11->1, 1->8
+Distancia: 160, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 2 e a cache 8:
+2->6, 6->11, 11->1, 1->8
+Tempo: 90, na data de: 8/6/2021
+
+===========================================================
+O caixeiro viajante para percorrer o maximo de caixas num
+tempo limite de: 100 min, tera de percorrer:
+1->2->6->11->5->10, na data de: 8/6/2021
+
+===========================================================
+O caixeiro viajante para percorrer o maximo de caixas num
+tempo limite de: 100 min, tera de percorrer:
+1->2->6->11->5->10, na data de: 8/6/2021
+
+===========================================================
+A variacao da elevacao e o caminho a percorrer entre a cache: 1 e a cache 4:
+1->8, 8->7, 7->11, 11->5, 5->10, 10->4
+Distancia: 155
+Elevacao: -9.0, na data de: 8/6/2021
+
+===========================================================
+A variacao da elevacao e o caminho a percorrer entre a cache: 1 e a cache 4:
+1->8, 8->7, 7->11, 11->5, 5->10, 10->4
+Distancia: 155Elevacao: -9.0, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 4:
+1->8, 8->7, 7->11, 11->5, 5->10, 10->4
+Distancia: 155, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 4:
+1->4
+Distancia: 1, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 4:
+1->8, 8->4
+Tempo: 70, na data de: 8/6/2021
+
+===========================================================
+A variacao da elevacao e o caminho a percorrer entre a cache: 1 e a cache 4:
+1->4
+Distancia: 1Elevacao: -9.0, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 4:
+1->8, 8->7, 7->11, 11->5, 5->10, 10->4
+Distancia: 155, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 4:
+1->8, 8->4
+Tempo: 70, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 4:
+1->8, 8->7, 7->11, 11->5, 5->10, 10->4
+Distancia: 155, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 4:
+1->4
+Distancia: 10, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 4:
+1->8, 8->4
+Tempo: 70, na data de: 8/6/2021

@@ -117,6 +117,7 @@ public class BSP_AED2 {
 
     public boolean hasNegativeCycle() {
         return cycle != null;
+        //return false;
     }
 
     public Iterable<DirectedEdge_AED2> negativeCycle() {
@@ -163,8 +164,6 @@ public class BSP_AED2 {
 
     public double elevTo(int v) {
         validateVertex(v);
-        if (hasNegativeCycle())
-            throw new UnsupportedOperationException("Negative cost cycle exists");
         return elevTo[v];
     }
 
@@ -180,8 +179,8 @@ public class BSP_AED2 {
             throw new UnsupportedOperationException("Negative cost cycle exists");
         if (!hasPathTo(v)) return null;
         Stack<DirectedEdge_AED2> path = new Stack<DirectedEdge_AED2>();
-        for (DirectedEdge e = edgeTo[v]; e != null; e = edgeTo[e.from()]) {
-            path.push((DirectedEdge_AED2) e);
+        for (DirectedEdge_AED2 e = edgeTo[v]; e != null; e = edgeTo[e.from()]) {
+            path.push(e);
         }
         return path;
     }
@@ -191,7 +190,7 @@ public class BSP_AED2 {
         // has a negative cycle
         if (hasNegativeCycle()) {
             double weight = 0.0;
-            for (DirectedEdge e : negativeCycle()) {
+            for (DirectedEdge_AED2 e : negativeCycle()) {
                 weight += e.weight();
             }
             if (weight >= 0.0) {
