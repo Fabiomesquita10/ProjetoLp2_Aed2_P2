@@ -1,9 +1,6 @@
 package SearchProj;
 
-import SearchProj.BSP_AED2;
-import SearchProj.DirectedEdge_AED2;
-import SearchProj.EdgeWeightedDiGraph_AED2;
-import edu.princeton.cs.algs4.*;
+import SearchProj.*;
 import projeto_LP2_AED2.*;
 import Search.BST_AED2_2021;
 

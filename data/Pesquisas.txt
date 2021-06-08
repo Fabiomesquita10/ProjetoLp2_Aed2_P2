@@ -100,3 +100,171 @@ CAMINHO A PERCORRER:
 Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 5:
 1->5
 Distancia: 1, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 12:
+1->12
+Tempo: 50, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 12:
+1->12
+Distancia: 60, na data de: 7/6/2021
+
+===========================================================
+CAMINHO A PERCORRER: 
+1->12 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 
+70.0, na data de: 7/6/2021
+
+===========================================================
+CAMINHO A PERCORRER: 
+1->12 40,00, distancia: 60, tempo: 50, elevacao: 70
+ 12->13 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 
+140.0, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 13:
+1->12, 12->13
+Tempo: 100, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 13:
+1->12, 12->13
+Tempo: 100, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 14:
+1->14
+Tempo: 123, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 14:
+1->14
+Distancia: 123, na data de: 7/6/2021
+
+===========================================================
+CAMINHO A PERCORRER: 
+1->12 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 70.0, na data de: 7/6/2021
+
+===========================================================
+CAMINHO A PERCORRER: 
+1->2 40,00, distancia: 5, tempo: 50, elevacao: -10
+ 2->4 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 60.0, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 40,00, distancia: 5, tempo: 50, elevacao: -10
+ 2->4 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 60.0, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 40,00, distancia: 5, tempo: 50, elevacao: -10
+ 2->4 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 60.0, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 40,00, distancia: 5, tempo: 50, elevacao: -10
+ 2->4 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 60.0, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 40,00, distancia: 5, tempo: 50, elevacao: -10
+ 2->4 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 60.0, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 40,00, distancia: 5, tempo: 50, elevacao: -10
+ 2->4 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 60.0, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 40,00, distancia: 5, tempo: 50, elevacao: -10
+ 2->4 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 60.0, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 40,00, distancia: 5, tempo: 50, elevacao: -10
+ 2->4 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 60.0, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 4:
+1->5, 5->2, 2->3, 3->4
+Distancia: 12, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 40,00, distancia: 5, tempo: 50, elevacao: -10
+ 2->4 40,00, distancia: 60, tempo: 50, elevacao: 70
+ Elevacao: 60.0, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 2->4 
+Elevaçao: 60
+, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 2->4 
+Elevaçao: 60, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 6:
+1->2 2->3 3->6 
+Elevaçao: 130, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 6:
+1->2 2->6 
+Elevaçao: 10, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 2->4 
+Elevaçao: 60, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 4:
+1->2, 2->4
+Tempo: 100, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 2->4 
+Elevaçao: 60, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 4:
+1->2, 2->4
+Tempo: 100, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 4:
+1->5, 5->2, 2->3, 3->4
+Distancia: 12, na data de: 7/6/2021
+
+===========================================================
+O caixeiro viajante para percorrer o maximo de caixas num
+tempo limite de: 21 min, tera de percorrer:
+1->6, na data de: 7/6/2021
+
+===========================================================
+Menos caminho a percorrer em termos de elevaçao entre a cache: 1 e a cache 4:
+1->2 2->4 
+Elevaçao: 60, na data de: 7/6/2021
+
+===========================================================
+O caixeiro viajante para percorrer o maximo de caixas num
+tempo limite de: 133 min, tera de percorrer:
+1->2->3->7->8->4, na data de: 7/6/2021

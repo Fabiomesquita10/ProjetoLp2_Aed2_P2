@@ -1,7 +1,7 @@
 import edu.princeton.cs.algs4.Stack;
 
 // Java implementation of the approach
-class GFG
+class CaixeiroViajante
 {
     public static Stack<Integer> paths = new Stack<>();
     public static String stringCaches = new String();
@@ -30,7 +30,7 @@ class GFG
     }
 
     public static void setStringCaches(String stringCaches) {
-        GFG.stringCaches = stringCaches;
+        CaixeiroViajante.stringCaches = stringCaches;
     }
 
     /**

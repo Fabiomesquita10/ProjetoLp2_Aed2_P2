@@ -1,6 +1,4 @@
 package SearchProj;
-
-import Search.RedBlack_AED2;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 import projeto_LP2_AED2.CacheNaoExisteException;

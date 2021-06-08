@@ -58,7 +58,7 @@ public class LogCont implements Initializable {
         if(count>0 && admin) {
             Stage stage = (Stage) btnLogin.getScene().getWindow();
             stage.close();
-            Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("fxml/Menu.fxml"));
             Scene scene = new Scene(root);
             stage.setTitle("Menu");
             stage.setScene(scene);
@@ -66,7 +66,7 @@ public class LogCont implements Initializable {
         }else if(count>0 && !admin){
             Stage stage = (Stage) btnLogin.getScene().getWindow();
             stage.close();
-            Parent root = FXMLLoader.load(getClass().getResource("MenuN.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("fxml/MenuN.fxml"));
             Scene scene = new Scene(root);
             stage.setTitle("Menu");
             stage.setScene(scene);

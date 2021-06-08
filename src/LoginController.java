@@ -1,16 +1,13 @@
 import Search.BST_AED2_2021;
 import Search.RedBlack_AED2;
 import SearchProj.*;
-import edu.princeton.cs.algs4.*;
+import figGeo.Arrow;
 import figGeo.Point;
 import figGeo.Rectangle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -19,16 +16,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import projeto_LP2_AED2.*;
 import projeto_LP2_AED2.Date;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 public class LoginController implements Initializable {
 
@@ -178,10 +172,11 @@ public class LoginController implements Initializable {
     public final int yUpperLimit = 50;
     public final int yLowerLimit = 450;
 
-    @Override
+
     /**
-     *
+     * funcao para inicilizar as tabelas de informacoa e tambem toda a informacao a cerca do grafo
      */
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         //AVENTUREIROS
@@ -784,7 +779,7 @@ public class LoginController implements Initializable {
                     String Pesq = "Menor caminho a percorrer em termos de distancia entre a cache " + cp + " e a cache " + cc + ":";
                     Pesq = Pesq + "\n" + s;
                     diario.adicionaLog(Pesq, new Date(), "data/Pesquisas.txt");
-                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + s + "\n");
+                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + s + "\n\n");
                 }
 
                 break;
@@ -794,7 +789,7 @@ public class LoginController implements Initializable {
                     String s = formatarString(DSPT.pathTo(cc), 5);
                     String Pesq = "Menor caminho a percorrer em termos de tempo entre a cache " + cp + " e a cache " + cc + ":";
                     Pesq = Pesq + "\n" + s;
-                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + s + "\n");
+                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + s + "\n\n");
                     //s = s.substring(0,s.length()-2);
                     diario.adicionaLog(Pesq, new Date(), "data/Pesquisas.txt");
                 }
@@ -805,20 +800,48 @@ public class LoginController implements Initializable {
             case "elevacao":
                 BSP_AED2 BFS = new BSP_AED2(gcg.getGrafo(), cp, 1);
                 if(BFS.hasPathTo(cc)){
-                    String s = "CAMINHO A PERCORRER: \n" + BFS.pathTo(cc) + "Elevacao: \n" + BFS.distTo(cc);
-                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + BFS.pathTo(cc));
-                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "Elevacao: \n" + BFS.distTo(cc) + "\n");
+                    System.out.println(BFS.pathTo(cc));
+                    String caminho = formatarString(BFS.pathTo(cc).toString());
+                    //String s = "Menos caminho a percorrer em termos de elevaçao entre a cache: " + cp + " e a cache " + cc + ":\n" + BFS.pathTo(cc) + "Elevacao: " + BFS.distTo(cc);
+                    String s = "Menos caminho a percorrer em termos de elevaçao entre a cache: " + cp + " e a cache " + cc + ":\n" + caminho;
+                    consolaMapa.setText(consolaMapa.getText() + "\n" +  "CAMINHO A PERCORRER: \n" + caminho + "\n\n");
                     diario.adicionaLog(s,new Date(), "data/Pesquisas.txt");
                 }
+                break;
+            default:
+                System.out.println("Escolha um tipo de pesquisa!");
                 break;
         }
     }
 
     /**
-     * Funcao para formatar uma String
-     * @param s - String
-     * @param x
-     * @return
+     * Funcao para formatar uma string retornada do algoritno Bellsman-Ford
+     * @param s string que vamos formatar
+     * @return retorna uma string como o caminho mais curto em relacao a variacao da elevacao
+     */
+    public static String formatarString(String s){
+        String[] parts = s.split("\n");
+        StringBuilder finalString = new StringBuilder();
+        int elevacao = 0;
+        for (int i = 0; i < parts.length-1; i++) {
+            String[] parts2 = parts[i].split(" ");
+            if(i == 0) {
+                finalString.append(parts2[0]).append(" ");
+                elevacao = elevacao + Integer.parseInt(parts2[7]);
+            }else{
+                finalString.append(parts2[1]).append(" ");
+                elevacao = elevacao + Integer.parseInt(parts2[8]);
+            }
+        }
+        finalString.append("\n").append("Elevaçao: ").append(elevacao);
+        return finalString.toString();
+    }
+
+    /**
+     * Funcao para formatar uma String retornada do algoritmo Dijsktra
+     * @param s - String que vamos formatar
+     * @param x - se o x for igual a 3 retorna a distancia, se for igual a 5 retorna a tempo
+     * @return retorna uma string com o caminho do menor percurso em relacao ao tempo ou a distancia
      */
     public static String formatarString(String s, int x){
         System.out.println(s);
@@ -830,6 +853,7 @@ public class LoginController implements Initializable {
             if(j==1){
                 String[] parts2 = parts[j].split(" ");
                 String p = parts2[x];
+                System.out.println(p);
                 p = p.substring(0, p.length()-1);
                 p1 = Integer.parseInt(p);
                 valorFinal+=p1;
@@ -837,6 +861,7 @@ public class LoginController implements Initializable {
             }else{
                 String[] parts2 = parts[j].split(" ");
                 String p = parts2[x+1];
+                System.out.println(p);
                 p = p.substring(0, p.length()-1);
                 p1 = Integer.parseInt(p);
                 valorFinal+=p1;
@@ -849,24 +874,11 @@ public class LoginController implements Initializable {
         }else if(x == 3){
             f = new StringBuilder(f.substring(0, f.length() - 2));
             f.append("\nDistancia: ").append(valorFinal);
-        }else if(x == 5){
+        }else if(x == 5) {
             f = new StringBuilder(f.substring(0, f.length() - 2));
             f.append("\nTempo: ").append(valorFinal);
-        }else if(x == 7){
-            System.out.println(f);
-            //f = new StringBuilder(f.substring(0, f.length() - 2));
-            f.append("\nElevacao: ").append(valorFinal);
         }
         return f.toString();
-    }
-
-    /**
-     * Handler para o peso
-     * @param actionEvent - ao clicar no botao
-     */
-    public void handlerPeso(ActionEvent actionEvent) {
-        tipoPesquisa = "peso";
-        consolaMapa.setText(consolaMapa.getText() +  "PARAMETRO DE PESQUISA: PESO");
     }
 
     /**
@@ -969,7 +981,7 @@ public class LoginController implements Initializable {
         int tempo = Integer.parseInt(tempoL.getText()); // tempo maximo
         int currPos = 0;
         int linha = Integer.parseInt(cacheP.getText()); // cache em que ele vai comecar
-        GFG gfg = new GFG();
+        CaixeiroViajante gfg = new CaixeiroViajante();
         int[][] matrix = gcg.getGrafo().graphToMatrix();
         // trocar a linha 0 , pela cache que ele vai comecar
         matrix = gfg.exchangeAnyTwoRows(matrix, 1, linha + 1);
@@ -1233,7 +1245,7 @@ public class LoginController implements Initializable {
         int temp = Integer.parseInt(tempoAC.getText());
         int elevacao = Integer.parseInt(elevacaoAC.getText());
         if(gcg.getGrafo().getCaches().contains(idP) && gcg.getGrafo().getCaches().contains(idC)){
-            DirectedEdge_AED2 d = new DirectedEdge_AED2(idP, idC, 0, temp, dist, elevacao);
+            DirectedEdge_AED2 d = new DirectedEdge_AED2(idP, idC, 1000, temp, dist, elevacao);
             consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi adicionado um caminho: Cache inicial: " + idP + ", Cache Final: " + idC +
                     "\nDistancia: " + dist + " metros, Tempo: " + temp + " minutos, Elevacao: " + elevacao);
             gcg.getGrafo().addEdge(d);
@@ -1631,37 +1643,40 @@ public class LoginController implements Initializable {
     public void handlerEncontrouCacheJ(ActionEvent actionEvent) {
         int id = Integer.parseInt(idAventJ.getText());
         int idC = Integer.parseInt(cacheEncJ.getText());
-        ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
 
-        consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um travel bug: \n");
-        consolaMapa.setText(consolaMapa.getText() + "\n" +ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getMissao());
-        ArrayList<Cache> cachesRet = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).interpetarMissao(gc, ga); // caches que podemos levar o tb, por causa da sua missao
-        if (cachesRet.size() > 0){
-            if (cachesRet.size() == 1){
-                for (Cache c : cachesRet){
-                    consolaMapa.setText(consolaMapa.getText() + "\n" + "Pode levar para a cache com o ID: " + c.getIdCache());
-                    ids.add(c.getIdCache());
-                    BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), idC);
-                    DSP_AED2 DSP = new DSP_AED2(gcg.getGrafo(), idC, 1);
-                    consolaMapa.setText(consolaMapa.getText()+ "\nCache id: " + c.getIdCache());
-                    consolaMapa.setText(consolaMapa.getText()+ "\nBFS Caminho mais curto: " + BFS.pathTo(c.getIdCache()));
-                    String s = formatarString(DSP.pathTo(c.getIdCache()),3);
-                    consolaMapa.setText(consolaMapa.getText()+ "\nDistancia: " + DSP.distTo(c.getIdCache()));
+        if(gc.getCaches().get(idC).getTravelbug() != null){
+            ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
+            consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um travel bug: \n");
+            consolaMapa.setText(consolaMapa.getText() + "\n" +ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getMissao());
+            ArrayList<Cache> cachesRet = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).interpetarMissao(gc, ga); // caches que podemos levar o tb, por causa da sua missao
+            if (cachesRet.size() > 0){
+                if (cachesRet.size() == 1){
+                    for (Cache c : cachesRet){
+                        consolaMapa.setText(consolaMapa.getText() + "\n" + "Pode levar para a cache com o ID: " + c.getIdCache());
+                        ids.add(c.getIdCache());
+                        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), idC);
+                        DSP_AED2 DSP = new DSP_AED2(gcg.getGrafo(), idC, 1);
+                        consolaMapa.setText(consolaMapa.getText()+ "\nCache id: " + c.getIdCache());
+                        consolaMapa.setText(consolaMapa.getText()+ "\nCaminho mais curto: " + BFS.pathTo(c.getIdCache()));
+                        consolaMapa.setText(consolaMapa.getText()+ "\nDistancia: " + DSP.distTo(c.getIdCache()) + "\n");
+                    }
+                }
+                else{
+                    consolaMapa.setText(consolaMapa.getText() + "\n" + "Pode levar para as caches com o ID: ");
+                    ids.clear();
+                    for (Cache c : cachesRet){
+                        ids.add(c.getIdCache());
+                        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), idC);
+                        DSP_AED2 DSP = new DSP_AED2(gcg.getGrafo(), idC, 1);
+                        consolaMapa.setText(consolaMapa.getText()+ "\nCache id: " + c.getIdCache());
+                        consolaMapa.setText(consolaMapa.getText()+ "\nBFS Caminho mais curto: " + BFS.pathTo(c.getIdCache()));
+                        consolaMapa.setText(consolaMapa.getText()+ "\nDistancia: " + DSP.distTo(c.getIdCache()) + "\n");
+                    }
                 }
             }
-            else{
-                consolaMapa.setText(consolaMapa.getText() + "\n" + "Pode levar para as caches com o ID: ");
-                ids.clear();
-                for (Cache c : cachesRet){
-                    ids.add(c.getIdCache());
-                    BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), idC);
-                    DSP_AED2 DSP = new DSP_AED2(gcg.getGrafo(), idC, 1);
-                    consolaMapa.setText(consolaMapa.getText()+ "\nCache id: " + c.getIdCache());
-                    consolaMapa.setText(consolaMapa.getText()+ "\nBFS Caminho mais curto: " + BFS.pathTo(c.getIdCache()));
-                    String s = formatarString(DSP.pathTo(c.getIdCache()),3);
-                    consolaMapa.setText(consolaMapa.getText()+ "\nDistancia: " + DSP.distTo(c.getIdCache()));
-                }
-            }
+        }else{
+            ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
+            consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um objeto: \n");
         }
         atualizarCaches();
         atualizarObjeto();

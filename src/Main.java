@@ -1,31 +1,15 @@
-import SearchProj.GestaoAcessoCacheGraph;
 import javafx.application.Application;
-import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import projeto_LP2_AED2.Admin;
-import projeto_LP2_AED2.GestaoAcessoAventureiro;
-import projeto_LP2_AED2.GestaoAcessoCache;
-import projeto_LP2_AED2.GestaoAcessoObjeto;
-
-import java.io.IOException;
 
 public class Main extends Application {
     private static Stage stage;
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/Menu.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("login_fxml.fxml"));
         //stage.initStyle(StageStyle.UNDECORATED);
         Scene scene = new Scene(root);
