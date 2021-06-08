@@ -134,7 +134,7 @@ public class TravelBug extends Objeto implements Serializable {
         super(nome);
         Random num = new Random();
         int posicao = -1;
-        while(posicao == -1 || posicao == 5 || posicao == 6 || posicao == 7){
+        while(posicao == -1 || posicao == 4 || posicao == 5 || posicao == 6){
             posicao = num.nextInt(9);
         }
         lerMissao(posicao+1);

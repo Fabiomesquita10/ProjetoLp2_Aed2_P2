@@ -462,7 +462,7 @@ public class LoginController implements Initializable {
      */
     public void carregarFicheiro() throws AventureiroNaoHabilitado, AventureiroNaoExisteException, CacheNaoExisteException {
 
-        /*
+
         ga.lerAventureiros(); // mudar funcao de leitura e escrita para por o local
         go.lerObjeto();
         go.lerTb();
@@ -472,11 +472,10 @@ public class LoginController implements Initializable {
         ga.guardarAventBin();
         gc.guardarCachesBin();
         go.guardarObjBin();
-         */
+         /*
         ga.lerAventBin();
         go.lerObjectBin();
         gc.lerCachesBin();
-        ga.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
         /*
         */
         atualizarAvent();
@@ -1371,15 +1370,29 @@ public class LoginController implements Initializable {
         int dif = Integer.parseInt(addDificC.getText());
         String l = addLocalC.getText();
         String[] parts = l.split(";");
-        String local = parts[2];
         int x = Integer.parseInt(parts[0]);
         int y = Integer.parseInt(parts[1]);
+        String local = "";
+        if (y>=50 && y<200){
+            local = "Norte";
+        }
+        else if (y >= 200 && y < 300){
+            local = "Centro";
+        }
+        else if (y >= 300 && y < 450){
+            local = "Sul";
+        }
         if(verificarLimitesRegiao(x,y)){
             //verificacao se a cache e premium ou nao
             if(comboBoxTipoCache.getValue().compareTo("Premium") == 0) {
                 PremiumCache c = null;
-                if(idO != 0)
-                    c = new PremiumCache(dif, ga.getAventureiros().get(idA), go.getTravelBug().get(idO),x, y, local);
+                if(idO != 0){
+                    if(go.getTravelBug().get(idO).getCache() == null){
+                        c = new PremiumCache(dif, ga.getAventureiros().get(idA), go.getTravelBug().get(idO),x, y, local);
+                        go.getTravelBug().get(idO).getListaCachesPresente().put(go.getTravelBug().get(idO).getNumCachesPres(),c);
+                        go.getTravelBug().get(idO).setNumCachesPres(go.getTravelBug().get(idO).getNumCachesPres() + 1);
+                    }
+                }
                 else{
                     c = c = new PremiumCache(dif, ga.getAventureiros().get(idA),x, y, local);
                 }
@@ -1388,7 +1401,10 @@ public class LoginController implements Initializable {
             }else if(comboBoxTipoCache.getValue().compareTo("Basic") == 0){
                 BasicCache c = null;
                 if(idO != 0) {
-                    c = new BasicCache(dif, ga.getAventureiros().get(idA), go.getObjetos().get(idO), x, y, local);
+                    if(go.getTravelBug().get(idO).getCache() == null){
+                        c = new BasicCache(dif, ga.getAventureiros().get(idA), go.getObjetos().get(idO), x, y, local);
+                        go.getObjetos().get(idO).setCache(c);
+                    }
                 }else{
                     c = new BasicCache(dif, ga.getAventureiros().get(idA), x, y, local);
                 }
@@ -1397,6 +1413,7 @@ public class LoginController implements Initializable {
             }
             atualizarAvent();
             atualizarCaches();
+            atualizarObjeto();
         }else
             throw new ForaDaRegiaoException("Coordenadas fora do nosso alcance");
     }
@@ -1501,6 +1518,8 @@ public class LoginController implements Initializable {
 
         if(gc.getCaches().get(idC).getTravelbug() != null){
             ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
+            gc.getCaches().get(idC).getHistAventureiros().put(gc.getCaches().get(idC).getNumAvent(),ga.getAventureiros().get(id));
+            gc.getCaches().get(idC).setNumAvent(gc.getCaches().get(idC).getNumAvent() + 1);
             consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um travel bug: \n");
             consolaMapa.setText(consolaMapa.getText() + "\n" +ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getMissao());
             ArrayList<Cache> cachesRet = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).interpetarMissao(gc, ga); // caches que podemos levar o tb, por causa da sua missao
@@ -1550,13 +1569,14 @@ public class LoginController implements Initializable {
         // mudar as informacoes do tb
         Random num = new Random();
         int posicao = -1;
-        while(posicao == -1 || posicao == 5 || posicao == 6 || posicao == 7){
+        while(posicao == -1 || posicao == 4 || posicao == 5 || posicao == 6){
             posicao = num.nextInt(9);
         }
-        System.out.println(posicao);
         int idTb = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getIdObjeto();
         String nome = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getNome();
         ga.getAventureiros().get(id).encontrouCache((PremiumCache) gc.getCaches().get(idC), ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1), new Date(20, 03, 2021), posicao);
+        gc.getCaches().get(idC).getHistAventureiros().put(gc.getCaches().get(idC).getNumAvent(),ga.getAventureiros().get(id));
+        gc.getCaches().get(idC).setNumAvent(gc.getCaches().get(idC).getNumAvent() + 1);
         int x = 1, j = 1;
         while(j<=go.getTravelBug().size()){
             if(go.getTravelBug().get(x) != null){
@@ -1566,7 +1586,8 @@ public class LoginController implements Initializable {
                     go.getTravelBug().get(x).setViajar(false);
                     go.getTravelBug().get(x).getListaAventureiros().put(go.getTravelBug().get(x).getNumAventureiros(), ga.getAventureiros().get(id));
                     go.getTravelBug().get(x).setNumAventureiros(go.getTravelBug().get(x).getNumAventureiros()+1);
-                    go.getTravelBug().get(x).lerMissao(posicao);
+                    go.getTravelBug().get(x).lerMissao(posicao+1);
+                    gc.getCaches().get(idC).setTravelbug(go.getTravelBug().get(x));
                 }
                 j++;
             }

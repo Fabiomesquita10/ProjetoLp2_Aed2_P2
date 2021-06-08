@@ -1,10 +1,6 @@
-1 bola
+1 tesoura
 2 rato
-3 teclado
-4 fones
-5 bicicleta
-6 monitor
-7 computador
-8 telemovel
-9 tapete
-10 PS5
+3 lapis
+4 caneta
+5 caderno
+6 cartas

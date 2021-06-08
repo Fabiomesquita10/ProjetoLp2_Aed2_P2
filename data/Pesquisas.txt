@@ -268,3 +268,28 @@ Elevaçao: 60, na data de: 7/6/2021
 O caixeiro viajante para percorrer o maximo de caixas num
 tempo limite de: 133 min, tera de percorrer:
 1->2->3->7->8->4, na data de: 7/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 14:
+1->14
+Tempo: 10, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 15:
+1->2, 2->14, 14->15
+Tempo: 296, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 2:
+1->2
+Tempo: 30, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 2:
+1->2
+Distancia: 40, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 9:
+1->8, 8->13, 13->3, 3->9
+Tempo: 120, na data de: 8/6/2021
