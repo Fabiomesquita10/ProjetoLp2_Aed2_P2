@@ -305,9 +305,9 @@ public class LoginController implements Initializable {
      * Método para criar grafo consoante numero de vertices e edges
      * Neste mesmo método temos as diferentes interações com o clicar numa cache(vértice)
      * ou num caminho(edge)
-     * @param ga
-     * @param gcg
-     * @param go
+     * @param ga gestao acesso aventureiro
+     * @param gcg gestao acesso do grafo e das caches
+     * @param go gestao acesso dos objetos
      */
     public void creatGraphGroup(GestaoAcessoAventureiro ga, GestaoAcessoCacheGraph gcg, GestaoAcessoObjeto go){
         if(gcg.getGrafo().E() > 0 && setas == 1) {
@@ -456,9 +456,9 @@ public class LoginController implements Initializable {
 
     /**
      * Função para carregar Ficheiros, necessario nas tabelas e na atualizaçao das mesmas
-     * @throws AventureiroNaoHabilitado
-     * @throws AventureiroNaoExisteException
-     * @throws CacheNaoExisteException
+     * @throws AventureiroNaoHabilitado se o aventurerio nao poder criar cache, so esta aqui po estar a carregar os ficheiros
+     * @throws AventureiroNaoExisteException se o aventureiro nao existir
+     * @throws CacheNaoExisteException se a cache nao existir
      */
     public void carregarFicheiro() throws AventureiroNaoHabilitado, AventureiroNaoExisteException, CacheNaoExisteException {
 
@@ -478,9 +478,6 @@ public class LoginController implements Initializable {
         gc.lerCachesBin();
         ga.regista(new Admin("fabio",15,61,"penafiel", "12345678"));
         /*
-        ga.guardarAventureiros(gc,go);
-        go.guardarObjeto(gc,ga);
-        gc.guardarCache(ga,go);
         */
         atualizarAvent();
         atualizarCaches();
@@ -488,7 +485,7 @@ public class LoginController implements Initializable {
 
         //teste de directedEdge
         gcg.lerCaminhos();
-        //gcg.guardarCaminhos();
+
         creatGraphGroup(ga, gcg, go);
 
     }
@@ -496,9 +493,8 @@ public class LoginController implements Initializable {
     /**
      * Handler para Pesquisar determinada cache consoate x campos inseridos
      * @param actionEvent - Ao clicarmos no botao
-     * @throws InterruptedException
      */
-    public void handlerPesquisaCache(ActionEvent actionEvent) throws InterruptedException {
+    public void handlerPesquisaCache(ActionEvent actionEvent){
         //consolaMapa.setText(consolaMapa.getText() +  "PESQUISA CACHE\n");
         String tipo = "", regiao = "";
         int dif = 0, idTb = 0;
@@ -719,10 +715,10 @@ public class LoginController implements Initializable {
 
     /**
      * Método que retorna true ou false se um determinado Travel Bug teve na cache com o id recebido
-     * @param t
+     * @param t bst de travel bug onde vamos procurar
      * @param id - id da cache
      * @param k - tb
-     * @return
+     * @return true se ele estiver na bst
      */
     public boolean contain(BST_AED2_2021<Integer, TravelBug> t, int id, int k){
         int x = 1, count = 0;
@@ -736,7 +732,7 @@ public class LoginController implements Initializable {
 
     /**
      * Handler para saber se existe caminho entre uma cacche de partida e uma de chegada
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerExisteCaminho(ActionEvent actionEvent) {
         //consolaMapa.setText(consolaMapa.getText() +  "EXISTE CAMINHO\n");
@@ -910,7 +906,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para adicionar aventureiro
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerAddAvent(ActionEvent actionEvent) {
         int x = 230, y=459;
@@ -936,9 +932,9 @@ public class LoginController implements Initializable {
 
     /**
      * handler para remover um aventureiro, e todas as suas caches e objetos
-     * @param actionEvent
-     * @throws AventureiroNaoExisteException
-     * @throws CacheNaoExisteException
+     * @param actionEvent sempre que ocorrer um evento
+     * @throws AventureiroNaoExisteException se o aventureiro nao existir ocorre uma excepcao
+     * @throws CacheNaoExisteException se a cache nao existir ocorre uma excepcao
      */
     public void handlerRemoverAvent(ActionEvent actionEvent) throws AventureiroNaoExisteException, CacheNaoExisteException {
         int id = Integer.parseInt(remIdAvent.getText());
@@ -965,7 +961,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para editar um aventureiro
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerEditAv(ActionEvent actionEvent) {
         int id = Integer.parseInt(idEdit.getText());
@@ -975,7 +971,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para calcular o caminho que o caixeiro viajante vai procorrer em X tempo
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerCalcular(ActionEvent actionEvent) {
         int tempo = Integer.parseInt(tempoL.getText()); // tempo maximo
@@ -1022,7 +1018,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para adicionar um objeto
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerAddObjeto(ActionEvent actionEvent) {
         String nome = addNomeO.getText();
@@ -1034,7 +1030,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para remover um objeto
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerRemObjeto(ActionEvent actionEvent) {
         int id = Integer.parseInt(remIdO.getText());
@@ -1063,7 +1059,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para editar um objeto
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerEditObjeto(ActionEvent actionEvent) {
         int id = Integer.parseInt(editIdO.getText());
@@ -1074,7 +1070,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para adiconar um travelBug
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerAddTb(ActionEvent actionEvent) {
         String nome = addNomeTb.getText();
@@ -1100,7 +1096,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para remover um travelBug
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerRemTb(ActionEvent actionEvent) {
         int id = Integer.parseInt(remIdTb.getText());
@@ -1129,7 +1125,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para editar TravelBug
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerEditTb(ActionEvent actionEvent) {
         String nome = editNomeTb.getText();
@@ -1140,8 +1136,8 @@ public class LoginController implements Initializable {
 
     /**
      * handler para remover cache
-     * @param actionEvent
-     * @throws CacheNaoExisteException
+     * @param actionEvent sempre que ocorrer um evento
+     * @throws CacheNaoExisteException se a cache nao existir ocorre uma exceçao
      */
     public void handlerRemCache(ActionEvent actionEvent) throws CacheNaoExisteException {
         int id = Integer.parseInt(remIdCacheC.getText());
@@ -1176,7 +1172,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para printar todos os caminhos, numa consola da aplicacao
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerVerCaminhos(ActionEvent actionEvent) {
         consolaCaminhos.setText("");
@@ -1194,7 +1190,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para por ou tirar as setas(caminhos) do mapa
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerSetasMapa(ActionEvent actionEvent) {
         if(setas == 0)
@@ -1236,7 +1232,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para adicionar caminhos entre duas caches
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      */
     public void handlerAddCaminho(ActionEvent actionEvent) {
         int idP = Integer.parseInt(cachePartidaAC.getText());
@@ -1363,7 +1359,7 @@ public class LoginController implements Initializable {
 
     /**
      * handler para adicionar uma caches ao grafo
-     * @param actionEvent
+     * @param actionEvent sempre que ocorrer um evento
      * @throws AventureiroNaoHabilitado se o aventureiro na for premium nao pode criar cache
      */
     public void handlerAddCache(ActionEvent actionEvent) throws AventureiroNaoHabilitado, ForaDaRegiaoException {
@@ -1405,12 +1401,194 @@ public class LoginController implements Initializable {
             throw new ForaDaRegiaoException("Coordenadas fora do nosso alcance");
     }
 
+    /**
+     * funcao para ter a certeza que as caches sao colocadas entre os limites da nossa aplicaçao
+     * @param x coordenada x da localizaçao da cache
+     * @param y coordenada y da localizaçao da cache
+     * @return true se poder colocar a cache, false se for fora do range da nossa aplicaçao
+     */
     public boolean verificarLimitesRegiao(int x, int y){
         Point p1 = new Point(xleftLimit, yUpperLimit);
         Point p2 = new Point(xRightLimit, yLowerLimit);
         Rectangle r = new Rectangle(p1, p2, null);
         Point p3 = new Point(x, y);
         return r.isInside(p3);
+    }
+
+    /**
+     * handler para editar informaçao de uma cache
+     * @param actionEvent sempre que ocorrer um evento
+     */
+    public void handlerEditCache(ActionEvent actionEvent) {
+        int id = Integer.parseInt(editIdCacheC.getText());
+        int dif = Integer.parseInt(editDificC.getText());
+        String local = editLocalC.getText();
+        if(gcg.getGrafo().getCaches().contains(id)){
+            gcg.getGrafo().getCaches().get(id).getLocal().setLocalizacao(local);
+            gcg.getGrafo().getCaches().get(id).setDificuldade(dif);
+            gc.getCaches().get(id).getLocal().setLocalizacao(local);
+            gc.getCaches().get(id).setDificuldade(dif);
+            atualizarCaches();
+        }
+    }
+
+    /**
+     * handler para ver todas as caches em que um aventureiro ja esteve
+     * @param actionEvent sempre que ocorrer um evento
+     */
+    public void handlerPesquisaAventPA(ActionEvent actionEvent) {
+        int idA = Integer.parseInt(idAventPA.getText());
+        if(idA != 0){
+            if(ga.getAventureiros().contains(idA)){
+                graphGroup.getChildren().clear();
+                if(gcg.getGrafo().E() > 0 && setas == 1){
+                    for (int k = 1; k <= gcg.getGrafo().getNumCache(); k++) { // ver todas as caches que existem no grafo
+                        if(gcg.getGrafo().getCaches().contains(k)){
+                            int id = gcg.getGrafo().getCaches().get(k).getIdCache();
+                            if (contains(ga.getAventureiros(), idA, id)) { // verificar se esta(com id = id) cache foi visitada pelo aventureiro
+                                for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
+                                    if (contains(ga.getAventureiros(), idA, adj.to())) { // verifica se este caminho, a cache de saida e entrada, ja foram visitadas pelo aventureiro, senoa nao a desenha
+                                        int w = (int)adj.weight();
+                                        int d = adj.distancia();
+                                        int t = adj.tempo();
+                                        int e = adj.elevacao();
+                                        Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
+                                                gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20,w,d,t,e);
+                                        a.setFill(Color.PURPLE);
+                                        graphGroup.getChildren().add(a);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                for(int i=1; i<=gcg.getGrafo().getNumCache(); i++){
+                    if(gcg.getGrafo().getCaches().contains(i)){
+                        int id = gcg.getGrafo().getCaches().get(i).getIdCache();
+                        if (contains(ga.getAventureiros(), idA, id))
+                            criar_graph(i);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * funcao para verificar se a cache com id = idC, ja foi visitada pelo aventureiro idA
+     * @param a RedBlac de Aventureiros
+     * @param idA id do aventureiro
+     * @param idC id da cache
+     * @return true se o aventureiro ja tiver visitado esta cache
+     */
+    public boolean contains(RedBlack_AED2<Integer, Aventureiro> a, int idA, int idC){
+        int x = 0, count = 0;
+        // percorre todas as caches do aventureiro ja esteve, e ve se alguma tem o id da cache em questao, se sim retorna true
+        while(a.get(idA).getListCacheVisit().size()>x){
+            if(a.get(idA).getListCacheVisit().get(x).getIdCache() == idC)
+                count++;
+            x++;
+        }
+        return count != 0;
+    }
+
+    /**
+     * handler de quando um aventureiro encontar uma cache, e se for um tb, ela retorna as caches que ele tem de levar o travelbug, interpetando as missoes dele
+     * @param actionEvent sempre que ocorrer um evento
+     */
+    public void handlerEncontrouCacheJ(ActionEvent actionEvent) {
+        int id = Integer.parseInt(idAventJ.getText());
+        int idC = Integer.parseInt(cacheEncJ.getText());
+
+        if(gc.getCaches().get(idC).getTravelbug() != null){
+            ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
+            consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um travel bug: \n");
+            consolaMapa.setText(consolaMapa.getText() + "\n" +ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getMissao());
+            ArrayList<Cache> cachesRet = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).interpetarMissao(gc, ga); // caches que podemos levar o tb, por causa da sua missao
+            if (cachesRet.size() > 0){
+                if (cachesRet.size() == 1){
+                    for (Cache c : cachesRet){
+                        consolaMapa.setText(consolaMapa.getText() + "\n" + "Pode levar para a cache com o ID: " + c.getIdCache());
+                        ids.add(c.getIdCache());
+                        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), idC);
+                        DSP_AED2 DSP = new DSP_AED2(gcg.getGrafo(), idC, 1);
+                        consolaMapa.setText(consolaMapa.getText()+ "\nCache id: " + c.getIdCache());
+                        consolaMapa.setText(consolaMapa.getText()+ "\nCaminho mais curto: " + BFS.pathTo(c.getIdCache()));
+                        consolaMapa.setText(consolaMapa.getText()+ "\nDistancia: " + DSP.distTo(c.getIdCache()) + "\n");
+                    }
+                }
+                else{
+                    consolaMapa.setText(consolaMapa.getText() + "\n" + "Pode levar para as caches com o ID: ");
+                    ids.clear();
+                    for (Cache c : cachesRet){
+                        ids.add(c.getIdCache());
+                        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), idC);
+                        DSP_AED2 DSP = new DSP_AED2(gcg.getGrafo(), idC, 1);
+                        consolaMapa.setText(consolaMapa.getText()+ "\nCache id: " + c.getIdCache());
+                        consolaMapa.setText(consolaMapa.getText()+ "\nBFS Caminho mais curto: " + BFS.pathTo(c.getIdCache()));
+                        consolaMapa.setText(consolaMapa.getText()+ "\nDistancia: " + DSP.distTo(c.getIdCache()) + "\n");
+                    }
+                }
+            }
+        }else{
+            ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
+            consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um objeto: \n");
+        }
+        atualizarCaches();
+        atualizarObjeto();
+        atualizarAvent();
+        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "O Aventureiro: " + id + " encontrou a cache: " + idC);
+    }
+
+    /**
+     * hanler para o aventureiro depositar o tb ou objeto
+     * @param actionEvent sempre que ocorrer um evento
+     * @throws MissaoNaoCompletadaComExitoException verifica se for um tb se a missa foi completada
+     */
+    public void handlerDepositouCacheJ(ActionEvent actionEvent) throws MissaoNaoCompletadaComExitoException {
+        int idC = Integer.parseInt(cacheDepJ.getText());
+        int id = Integer.parseInt(idAventJ.getText());
+        // mudar as informacoes do tb
+        Random num = new Random();
+        int posicao = -1;
+        while(posicao == -1 || posicao == 5 || posicao == 6 || posicao == 7){
+            posicao = num.nextInt(9);
+        }
+        System.out.println(posicao);
+        int idTb = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getIdObjeto();
+        String nome = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getNome();
+        ga.getAventureiros().get(id).encontrouCache((PremiumCache) gc.getCaches().get(idC), ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1), new Date(20, 03, 2021), posicao);
+        int x = 1, j = 1;
+        while(j<=go.getTravelBug().size()){
+            if(go.getTravelBug().get(x) != null){
+                if(go.getTravelBug().get(x).getNome().equals(nome)){
+                    go.getTravelBug().get(x).getListaCachesPresente().put(go.getTravelBug().get(x).getNumCachesPres(), (PremiumCache) gc.getCaches().get(idC));
+                    go.getTravelBug().get(x).setNumCachesPres(go.getTravelBug().get(x).getNumCachesPres()+1);
+                    go.getTravelBug().get(x).setViajar(false);
+                    go.getTravelBug().get(x).getListaAventureiros().put(go.getTravelBug().get(x).getNumAventureiros(), ga.getAventureiros().get(id));
+                    go.getTravelBug().get(x).setNumAventureiros(go.getTravelBug().get(x).getNumAventureiros()+1);
+                    go.getTravelBug().get(x).lerMissao(posicao);
+                }
+                j++;
+            }
+            x++;
+        }
+        atualizarCaches();
+        atualizarObjeto();
+        atualizarAvent();
+        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "O Aventureiro: " + id + " encontrou a cache: " + idC);
+    }
+
+    /**
+     * handler para guardar toda a informaçao das caches, aventureiros e objetos
+     * @param actionEvent sempre que ocorrer um evento
+     * @throws AventureiroNaoExisteException se o aventureiro nao existir
+     * @throws CacheNaoExisteException se a cache nao existir
+     */
+    public void handlerSave(ActionEvent actionEvent) throws AventureiroNaoExisteException, CacheNaoExisteException {
+        ga.guardarAventBin();
+        go.guardarObjBin();
+        gc.guardarCachesBin();
+        gcg.guardarCaminhos();
     }
 
     public static void main(String[] args) throws AventureiroNaoHabilitado {
@@ -1508,218 +1686,55 @@ public class LoginController implements Initializable {
 
         /**
          * parte2
-        GFG gfg = new GFG();
-        int linha = 7;
-        int[][] matrix = gcg.getGrafo().graphToMatrix();
-        matrix = gfg.exchangeAnyTwoRows(matrix, 1, linha+1);
-        gfg.printMatrix(matrix);
-        boolean[] v = new boolean[gcg.getGrafo().V()-1];
-        int tempo = 300;
-        int currPos = 0;
-        int ans = Integer.MAX_VALUE;
-        int count = 0, pos = 0;
-        v[currPos] = true;
-        //ans = gfg.tsp(matrix, v, 0, gcg.getGrafo().V()-1, 1, 0, ans, dist);
-        String cachesPerc = gfg.retStrin(matrix, v, currPos, gcg.getGrafo().V()-1, 1, 0, ans, tempo, linha);
-        //System.out.println(cachesPerc);
-        //System.out.println("tamanho: "+cachesPerc.length());
-        String []parts = cachesPerc.split("\n");
-        System.out.println(cachesPerc);
-        System.out.println("numero de linhas: "+parts.length);
-        for (int i = 0; i < parts.length; i++) {
-            String []parts2 = parts[i].split(" ");
-            //System.out.println("numero de caches percorridas: "+parts2.length);
-            if(parts2.length>count) {
-                count = parts2.length;
-                pos = i;
-            }
-            //System.out.println(parts[i]);
-        }
-        //System.out.println(pos + " " + count);
-        parts[pos] = parts[pos].substring(2,parts[pos].length());
-        parts[pos] = parts[pos] + linha;
-        //System.out.println(parts[pos]);
-        //System.out.println(parts[pos].length());
-        int i = 100;
-        String []parts3 = parts[pos].split(" ");
-        i = parts3.length-1;
-        System.out.println("o caixeiro viajante para percorrer o maximo de caixas num tempo limite de: " + tempo +" min, tera de percorrer: ");
-        for (; i>=0; i--) {
+         GFG gfg = new GFG();
+         int linha = 7;
+         int[][] matrix = gcg.getGrafo().graphToMatrix();
+         matrix = gfg.exchangeAnyTwoRows(matrix, 1, linha+1);
+         gfg.printMatrix(matrix);
+         boolean[] v = new boolean[gcg.getGrafo().V()-1];
+         int tempo = 300;
+         int currPos = 0;
+         int ans = Integer.MAX_VALUE;
+         int count = 0, pos = 0;
+         v[currPos] = true;
+         //ans = gfg.tsp(matrix, v, 0, gcg.getGrafo().V()-1, 1, 0, ans, dist);
+         String cachesPerc = gfg.retStrin(matrix, v, currPos, gcg.getGrafo().V()-1, 1, 0, ans, tempo, linha);
+         //System.out.println(cachesPerc);
+         //System.out.println("tamanho: "+cachesPerc.length());
+         String []parts = cachesPerc.split("\n");
+         System.out.println(cachesPerc);
+         System.out.println("numero de linhas: "+parts.length);
+         for (int i = 0; i < parts.length; i++) {
+         String []parts2 = parts[i].split(" ");
+         //System.out.println("numero de caches percorridas: "+parts2.length);
+         if(parts2.length>count) {
+         count = parts2.length;
+         pos = i;
+         }
+         //System.out.println(parts[i]);
+         }
+         //System.out.println(pos + " " + count);
+         parts[pos] = parts[pos].substring(2,parts[pos].length());
+         parts[pos] = parts[pos] + linha;
+         //System.out.println(parts[pos]);
+         //System.out.println(parts[pos].length());
+         int i = 100;
+         String []parts3 = parts[pos].split(" ");
+         i = parts3.length-1;
+         System.out.println("o caixeiro viajante para percorrer o maximo de caixas num tempo limite de: " + tempo +" min, tera de percorrer: ");
+         for (; i>=0; i--) {
 
-            if(i!=0)
-                System.out.print(parts3[i] + "->");
-            else
-                System.out.print(parts3[i]);
-        }*/
+         if(i!=0)
+         System.out.print(parts3[i] + "->");
+         else
+         System.out.print(parts3[i]);
+         }*/
 
         /**
          * parte3
-        LoginController l = new LoginController();
-        int o = 120, u = 4007;
-        System.out.println(l.verificarLimitesRegiao(o, u));
+         LoginController l = new LoginController();
+         int o = 120, u = 4007;
+         System.out.println(l.verificarLimitesRegiao(o, u));
          */
-    }
-
-    /**
-     * handler para editar informaçao de uma cache
-     * @param actionEvent
-     */
-    public void handlerEditCache(ActionEvent actionEvent) {
-        int id = Integer.parseInt(editIdCacheC.getText());
-        int dif = Integer.parseInt(editDificC.getText());
-        String local = editLocalC.getText();
-        if(gcg.getGrafo().getCaches().contains(id)){
-            gcg.getGrafo().getCaches().get(id).getLocal().setLocalizacao(local);
-            gcg.getGrafo().getCaches().get(id).setDificuldade(dif);
-            gc.getCaches().get(id).getLocal().setLocalizacao(local);
-            gc.getCaches().get(id).setDificuldade(dif);
-            atualizarCaches();
-        }
-    }
-
-    /**
-     * handler para ver todas as caches em que um aventureiro ja esteve
-     * @param actionEvent
-     */
-    public void handlerPesquisaAventPA(ActionEvent actionEvent) {
-        int idA = Integer.parseInt(idAventPA.getText());
-        if(idA != 0){
-            if(ga.getAventureiros().contains(idA)){
-                graphGroup.getChildren().clear();
-                if(gcg.getGrafo().E() > 0 && setas == 1){
-                    for (int k = 1; k <= gcg.getGrafo().getNumCache(); k++) { // ver todas as caches que existem no grafo
-                        if(gcg.getGrafo().getCaches().contains(k)){
-                            int id = gcg.getGrafo().getCaches().get(k).getIdCache();
-                            if (contains(ga.getAventureiros(), idA, id)) { // verificar se esta(com id = id) cache foi visitada pelo aventureiro
-                                for (DirectedEdge_AED2 adj : gcg.getGrafo().adj(k)) {
-                                    if (contains(ga.getAventureiros(), idA, adj.to())) { // verifica se este caminho, a cache de saida e entrada, ja foram visitadas pelo aventureiro, senoa nao a desenha
-                                        int w = (int)adj.weight();
-                                        int d = adj.distancia();
-                                        int t = adj.tempo();
-                                        int e = adj.elevacao();
-                                        Arrow a = new Arrow(gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(k).getLocal().getCoordenadaY(),
-                                                gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaX(), gcg.getGrafo().getCaches().get(adj.to()).getLocal().getCoordenadaY(), 20,w,d,t,e);
-                                        a.setFill(Color.PURPLE);
-                                        graphGroup.getChildren().add(a);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                for(int i=1; i<=gcg.getGrafo().getNumCache(); i++){
-                    if(gcg.getGrafo().getCaches().contains(i)){
-                        int id = gcg.getGrafo().getCaches().get(i).getIdCache();
-                        if (contains(ga.getAventureiros(), idA, id))
-                            criar_graph(i);
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * funcao para verificar se a cache com id = idC, ja foi visitada pelo aventureiro idA
-     * @param a RedBlac de Aventureiros
-     * @param idA id do aventureiro
-     * @param idC id da cache
-     * @return true se o aventureiro ja tiver visitado esta cache
-     */
-    public boolean contains(RedBlack_AED2<Integer, Aventureiro> a, int idA, int idC){
-        int x = 0, count = 0;
-        // percorre todas as caches do aventureiro ja esteve, e ve se alguma tem o id da cache em questao, se sim retorna true
-        while(a.get(idA).getListCacheVisit().size()>x){
-            if(a.get(idA).getListCacheVisit().get(x).getIdCache() == idC)
-                count++;
-            x++;
-        }
-        return count != 0;
-    }
-
-    /**
-     * handler de quando um aventureiro encontar uma cache, e se for um tb, ela retorna as caches que ele tem de levar o travelbug, interpetando as missoes dele
-     * @param actionEvent
-     */
-    public void handlerEncontrouCacheJ(ActionEvent actionEvent) {
-        int id = Integer.parseInt(idAventJ.getText());
-        int idC = Integer.parseInt(cacheEncJ.getText());
-
-        if(gc.getCaches().get(idC).getTravelbug() != null){
-            ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
-            consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um travel bug: \n");
-            consolaMapa.setText(consolaMapa.getText() + "\n" +ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getMissao());
-            ArrayList<Cache> cachesRet = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).interpetarMissao(gc, ga); // caches que podemos levar o tb, por causa da sua missao
-            if (cachesRet.size() > 0){
-                if (cachesRet.size() == 1){
-                    for (Cache c : cachesRet){
-                        consolaMapa.setText(consolaMapa.getText() + "\n" + "Pode levar para a cache com o ID: " + c.getIdCache());
-                        ids.add(c.getIdCache());
-                        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), idC);
-                        DSP_AED2 DSP = new DSP_AED2(gcg.getGrafo(), idC, 1);
-                        consolaMapa.setText(consolaMapa.getText()+ "\nCache id: " + c.getIdCache());
-                        consolaMapa.setText(consolaMapa.getText()+ "\nCaminho mais curto: " + BFS.pathTo(c.getIdCache()));
-                        consolaMapa.setText(consolaMapa.getText()+ "\nDistancia: " + DSP.distTo(c.getIdCache()) + "\n");
-                    }
-                }
-                else{
-                    consolaMapa.setText(consolaMapa.getText() + "\n" + "Pode levar para as caches com o ID: ");
-                    ids.clear();
-                    for (Cache c : cachesRet){
-                        ids.add(c.getIdCache());
-                        BFS_AED2 BFS = new BFS_AED2(gcg.getGrafo(), idC);
-                        DSP_AED2 DSP = new DSP_AED2(gcg.getGrafo(), idC, 1);
-                        consolaMapa.setText(consolaMapa.getText()+ "\nCache id: " + c.getIdCache());
-                        consolaMapa.setText(consolaMapa.getText()+ "\nBFS Caminho mais curto: " + BFS.pathTo(c.getIdCache()));
-                        consolaMapa.setText(consolaMapa.getText()+ "\nDistancia: " + DSP.distTo(c.getIdCache()) + "\n");
-                    }
-                }
-            }
-        }else{
-            ga.getAventureiros().get(id).encontrouCache(gc.getCaches().get(idC), new Date(), go);
-            consolaMapa.setText("O aventureiro " + id + " econtrou uma cache\ncom um objeto: \n");
-        }
-        atualizarCaches();
-        atualizarObjeto();
-        atualizarAvent();
-        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "O Aventureiro: " + id + " encontrou a cache: " + idC);
-    }
-
-    /**
-     * hanler para o aventureiro depositar o tb ou objeto
-     * @param actionEvent
-     * @throws MissaoNaoCompletadaComExitoException verifica se for um tb se a missa foi completada
-     */
-    public void handlerDepositouCacheJ(ActionEvent actionEvent) throws MissaoNaoCompletadaComExitoException {
-        int idC = Integer.parseInt(cacheDepJ.getText());
-        int id = Integer.parseInt(idAventJ.getText());
-        // mudar as informacoes do tb
-        Random num = new Random();
-        int posicao = -1;
-        while(posicao == -1 || posicao == 5 || posicao == 6 || posicao == 7){
-            posicao = num.nextInt(9);
-        }
-        System.out.println(posicao);
-        int idTb = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getIdObjeto();
-        String nome = ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1).getNome();
-        ga.getAventureiros().get(id).encontrouCache((PremiumCache) gc.getCaches().get(idC), ga.getAventureiros().get(id).getListTravelBug().get(ga.getAventureiros().get(id).getNumTb()-1), new Date(20, 03, 2021), posicao);
-        int x = 1, j = 1;
-        while(j<=go.getTravelBug().size()){
-            if(go.getTravelBug().get(x) != null){
-                if(go.getTravelBug().get(x).getNome().equals(nome)){
-                    go.getTravelBug().get(x).getListaCachesPresente().put(go.getTravelBug().get(x).getNumCachesPres(), (PremiumCache) gc.getCaches().get(idC));
-                    go.getTravelBug().get(x).setNumCachesPres(go.getTravelBug().get(x).getNumCachesPres()+1);
-                    go.getTravelBug().get(x).setViajar(false);
-                    go.getTravelBug().get(x).getListaAventureiros().put(go.getTravelBug().get(x).getNumAventureiros(), ga.getAventureiros().get(id));
-                    go.getTravelBug().get(x).setNumAventureiros(go.getTravelBug().get(x).getNumAventureiros()+1);
-                    go.getTravelBug().get(x).lerMissao(posicao);
-                }
-                j++;
-            }
-            x++;
-        }
-        atualizarCaches();
-        atualizarObjeto();
-        atualizarAvent();
-        consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "O Aventureiro: " + id + " encontrou a cache: " + idC);
     }
 }

@@ -840,6 +840,11 @@
                                              <font>
                                                 <Font name="Serif Bold Italic" size="27.0" />
                                              </font></TextArea>
+                                          <Button layoutX="23.0" layoutY="69.0" mnemonicParsing="false" onAction="#handlerSave" prefHeight="27.0" prefWidth="97.0" style="-fx-background-color: #0d1a26; -fx-border-color: yellow; -fx-border-radius: 20; -fx-text-fill: white;" stylesheets="@../css/styles.css" text="Guardar">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
                                        </children>
                                     </AnchorPane>
                               </content>

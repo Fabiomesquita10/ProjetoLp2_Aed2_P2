@@ -9,9 +9,6 @@ public class DirectedEdge_AED2 extends DirectedEdge {
     private final int tempo;
     private final int elevacao;
 
-
-
-
     public DirectedEdge_AED2(int v, int w, double weight, int t, int d, int e) {
         super(v, w, weight);
         this.tempo = t;

@@ -11,10 +11,10 @@ class CaixeiroViajante
      * @param graph o grafo onde se vai fazer a pesquisa
      * @param v array de booleans para ter marcado as posicoes ja percorridas
      * @param currPos posicao atual na pesquisa
-     * @param n
+     * @param n linha
      * @param count caches que ja esteve
      * @param cost costo da viagem
-     * @param ans
+     * @param ans variavel
      * @param dist distancia maxima que ele pode precorrer
      * @param l linha que vamos comecar a procurar
      * @return da return das caches que ele vai passar
@@ -102,8 +102,8 @@ class CaixeiroViajante
     /**
      * funcao para trocar duas linhas da matriz
      * @param matrix a matriz
-     * @param K
-     * @param L
+     * @param K linha que vmaos trocar
+     * @param L linha que vmaos trocar
      * @return a matriz qcom as linhas trocadas
      */
     public int[][] exchangeAnyTwoRows(int[][] matrix, int K, int L)
@@ -119,7 +119,7 @@ class CaixeiroViajante
 
     /**
      * funcao para printar a matriz
-     * @param matrix
+     * @param matrix para printar
      */
     public void printMatrix(int[][]matrix){
         System.out.println("Matriz de adjacencias do grafo: ");

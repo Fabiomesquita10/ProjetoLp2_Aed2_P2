@@ -6,7 +6,7 @@ public class Admin extends Aventureiro {
      * @param nome do admin
      * @param x - localizacao x
      * @param y - localizacao y
-     * @param lisboa
+     * @param local localizacao
      */
     public Admin(String nome, int x, int y, String local, String pass) {
         super(nome, x, y, local, pass);
@@ -29,7 +29,6 @@ public class Admin extends Aventureiro {
     public void verTodosAventureiros(GestaoAcessoAventureiro ga){
         ga.getAventureiros().printInOrder(ga.getAventureiros().getRoot());
     }
-
 
     /**
      * Metodo para ver localizacao de uma cache em especifico

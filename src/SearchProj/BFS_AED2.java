@@ -1,36 +1,7 @@
-/******************************************************************************
- *  Compilation:  javac BreadthFirstDirectedPaths.java
- *  Execution:    java BreadthFirstDirectedPaths digraph.txt s
- *  Dependencies: Digraph.java Queue.java Stack.java
- *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
- *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
- *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt
- *
- *  Run breadth-first search on a digraph.
- *  Runs in O(E + V) time.
- *
- *  % java BreadthFirstDirectedPaths tinyDG.txt 3
- *  3 to 0 (2):  3->2->0
- *  3 to 1 (3):  3->2->0->1
- *  3 to 2 (1):  3->2
- *  3 to 3 (0):  3
- *  3 to 4 (2):  3->5->4
- *  3 to 5 (1):  3->5
- *  3 to 6 (-):  not connected
- *  3 to 7 (-):  not connected
- *  3 to 8 (-):  not connected
- *  3 to 9 (-):  not connected
- *  3 to 10 (-):  not connected
- *  3 to 11 (-):  not connected
- *  3 to 12 (-):  not connected
- *
- ******************************************************************************/
-
 package SearchProj;
-
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
-
+//bfs
 public class BFS_AED2 {
     private static final int INFINITY = Integer.MAX_VALUE;
     private boolean[] marked;  // marked[v] = is there an s->v path?

@@ -31,6 +31,11 @@ public class LogCont implements Initializable {
         verificarLogIn();
     }
 
+    /**
+     * funcao que verifica o login na aplicacao
+     * @throws AventureiroNaoHabilitado se o aventurerio nao poder dar login
+     * @throws IOException input ou output tiver algum erro
+     */
     public void verificarLogIn() throws AventureiroNaoHabilitado, IOException {
         GestaoAcessoAventureiro tempA = new GestaoAcessoAventureiro();
         GestaoAcessoCache tempC = new GestaoAcessoCache();

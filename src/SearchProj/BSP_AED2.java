@@ -1,9 +1,6 @@
 package SearchProj;
-
 import edu.princeton.cs.algs4.*;
-
 import java.util.ArrayList;
-
 //Bellsman
 public class BSP_AED2 {
     // for floating-point precision issues
