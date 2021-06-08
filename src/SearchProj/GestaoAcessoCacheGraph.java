@@ -45,6 +45,7 @@ public class GestaoAcessoCacheGraph {
                 grafo.addEdge(de);
             }
         }
+        System.out.println();
     }
 
     /**

@@ -254,3 +254,15 @@ Removeu a cache com o ID 3, na data de: 8/6/2021
 
 ===========================================================
 Removeu a cache com o ID 8, na data de: 8/6/2021
+
+===========================================================
+Foi removido o Aventureiro com id : 9 e com o nome : Rui, na data de: 8/6/2021
+
+===========================================================
+Removeu a cache com o ID 14, na data de: 8/6/2021
+
+===========================================================
+Removeu a cache com o ID 1, na data de: 8/6/2021
+
+===========================================================
+Removeu a cache com o ID 1, na data de: 8/6/2021

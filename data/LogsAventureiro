@@ -2271,3 +2271,42 @@ O utilizador Jorge criou e escondeu esta cache: idCache: null, dificuldade: 4, D
 
 ===========================================================
 Dados do utilizador: Id: 6, nome: Jorge, local: X = 1, Y = 2, numCacheVis: 0, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+Adicionou: Id: 10, nome: Antonio, local: X = 230, Y = 459, numCacheVis: 0, numCacheEsc: 0, na data de: 8/6/2021
+
+===========================================================
+Removeu o Aventureiro com id: 9, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: carta, Localização: 200,100->Norte, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 5, numCacheEsc: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 200,300->Sul, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 5, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 155,200->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 5, numCacheEsc: 3, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre criou e escondeu esta cache: idCache: null, dificuldade: 5, Dono da Cache: Andre, TravelBug: cartas, Localização: 155,200->Centro, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 5, numCacheEsc: 4, na data de: 8/6/2021
+
+===========================================================
+O utilizador Andre visitou esta cache: null, na data de: 8/6/2021
+
+===========================================================
+Dados do utilizador: Id: 1, nome: Andre, local: X = 1, Y = 2, numCacheVis: 6, numCacheEsc: 2, na data de: 8/6/2021
+
+===========================================================
+Adicionou: Id: 10, nome: fabio, local: X = 15, Y = 61, numCacheVis: 0, numCacheEsc: 0, na data de: 8/6/2021

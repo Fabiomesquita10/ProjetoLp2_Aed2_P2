@@ -1048,8 +1048,10 @@ public class LoginController implements Initializable {
             }
         }
         else{
-            int idC = go.getObjetos().get(id).getCache().getIdCache();
-            gc.getCaches().get(idC).setObjeto(null);
+            if(go.getObjetos().get(id).getCache() != null){
+                int idC = go.getObjetos().get(id).getCache().getIdCache();
+                gc.getCaches().get(idC).setObjeto(null);
+            }
         }
         consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removido um objeto: Id: " + go.getObjetos().get(id).getId() + ", Nome: " + go.getObjetos().get(id).getNome());
         go.removeO(id);
@@ -1114,8 +1116,9 @@ public class LoginController implements Initializable {
             }
         }
         else{
+            if(go.getTravelBug().get(id).getCache() != null){
             int idC = go.getTravelBug().get(id).getCache().getIdCache();
-            gc.getCaches().get(idC).setTravelbug(null);
+            gc.getCaches().get(idC).setTravelbug(null);}
         }
         consolaAplicacao.setText(consolaAplicacao.getText() + "\n" + "Foi removido um TravelBug: Id: " + go.getTravelBug().get(id).getId() + ", Nome: " + go.getTravelBug().get(id).getNome());
         go.removeTb(id);
@@ -1392,7 +1395,6 @@ public class LoginController implements Initializable {
                     if(go.getTravelBug().get(idO).getCache() == null){
                         c = new PremiumCache(dif, ga.getAventureiros().get(idA), go.getTravelBug().get(idO),x, y, local);
                         go.getTravelBug().get(idO).getListaCachesPresente().put(go.getTravelBug().get(idO).getNumCachesPres(),c);
-                        go.getTravelBug().get(idO).setNumCachesPres(go.getTravelBug().get(idO).getNumCachesPres() + 1);
                     }
                 }
                 else{
