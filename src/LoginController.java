@@ -174,6 +174,11 @@ public class LoginController implements Initializable {
     public final int yUpperLimit = 50;
     public final int yLowerLimit = 450;
 
+    //subgrafo
+    public TextField tipoCache1SubGrafo;
+    public TextField difiCache1SubGrafo;
+    public TextField regiaoCache1SubGrafo;
+
 
     /**
      * funcao para inicilizar as tabelas de informacoa e tambem toda a informacao a cerca do grafo
@@ -1299,7 +1304,6 @@ public class LoginController implements Initializable {
         }
         gcg.lerCaminhos();
         creatGraphGroup(ga, gcg, go);
-        gcg.getGrafo().getCaches().get(4);
     }
 
     /**
@@ -1614,6 +1618,111 @@ public class LoginController implements Initializable {
         go.guardarObjBin();
         gc.guardarCachesBin();
         gcg.guardarCaminhos();
+    }
+
+    /**
+     * handler para criar um sub grafo apartir de um input de dados
+     * @param actionEvent sempre que clicamos no botao
+     */
+    public void handlerSubGrafo(ActionEvent actionEvent) {
+        String tipo = "";
+        String regiao = "";
+        int dif = 0;
+        if(!tipoCache1SubGrafo.getText().equals(""))
+            tipo = tipoCache1SubGrafo.getText();
+        if(!regiaoCache1SubGrafo.getText().equals(""))
+            regiao = regiaoCache1SubGrafo.getText();
+        if(!difiCache1SubGrafo.getText().equals(""))
+            dif = Integer.parseInt(difiCache1SubGrafo.getText());
+
+        if(dif != 0){ // criar um grafo dependendo da dificulade input
+            int x = 1, k = 1;
+            if(cacheTables!=null)
+                cacheTables.getItems().clear();
+            CacheArrayList.clear();
+            if(gc.getCaches().size()>0){
+                gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
+                while(k<=gc.getCaches().size()){
+                    if(gc.getCaches().contains(x)){
+                        if(gc.getCaches().get(x).getDificuldade() == dif){// ao percorrer todas as caches ve se elas teem a dificuldade que procuramos se sim adicionamos ao subGrafo
+                            gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
+                            CacheArrayList.add(gc.getCaches().get(x));
+                        }
+                        k++;
+                    }
+                    x++;
+                }
+                cacheTables.getItems().addAll(CacheArrayList);
+            }
+            gcg.lerCaminhos();
+            creatGraphGroup(ga, gcg, go);
+        }
+        if(!tipo.equals("")){
+            int x = 1, k = 1;
+            if(cacheTables!=null)
+                cacheTables.getItems().clear();
+            CacheArrayList.clear();
+            if(gc.getCaches().size()>0){
+                gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
+                if(tipo.equals("premium")){
+                    while(k<=gc.getCaches().size()){
+                        if(gc.getCaches().contains(x)){
+                            if(gc.getCaches().get(x) instanceof PremiumCache){ // ao percorrer todas as caches verificamos se elas sao premium, se for adicionamos ao subGrafo
+                                gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
+                                CacheArrayList.add(gc.getCaches().get(x));
+                            }
+                            k++;
+                        }
+                        x++;
+                    }
+                }
+                else if(tipo.equals("basic")){
+                    while(k<=gc.getCaches().size()){
+                        if(gc.getCaches().contains(x)){
+                            if(gc.getCaches().get(x) instanceof BasicCache){// ao percorrer todas as caches verificamos se elas sao basic, se for adicionamos ao subGrafo
+                                gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
+                                CacheArrayList.add(gc.getCaches().get(x));
+                            }
+                            k++;
+                        }
+                        x++;
+                    }
+                }
+                cacheTables.getItems().addAll(CacheArrayList);
+            }
+            gcg.lerCaminhos();
+            creatGraphGroup(ga, gcg, go);
+        }
+        if(!regiao.equals("")){
+            int x = 1, k = 1;
+            if(cacheTables!=null)
+                cacheTables.getItems().clear();
+            CacheArrayList.clear();
+            if(gc.getCaches().size()>0){
+                gcg.setGrafo(new GeoDigraph(gc.getNumCache()));
+                while(k<=gc.getCaches().size()){
+                    if(gc.getCaches().contains(x)){
+                        if(gc.getCaches().get(x).getLocal().getLocalizacao().equals(regiao)){// ao percorrer todas as caches verificamos se elas sao da regiao procurada, se for adicionamos ao subGrafo
+                            gcg.getGrafo().adicionaCache(gc.getCaches().get(x));
+                            CacheArrayList.add(gc.getCaches().get(x));
+                        }
+                        k++;
+                    }
+                    x++;
+                }
+                cacheTables.getItems().addAll(CacheArrayList);
+            }
+            gcg.lerCaminhos();
+            creatGraphGroup(ga, gcg, go);
+        }
+    }
+
+    /**
+     * voltar ao grafo om todas as caches
+     * @param actionEvent sempre que clicacmos no botao
+     */
+    public void handlerGrafoNormal(ActionEvent actionEvent) {
+        atualizarCaches();
     }
 
     public static void main(String[] args) throws AventureiroNaoHabilitado {

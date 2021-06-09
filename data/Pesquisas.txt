@@ -444,3 +444,23 @@ Distancia: 155, na data de: 8/6/2021
 Menor caminho a percorrer em termos de tempo entre a cache 1 e a cache 4:
 1->8, 8->4
 Tempo: 70, na data de: 8/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de tempo entre a cache 2 e a cache 11:
+2->6, 6->11
+Tempo: 40, na data de: 9/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 2 e a cache 11:
+2->6, 6->11
+Distancia: 60, na data de: 9/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 3 e a cache 6:
+3->9, 9->6
+Distancia: 115, na data de: 9/6/2021
+
+===========================================================
+Menor caminho a percorrer em termos de distancia entre a cache 1 e a cache 7:
+1->8, 8->7
+Distancia: 70, na data de: 9/6/2021
